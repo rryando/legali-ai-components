@@ -7,6 +7,14 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      animation: {
+        'slide-up': 'slideInFromBottom 0.3s ease-out',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'zoom-in': 'zoomIn 0.3s ease-out',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
