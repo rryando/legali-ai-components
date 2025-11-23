@@ -8,7 +8,7 @@ import { FileText, Search, Scale, ClipboardList, Mail } from 'lucide-react'
 const meta: Meta = {
   title: 'Legal Learn/Demo/Complete App',
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
 }
@@ -165,7 +165,7 @@ export const CompleteApp = () => {
   }
 
   return (
-    <div className="bg-slate-100 p-8 rounded-xl border border-slate-200">
+    <>
       {currentScreen === 'home' && (
         <HomeScreen
           modules={sampleModules}
@@ -188,6 +188,6 @@ export const CompleteApp = () => {
           onReviewMistakes={handleQuizClose}
         />
       )}
-    </div>
+    </>
   )
 }

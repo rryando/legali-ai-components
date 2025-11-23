@@ -43,8 +43,8 @@ const NavigationBar = React.forwardRef<HTMLDivElement, NavigationBarProps>(
               className={cn(
                 "flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 min-w-[72px]",
                 isActive 
-                  ? "text-indigo-600 bg-indigo-50/80 shadow-sm scale-105" 
-                  : "text-slate-400 hover:text-slate-600 hover:bg-white/40"
+                  ? "text-blue-600 bg-blue-50/80 shadow-sm scale-105" 
+                  : "text-slate-400 hover:text-blue-500 hover:bg-blue-50/40"
               )}
             >
               <div className={cn(

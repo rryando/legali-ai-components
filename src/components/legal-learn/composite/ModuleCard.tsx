@@ -33,10 +33,10 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
         intensity={isLocked ? "low" : "medium"}
         onClick={!isLocked ? onModuleClick : undefined}
         className={cn(
-          "p-5 rounded-2xl transition-all duration-300",
+          "p-5 rounded-2xl transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl",
           // Status specific styles
-          isCurrent && "ring-2 ring-indigo-400/50 shadow-indigo-200/50",
-          isCompleted && "bg-emerald-50/40 border-emerald-100/50",
+          isCurrent && "ring-2 ring-blue-400/50 shadow-blue-200/50 bg-white/80",
+          isCompleted && "bg-sky-50/40 border-sky-100/50",
           isLocked && "opacity-60 grayscale-[0.5]",
           className
         )}
@@ -47,10 +47,10 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
         <div className="flex items-start gap-4">
           {/* Icon Container */}
           <div className={cn(
-            "w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-lg transition-transform duration-300 group-hover:scale-110",
+            "w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3",
             // Colorful Gradients for Icons
-            isCurrent && "bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-indigo-500/30",
-            isCompleted && "bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-emerald-500/30",
+            isCurrent && "bg-gradient-to-br from-blue-500 to-sky-400 text-white shadow-blue-500/30",
+            isCompleted && "bg-gradient-to-br from-sky-400 to-teal-400 text-white shadow-sky-500/30",
             isLocked && "bg-slate-100 text-slate-400 shadow-inner"
           )}>
             {icon}
@@ -68,8 +68,8 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
               
               {/* Status Icon */}
               <div className="shrink-0">
-                {isCompleted && <Check className="w-6 h-6 text-emerald-500 drop-shadow-sm" strokeWidth={3} />}
-                {isCurrent && <PlayCircle className="w-6 h-6 text-indigo-500 fill-indigo-100" />}
+                {isCompleted && <Check className="w-6 h-6 text-sky-500 drop-shadow-sm" strokeWidth={3} />}
+                {isCurrent && <PlayCircle className="w-6 h-6 text-blue-500 fill-blue-100" />}
                 {isLocked && <Lock className="w-4 h-4 text-slate-400" />}
               </div>
             </div>

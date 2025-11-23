@@ -4,14 +4,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Flame, Star, Heart } from "lucide-react"
 
 const statItemVariants = cva(
-  "flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-200 hover:scale-105 cursor-default border border-white/50 shadow-sm backdrop-blur-md",
+  "flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 hover:scale-110 cursor-default border shadow-sm backdrop-blur-md",
   {
     variants: {
       variant: {
-        default: "bg-white/50 text-slate-700",
-        streak: "bg-orange-50/80 text-orange-600 hover:bg-orange-100/80",
-        points: "bg-amber-50/80 text-amber-600 hover:bg-amber-100/80",
-        hearts: "bg-rose-50/80 text-rose-600 hover:bg-rose-100/80",
+        default: "bg-white/60 border-white/40 text-slate-700",
+        streak: "bg-orange-100/80 border-orange-200/50 text-orange-600 hover:bg-orange-200 hover:shadow-orange-500/20",
+        points: "bg-amber-100/80 border-amber-200/50 text-amber-600 hover:bg-amber-200 hover:shadow-amber-500/20",
+        hearts: "bg-rose-100/80 border-rose-200/50 text-rose-600 hover:bg-rose-200 hover:shadow-rose-500/20",
       },
     },
     defaultVariants: {

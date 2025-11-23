@@ -23,21 +23,22 @@ const ResultsScreen = React.forwardRef<HTMLDivElement, ResultsScreenProps>(
         ref={ref}
         className={cn(
           "flex flex-col h-full min-h-screen relative overflow-hidden items-center justify-center p-6",
-          // Mesh Gradient Background (Celebratory)
-          "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-100 via-orange-50 to-white",
+          // Celebratory Blue/Gold Gradient
+          "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-100 via-blue-50 to-white",
           className
         )}
         {...props}
       >
         {/* Decorative Confetti/Orbs */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-           <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-yellow-400/20 rounded-full blur-3xl animate-pulse" />
-           <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-orange-400/20 rounded-full blur-3xl animate-pulse delay-700" />
+           <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
+           <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-sky-400/20 rounded-full blur-3xl animate-pulse delay-700" />
+           <div className="absolute top-[20%] right-[20%] w-32 h-32 bg-yellow-400/30 rounded-full blur-2xl animate-bounce duration-[3000ms]" />
         </div>
 
         <GlassCard 
           intensity="high" 
-          className="w-full max-w-md rounded-3xl shadow-2xl shadow-orange-500/10 border-white/60"
+          className="w-full max-w-md rounded-3xl shadow-2xl shadow-blue-500/10 border-white/60"
         >
           <ResultsCard
             score={score}

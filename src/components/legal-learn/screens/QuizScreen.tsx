@@ -73,15 +73,15 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
         ref={ref}
         className={cn(
           "flex flex-col h-full min-h-screen relative overflow-hidden",
-          // Mesh Gradient Background (Same as Home)
-          "bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-indigo-200 via-purple-100 to-white",
+          // New Bluish Gradient Background
+          "bg-gradient-to-br from-sky-100 via-blue-50 to-white",
           className
         )}
         {...props}
       >
         {/* Decorative Orbs */}
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-purple-400/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-3xl pointer-events-none animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl pointer-events-none animate-pulse delay-700" />
 
         <QuizHeader
           onClose={onClose}
@@ -126,9 +126,9 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
                 onClick={handleCheck}
                 disabled={!selectedAnswerId}
                 className={cn(
-                  "w-full font-bold py-6 text-lg rounded-2xl shadow-xl transition-all",
+                  "w-full font-bold py-6 text-lg rounded-2xl shadow-xl transition-all duration-300",
                   selectedAnswerId 
-                    ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-200 hover:-translate-y-1" 
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/30 hover:-translate-y-1 hover:shadow-2xl" 
                     : "bg-slate-200 text-slate-400 cursor-not-allowed"
                 )}
               >
