@@ -33,11 +33,11 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
         intensity={isLocked ? "low" : "medium"}
         onClick={!isLocked ? onModuleClick : undefined}
         className={cn(
-          "p-5 rounded-2xl transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl",
+          "p-5 rounded-2xl transition-all duration-300 group hover:-translate-y-1",
           // Status specific styles
-          isCurrent && "ring-2 ring-blue-400/50 shadow-blue-200/50 bg-white/80",
-          isCompleted && "bg-sky-50/40 border-sky-100/50",
-          isLocked && "opacity-60 grayscale-[0.5]",
+          isCurrent && "border-blue-400/50 shadow-[0_0_25px_rgba(59,130,246,0.2),inset_0_0_15px_rgba(59,130,246,0.1)] bg-gradient-to-br from-white/90 via-white/70 to-blue-50/30 animate-border-glow",
+          isCompleted && "bg-gradient-to-br from-sky-50/60 to-sky-100/30 border-sky-200/50",
+          isLocked && "opacity-60 grayscale-[0.5] bg-gradient-to-br from-slate-50/50 to-slate-100/20",
           className
         )}
         role={!isLocked ? "button" : undefined}

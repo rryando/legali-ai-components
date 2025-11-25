@@ -73,10 +73,15 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'border-glow': {
+          '0%, 100%': { borderColor: 'rgba(59, 130, 246, 0.3)', boxShadow: '0 0 10px rgba(59, 130, 246, 0.1)' },
+          '50%': { borderColor: 'rgba(59, 130, 246, 0.6)', boxShadow: '0 0 20px rgba(59, 130, 246, 0.2)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'border-glow': 'border-glow 3s ease-in-out infinite',
       },
     },
   },

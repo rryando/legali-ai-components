@@ -20,7 +20,7 @@ const QuizQuestion = React.forwardRef<HTMLDivElement, QuizQuestionProps>(
         {...props}
       >
         {questionNumber && (
-          <div className="text-sm font-bold text-indigo-600 mb-3 uppercase tracking-wide">
+          <div className="text-sm font-bold text-blue-600 mb-3 uppercase tracking-wide">
             Question {questionNumber}
           </div>
         )}

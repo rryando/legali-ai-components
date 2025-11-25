@@ -18,10 +18,10 @@ const QuizFeedback = React.forwardRef<HTMLDivElement, QuizFeedbackProps>(
       <div
         ref={ref}
         className={cn(
-          "absolute bottom-0 left-0 right-0 p-6 rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t animate-slide-up z-50",
+          "absolute bottom-0 left-0 right-0 p-6 rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t animate-slide-up z-50 backdrop-blur-xl",
           correct 
-            ? "bg-emerald-50 border-emerald-100" 
-            : "bg-rose-50 border-rose-100",
+            ? "bg-gradient-to-t from-emerald-50/95 via-emerald-50/90 to-emerald-100/80 border-emerald-200/50 shadow-[0_-5px_25px_rgba(16,185,129,0.15),inset_0_1px_20px_rgba(16,185,129,0.1)]" 
+            : "bg-gradient-to-t from-rose-50/95 via-rose-50/90 to-rose-100/80 border-rose-200/50 shadow-[0_-5px_25px_rgba(244,63,94,0.15),inset_0_1px_20px_rgba(244,63,94,0.1)]",
           className
         )}
         {...props}

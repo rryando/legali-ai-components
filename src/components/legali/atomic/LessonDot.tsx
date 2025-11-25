@@ -7,10 +7,10 @@ const lessonDotVariants = cva(
   {
     variants: {
       status: {
-        pending: "bg-gray-300",
-        current: "bg-blue-500 ring-2 ring-blue-200",
-        completed: "bg-green-500",
-        locked: "bg-gray-200",
+        pending: "bg-slate-300/50 backdrop-blur-sm",
+        current: "bg-gradient-to-br from-blue-400 to-blue-600 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_5px_rgba(255,255,255,0.5)] animate-pulse ring-2 ring-blue-200/50",
+        completed: "bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.3)]",
+        locked: "bg-slate-200/50 backdrop-blur-sm",
       },
       size: {
         sm: "w-2 h-2",

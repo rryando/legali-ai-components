@@ -5,6 +5,8 @@ import { ProgressSection } from "../composite/ProgressSection"
 import { ModuleCard, type ModuleStatus, type Lesson } from "../composite/ModuleCard"
 import { NavigationBar } from "../composite/NavigationBar"
 import { BookOpen, BarChart2, User } from "lucide-react"
+import { ProfileScreen } from "./ProfileScreen"
+import { ProgressScreen } from "./ProgressScreen"
 
 export interface Module {
   id: string | number
@@ -83,48 +85,55 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col h-full overflow-hidden">
-          {/* Header Area (Mobile Only for Stats) */}
-          <div className="sticky top-0 z-10 px-5 pt-6 pb-4 backdrop-blur-md bg-white/30 border-b border-white/20 md:bg-transparent md:border-none md:backdrop-blur-none">
-            <div className="md:hidden">
-              <UserStatsBar
-                streak={streak}
-                points={points}
-                hearts={hearts}
-                className="mb-6"
-              />
-            </div>
-            
-            <div className="max-w-4xl mx-auto w-full">
-              <ProgressSection
-                title="Civil Procedure"
-                progress={45}
-              />
-            </div>
-          </div>
-
-          {/* Modules Scroll Area */}
-          <div className="flex-1 overflow-y-auto px-5 py-6 pb-24 md:pb-6">
-            <div className="max-w-4xl mx-auto w-full space-y-6">
-              <h2 className="font-bold text-2xl text-slate-800 mb-4 tracking-tight">
-                Learning Path
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-0">
-                {modules.map((module) => (
-                  <ModuleCard
-                    key={module.id}
-                    icon={module.icon}
-                    title={module.title}
-                    subtitle={module.subtitle}
-                    status={module.status}
-                    lessons={module.lessons}
-                    onModuleClick={() => onModuleClick(module.id)}
+        <div className="flex-1 flex flex-col h-full overflow-hidden relative">
+          {activeTab === 'learn' && (
+            <>
+              {/* Header Area (Mobile Only for Stats) */}
+              <div className="sticky top-0 z-10 px-5 pt-6 pb-4 backdrop-blur-md bg-white/30 border-b border-white/20 md:bg-transparent md:border-none md:backdrop-blur-none">
+                <div className="md:hidden">
+                  <UserStatsBar
+                    streak={streak}
+                    points={points}
+                    hearts={hearts}
+                    className="mb-6"
                   />
-                ))}
+                </div>
+                
+                <div className="max-w-4xl mx-auto w-full">
+                  <ProgressSection
+                    title="Civil Procedure"
+                    progress={45}
+                  />
+                </div>
               </div>
-            </div>
-          </div>
+
+              {/* Modules Scroll Area */}
+              <div className="flex-1 overflow-y-auto px-5 py-6 pb-24 md:pb-6">
+                <div className="max-w-4xl mx-auto w-full space-y-6">
+                  <h2 className="font-bold text-2xl text-slate-800 mb-4 tracking-tight">
+                    Learning Path
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-0">
+                    {modules.map((module) => (
+                      <ModuleCard
+                        key={module.id}
+                        icon={module.icon}
+                        title={module.title}
+                        subtitle={module.subtitle}
+                        status={module.status}
+                        lessons={module.lessons}
+                        onModuleClick={() => onModuleClick(module.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {activeTab === 'progress' && <ProgressScreen />}
+          {activeTab === 'profile' && <ProfileScreen />}
         </div>
 
         {/* Bottom Navigation (Mobile Only) */}

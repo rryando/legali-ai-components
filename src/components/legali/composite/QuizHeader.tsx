@@ -23,7 +23,7 @@ const QuizHeader = React.forwardRef<HTMLDivElement, QuizHeaderProps>(
       <div
         ref={ref}
         className={cn(
-          "bg-white border-b border-slate-100 px-5 py-4 flex items-center gap-4",
+          "bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-md border-b border-white/40 px-5 py-4 flex items-center gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.02)]",
           className
         )}
         {...props}

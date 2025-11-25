@@ -41,10 +41,10 @@ const NavigationBar = React.forwardRef<HTMLDivElement, NavigationBarProps>(
               key={item.id}
               onClick={() => onItemClick(item.id)}
               className={cn(
-                "flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 min-w-[72px]",
+                "flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 min-w-[72px] border border-transparent",
                 isActive 
-                  ? "text-blue-600 bg-blue-50/80 shadow-sm scale-105" 
-                  : "text-slate-400 hover:text-blue-500 hover:bg-blue-50/40"
+                  ? "text-blue-600 bg-gradient-to-br from-blue-50/90 to-blue-100/50 shadow-[0_0_20px_rgba(59,130,246,0.2),inset_0_0_10px_rgba(59,130,246,0.1)] border-blue-200/50 scale-105 animate-border-glow" 
+                  : "text-slate-400 hover:text-blue-500 hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-white/20 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)]"
               )}
             >
               <div className={cn(

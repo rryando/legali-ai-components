@@ -15,16 +15,24 @@ const Answer = React.forwardRef<HTMLButtonElement, AnswerProps>(
       <button
         ref={ref}
         className={cn(
-          "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 relative group",
-          "hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:shadow-none",
+          "w-full text-left p-4 rounded-xl border transition-all duration-300 relative group backdrop-blur-md",
+          "hover:-translate-y-0.5 active:translate-y-0 active:shadow-none",
           // Default
-          !selected && !correct && !incorrect && "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700",
+          !selected && !correct && !incorrect && [
+            "bg-gradient-to-br from-white/60 via-white/40 to-white/20 border-white/40",
+            "hover:from-blue-50/40 hover:via-white/50 hover:to-blue-50/20",
+            "hover:border-blue-400/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.15),inset_0_0_15px_rgba(59,130,246,0.05)] hover:animate-border-glow",
+            "text-slate-700"
+          ],
           // Selected
-          selected && !correct && !incorrect && "bg-blue-50 border-blue-500 text-blue-700 ring-1 ring-blue-500",
+          selected && !correct && !incorrect && [
+            "bg-gradient-to-br from-blue-50/70 via-blue-50/40 to-blue-100/20 border-blue-500/50 text-blue-700",
+            "shadow-[0_0_25px_rgba(59,130,246,0.2),inset_0_0_20px_rgba(59,130,246,0.1)] animate-border-glow"
+          ],
           // Correct
-          correct && "bg-emerald-50 border-emerald-500 text-emerald-700",
+          correct && "bg-gradient-to-br from-emerald-50/80 via-emerald-50/50 to-emerald-100/20 border-emerald-500/50 text-emerald-700 shadow-[0_0_25px_rgba(16,185,129,0.2),inset_0_0_20px_rgba(16,185,129,0.1)]",
           // Incorrect
-          incorrect && "bg-rose-50 border-rose-500 text-rose-700",
+          incorrect && "bg-gradient-to-br from-rose-50/80 via-rose-50/50 to-rose-100/20 border-rose-500/50 text-rose-700 shadow-[0_0_25px_rgba(244,63,94,0.2),inset_0_0_20px_rgba(244,63,94,0.1)]",
           className
         )}
         {...props}

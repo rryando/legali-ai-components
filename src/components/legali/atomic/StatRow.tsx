@@ -13,7 +13,7 @@ const StatRow = React.forwardRef<HTMLDivElement, StatRowProps>(
       <div
         ref={ref}
         className={cn(
-          "flex items-center justify-between py-3 border-b border-gray-200 last:border-b-0",
+          "flex items-center justify-between py-3 border-b border-slate-200/50 last:border-b-0",
           className
         )}
         {...props}

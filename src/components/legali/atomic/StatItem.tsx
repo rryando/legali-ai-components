@@ -8,10 +8,10 @@ const statItemVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-white/60 border-white/40 text-slate-700",
-        streak: "bg-orange-100/80 border-orange-200/50 text-orange-600 hover:bg-orange-200 hover:shadow-orange-500/20",
-        points: "bg-amber-100/80 border-amber-200/50 text-amber-600 hover:bg-amber-200 hover:shadow-amber-500/20",
-        hearts: "bg-rose-100/80 border-rose-200/50 text-rose-600 hover:bg-rose-200 hover:shadow-rose-500/20",
+        default: "bg-gradient-to-br from-white/60 to-white/40 border-white/40 text-slate-700 hover:shadow-[0_0_15px_rgba(59,130,246,0.15),inset_0_0_10px_rgba(59,130,246,0.05)] hover:border-blue-400/30",
+        streak: "bg-gradient-to-br from-orange-50/80 to-orange-100/40 border-orange-200/50 text-orange-600 hover:from-orange-100 hover:to-orange-50 hover:shadow-[0_0_15px_rgba(249,115,22,0.3),inset_0_0_10px_rgba(249,115,22,0.1)] hover:border-orange-400/50",
+        points: "bg-gradient-to-br from-amber-50/80 to-amber-100/40 border-amber-200/50 text-amber-600 hover:from-amber-100 hover:to-amber-50 hover:shadow-[0_0_15px_rgba(245,158,11,0.3),inset_0_0_10px_rgba(245,158,11,0.1)] hover:border-amber-400/50",
+        hearts: "bg-gradient-to-br from-rose-50/80 to-rose-100/40 border-rose-200/50 text-rose-600 hover:from-rose-100 hover:to-rose-50 hover:shadow-[0_0_15px_rgba(244,63,94,0.3),inset_0_0_10px_rgba(244,63,94,0.1)] hover:border-rose-400/50",
       },
     },
     defaultVariants: {

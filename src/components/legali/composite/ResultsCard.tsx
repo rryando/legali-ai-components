@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils"
 import { StatRow } from "../atomic/StatRow"
 import { Button } from "@/components/button"
 import { CheckCircle2, Star, Target, Flame, Medal } from "lucide-react"
+import { GlassCard } from "../atomic/GlassCard"
 
 export interface ResultsStat {
   label: string
@@ -44,8 +45,9 @@ const ResultsCard = React.forwardRef<HTMLDivElement, ResultsCardProps>(
     ]
 
     return (
-      <div
+      <GlassCard
         ref={ref}
+        intensity="high"
         className={cn(
           "flex flex-col items-center text-center p-8 max-w-sm mx-auto w-full",
           className
@@ -102,7 +104,7 @@ const ResultsCard = React.forwardRef<HTMLDivElement, ResultsCardProps>(
             </Button>
           )}
         </div>
-      </div>
+      </GlassCard>
     )
   }
 )

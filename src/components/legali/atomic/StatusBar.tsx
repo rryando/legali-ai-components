@@ -12,7 +12,7 @@ const StatusBar = React.forwardRef<HTMLDivElement, StatusBarProps>(
       <div
         ref={ref}
         className={cn(
-          "h-11 bg-white flex items-center justify-between px-5 text-sm font-medium",
+          "h-11 bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-md flex items-center justify-between px-5 text-sm font-medium",
           className
         )}
         {...props}

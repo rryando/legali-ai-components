@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { ProgressBar } from "../atomic/ProgressBar"
+import { GlassCard } from "../atomic/GlassCard"
 
 export interface ProgressSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
@@ -19,12 +20,13 @@ const ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(
     ...props 
   }, ref) => {
     return (
-      <div
+      <GlassCard
         ref={ref}
+        intensity={variant === "header" ? "high" : "low"}
         className={cn(
-          "rounded-xl p-4 border",
-          variant === "header" && "bg-white border-slate-200 shadow-sm",
-          variant === "card" && "bg-slate-50 border-slate-200",
+          "rounded-xl p-4",
+          variant === "header" && "border-white/40",
+          variant === "card" && "border-slate-200/50",
           className
         )}
         {...props}
@@ -42,9 +44,9 @@ const ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(
         <ProgressBar
           value={progress}
           variant="default"
-          className="bg-slate-100"
+          className="bg-slate-100/50"
         />
-      </div>
+      </GlassCard>
     )
   }
 )

@@ -12,10 +12,10 @@ export const QuestionNumberBadge = React.forwardRef<HTMLDivElement, QuestionNumb
       <div
         ref={ref}
         className={cn(
-          "flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm",
-          status === 'correct' && "bg-green-100 text-green-700",
-          status === 'incorrect' && "bg-red-100 text-red-700",
-          status === 'neutral' && "bg-slate-100 text-slate-700",
+          "flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm backdrop-blur-sm border",
+          status === 'correct' && "bg-gradient-to-br from-emerald-100/90 to-emerald-50/50 text-emerald-700 border-emerald-200/50 shadow-[0_0_10px_rgba(16,185,129,0.2)]",
+          status === 'incorrect' && "bg-gradient-to-br from-rose-100/90 to-rose-50/50 text-rose-700 border-rose-200/50 shadow-[0_0_10px_rgba(244,63,94,0.2)]",
+          status === 'neutral' && "bg-gradient-to-br from-slate-100/90 to-slate-50/50 text-slate-700 border-slate-200/50",
           className
         )}
         {...props}

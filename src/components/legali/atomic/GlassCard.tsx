@@ -16,24 +16,27 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
           "backdrop-blur-xl border transition-all duration-300",
           
           // Intensity variants (Background opacity)
-          intensity === "low" && "bg-white/40",
-          intensity === "medium" && "bg-white/60",
-          intensity === "high" && "bg-white/80",
+          intensity === "low" && "bg-gradient-to-br from-white/40 via-white/30 to-white/10",
+          intensity === "medium" && "bg-gradient-to-br from-white/60 via-white/40 to-white/20",
+          intensity === "high" && "bg-gradient-to-br from-white/80 via-white/60 to-white/40",
 
           // Border styles
-          "border-white/40 shadow-lg shadow-black/5",
+          "border-white/40 shadow-lg shadow-blue-900/5",
 
           // Interactive variant
           variant === "interactive" && [
-            "cursor-pointer hover:-translate-y-1 hover:bg-white/70",
-            "hover:shadow-xl hover:shadow-indigo-500/10 hover:border-white/60",
+            "cursor-pointer hover:-translate-y-1",
+            "hover:from-blue-50/40 hover:via-white/50 hover:to-blue-50/20",
+            "hover:shadow-[0_0_25px_rgba(59,130,246,0.15),inset_0_0_15px_rgba(59,130,246,0.05)]", // Bluish glow with inner reflection
+            "hover:border-blue-400/50", // Bluish border
+            "hover:animate-border-glow", // Animation
             "active:scale-[0.98] active:bg-white/80"
           ],
 
           // Dark variant (for contrast elements)
           variant === "dark" && [
             "bg-slate-900/80 border-slate-700/50 text-white",
-            "hover:bg-slate-900/90"
+            "hover:bg-slate-900/90 hover:border-blue-500/30 hover:shadow-blue-500/10"
           ],
 
           className
