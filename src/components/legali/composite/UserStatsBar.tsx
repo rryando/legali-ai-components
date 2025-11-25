@@ -15,7 +15,7 @@ const UserStatsBar = React.forwardRef<HTMLDivElement, UserStatsBarProps>(
       <div
         ref={ref}
         className={cn(
-          "flex items-center justify-between gap-3 py-3 px-1",
+          "flex items-center justify-between gap-2 py-3 ",
           className
         )}
         {...props}

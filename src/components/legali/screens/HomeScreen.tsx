@@ -52,6 +52,14 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
             </h1>
           </div>
 
+          <div className="mt-auto border-t border-slate-200/50">
+             <UserStatsBar
+                streak={streak}
+                points={points}
+                hearts={hearts}
+                className="mb-6"
+              />
+          </div>
           <nav className="space-y-2 flex-1">
             {[
               { id: 'learn', label: 'Learn', icon: BookOpen },
@@ -74,14 +82,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
             ))}
           </nav>
 
-          <div className="mt-auto pt-6 border-t border-slate-200/50">
-             <UserStatsBar
-                streak={streak}
-                points={points}
-                hearts={hearts}
-                className="mb-6"
-              />
-          </div>
+          
         </div>
 
         {/* Main Content Area */}
