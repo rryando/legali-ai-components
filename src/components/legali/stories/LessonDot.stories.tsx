@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { LessonDot } from '../atomic/LessonDot'
 
 const meta: Meta<typeof LessonDot> = {
-  title: 'Legal Learn/Atomic/LessonDot',
+  title: 'Legali/Atomic/LessonDot',
   component: LessonDot,
   parameters: {
     layout: 'centered',

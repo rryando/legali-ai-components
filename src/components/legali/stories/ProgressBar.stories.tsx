@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ProgressBar } from '../atomic/ProgressBar'
 
 const meta: Meta<typeof ProgressBar> = {
-  title: 'Legal Learn/Atomic/ProgressBar',
+  title: 'Legali/Atomic/ProgressBar',
   component: ProgressBar,
   parameters: {
     layout: 'padded',

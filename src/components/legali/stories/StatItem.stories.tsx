@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { StatItem } from '../atomic/StatItem'
 
 const meta: Meta<typeof StatItem> = {
-  title: 'Legal Learn/Atomic/StatItem',
+  title: 'Legali/Atomic/StatItem',
   component: StatItem,
   parameters: {
     layout: 'centered',
@@ -12,10 +12,6 @@ const meta: Meta<typeof StatItem> = {
     variant: {
       control: 'select',
       options: ['default', 'streak', 'points', 'hearts'],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
     },
   },
 }
@@ -64,7 +60,6 @@ export const Small: Story = {
     value: 10,
     label: 'days',
     variant: 'streak',
-    size: 'sm',
   },
 }
 
@@ -74,6 +69,5 @@ export const Large: Story = {
     value: 1000,
     label: 'XP',
     variant: 'points',
-    size: 'lg',
   },
 }

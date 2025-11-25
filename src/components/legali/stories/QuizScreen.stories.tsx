@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { QuizScreen } from '../screens/QuizScreen'
 
 const meta: Meta<typeof QuizScreen> = {
-  title: 'Legal Learn/Screens/QuizScreen',
+  title: 'Legali/Screens/QuizScreen',
   component: QuizScreen,
   parameters: {
     layout: 'centered',
@@ -74,7 +74,6 @@ const sampleQuestions = [
 export const FirstQuestion: Story = {
   args: {
     questions: sampleQuestions,
-    currentQuestionIndex: 0,
     onClose: () => console.log('Close clicked'),
     onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },
@@ -83,7 +82,6 @@ export const FirstQuestion: Story = {
 export const MiddleQuestion: Story = {
   args: {
     questions: sampleQuestions,
-    currentQuestionIndex: 2,
     onClose: () => console.log('Close clicked'),
     onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },
@@ -92,7 +90,6 @@ export const MiddleQuestion: Story = {
 export const LastQuestion: Story = {
   args: {
     questions: sampleQuestions,
-    currentQuestionIndex: 4,
     onClose: () => console.log('Close clicked'),
     onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },

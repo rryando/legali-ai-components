@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ModuleCard } from '../composite/ModuleCard'
 
 const meta: Meta<typeof ModuleCard> = {
-  title: 'Legal Learn/Composite/ModuleCard',
+  title: 'Legali/Composite/ModuleCard',
   component: ModuleCard,
   parameters: {
     layout: 'padded',

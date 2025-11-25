@@ -6,7 +6,7 @@ import { ResultsScreen } from '../screens/ResultsScreen'
 import { FileText, Search, Scale, ClipboardList, Mail } from 'lucide-react'
 
 const meta: Meta = {
-  title: 'Legal Learn/Demo/Complete App',
+  title: 'Legali/Demo/Complete App',
   parameters: {
     layout: 'fullscreen',
   },

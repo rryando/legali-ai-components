@@ -4,5 +4,5 @@ export type { ButtonProps } from './components/button';
 
 export { FloatingNavbar } from './components/FloatingNavbar';
 
-// Legal Learn Components
-export * from './components/legal-learn';
+// Legali Components
+export * from './components/legali';

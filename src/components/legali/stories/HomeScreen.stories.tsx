@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { HomeScreen } from '../screens/HomeScreen'
 
 const meta: Meta<typeof HomeScreen> = {
-  title: 'Legal Learn/Screens/HomeScreen',
+  title: 'Legali/Screens/HomeScreen',
   component: HomeScreen,
   parameters: {
     layout: 'centered',
@@ -86,8 +86,6 @@ export const Default: Story = {
     streak: 7,
     points: 340,
     hearts: 5,
-    currentModuleTitle: 'Module 2: Discovery Fundamentals',
-    currentModuleProgress: 30,
     modules: sampleModules,
   },
 }
@@ -97,8 +95,6 @@ export const HighProgress: Story = {
     streak: 15,
     points: 1250,
     hearts: 3,
-    currentModuleTitle: 'Module 4: Evidence & Declarations',
-    currentModuleProgress: 75,
     modules: sampleModules.map((m, i) => ({
       ...m,
       status: i < 3 ? ('completed' as const) : i === 3 ? ('current' as const) : ('locked' as const),
@@ -111,8 +107,6 @@ export const JustStarted: Story = {
     streak: 1,
     points: 50,
     hearts: 5,
-    currentModuleTitle: 'Module 1: Court Documents Basics',
-    currentModuleProgress: 10,
     modules: sampleModules.map((m, i) => ({
       ...m,
       status: i === 0 ? ('current' as const) : ('locked' as const),

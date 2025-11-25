@@ -46,7 +46,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         <div className="hidden md:flex flex-col w-64 bg-white/60 backdrop-blur-xl border-r border-blue-100 p-6 z-20 shadow-xl shadow-blue-900/5">
           <div className="mb-8">
             <h1 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500 tracking-tight">
-              Legal Learn
+              Legali AI
             </h1>
           </div>
 
