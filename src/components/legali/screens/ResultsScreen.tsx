@@ -9,14 +9,15 @@ export interface ResultsScreenProps extends React.HTMLAttributes<HTMLDivElement>
   badgeTitle?: string
   onContinue: () => void
   onReviewMistakes?: () => void
+  streak?: number
+  xpEarned?: number
 }
 
 const ResultsScreen = React.forwardRef<HTMLDivElement, ResultsScreenProps>(
-  ({ className, score, totalQuestions, badgeTitle, onContinue, onReviewMistakes, ...props }, ref) => {
+  ({ className, score, totalQuestions, badgeTitle, onContinue, onReviewMistakes, streak = 5, xpEarned, ...props }, ref) => {
     // Calculate stats based on score
     const percentage = Math.round((score / totalQuestions) * 100)
-    const xpEarned = score * 10 + 20 // Base XP + Bonus
-    const streak = 5 // Mock streak
+    const finalXpEarned = xpEarned ?? (score * 10 + 20) // Base XP + Bonus
 
     return (
       <div
@@ -43,7 +44,7 @@ const ResultsScreen = React.forwardRef<HTMLDivElement, ResultsScreenProps>(
           <ResultsCard
             score={score}
             totalQuestions={totalQuestions}
-            xpEarned={xpEarned}
+            xpEarned={finalXpEarned}
             accuracy={percentage}
             streak={streak}
             badgeTitle={badgeTitle}

@@ -22,13 +22,14 @@ export interface Question {
 export interface QuizScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   questions: Question[]
   onClose: () => void
-  onQuizComplete: (score: number, total: number) => void
+  onQuizComplete: (score: number, total: number, userAnswers: Record<string | number, string | number>) => void
 }
 
 const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
   ({ className, questions, onClose, onQuizComplete, ...props }, ref) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0)
     const [selectedAnswerId, setSelectedAnswerId] = React.useState<string | number | null>(null)
+    const [userAnswers, setUserAnswers] = React.useState<Record<string | number, string | number>>({})
     const [isAnswerChecked, setIsAnswerChecked] = React.useState(false)
     const [score, setScore] = React.useState(0)
     const [showFeedback, setShowFeedback] = React.useState(false)
@@ -53,13 +54,22 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
       const isCorrect = currentQuestion.answers.find(a => a.id === selectedAnswerId)?.correct
       if (isCorrect) setScore(s => s + 1)
       
+      setUserAnswers(prev => ({
+        ...prev,
+        [currentQuestion.id]: selectedAnswerId
+      }))
+      
       setIsAnswerChecked(true)
       setShowFeedback(true)
     }
 
     const handleContinue = () => {
       if (isLastQuestion) {
-        onQuizComplete(score + (currentQuestion.answers.find(a => a.id === selectedAnswerId)?.correct ? 1 : 0), questions.length)
+        onQuizComplete(
+          score + (currentQuestion.answers.find(a => a.id === selectedAnswerId)?.correct && !isAnswerChecked ? 1 : 0), // Handle case where check wasn't clicked if that's possible (though UI prevents it) - actually logic above sets score on check.
+          questions.length,
+          userAnswers
+        )
       } else {
         setCurrentQuestionIndex(i => i + 1)
         setSelectedAnswerId(null)

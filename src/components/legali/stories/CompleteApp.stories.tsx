@@ -1,9 +1,11 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import { HomeScreen } from '../screens/HomeScreen'
-import { QuizScreen, type Question } from '../screens/QuizScreen'
+import { QuizScreen } from '../screens/QuizScreen'
 import { ResultsScreen } from '../screens/ResultsScreen'
-import { FileText, Search, Scale, ClipboardList, Mail } from 'lucide-react'
+import { ReviewScreen } from '../screens/ReviewScreen'
+import { FileText, Search, Scale, ClipboardList } from 'lucide-react'
+import { legaliDemoModules, legaliDemoQuiz } from '../data/legali-demo-content'
 
 const meta: Meta = {
   title: 'Legali/Demo/Complete App',
@@ -15,144 +17,133 @@ const meta: Meta = {
 
 export default meta
 
-const sampleModules = [
-  {
-    id: 1,
-    icon: <FileText className="w-full h-full p-3" />,
-    title: 'Module 1: Court Documents Basics',
-    subtitle: 'Motions, Notices & Pleadings',
-    status: 'completed' as const,
-    lessons: [
-      { id: 1, completed: true },
-      { id: 2, completed: true },
-      { id: 3, completed: true },
-      { id: 4, completed: true },
-    ],
-  },
-  {
-    id: 2,
-    icon: <Search className="w-full h-full p-3" />,
-    title: 'Module 2: Discovery Fundamentals',
-    subtitle: 'Getting information before trial',
-    status: 'current' as const,
-    lessons: [
-      { id: 1, completed: true },
-      { id: 2, completed: true },
-      { id: 3, completed: false },
-      { id: 4, completed: false },
-    ],
-  },
-  {
-    id: 3,
-    icon: <Scale className="w-full h-full p-3" />,
-    title: 'Module 3: Pleadings vs. Motions',
-    subtitle: 'Understanding document types',
-    status: 'locked' as const,
-    lessons: [
-      { id: 1, completed: false },
-      { id: 2, completed: false },
-      { id: 3, completed: false },
-      { id: 4, completed: false },
-    ],
-  },
-  {
-    id: 4,
-    icon: <ClipboardList className="w-full h-full p-3" />,
-    title: 'Module 4: Evidence & Declarations',
-    subtitle: 'What counts in court',
-    status: 'locked' as const,
-    lessons: [
-      { id: 1, completed: false },
-      { id: 2, completed: false },
-      { id: 3, completed: false },
-      { id: 4, completed: false },
-    ],
-  },
-  {
-    id: 5,
-    icon: <Mail className="w-full h-full p-3" />,
-    title: 'Module 5: Service of Process',
-    subtitle: 'Delivering legal documents',
-    status: 'locked' as const,
-    lessons: [
-      { id: 1, completed: false },
-      { id: 2, completed: false },
-      { id: 3, completed: false },
-      { id: 4, completed: false },
-    ],
-  },
-]
+type LucideIcon = typeof FileText
 
-const sampleQuestions: Question[] = [
-  {
-    id: 1,
-    question: "What is 'discovery' in legal terms?",
-    answers: [
-      { id: 1, text: 'A) Finding the courthouse location', correct: false },
-      { id: 2, text: 'B) The process of exchanging information before trial', correct: true },
-      { id: 3, text: 'C) Discovering new evidence during trial', correct: false },
-      { id: 4, text: 'D) Looking up legal definitions', correct: false },
-    ],
-    explanation: 'Discovery is the pre-trial process where both sides exchange information and evidence. This helps ensure fair trials by reducing surprises.',
-  },
-  {
-    id: 2,
-    question: 'Which is a type of discovery tool?',
-    answers: [
-      { id: 1, text: 'A) Complaint', correct: false },
-      { id: 2, text: 'B) Interrogatories', correct: true },
-      { id: 3, text: 'C) Verdict', correct: false },
-      { id: 4, text: 'D) Judgment', correct: false },
-    ],
-    explanation: "Interrogatories are written questions that must be answered under oath. They're one of several discovery tools used to gather information.",
-  },
-  {
-    id: 3,
-    question: 'How long do you typically have to respond to discovery requests?',
-    answers: [
-      { id: 1, text: 'A) 24 hours', correct: false },
-      { id: 2, text: 'B) 30 days (in most jurisdictions)', correct: true },
-      { id: 3, text: 'C) Whenever you feel like it', correct: false },
-      { id: 4, text: 'D) 6 months', correct: false },
-    ],
-    explanation: 'Most jurisdictions give you 30 days to respond to discovery requests, though this can vary by state and type of discovery.',
-  },
-  {
-    id: 4,
-    question: 'Can you object to discovery requests?',
-    answers: [
-      { id: 1, text: "A) Yes, if they're improper or overly broad", correct: true },
-      { id: 2, text: 'B) No, never', correct: false },
-      { id: 3, text: 'C) Only if you hire a lawyer', correct: false },
-      { id: 4, text: 'D) Only in criminal cases', correct: false },
-    ],
-    explanation: 'You can object to discovery requests that are overly broad, irrelevant, privileged, or not reasonably calculated to lead to admissible evidence.',
-  },
-  {
-    id: 5,
-    question: 'What happens if you ignore discovery requests?',
-    answers: [
-      { id: 1, text: 'A) Nothing happens', correct: false },
-      { id: 2, text: 'B) The other side gives up', correct: false },
-      { id: 3, text: 'C) The judge can sanction you or strike your pleadings', correct: true },
-      { id: 4, text: 'D) You automatically win', correct: false },
-    ],
-    explanation: 'Ignoring discovery is serious! The court can impose sanctions, which may include monetary penalties, striking your claims or defenses, or even dismissing your case.',
-  },
-]
+const moduleIconMap: Record<string, LucideIcon> = {
+  'module-1': FileText,
+  'module-2': Search,
+  'module-3': Scale,
+  'module-4': ClipboardList,
+}
 
-type Screen = 'home' | 'quiz' | 'results'
+// --- Persistence Logic ---
+
+const STORAGE_KEY = 'legali-demo-progress'
+
+interface UserProgress {
+  xp: number
+  streak: number
+  lastLoginDate: string
+  completedLessons: string[]
+  unlockedModules: string[]
+}
+
+const INITIAL_PROGRESS: UserProgress = {
+  xp: 1250,
+  streak: 5,
+  lastLoginDate: new Date().toISOString().split('T')[0],
+  completedLessons: [],
+  unlockedModules: ['module-1'],
+}
+
+const loadProgress = (): UserProgress => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      const parsed = JSON.parse(stored)
+      return { ...INITIAL_PROGRESS, ...parsed }
+    }
+  } catch (e) {
+    console.error('Failed to load progress', e)
+  }
+  return INITIAL_PROGRESS
+}
+
+const saveProgress = (progress: UserProgress) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
+  } catch (e) {
+    console.error('Failed to save progress', e)
+  }
+}
+
+type Screen = 'home' | 'quiz' | 'results' | 'review'
 
 export const CompleteApp = () => {
-  const [currentScreen, setCurrentScreen] = useState<Screen>('home')
-  const [quizScore, setQuizScore] = useState({ score: 0, total: 0 })
+  const [progress, setProgress] = useState<UserProgress>(() => {
+    if (typeof window !== 'undefined') {
+      const loaded = loadProgress()
+      // Streak logic
+      const today = new Date().toISOString().split('T')[0]
+      const lastLogin = loaded.lastLoginDate
+      
+      let newStreak = loaded.streak
+      if (lastLogin !== today) {
+          const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
+          if (lastLogin !== yesterday) {
+              newStreak = 0 // Reset if missed a day
+          }
+      }
+      return { ...loaded, streak: newStreak }
+    }
+    return INITIAL_PROGRESS
+  })
 
-  const handleModuleClick = () => {
+  const [currentScreen, setCurrentScreen] = useState<Screen>('home')
+  const [selectedModuleId, setSelectedModuleId] = useState<string>(legaliDemoModules[0]?.id ?? 'module-1')
+  const [quizScore, setQuizScore] = useState({ score: 0, total: 0 })
+  const [userAnswers, setUserAnswers] = useState<Record<string | number, string | number>>({})
+  const [earnedXp, setEarnedXp] = useState(0)
+
+  const selectedModule = legaliDemoModules.find((module) => module.id === selectedModuleId) ?? legaliDemoModules[0]
+  // In a real app, we'd select the specific lesson. For this demo, we assume the first lesson of the module.
+  const featuredLesson = selectedModule?.lessons?.[0]
+  const quizQuestions = featuredLesson?.quiz ?? legaliDemoQuiz
+
+  const handleModuleClick = (moduleId: string | number) => {
+    const mId = String(moduleId)
+    if (!progress.unlockedModules.includes(mId)) return // Locked
+    
+    setSelectedModuleId(mId)
     setCurrentScreen('quiz')
   }
 
-  const handleQuizComplete = (score: number, total: number) => {
+  const handleQuizComplete = (score: number, total: number, answers: Record<string | number, string | number>) => {
+    const xp = score * 10 + 20
+    setEarnedXp(xp)
     setQuizScore({ score, total })
+    setUserAnswers(answers)
+    
+    // Update Progress
+    const newProgress = { ...progress }
+    newProgress.xp += xp
+    
+    // Update Streak
+    const today = new Date().toISOString().split('T')[0]
+    if (newProgress.lastLoginDate !== today) {
+        newProgress.streak += 1
+        newProgress.lastLoginDate = today
+    } else if (progress.streak === 0) {
+         newProgress.streak = 1 // First activity of the day if streak was broken
+         newProgress.lastLoginDate = today
+    }
+
+    // Mark Lesson Completed
+    if (featuredLesson && !newProgress.completedLessons.includes(featuredLesson.id)) {
+        newProgress.completedLessons.push(featuredLesson.id)
+    }
+
+    // Check Module Completion & Unlock Next
+    const currentModuleIndex = legaliDemoModules.findIndex(m => m.id === selectedModuleId)
+    if (currentModuleIndex !== -1) {
+        const nextModule = legaliDemoModules[currentModuleIndex + 1]
+        if (nextModule && !newProgress.unlockedModules.includes(nextModule.id)) {
+            newProgress.unlockedModules.push(nextModule.id)
+        }
+    }
+
+    setProgress(newProgress)
+    saveProgress(newProgress)
     setCurrentScreen('results')
   }
 
@@ -164,17 +155,55 @@ export const CompleteApp = () => {
     setCurrentScreen('home')
   }
 
+  const handleReviewMistakes = () => {
+    setCurrentScreen('review')
+  }
+
+  const handleReviewClose = () => {
+    setCurrentScreen('results')
+  }
+
+  // Compute Home Modules based on progress
+  const homeModules = legaliDemoModules.map((module) => {
+    const Icon = moduleIconMap[module.id] ?? FileText
+    const isUnlocked = progress.unlockedModules.includes(module.id)
+    
+    // For demo purposes, if the first lesson is completed, we might want to show the module as completed 
+    // if we can't navigate to others. But let's stick to the data.
+    // If the user can only take one quiz, they can only complete one lesson.
+    // So let's relax the "completed" check for the demo: if the *featured* lesson (first one) is done, mark module as completed.
+    const isFeaturedLessonCompleted = module.lessons.length > 0 && progress.completedLessons.includes(module.lessons[0].id)
+    
+    let status: 'locked' | 'current' | 'completed' = 'locked'
+    if (isFeaturedLessonCompleted) status = 'completed'
+    else if (isUnlocked) status = 'current'
+
+    return {
+      id: module.id,
+      icon: <Icon className="w-full h-full p-3" />,
+      title: module.title,
+      subtitle: module.subtitle,
+      status,
+      lessons: module.lessons.map((lesson) => ({
+        id: lesson.id,
+        completed: progress.completedLessons.includes(lesson.id),
+      })),
+    }
+  })
+
   return (
     <>
       {currentScreen === 'home' && (
         <HomeScreen
-          modules={sampleModules}
+          modules={homeModules}
           onModuleClick={handleModuleClick}
+          streak={progress.streak}
+          points={progress.xp}
         />
       )}
       {currentScreen === 'quiz' && (
         <QuizScreen
-          questions={sampleQuestions}
+          questions={quizQuestions}
           onClose={handleQuizClose}
           onQuizComplete={handleQuizComplete}
         />
@@ -183,9 +212,18 @@ export const CompleteApp = () => {
         <ResultsScreen
           score={quizScore.score}
           totalQuestions={quizScore.total}
-          badgeTitle="Discovery Detective Badge Earned!"
+          badgeTitle={featuredLesson?.badge ?? 'Legali Badge Earned!'}
           onContinue={handleContinue}
-          onReviewMistakes={handleQuizClose}
+          onReviewMistakes={handleReviewMistakes}
+          streak={progress.streak}
+          xpEarned={earnedXp}
+        />
+      )}
+      {currentScreen === 'review' && (
+        <ReviewScreen
+          questions={quizQuestions}
+          userAnswers={userAnswers}
+          onClose={handleReviewClose}
         />
       )}
     </>
