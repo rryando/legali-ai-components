@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as o}from"./index-BxvCFfQM.js";import{M as t}from"./index-D-GsWg3v.js";import"./index-yIsmwZOr.js";import"./iframe-D9hQED2T.js";import"./index-M3uX8AIl.js";import"./index-DLXLKNMB.js";import"./index-DrFu-skq.js";function s(i){const e={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Legali/Mascot/Usage Guide"}),`
+import{j as n}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as o}from"./index-BxvCFfQM.js";import{M as t}from"./index-D4Jda2St.js";import"./index-yIsmwZOr.js";import"./iframe-CrNBps8j.js";import"./index-M3uX8AIl.js";import"./index-DLXLKNMB.js";import"./index-DrFu-skq.js";function s(i){const e={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...o(),...i.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Legali/Mascot/Usage Guide"}),`
 `,n.jsx(e.h1,{id:"rive-animation-guide",children:"Rive Animation Guide"}),`
 `,n.jsxs(e.p,{children:["Learn how to use the ",n.jsx(e.strong,{children:"LegaliMascot"})," component with React and Storybook."]}),`
 `,n.jsx(e.h2,{id:"quick-start",children:"Quick Start"}),`
@@ -37,7 +37,7 @@ function MyComponent() {
 | `,n.jsx(e.code,{children:"isBlink"})," | ",n.jsx(e.code,{children:"boolean"})," | ",n.jsx(e.code,{children:"true"}),` | Enable/disable blinking |
 | `,n.jsx(e.code,{children:"width"})," | ",n.jsx(e.code,{children:"number \\| string"})," | ",n.jsx(e.code,{children:"300"}),` | Container width |
 | `,n.jsx(e.code,{children:"height"})," | ",n.jsx(e.code,{children:"number \\| string"})," | ",n.jsx(e.code,{children:"300"}),` | Container height |
-| `,n.jsx(e.code,{children:"src"})," | ",n.jsx(e.code,{children:"string"})," | ",n.jsx(e.code,{children:"'/src/animations/legali.riv'"}),` | Path to .riv file |
+| `,n.jsx(e.code,{children:"src"})," | ",n.jsx(e.code,{children:"string"})," | ",n.jsx(e.code,{children:"'/animations/legali.riv'"}),` | Path to .riv file |
 | `,n.jsx(e.code,{children:"stateMachine"})," | ",n.jsx(e.code,{children:"string"})," | ",n.jsx(e.code,{children:"'SM_MASCOT'"}),` | State machine name |
 | `,n.jsx(e.code,{children:"className"})," | ",n.jsx(e.code,{children:"string"})," | ",n.jsx(e.code,{children:"''"}),` | Additional CSS classes |
 | `,n.jsx(e.code,{children:"onLoad"})," | ",n.jsx(e.code,{children:"() => void"}),` | - | Callback when loaded |

@@ -114,7 +114,7 @@ export function LegaliMascot({
   isBlink = true,
   width = 300,
   height = 300,
-  src = '/src/animations/legali.riv',
+  src = '/animations/legali.riv',
   stateMachine = 'SM_MASCOT',
   className = '',
   onLoad,
