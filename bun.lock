@@ -1,6 +1,5 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "legali-ai-components",
@@ -36,6 +35,7 @@
         "@radix-ui/react-toggle": "^1.1.10",
         "@radix-ui/react-toggle-group": "^1.1.11",
         "@radix-ui/react-tooltip": "^1.2.8",
+        "@rive-app/react-canvas": "^4.24.0",
         "@uiw/codemirror-theme-github": "^4.25.3",
         "@uiw/react-codemirror": "^4.25.3",
         "cmdk": "^1.1.1",
@@ -350,6 +350,10 @@
     "@radix-ui/react-visually-hidden": ["@radix-ui/react-visually-hidden@1.2.3", "", { "dependencies": { "@radix-ui/react-primitive": "2.1.3" }, "peerDependencies": { "@types/react": "*", "@types/react-dom": "*", "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc" }, "optionalPeers": ["@types/react", "@types/react-dom"] }, "sha512-pzJq12tEaaIhqjbzpCuv/OypJY/BPavOofm+dbab+MHLajy277+1lLm6JFcGgF5eskJ6mquGirhXY2GD/8u8Ug=="],
 
     "@radix-ui/rect": ["@radix-ui/rect@1.1.1", "", {}, "sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw=="],
+
+    "@rive-app/canvas": ["@rive-app/canvas@2.32.0", "", {}, "sha512-RZRZQRWItH7e0NVmHVhffkm02J/9CO/Qdq71Vu1TkExj312Oc22FpBVn8rBnyEeQak75bJy9m/ig84Crcr7qog=="],
+
+    "@rive-app/react-canvas": ["@rive-app/react-canvas@4.24.0", "", { "dependencies": { "@rive-app/canvas": "2.32.0" }, "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0" } }, "sha512-L/a+2Oi+tHoYmDIlj49Zudu75AI00jedFRTUA4na1bnQ2WVSJqKP2/tuK6uJDqUhQ7+9fCqgRkJws7KpFHOBag=="],
 
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.0-beta.47", "", {}, "sha512-8QagwMH3kNCuzD8EWL8R2YPW5e4OrHNSAHRFDdmFqEwEaD/KcNKjVoumo+gP2vW5eKB2UPbM6vTYiGZX0ixLnw=="],
 

@@ -20,3 +20,12 @@ export { NavigationBar, type NavigationBarProps, type NavItem } from './composit
 export { HomeScreen, type HomeScreenProps, type Module } from './screens/HomeScreen'
 export { QuizScreen, type QuizScreenProps, type Question } from './screens/QuizScreen'
 export { ResultsScreen, type ResultsScreenProps } from './screens/ResultsScreen'
+
+// Mascot Components
+export {
+  LegaliMascot,
+  MascotMotion,
+  MascotMotionLabels,
+  type MascotMotionType,
+  type LegaliMascotProps,
+} from './mascot'
