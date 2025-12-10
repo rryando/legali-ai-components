@@ -47,19 +47,21 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         {/* Desktop Sidebar */}
         <div className="hidden md:flex flex-col w-64 bg-white/60 backdrop-blur-xl border-r border-blue-100 p-6 z-20 shadow-xl shadow-blue-900/5">
           <div className="mb-8">
-            <h1 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500 tracking-tight">
-              Legali AI
-            </h1>
+            <img
+              src="/logo/logo.png"
+              alt="Legali AI Logo"
+              className="h-auto w-auto" // Adjust height and width as needed
+            />
           </div>
 
-          <div className="mt-auto border-t border-slate-200/50">
+          {/* <div className="mt-auto border-t border-slate-200/50">
              <UserStatsBar
                 streak={streak}
                 points={points}
                 hearts={hearts}
                 className="mb-6"
               />
-          </div>
+          </div> */}
           <nav className="space-y-2 flex-1">
             {[
               { id: 'learn', label: 'Learn', icon: BookOpen },

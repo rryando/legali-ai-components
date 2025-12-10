@@ -35,6 +35,13 @@ const QuizHeader = React.forwardRef<HTMLDivElement, QuizHeaderProps>(
         >
           <X className="w-6 h-6" />
         </button>
+        <div className="flex-1 items-center">
+         <img
+              src="/logo/logo.png"
+              alt="Legali AI Logo"
+              className="h-auto w-24" // Adjust height and width as needed
+            />
+            </div>
         
         <div className="flex-1">
           <ProgressBar
