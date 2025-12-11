@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-glass-card",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/GlassCard.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  variant?: \"default\" | \"interactive\" | \"dark\"\n  intensity?: \"low\" | \"medium\" | \"high\"\n}\n\nconst GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(\n  ({ className, variant = \"default\", intensity = \"medium\", ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          // Base glass styles\n          \"backdrop-blur-xl border transition-all duration-300\",\n          \n          // Intensity variants (Background opacity)\n          intensity === \"low\" && \"bg-gradient-to-br from-white/40 via-white/30 to-white/10\",\n          intensity === \"medium\" && \"bg-gradient-to-br from-white/60 via-white/40 to-white/20\",\n          intensity === \"high\" && \"bg-gradient-to-br from-white/80 via-white/60 to-white/40\",\n\n          // Border styles\n          \"border-white/40 shadow-lg shadow-blue-900/5\",\n\n          // Interactive variant\n          variant === \"interactive\" && [\n            \"cursor-pointer hover:-translate-y-1\",\n            \"hover:from-blue-50/40 hover:via-white/50 hover:to-blue-50/20\",\n            \"hover:shadow-[0_0_25px_rgba(59,130,246,0.15),inset_0_0_15px_rgba(59,130,246,0.05)]\", // Bluish glow with inner reflection\n            \"hover:border-blue-400/50\", // Bluish border\n            \"hover:animate-border-glow\", // Animation\n            \"active:scale-[0.98] active:bg-white/80\"\n          ],\n\n          // Dark variant (for contrast elements)\n          variant === \"dark\" && [\n            \"bg-slate-900/80 border-slate-700/50 text-white\",\n            \"hover:bg-slate-900/90 hover:border-blue-500/30 hover:shadow-blue-500/10\"\n          ],\n\n          className\n        )}\n        {...props}\n      />\n    )\n  }\n)\nGlassCard.displayName = \"GlassCard\"\n\nexport { GlassCard }\n"
+    }
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-lib-utils"
+  ]
+}

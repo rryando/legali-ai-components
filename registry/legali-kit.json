@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-kit",
+  "type": "registry:lib",
+  "files": [
+    {
+      "path": "components/ui/legali/index.ts",
+      "content": "// Atomic Components\nexport { StatItem, statItemVariants, type StatItemProps } from './atomic/StatItem'\nexport { ProgressBar, progressBarVariants, type ProgressBarProps } from './atomic/ProgressBar'\nexport { LessonDot, lessonDotVariants, type LessonDotProps } from './atomic/LessonDot'\nexport { Answer, type AnswerProps } from './atomic/Answer'\nexport { StatRow, type StatRowProps } from './atomic/StatRow'\nexport { StatusBar, type StatusBarProps } from './atomic/StatusBar'\n\n// Composite Components\nexport { UserStatsBar, type UserStatsBarProps } from './composite/UserStatsBar'\nexport { ProgressSection, type ProgressSectionProps } from './composite/ProgressSection'\nexport { ModuleCard, type ModuleCardProps, type ModuleStatus, type Lesson } from './composite/ModuleCard'\nexport { QuizHeader, type QuizHeaderProps } from './composite/QuizHeader'\nexport { QuizQuestion, type QuizQuestionProps } from './composite/QuizQuestion'\nexport { QuizFeedback, type QuizFeedbackProps } from './composite/QuizFeedback'\nexport { ResultsCard, type ResultsCardProps, type ResultsStat } from './composite/ResultsCard'\nexport { NavigationBar, type NavigationBarProps, type NavItem } from './composite/NavigationBar'\n\n// Screen Components\nexport { HomeScreen, type HomeScreenProps, type Module } from './screens/HomeScreen'\nexport { QuizScreen, type QuizScreenProps, type Question } from './screens/QuizScreen'\nexport { ResultsScreen, type ResultsScreenProps } from './screens/ResultsScreen'\n\n// Mascot Components\nexport {\n  LegaliMascot,\n  MascotMotion,\n  MascotMotionLabels,\n  type MascotMotionType,\n  type LegaliMascotProps,\n} from './mascot'\n"
+    }
+  ],
+  "registryDependencies": [
+    "legali-answer",
+    "legali-glass-card",
+    "legali-lesson-dot",
+    "legali-progress-bar",
+    "legali-stat-item",
+    "legali-stat-row",
+    "legali-status-bar",
+    "legali-user-stats-bar",
+    "legali-progress-section",
+    "legali-module-card",
+    "legali-quiz-header",
+    "legali-quiz-question",
+    "legali-quiz-feedback",
+    "legali-results-card",
+    "legali-navigation-bar",
+    "legali-home-screen",
+    "legali-quiz-screen",
+    "legali-results-screen",
+    "legali-mascot"
+  ]
+}

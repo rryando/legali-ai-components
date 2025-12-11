@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-quiz-question",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/QuizQuestion.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface QuizQuestionProps extends React.HTMLAttributes<HTMLDivElement> {\n  question: string\n  questionNumber?: number\n}\n\nconst QuizQuestion = React.forwardRef<HTMLDivElement, QuizQuestionProps>(\n  ({ \n    className, \n    question,\n    questionNumber,\n    ...props \n  }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\"mb-6\", className)}\n        {...props}\n      >\n        {questionNumber && (\n          <div className=\"text-sm font-bold text-blue-600 mb-3 uppercase tracking-wide\">\n            Question {questionNumber}\n          </div>\n        )}\n        <h2 className=\"text-2xl font-bold text-slate-800 leading-tight\">\n          {question}\n        </h2>\n      </div>\n    )\n  }\n)\nQuizQuestion.displayName = \"QuizQuestion\"\n\nexport { QuizQuestion }\n"
+    }
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-lib-utils"
+  ]
+}

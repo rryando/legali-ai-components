@@ -172,6 +172,16 @@ async function build() {
   }
 
   await fs.writeFile(path.join(outDir, "index.json"), JSON.stringify(index, null, 2))
+  await fs.writeFile(path.join(outDir, "registry.json"), JSON.stringify(index, null, 2))
+
+  // Emit per-item files so CLI can consume a direct URL without a registry mapping.
+  for (const item of items) {
+    await fs.writeFile(
+      path.join(outDir, `${item.name}.json`),
+      JSON.stringify(item, null, 2)
+    )
+  }
+
   console.log(`✅ Registry built with ${items.length} items at ${outDir}`)
 }
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-user-stats-bar",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/UserStatsBar.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { StatItem } from \"../atomic/StatItem\"\n\nexport interface UserStatsBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  streak: number\n  points: number\n  hearts: number\n  maxHearts?: number\n}\n\nconst UserStatsBar = React.forwardRef<HTMLDivElement, UserStatsBarProps>(\n  ({ className, streak, points, hearts, maxHearts = 5, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"flex items-center justify-between gap-2 py-3 \",\n          className\n        )}\n        {...props}\n      >\n        <StatItem\n          value={streak}\n          variant=\"streak\"\n          className=\"shadow-sm\"\n        />\n        <StatItem\n          value={points}\n          variant=\"points\"\n          className=\"shadow-sm\"\n        />\n        <StatItem\n          value={`${hearts}`} // Simplified to just show current hearts like Duolingo\n          variant=\"hearts\"\n          className=\"shadow-sm\"\n        />\n      </div>\n    )\n  }\n)\nUserStatsBar.displayName = \"UserStatsBar\"\n\nexport { UserStatsBar }\n"
+    }
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-stat-item",
+    "legali-lib-utils"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lesson-dot",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/LessonDot.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nconst lessonDotVariants = cva(\n  \"rounded-full transition-all duration-200\",\n  {\n    variants: {\n      status: {\n        pending: \"bg-slate-300/50 backdrop-blur-sm\",\n        current: \"bg-gradient-to-br from-blue-400 to-blue-600 shadow-[0_0_15px_rgba(59,130,246,0.5),inset_0_0_5px_rgba(255,255,255,0.5)] animate-pulse ring-2 ring-blue-200/50\",\n        completed: \"bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_10px_rgba(16,185,129,0.3)]\",\n        locked: \"bg-slate-200/50 backdrop-blur-sm\",\n      },\n      size: {\n        sm: \"w-2 h-2\",\n        md: \"w-3 h-3\",\n        lg: \"w-4 h-4\",\n      },\n    },\n    defaultVariants: {\n      status: \"pending\",\n      size: \"md\",\n    },\n  }\n)\n\nexport interface LessonDotProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof lessonDotVariants> {\n  completed?: boolean\n  current?: boolean\n  locked?: boolean\n}\n\nconst LessonDot = React.forwardRef<HTMLDivElement, LessonDotProps>(\n  ({ \n    className, \n    size, \n    completed = false,\n    current = false,\n    locked = false,\n    ...props \n  }, ref) => {\n    const status = completed \n      ? \"completed\" \n      : current \n      ? \"current\" \n      : locked \n      ? \"locked\" \n      : \"pending\"\n\n    const ariaLabel = completed \n      ? \"Lesson completed\" \n      : current \n      ? \"Current lesson\" \n      : locked \n      ? \"Lesson locked\" \n      : \"Lesson pending\"\n\n    return (\n      <div\n        ref={ref}\n        className={cn(lessonDotVariants({ status, size, className }))}\n        role=\"status\"\n        aria-label={ariaLabel}\n        {...props}\n      />\n    )\n  }\n)\nLessonDot.displayName = \"LessonDot\"\n\nexport { LessonDot, lessonDotVariants }\n"
+    }
+  ],
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-lib-utils"
+  ]
+}

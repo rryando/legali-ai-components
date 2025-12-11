@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-progress-section",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/ProgressSection.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { ProgressBar } from \"../atomic/ProgressBar\"\nimport { GlassCard } from \"../atomic/GlassCard\"\n\nexport interface ProgressSectionProps extends React.HTMLAttributes<HTMLDivElement> {\n  title: string\n  progress: number\n  variant?: \"header\" | \"card\"\n  showPercentage?: boolean\n}\n\nconst ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(\n  ({ \n    className, \n    title, \n    progress, \n    variant = \"header\",\n    showPercentage = true,\n    ...props \n  }, ref) => {\n    return (\n      <GlassCard\n        ref={ref}\n        intensity={variant === \"header\" ? \"high\" : \"low\"}\n        className={cn(\n          \"rounded-xl p-4\",\n          variant === \"header\" && \"border-white/40\",\n          variant === \"card\" && \"border-slate-200/50\",\n          className\n        )}\n        {...props}\n      >\n        <div className=\"flex items-center justify-between mb-3 text-sm\">\n          <span className=\"font-semibold text-slate-700\">\n            {title}\n          </span>\n          {showPercentage && (\n            <span className=\"font-bold text-slate-900\">\n              {progress}%\n            </span>\n          )}\n        </div>\n        <ProgressBar\n          value={progress}\n          variant=\"default\"\n          className=\"bg-slate-100/50\"\n        />\n      </GlassCard>\n    )\n  }\n)\nProgressSection.displayName = \"ProgressSection\"\n\nexport { ProgressSection }\n"
+    }
+  ],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-progress-bar",
+    "legali-glass-card",
+    "legali-lib-utils"
+  ]
+}

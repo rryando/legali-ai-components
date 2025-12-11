@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-navigation-bar",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/NavigationBar.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { Home, Trophy, User } from \"lucide-react\"\n\nexport interface NavItem {\n  id: string\n  icon: React.ReactNode\n  label: string\n}\n\nexport interface NavigationBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  items: NavItem[]\n  activeItem: string\n  onItemClick: (id: string) => void\n}\n\nconst NavigationBar = React.forwardRef<HTMLDivElement, NavigationBarProps>(\n  ({ className, items, activeItem, onItemClick, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"flex justify-between items-center px-2\", // Layout container\n          className\n        )}\n        {...props}\n      >\n        {items.map((item) => {\n          const isActive = activeItem === item.id\n          \n          // Map string icons to Lucide if needed\n          let iconNode = item.icon\n          if (typeof item.icon === 'string') {\n             if (item.id === 'learn') iconNode = <Home className=\"w-6 h-6\" />\n             if (item.id === 'progress') iconNode = <Trophy className=\"w-6 h-6\" />\n             if (item.id === 'profile') iconNode = <User className=\"w-6 h-6\" />\n          }\n\n          return (\n            <button\n              key={item.id}\n              onClick={() => onItemClick(item.id)}\n              className={cn(\n                \"flex flex-col items-center gap-1 p-3 rounded-2xl transition-all duration-300 min-w-[72px] border border-transparent\",\n                isActive \n                  ? \"text-blue-600 bg-gradient-to-br from-blue-50/90 to-blue-100/50 shadow-[0_0_20px_rgba(59,130,246,0.2),inset_0_0_10px_rgba(59,130,246,0.1)] border-blue-200/50 scale-105 animate-border-glow\" \n                  : \"text-slate-400 hover:text-blue-500 hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-white/20 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)]\"\n              )}\n            >\n              <div className={cn(\n                \"transition-transform duration-300\",\n                isActive && \"-translate-y-0.5\"\n              )}>\n                {iconNode}\n              </div>\n              <span className={cn(\n                \"text-[10px] font-bold uppercase tracking-wide transition-opacity duration-300\",\n                isActive ? \"opacity-100\" : \"opacity-60\"\n              )}>\n                {item.label}\n              </span>\n            </button>\n          )\n        })}\n      </div>\n    )\n  }\n)\nNavigationBar.displayName = \"NavigationBar\"\n\nexport { NavigationBar }\n"
+    }
+  ],
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "legali-lib-utils"
+  ]
+}
