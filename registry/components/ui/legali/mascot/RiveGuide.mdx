@@ -1,0 +1,221 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Legali/Mascot/Usage Guide" />
+
+# Rive Animation Guide
+
+Learn how to use the **LegaliMascot** component with React and Storybook.
+
+## Quick Start
+
+### 1. Install Dependencies
+
+```bash
+npm install @rive-app/react-canvas
+# or
+pnpm add @rive-app/react-canvas
+# or
+bun add @rive-app/react-canvas
+```
+
+### 2. Add Your Animation File
+
+Place your `.riv` file in the `public/` directory:
+
+```
+public/
+  └── mascot.riv
+```
+
+### 3. Import and Use
+
+```tsx
+import { LegaliMascot, MascotMotion } from '@/components/ui/legali/mascot'
+
+function MyComponent() {
+  return (
+    <LegaliMascot
+      motion={MascotMotion.THINKING}
+      isBlink={true}
+      width={300}
+      height={300}
+    />
+  )
+}
+```
+
+---
+
+## API Reference
+
+### LegaliMascot Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `motion` | `MascotMotionType` | `MascotMotion.IDLE` | The animation state to display |
+| `isBlink` | `boolean` | `true` | Enable/disable blinking |
+| `width` | `number \| string` | `300` | Container width |
+| `height` | `number \| string` | `300` | Container height |
+| `src` | `string` | `'https://raw.githubusercontent.com/rryando/legali-ai-components/main/public/animations/legali.riv'` | Path to .riv file |
+| `stateMachine` | `string` | `'SM_MASCOT'` | State machine name |
+| `className` | `string` | `''` | Additional CSS classes |
+| `onLoad` | `() => void` | - | Callback when loaded |
+| `onMotionChange` | `(motion) => void` | - | Callback on motion change |
+
+---
+
+## Available Motions
+
+The `MascotMotion` enum provides all available animation states:
+
+```tsx
+import { MascotMotion } from '@/components/ui/legali/mascot'
+
+// Use in component
+<LegaliMascot motion={MascotMotion.CELEBRATE} />
+```
+
+| Motion | Value | Use Case |
+|--------|-------|----------|
+| `EXIT` | `'EXIT'` | Leaving/closing animation |
+| `NORMAL` | `'NORMAL'` | **Reset state** - resets all attributes |
+| `LAPTOP` | `'LAPTOP'` | Working on computer |
+| `WRITING` | `'WRITING'` | Taking notes |
+| `IDLE` | `'IDLE'` | Idle waiting state |
+| `THINKING` | `'THINKING'` | Processing/pondering |
+| `CRYING` | `'CRYING'` | Error/sad states |
+| `SPEAKING` | `'SPEAKING'` | Talking to user |
+| `CONFUSED` | `'CONFUSED'` | Unclear situations |
+| `WAVING` | `'WAVING'` | Greeting users |
+| `SHRUG` | `'SHRUG'` | Uncertainty |
+| `CELEBRATE` | `'CELEBRATE'` | Success/achievement |
+
+---
+
+## View Model Binding
+
+The Rive animation uses a **View Model** called `VM_MASCOT` with two bound properties:
+
+```
+VM_MASCOT
+├── isBlink: Boolean    → Controls blinking
+└── animates: MOTIONS   → Controls current motion (Enum)
+```
+
+The component uses **auto-binding** (`autoBind: true`) to connect to the View Model instance.
+
+---
+
+## Motion Reset Behavior
+
+> **Important:** Before switching to any new motion, the component automatically resets to `NORMAL` state first and waits 300ms before applying the target motion.
+
+This reset behavior is necessary because:
+- Some animation attributes may be altered on specific keyframes
+- The `NORMAL` state resets all attributes to their default values
+- This ensures clean transitions between different animations
+
+```
+Motion Change Flow:
+1. User sets motion to CELEBRATE
+2. Component sets to NORMAL (reset all attributes)
+3. Wait 300ms
+4. Component sets to CELEBRATE
+5. onMotionChange callback fires
+```
+
+This is handled automatically by the component - you don't need to manage it manually.
+
+---
+
+## Usage Examples
+
+### Reactive State Changes
+
+```tsx
+import { useState } from 'react'
+import { LegaliMascot, MascotMotion } from '@/components/ui/legali/mascot'
+
+function InteractiveMascot() {
+  const [motion, setMotion] = useState(MascotMotion.IDLE)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleClick = async () => {
+    setMotion(MascotMotion.THINKING)
+    setIsLoading(true)
+
+    await someAsyncOperation()
+
+    setMotion(MascotMotion.CELEBRATE)
+    setIsLoading(false)
+  }
+
+  return (
+    <div>
+      <LegaliMascot motion={motion} />
+      <button onClick={handleClick} disabled={isLoading}>
+        Process
+      </button>
+    </div>
+  )
+}
+```
+
+### Conditional Animations
+
+```tsx
+function StatusMascot({ status }: { status: 'success' | 'error' | 'loading' }) {
+  const getMotion = () => {
+    switch (status) {
+      case 'success': return MascotMotion.CELEBRATE
+      case 'error': return MascotMotion.CRYING
+      case 'loading': return MascotMotion.THINKING
+      default: return MascotMotion.IDLE
+    }
+  }
+
+  return <LegaliMascot motion={getMotion()} />
+}
+```
+
+### Custom Styling
+
+```tsx
+<LegaliMascot
+  motion={MascotMotion.WAVING}
+  className="rounded-full shadow-lg"
+  width={200}
+  height={200}
+/>
+```
+
+---
+
+## Best Practices
+
+1. **Preload Animations** - Load the .riv file early to avoid delays
+2. **Use Semantic Motions** - Match animations to UX context (e.g., CELEBRATE for success)
+3. **Handle Loading** - Use `onLoad` callback to show loading states
+4. **Optimize Size** - Use appropriate dimensions for your layout
+5. **Accessibility** - Consider reducing motion for users who prefer it
+
+---
+
+## Troubleshooting
+
+### Animation Not Loading
+
+- Verify the `.riv` file exists at the specified `src` path
+- Check browser console for CORS or 404 errors
+- Ensure the state machine name matches exactly
+
+### Motions Not Changing
+
+- Confirm the state machine input names match (`isBlink`, `animates`)
+- Check that the View Model is properly configured in Rive
+
+### Performance Issues
+
+- Use smaller canvas dimensions when possible
+- Consider lazy loading for off-screen mascots
+- Limit simultaneous Rive instances on a page

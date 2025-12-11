@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Registry/Legali Components" />
+
+# Legali Registry Usage
+
+This library ships a shadcn-compatible registry so you can pull Legali components straight into other projects with `shadcn@latest` and a custom registry URL.
+
+## Quick install
+
+```bash
+npx shadcn@latest add \
+  --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json \
+  legali-kit
+```
+
+The registry:
+- Uses prefixed names (`legali-*`) to avoid collisions.
+- Rewrites imports to the standard shadcn layout (`@/components/ui/...`, `@/lib/utils`, `@/styles/globals.css`, `@/hooks/use-mobile`).
+- Includes the supporting base pieces (button, avatar, badge, switch, chart), utilities, styles, hook, demo data, mascot guide, and assets pointed at GitHub raw URLs.
+
+## Common pulls
+
+```bash
+# All Legali exports (atomic + composite + screens + barrel)
+npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json legali-kit
+
+# Individual pieces
+npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json legali-home-screen
+npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json legali-quiz-screen
+npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json legali-mascot
+```
+
+## Prereqs & aliases
+
+- The registry assumes the default shadcn aliases: `@/components`, `@/components/ui`, `@/lib`, `@/styles`, `@/hooks`.
+- Tailwind CSS v3.4+ with the default shadcn tokens is expected.
+- React 18/19 is supported; dependencies are listed per item (e.g., `lucide-react`, `@rive-app/react-canvas`, `recharts`, `clsx`, `tailwind-merge`, `class-variance-authority`, `@radix-ui/react-*`).
+
+## Assets
+
+Logo and Rive animation paths are rewritten to public GitHub raw URLs:
+- `https://raw.githubusercontent.com/rryando/legali-ai-components/registry/public/logo/logo.png`
+- `https://raw.githubusercontent.com/rryando/legali-ai-components/registry/public/animations/legali.riv`
+
+If you want local copies, download those files into your `/public` folder and adjust the image/animation props.
+
+## Rebuild the registry (maintainers)
+
+From this repo:
+
+```bash
+pnpm run build:registry
+```
+
+This regenerates `registry/index.json` and all embedded files with the latest code and import rewrites. Commit the `registry/` folder and make sure the branch you reference in the URL is publicly accessible when consumers install.
