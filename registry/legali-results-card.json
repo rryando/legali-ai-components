@@ -15,10 +15,9 @@
     "tailwind-merge"
   ],
   "registryDependencies": [
-    "legali-button",
-    "legali-stat-row",
-    "legali-glass-card",
-    "legali-lib-utils"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-row.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
 }

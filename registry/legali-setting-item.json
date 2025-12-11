@@ -13,7 +13,6 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "legali-switch"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-switch.json"
+  ]
 }

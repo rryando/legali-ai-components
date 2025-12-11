@@ -15,11 +15,10 @@
     "tailwind-merge"
   ],
   "registryDependencies": [
-    "legali-user-stats-bar",
-    "legali-progress-section",
-    "legali-module-card",
-    "legali-navigation-bar",
-    "legali-lib-utils"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-module-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-navigation-bar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
 }

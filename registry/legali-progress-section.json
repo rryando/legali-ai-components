@@ -14,9 +14,8 @@
     "tailwind-merge"
   ],
   "registryDependencies": [
-    "legali-progress-bar",
-    "legali-glass-card",
-    "legali-lib-utils"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-bar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
 }

@@ -12,6 +12,5 @@
   "dependencies": [
     "clsx",
     "tailwind-merge"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+  ]
 }

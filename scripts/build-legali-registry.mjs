@@ -179,16 +179,24 @@ async function build() {
   await fs.writeFile(path.join(outDir, "registry.json"), JSON.stringify(index, null, 2))
 
   // Emit per-item files so CLI can consume a direct URL without a registry mapping.
-  // Include registryUrl so shadcn can resolve registryDependencies from this registry.
+  // Convert registryDependencies from names to full URLs for external resolution.
   const registryBaseUrl = "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
   for (const item of items) {
-    const itemWithRegistry = {
+    // Convert local registryDependencies (legali-*) to full URLs
+    const resolvedDeps = (item.registryDependencies || []).map(dep => {
+      if (dep.startsWith("legali-")) {
+        return `${registryBaseUrl}/${dep}.json`
+      }
+      return dep // Keep shadcn core deps as-is (e.g., "button", "card")
+    })
+    
+    const itemWithResolvedDeps = {
       ...item,
-      registryUrl: registryBaseUrl,
+      registryDependencies: resolvedDeps.length > 0 ? resolvedDeps : undefined,
     }
     await fs.writeFile(
       path.join(outDir, `${item.name}.json`),
-      JSON.stringify(itemWithRegistry, null, 2)
+      JSON.stringify(itemWithResolvedDeps, null, 2)
     )
   }
 

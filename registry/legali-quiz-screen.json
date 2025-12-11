@@ -14,12 +14,11 @@
     "tailwind-merge"
   ],
   "registryDependencies": [
-    "legali-quiz-header",
-    "legali-quiz-question",
-    "legali-quiz-feedback",
-    "legali-answer",
-    "legali-button",
-    "legali-lib-utils"
-  ],
-  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-header.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-answer.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
 }
