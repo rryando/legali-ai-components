@@ -5,7 +5,8 @@
   "files": [
     {
       "path": "components/ui/legali/atomic/StatusBar.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StatusBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  time?: string\n  showIcons?: boolean\n}\n\nconst StatusBar = React.forwardRef<HTMLDivElement, StatusBarProps>(\n  ({ className, time = \"9:41\", showIcons = true, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"h-11 bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-md flex items-center justify-between px-5 text-sm font-medium\",\n          className\n        )}\n        {...props}\n      >\n        <span>{time}</span>\n        {showIcons && (\n          <span className=\"flex gap-1\" aria-label=\"Status icons\">\n            📶 📡 🔋\n          </span>\n        )}\n      </div>\n    )\n  }\n)\nStatusBar.displayName = \"StatusBar\"\n\nexport { StatusBar }\n"
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StatusBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  time?: string\n  showIcons?: boolean\n}\n\nconst StatusBar = React.forwardRef<HTMLDivElement, StatusBarProps>(\n  ({ className, time = \"9:41\", showIcons = true, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"h-11 bg-gradient-to-b from-white/90 to-white/70 backdrop-blur-md flex items-center justify-between px-5 text-sm font-medium\",\n          className\n        )}\n        {...props}\n      >\n        <span>{time}</span>\n        {showIcons && (\n          <span className=\"flex gap-1\" aria-label=\"Status icons\">\n            📶 📡 🔋\n          </span>\n        )}\n      </div>\n    )\n  }\n)\nStatusBar.displayName = \"StatusBar\"\n\nexport { StatusBar }\n",
+      "type": "registry:ui"
     }
   ],
   "dependencies": [

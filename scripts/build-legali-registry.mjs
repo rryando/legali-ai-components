@@ -155,7 +155,11 @@ async function build() {
     for (const file of item.files) {
       const absPath = path.join(outDir, file)
       const content = await fs.readFile(absPath, "utf8")
-      fileEntries.push({ path: file, content })
+      fileEntries.push({
+        path: file,
+        content,
+        type: item.type,
+      })
     }
     items.push({
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
