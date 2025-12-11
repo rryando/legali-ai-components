@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as r}from"./index-BxvCFfQM.js";import{M as t}from"./index-CD8vtO2O.js";import"./index-yIsmwZOr.js";import"./iframe-T9YiIMsS.js";import"./index-M3uX8AIl.js";import"./index-DLXLKNMB.js";import"./index-DrFu-skq.js";function i(s){const e={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",hr:"hr",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Registry/Legali Components Registry"}),`
+import{j as n}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as r}from"./index-BxvCFfQM.js";import{M as t}from"./index-Bm65_6Uj.js";import"./index-yIsmwZOr.js";import"./iframe-CmhmXzvx.js";import"./index-M3uX8AIl.js";import"./index-DLXLKNMB.js";import"./index-DrFu-skq.js";function i(s){const e={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",hr:"hr",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...r(),...s.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Registry/Legali Components Registry"}),`
 `,n.jsx(e.h1,{id:"legali-registry-usage",children:"Legali Registry Usage"}),`
 `,n.jsx(e.p,{children:"This library ships a shadcn-compatible registry so you can pull Legali components straight into other projects using the shadcn CLI."}),`
 `,n.jsx(e.hr,{}),`
@@ -6,10 +6,10 @@ import{j as n}from"./jsx-runtime-BjG_zV1W.js";import{useMDXComponents as r}from"
 `,n.jsx(e.h3,{id:"option-1-direct-url-install",children:"Option 1: Direct URL Install"}),`
 `,n.jsx(e.p,{children:"The simplest way to install Legali components:"}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-bash",children:`# Install the complete kit with all components
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json"
 
 # Or with bun
-bunx --bun shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
+bunx --bun shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json"
 `})}),`
 `,n.jsxs(e.blockquote,{children:[`
 `,n.jsxs(e.p,{children:[n.jsx(e.strong,{children:"Important:"})," Always include the ",n.jsx(e.code,{children:"--yes"})," flag to skip interactive prompts and install directly from the URL."]}),`
