@@ -22,5 +22,6 @@
     "legali-badge",
     "legali-button",
     "legali-lib-utils"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

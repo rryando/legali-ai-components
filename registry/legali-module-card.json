@@ -18,5 +18,6 @@
     "legali-lesson-dot",
     "legali-glass-card",
     "legali-lib-utils"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

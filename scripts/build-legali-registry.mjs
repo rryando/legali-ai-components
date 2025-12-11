@@ -179,10 +179,16 @@ async function build() {
   await fs.writeFile(path.join(outDir, "registry.json"), JSON.stringify(index, null, 2))
 
   // Emit per-item files so CLI can consume a direct URL without a registry mapping.
+  // Include registryUrl so shadcn can resolve registryDependencies from this registry.
+  const registryBaseUrl = "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
   for (const item of items) {
+    const itemWithRegistry = {
+      ...item,
+      registryUrl: registryBaseUrl,
+    }
     await fs.writeFile(
       path.join(outDir, `${item.name}.json`),
-      JSON.stringify(item, null, 2)
+      JSON.stringify(itemWithRegistry, null, 2)
     )
   }
 

@@ -21,5 +21,6 @@
   ],
   "dependencies": [
     "@rive-app/react-canvas"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

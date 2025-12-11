@@ -17,5 +17,6 @@
   "registryDependencies": [
     "legali-lib-utils",
     "legali-glass-card"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

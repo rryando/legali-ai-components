@@ -17,5 +17,6 @@
     "legali-results-card",
     "legali-glass-card",
     "legali-lib-utils"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

@@ -11,5 +11,6 @@
   ],
   "registryDependencies": [
     "legali-quiz-screen"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

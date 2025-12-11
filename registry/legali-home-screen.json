@@ -20,5 +20,6 @@
     "legali-module-card",
     "legali-navigation-bar",
     "legali-lib-utils"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

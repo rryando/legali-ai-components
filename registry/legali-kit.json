@@ -29,5 +29,6 @@
     "legali-quiz-screen",
     "legali-results-screen",
     "legali-mascot"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }

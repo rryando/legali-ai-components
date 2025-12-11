@@ -19,5 +19,6 @@
     "legali-glass-card",
     "legali-lib-utils",
     "legali-chart"
-  ]
+  ],
+  "registryUrl": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
 }
