@@ -37,7 +37,7 @@ const QuizHeader = React.forwardRef<HTMLDivElement, QuizHeaderProps>(
         </button>
         <div className="flex-1 items-center">
          <img
-              src="/logo/logo.png"
+              src="https://raw.githubusercontent.com/rryando/legali-ai-components/main/public/logo/logo.png"
               alt="Legali AI Logo"
               className="h-auto w-24" // Adjust height and width as needed
             />

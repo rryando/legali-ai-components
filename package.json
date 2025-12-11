@@ -23,7 +23,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "pnpx wrangler pages deploy storybook-static --project-name legali-ai-storybook"
+    "deploy-storybook": "pnpx wrangler pages deploy storybook-static --project-name legali-ai-storybook",
+    "build:registry": "node scripts/build-legali-registry.mjs"
   },
   "keywords": [
     "react",

@@ -48,7 +48,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         <div className="hidden md:flex flex-col w-64 bg-white/60 backdrop-blur-xl border-r border-blue-100 p-6 z-20 shadow-xl shadow-blue-900/5">
           <div className="mb-8">
             <img
-              src="/logo/logo.png"
+              src="https://raw.githubusercontent.com/rryando/legali-ai-components/main/public/logo/logo.png"
               alt="Legali AI Logo"
               className="h-auto w-auto" // Adjust height and width as needed
             />
