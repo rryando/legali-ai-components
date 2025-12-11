@@ -4,53 +4,227 @@ import { Meta } from '@storybook/blocks'
 
 # Legali Registry Usage
 
-This library ships a shadcn-compatible registry so you can pull Legali components straight into other projects with `shadcn@latest` and a custom registry URL.
+This library ships a shadcn-compatible registry so you can pull Legali components straight into other projects using the shadcn CLI.
 
-## Quick install
+---
+
+## Quick Install (Recommended)
+
+### Option 1: Direct URL Install
+
+The simplest way to install Legali components:
 
 ```bash
-npx shadcn@latest add \
-  --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/registry/index.json \
-  legali-kit
+# Install the complete kit with all components
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
+
+# Or with bun
+bunx --bun shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
 ```
+
+> **Important:** Always include the `--yes` flag to skip interactive prompts and install directly from the URL.
+
+### Option 2: Configure as Named Registry
+
+Add the Legali registry to your project's `components.json`:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {
+    "@legali": "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/{name}.json"
+  }
+}
+```
+
+Then install using the namespace:
+
+```bash
+npx shadcn@latest add @legali/legali-kit
+```
+
+---
+
+## Available Components
+
+### Full Kit
+```bash
+# Everything: atomic + composite + screens + mascot + utilities
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
+```
+
+### Individual Components
+
+#### Screens
+```bash
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-screen.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-review-screen.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-screen.json" --yes
+```
+
+#### Composite Components
+```bash
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-module-card.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-navigation-bar.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-header.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json" --yes
+```
+
+#### Atomic Components
+```bash
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-answer.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-bar.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json" --yes
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lesson-dot.json" --yes
+```
+
+#### Mascot (Rive Animation)
+```bash
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json" --yes
+```
+
+#### Demo Content
+```bash
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-demo-content.json" --yes
+```
+
+---
+
+## Registry Features
 
 The registry:
-- Uses prefixed names (`legali-*`) to avoid collisions.
-- Rewrites imports to the standard shadcn layout (`@/components/ui/...`, `@/lib/utils`, `@/styles/globals.css`, `@/hooks/use-mobile`).
-- Includes the supporting base pieces (button, avatar, badge, switch, chart), utilities, styles, hook, demo data, mascot guide, and assets pointed at GitHub raw URLs.
+- Uses prefixed names (`legali-*`) to avoid collisions with shadcn core components
+- Rewrites imports to standard shadcn layout (`@/components/ui/...`, `@/lib/utils`)
+- Includes supporting base pieces (button, avatar, badge, switch, chart)
+- Resolves all dependencies automatically via full URLs
+- Points assets to GitHub raw URLs for immediate use
 
-## Common pulls
+---
 
-```bash
-# All Legali exports (atomic + composite + screens + barrel)
-npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/index.json legali-kit
+## Prerequisites
 
-# Individual pieces
-npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/index.json legali-home-screen
-npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/index.json legali-quiz-screen
-npx shadcn@latest add --registry https://raw.githubusercontent.com/rryando/legali-ai-components/registry/index.json legali-mascot
-```
+Before installing, ensure your project has:
 
-## Prereqs & aliases
+1. **shadcn/ui initialized** - Run `npx shadcn@latest init` if not already done
+2. **TypeScript configured** - `tsconfig.json` with path aliases:
+   ```json
+   {
+     "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["./src/*"]
+       }
+     }
+   }
+   ```
+3. **Tailwind CSS v3.4+** with shadcn CSS variables
+4. **React 18 or 19**
 
-- The registry assumes the default shadcn aliases: `@/components`, `@/components/ui`, `@/lib`, `@/styles`, `@/hooks`.
-- Tailwind CSS v3.4+ with the default shadcn tokens is expected.
-- React 18/19 is supported; dependencies are listed per item (e.g., `lucide-react`, `@rive-app/react-canvas`, `recharts`, `clsx`, `tailwind-merge`, `class-variance-authority`, `@radix-ui/react-*`).
+### Required Aliases
+
+The registry expects these standard shadcn aliases:
+- `@/components` → Components directory
+- `@/components/ui` → UI components
+- `@/lib` → Utilities (including `utils.ts`)
+- `@/hooks` → Custom hooks
+
+---
 
 ## Assets
 
-Logo and Rive animation paths are rewritten to public GitHub raw URLs:
-- `https://raw.githubusercontent.com/rryando/legali-ai-components/registry/public/logo/logo.png`
-- `https://raw.githubusercontent.com/rryando/legali-ai-components/registry/public/animations/legali.riv`
+Logo and Rive animation are served from GitHub:
+- **Logo:** `https://raw.githubusercontent.com/rryando/legali-ai-components/main/public/logo/logo.png`
+- **Mascot Animation:** `https://raw.githubusercontent.com/rryando/legali-ai-components/main/public/animations/legali.riv`
 
-If you want local copies, download those files into your `/public` folder and adjust the image/animation props.
+To use local copies:
+1. Download the files to your `/public` folder
+2. Update the paths in your components
 
-## Rebuild the registry (maintainers)
+---
 
-From this repo:
+## Dependencies
 
+Components will automatically install their required dependencies:
+
+| Category | Packages |
+|----------|----------|
+| Styling | `clsx`, `tailwind-merge`, `class-variance-authority` |
+| Icons | `lucide-react` |
+| Primitives | `@radix-ui/react-avatar`, `@radix-ui/react-switch`, `@radix-ui/react-slot` |
+| Charts | `recharts` |
+| Animation | `@rive-app/react-canvas` |
+
+---
+
+## Troubleshooting
+
+### "Which components would you like to add?" prompt appears
+
+This means the CLI couldn't fetch the URL. Solutions:
+1. Ensure the URL is quoted: `"https://..."` 
+2. Add `--yes` flag to skip interactive mode
+3. Check your internet connection
+4. Verify `tsconfig.json` and `components.json` exist in your project
+
+### Components not found after install
+
+Check that files were created in `src/components/ui/legali/`. If missing:
 ```bash
-pnpm run build:registry
+# Verify the install worked
+ls -la src/components/ui/legali/
 ```
 
-This regenerates `registry/index.json` and all embedded files with the latest code and import rewrites. Commit the `registry/` folder and make sure the branch you reference in the URL is publicly accessible when consumers install.
+### Import errors
+
+Ensure your `tsconfig.json` has the `@/*` path alias configured correctly.
+
+---
+
+## For Maintainers
+
+### Rebuild the Registry
+
+```bash
+# From the legali-ai-components repo
+pnpm run build:registry
+# or
+npm run build:registry
+```
+
+This regenerates:
+- `registry/index.json` - Full registry manifest
+- `registry/registry.json` - Alias for index
+- `registry/{name}.json` - Individual component files with embedded content and resolved dependency URLs
+
+### Commit and Push
+
+After rebuilding:
+```bash
+git add registry/
+git commit -m "chore: rebuild registry"
+git push
+```
+
+The `main` branch must be publicly accessible for consumers to install.
