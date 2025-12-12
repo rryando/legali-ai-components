@@ -55,6 +55,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     const [showFeedback, setShowFeedback] = React.useState(false)
 
     const [questionTypedDone, setQuestionTypedDone] = React.useState(false)
+    const [promptDelayDone, setPromptDelayDone] = React.useState(false)
     const [pendingResult, setPendingResult] = React.useState<boolean | null>(null)
     const [reactionPlayed, setReactionPlayed] = React.useState(false)
 
@@ -69,9 +70,28 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
     React.useEffect(() => {
       setQuestionTypedDone(false)
+      setPromptDelayDone(false)
       setPendingResult(null)
       setReactionPlayed(false)
     }, [currentQuestion.id])
+
+    React.useEffect(() => {
+      if (showFeedback) {
+        setPromptDelayDone(false)
+        return
+      }
+
+      if (!questionTypedDone) {
+        setPromptDelayDone(false)
+        return
+      }
+
+      const timer = window.setTimeout(() => {
+        setPromptDelayDone(true)
+      }, 8000)
+
+      return () => window.clearTimeout(timer)
+    }, [questionTypedDone, showFeedback, currentQuestion.id])
 
     const defaultHintScript = React.useMemo<QuizMascotScriptStep[]>(() => {
       return [
@@ -193,8 +213,8 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     const promptActive = React.useMemo(() => {
       if (shouldPlayReaction) return true
       if (showFeedback) return false
-      return questionTypedDone
-    }, [questionTypedDone, shouldPlayReaction, showFeedback])
+      return questionTypedDone && promptDelayDone
+    }, [promptDelayDone, questionTypedDone, shouldPlayReaction, showFeedback])
 
     const promptScript = React.useMemo<QuizMascotScriptStep[]>(() => {
       if (shouldPlayReaction) return pendingResult ? correctScript : incorrectScript
@@ -239,6 +259,17 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
         <div className="flex-1 overflow-y-auto px-5 py-8 pb-32 relative z-0">
           <div className="max-w-2xl mx-auto">
+            
+
+            <QuizQuestion
+              question={currentQuestion.question}
+              questionNumber={currentQuestionIndex + 1}
+              typingKey={currentQuestion.id}
+              typingSpeedMs={70}
+              showCursor={currentQuestion.typing?.showCursor ?? false}
+              onTypedComplete={() => setQuestionTypedDone(true)}
+              className="mb-8"
+            />
             <QuizMascotPrompt
               className="mb-6"
               active={promptActive}
@@ -247,16 +278,6 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
               inactiveMotion={inactiveMotion}
               mascotWidth={240}
               mascotHeight={240}
-            />
-
-            <QuizQuestion
-              question={currentQuestion.question}
-              questionNumber={currentQuestionIndex + 1}
-              typingKey={currentQuestion.id}
-              typingSpeedMs={currentQuestion.typing?.speedMs ?? 18}
-              showCursor={currentQuestion.typing?.showCursor ?? true}
-              onTypedComplete={() => setQuestionTypedDone(true)}
-              className="mb-8"
             />
 
             <div className="space-y-3 animate-slide-in-from-bottom">
