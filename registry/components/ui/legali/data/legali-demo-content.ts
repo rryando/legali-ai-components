@@ -1,4 +1,5 @@
 import type { Question } from "../screens/QuizScreen"
+import { MascotMotion } from "../mascot"
 
 export interface LegaliLessonContent {
   id: string
@@ -33,6 +34,29 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-1-q1",
         question: "What's the first thing Legali helps you determine?",
+        typing: { speedMs: 18, showCursor: true },
+        mascot: {
+          script: [
+            {
+              motion: MascotMotion.SPEAKING,
+              durationMs: 2600,
+              lines: ["Start with the forum.", "Small claims first — then the right court."],
+            },
+            {
+              motion: MascotMotion.THINKING,
+              durationMs: null,
+              lines: ["Ask: do I qualify?", "Ask: where do I file?", "Then: build the case."],
+            },
+          ],
+          onRevealCorrect: [
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Yes!", "Eligibility + court selection comes first."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Now we can move confidently." ] },
+          ],
+          onRevealIncorrect: [
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Not quite.", "First we confirm small claims + venue."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Then everything else follows." ] },
+          ],
+        },
         answers: [
           { id: "A", text: "Whether you need a lawyer", correct: false },
           { id: "B", text: "If your case qualifies for small claims court and which court to file in", correct: true },
@@ -45,6 +69,29 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-1-q2",
         question: "How does Legali check your claim amount eligibility?",
+        typing: { speedMs: 18, showCursor: true },
+        mascot: {
+          script: [
+            {
+              motion: MascotMotion.SPEAKING,
+              durationMs: 2600,
+              lines: ["Think: totals.", "What are your losses, in dollars?"],
+            },
+            {
+              motion: MascotMotion.THINKING,
+              durationMs: null,
+              lines: ["Add damages.", "Add unpaid amounts.", "Include allowed costs."],
+            },
+          ],
+          onRevealCorrect: [
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Correct!", "Legali guides the math with prompts."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["That keeps you under the limit." ] },
+          ],
+          onRevealIncorrect: [
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Nope.", "Legali helps calculate — it’s not guessing." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["The calculator walks you through it." ] },
+          ],
+        },
         answers: [
           { id: "A", text: "You have to calculate it yourself", correct: false },
           { id: "B", text: "Legali's damage calculator walks you through adding up losses with smart prompts", correct: true },
@@ -57,6 +104,29 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-1-q3",
         question: "What happens if Legali finds your claim is too large for small claims?",
+        typing: { speedMs: 18, showCursor: true },
+        mascot: {
+          script: [
+            {
+              motion: MascotMotion.SPEAKING,
+              durationMs: 2600,
+              lines: ["Two paths.", "Waive down, or file in civil."],
+            },
+            {
+              motion: MascotMotion.THINKING,
+              durationMs: null,
+              lines: ["Is speed worth waiving?", "Or do you need full damages?"],
+            },
+          ],
+          onRevealCorrect: [
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["That’s it.", "Reduce the claim or choose civil." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Strategy depends on your goal." ] },
+          ],
+          onRevealIncorrect: [
+            { motion: MascotMotion.SHRUG, durationMs: 2200, lines: ["Not exactly.", "Legali suggests options — it doesn’t reject you." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["You pick: waive or switch tracks." ] },
+          ],
+        },
         answers: [
           { id: "A", text: "You're out of luck", correct: false },
           { id: "B", text: "Legali recommends whether to reduce your claim or use the civil litigation pathway", correct: true },
@@ -69,6 +139,29 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-1-q4",
         question: "How does Legali help with the statute of limitations?",
+        typing: { speedMs: 18, showCursor: true },
+        mascot: {
+          script: [
+            {
+              motion: MascotMotion.SPEAKING,
+              durationMs: 2600,
+              lines: ["Timing matters.", "Deadlines can end the case."],
+            },
+            {
+              motion: MascotMotion.THINKING,
+              durationMs: null,
+              lines: ["Enter the incident date.", "Legali checks the limit.", "Then warns early."],
+            },
+          ],
+          onRevealCorrect: [
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Yes.", "It flags deadline risk immediately." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["No surprises on timing." ] },
+          ],
+          onRevealIncorrect: [
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Not quite.", "Legali can’t extend deadlines — it warns you." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Think alerts, not magic." ] },
+          ],
+        },
         answers: [
           { id: "A", text: "It doesn't — you need to check yourself", correct: false },
           { id: "B", text: "Legali flags timing risks as soon as you enter your incident date", correct: true },
@@ -81,6 +174,29 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-1-q5",
         question: "What if you're not sure what type of case you have?",
+        typing: { speedMs: 18, showCursor: true },
+        mascot: {
+          script: [
+            {
+              motion: MascotMotion.SPEAKING,
+              durationMs: 2600,
+              lines: ["Classification helps.", "The claim type drives the rules."],
+            },
+            {
+              motion: MascotMotion.THINKING,
+              durationMs: null,
+              lines: ["Answer a few questions.", "Legali routes you.", "Then you build that claim."],
+            },
+          ],
+          onRevealCorrect: [
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Right!", "A simple classifier guides you." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["No need to guess." ] },
+          ],
+          onRevealIncorrect: [
+            { motion: MascotMotion.SHRUG, durationMs: 2400, lines: ["Nope.", "Legali can still help by identifying the claim type." ] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Describe it plainly — then route." ] },
+          ],
+        },
         answers: [
           { id: "A", text: "Legali won't help", correct: false },
           { id: "B", text: "A case classifier asks simple questions and identifies the claim type", correct: true },
