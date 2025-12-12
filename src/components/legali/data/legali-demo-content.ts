@@ -14,6 +14,7 @@ export interface LegaliModuleContent {
   title: string
   subtitle: string
   description: string
+  mascotCopy?: string
   lessons: LegaliLessonContent[]
 }
 
@@ -1058,6 +1059,8 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     subtitle: "Let Legali help you decide and get started",
     description:
       "Confirm eligibility, collect facts, weigh strategic options, and generate error-free documents before you ever step into court.",
+    mascotCopy:
+      "Welcome back. Let’s start by confirming small-claims eligibility and choosing the right court — it saves time later.",
     lessons: module1Lessons,
   },
   {
@@ -1066,6 +1069,8 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     subtitle: "From document prep to filed case number",
     description:
       "File the way you prefer, arrange perfect service, secure hearing dates, and stay organized with automated tracking.",
+    mascotCopy:
+      "Next up: filing. I’ll help you prep documents, pick a filing method, and keep service and dates on track.",
     lessons: module2Lessons,
   },
   {
@@ -1074,6 +1079,8 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     subtitle: "Build a winning presentation",
     description:
       "Craft persuasive trial plans, assemble polished evidence packets, coach witnesses, and outmaneuver defenses.",
+    mascotCopy:
+      "Time to prepare. We’ll organize evidence, build your story, and practice the key points you’ll present.",
     lessons: module3Lessons,
   },
   {
@@ -1082,6 +1089,8 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     subtitle: "Walk in prepared and confident",
     description:
       "Execute last-minute prep, navigate courtroom logistics, and stay collected during the hearing itself.",
+    mascotCopy:
+      "Hearing day! I’ll keep you calm and ready — from last-minute checks to staying composed with the judge.",
     lessons: module4Lessons,
   },
 ]

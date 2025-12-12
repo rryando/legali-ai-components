@@ -183,6 +183,7 @@ export const CompleteApp = () => {
       icon: <Icon className="w-full h-full p-3" />,
       title: module.title,
       subtitle: module.subtitle,
+      mascotCopy: module.mascotCopy,
       status,
       lessons: module.lessons.map((lesson) => ({
         id: lesson.id,

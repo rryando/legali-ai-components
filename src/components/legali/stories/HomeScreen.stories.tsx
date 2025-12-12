@@ -19,6 +19,7 @@ const sampleModules = [
     icon: '📄',
     title: 'Module 1: Court Documents Basics',
     subtitle: 'Motions, Notices & Pleadings',
+    mascotCopy: "Let’s warm up: I’ll help you spot the key parts of common court documents so you know what you’re looking at.",
     status: 'completed' as const,
     lessons: [
       { id: 1, completed: true },
@@ -32,6 +33,7 @@ const sampleModules = [
     icon: '🔍',
     title: 'Module 2: Discovery Fundamentals',
     subtitle: 'Getting information before trial',
+    mascotCopy: "Discovery is how you get answers before trial. I’ll guide you through the basics and what to ask for.",
     status: 'current' as const,
     lessons: [
       { id: 1, completed: true },
@@ -45,6 +47,7 @@ const sampleModules = [
     icon: '⚖️',
     title: 'Module 3: Pleadings vs. Motions',
     subtitle: 'Understanding document types',
+    mascotCopy: "We’ll make this easy: pleadings start the case, motions ask the court to do something. I’ll show you examples.",
     status: 'locked' as const,
     lessons: [
       { id: 1, completed: false },
@@ -58,6 +61,7 @@ const sampleModules = [
     icon: '📋',
     title: 'Module 4: Evidence & Declarations',
     subtitle: 'What counts in court',
+    mascotCopy: "Evidence wins cases. I’ll help you understand what counts and how declarations support your story.",
     status: 'locked' as const,
     lessons: [
       { id: 1, completed: false },
@@ -71,6 +75,7 @@ const sampleModules = [
     icon: '📮',
     title: 'Module 5: Service of Process',
     subtitle: 'Delivering legal documents',
+    mascotCopy: "Service is all about proper delivery. I’ll keep you on the safe path so you don’t lose time on technicalities.",
     status: 'locked' as const,
     lessons: [
       { id: 1, completed: false },
