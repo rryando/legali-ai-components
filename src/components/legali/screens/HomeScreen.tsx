@@ -1,13 +1,13 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { UserStatsBar } from "../composite/UserStatsBar"
-import { ProgressSection } from "../composite/ProgressSection"
 import { ModuleCard, type ModuleStatus, type Lesson } from "../composite/ModuleCard"
 import { NavigationBar } from "../composite/NavigationBar"
 import { BookOpen, BarChart2, User } from "lucide-react"
 import { ProfileScreen } from "./ProfileScreen"
 import { ProgressScreen } from "./ProgressScreen"
-import { LegaliMascot, MascotMotion, type MascotMotionType } from "../mascot"
+import { MascotMotion } from "../mascot"
+import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard"
 
 export interface Module {
   id: string | number
@@ -30,67 +30,76 @@ export interface HomeScreenProps extends React.HTMLAttributes<HTMLDivElement> {
 const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
   ({ className, modules, onModuleClick, streak = 5, points = 1250, hearts = 5, ...props }, ref) => {
     const [activeTab, setActiveTab] = React.useState('learn')
-    const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(MascotMotion.IDLE)
-
-    const mascotTimersRef = React.useRef<number[]>([])
-    const clearMascotTimers = React.useCallback(() => {
-      mascotTimersRef.current.forEach((t) => clearTimeout(t))
-      mascotTimersRef.current = []
-    }, [])
+    const [heroTrigger, setHeroTrigger] = React.useState(0)
 
     const currentModule = React.useMemo(() => {
       return modules.find((m) => m.status === "current") ?? modules[0]
     }, [modules])
-
-    const progressFromStatus = React.useMemo(() => {
-      if (!currentModule) return 0
-      switch (currentModule.status) {
-        case "completed":
-          return 100
-        case "current":
-          return 45
-        case "locked":
-        default:
-          return 0
-      }
-    }, [currentModule])
 
     const mascotText = React.useMemo(() => {
       if (!currentModule) return ""
       return currentModule.mascotCopy ?? currentModule.subtitle
     }, [currentModule])
 
-    React.useEffect(() => {
-      if (activeTab !== "learn") {
-        clearMascotTimers()
-        setMascotMotion(MascotMotion.IDLE)
-        return
-      }
+    const heroScript = React.useMemo<MascotHeroScriptStep[]>(() => {
+      return [
+        {
+          motion: MascotMotion.WAVING,
+          durationMs: 2000,
+          lines: [
+            "Hey!",
+            "Ready to learn?",
+            currentModule?.title ? `Today: ${currentModule.title}` : "",
+          ].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: 30000,
+          lines: [
+            mascotText,
+            currentModule?.title ? `Today: ${currentModule.title}` : "",
+            "Pick a lesson and go step-by-step",
+            "Watch for key terms and exceptions",
+          ].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.IDLE,
+          durationMs: null,
+          lines: [
+            "Tap any module to continue",
+            "I’m here if you need a hint",
+          ],
+        },
+      ]
+    }, [currentModule?.title, mascotText])
 
-      clearMascotTimers()
+    const heroInterruptScript = React.useMemo<MascotHeroScriptStep[]>(() => {
+      return [
+        {
+          motion: MascotMotion.THINKING,
+          durationMs: 450,
+          lines: ["Hmm…", "Let me think", "One moment"],
+        },
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: 4200,
+          lines: [mascotText, "Let’s jump in"].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.IDLE,
+          durationMs: null,
+          lines: ["Tap a lesson to start"],
+        },
+      ]
+    }, [mascotText])
 
-      setMascotMotion(MascotMotion.WAVING)
-      const toSpeaking = window.setTimeout(() => setMascotMotion(MascotMotion.SPEAKING), 900)
-      // Longer speaking window for the hero companion
-      const toIdle = window.setTimeout(() => setMascotMotion(MascotMotion.IDLE), 5200)
-
-      mascotTimersRef.current = [toSpeaking, toIdle]
-
-      return () => {
-        clearMascotTimers()
-      }
-    }, [activeTab, clearMascotTimers])
-
-    const handleModuleClick = React.useCallback((id: string | number) => {
-      clearMascotTimers()
-      setMascotMotion(MascotMotion.THINKING)
-      const toSpeaking = window.setTimeout(() => setMascotMotion(MascotMotion.SPEAKING), 450)
-      const toIdle = window.setTimeout(() => setMascotMotion(MascotMotion.IDLE), 4200)
-
-      mascotTimersRef.current = [toSpeaking, toIdle]
-
-      onModuleClick(id)
-    }, [clearMascotTimers, onModuleClick])
+    const handleModuleClick = React.useCallback(
+      (id: string | number) => {
+        setHeroTrigger((v) => v + 1)
+        onModuleClick(id)
+      },
+      [onModuleClick]
+    )
 
     return (
       <div
@@ -166,51 +175,20 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
                 </div>
                 
                 <div className="max-w-4xl mx-auto w-full">
-                  <ProgressSection
+                  {/* <ProgressSection
                     title={currentModule?.title ?? "Learning"}
                     progress={progressFromStatus}
+                  /> */}
+
+                  <MascotHeroCard
+                    className="mt-4"
+                    heroTitle={currentModule?.title ?? "Let’s learn"}
+                    active={activeTab === "learn"}
+                    script={heroScript}
+                    interruptScript={heroInterruptScript}
+                    triggerKey={heroTrigger}
+                    stream={{ fitToStepDuration: true, loop: true, showCursor: true, linePauseMs: 5000 }}
                   />
-
-                  {/* Mascot Companion (Sticky Hero) */}
-                  <div
-                    className={cn(
-                      "mt-4 rounded-3xl overflow-hidden relative",
-                      "border border-blue-200/40",
-                      "bg-white/45 backdrop-blur-xl",
-                      "shadow-xl shadow-blue-900/5",
-                      "animate-border-glow",
-                      // Subtle outer glow to make it feel like a hero card
-                      "shadow-[0_0_25px_rgba(59,130,246,0.18),inset_0_0_15px_rgba(59,130,246,0.08)]"
-                    )}
-                  >
-                    {/* Glow accents */}
-                    <div className="absolute -top-16 -left-16 w-64 h-64 bg-sky-200/35 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl pointer-events-none" />
-
-                    <div className="relative p-4 md:p-5 flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                      <div className="shrink-0">
-                        <LegaliMascot
-                          motion={mascotMotion}
-                          width={240}
-                          height={240}
-                          className="mx-auto"
-                        />
-                      </div>
-                      <div className="flex-1 w-full">
-                        <div className="flex items-center justify-between gap-3">
-                          <h2 className="font-bold text-lg md:text-xl text-slate-800 tracking-tight">
-                            {currentModule?.title ?? "Let’s learn"}
-                          </h2>
-
-                        </div>
-                        <div className="mt-3 rounded-2xl border border-white/50 bg-white/55 backdrop-blur-md px-4 py-3">
-                          <p className="text-sm md:text-base text-slate-700 leading-relaxed">
-                            {mascotText}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 

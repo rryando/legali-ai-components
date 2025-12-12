@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Switch } from "@/components/ui/legali/switch"
 import { ChevronRight, LucideIcon } from "lucide-react"
 

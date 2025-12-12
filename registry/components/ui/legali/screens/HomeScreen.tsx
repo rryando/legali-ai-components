@@ -1,18 +1,20 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { UserStatsBar } from "../composite/UserStatsBar"
-import { ProgressSection } from "../composite/ProgressSection"
 import { ModuleCard, type ModuleStatus, type Lesson } from "../composite/ModuleCard"
 import { NavigationBar } from "../composite/NavigationBar"
 import { BookOpen, BarChart2, User } from "lucide-react"
 import { ProfileScreen } from "./ProfileScreen"
 import { ProgressScreen } from "./ProgressScreen"
+import { MascotMotion } from "../mascot"
+import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard"
 
 export interface Module {
   id: string | number
   icon: React.ReactNode
   title: string
   subtitle: string
+  mascotCopy?: string
   status: ModuleStatus
   lessons: Lesson[]
 }
@@ -28,6 +30,76 @@ export interface HomeScreenProps extends React.HTMLAttributes<HTMLDivElement> {
 const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
   ({ className, modules, onModuleClick, streak = 5, points = 1250, hearts = 5, ...props }, ref) => {
     const [activeTab, setActiveTab] = React.useState('learn')
+    const [heroTrigger, setHeroTrigger] = React.useState(0)
+
+    const currentModule = React.useMemo(() => {
+      return modules.find((m) => m.status === "current") ?? modules[0]
+    }, [modules])
+
+    const mascotText = React.useMemo(() => {
+      if (!currentModule) return ""
+      return currentModule.mascotCopy ?? currentModule.subtitle
+    }, [currentModule])
+
+    const heroScript = React.useMemo<MascotHeroScriptStep[]>(() => {
+      return [
+        {
+          motion: MascotMotion.WAVING,
+          durationMs: 2000,
+          lines: [
+            "Hey!",
+            "Ready to learn?",
+            currentModule?.title ? `Today: ${currentModule.title}` : "",
+          ].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: 30000,
+          lines: [
+            mascotText,
+            currentModule?.title ? `Today: ${currentModule.title}` : "",
+            "Pick a lesson and go step-by-step",
+            "Watch for key terms and exceptions",
+          ].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.IDLE,
+          durationMs: null,
+          lines: [
+            "Tap any module to continue",
+            "I’m here if you need a hint",
+          ],
+        },
+      ]
+    }, [currentModule?.title, mascotText])
+
+    const heroInterruptScript = React.useMemo<MascotHeroScriptStep[]>(() => {
+      return [
+        {
+          motion: MascotMotion.THINKING,
+          durationMs: 450,
+          lines: ["Hmm…", "Let me think", "One moment"],
+        },
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: 4200,
+          lines: [mascotText, "Let’s jump in"].filter(Boolean) as string[],
+        },
+        {
+          motion: MascotMotion.IDLE,
+          durationMs: null,
+          lines: ["Tap a lesson to start"],
+        },
+      ]
+    }, [mascotText])
+
+    const handleModuleClick = React.useCallback(
+      (id: string | number) => {
+        setHeroTrigger((v) => v + 1)
+        onModuleClick(id)
+      },
+      [onModuleClick]
+    )
 
     return (
       <div
@@ -103,9 +175,19 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
                 </div>
                 
                 <div className="max-w-4xl mx-auto w-full">
-                  <ProgressSection
-                    title="Civil Procedure"
-                    progress={45}
+                  {/* <ProgressSection
+                    title={currentModule?.title ?? "Learning"}
+                    progress={progressFromStatus}
+                  /> */}
+
+                  <MascotHeroCard
+                    className="mt-4"
+                    heroTitle={currentModule?.title ?? "Let’s learn"}
+                    active={activeTab === "learn"}
+                    script={heroScript}
+                    interruptScript={heroInterruptScript}
+                    triggerKey={heroTrigger}
+                    stream={{ fitToStepDuration: true, loop: true, showCursor: true, linePauseMs: 5000 }}
                   />
                 </div>
               </div>
@@ -126,7 +208,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
                         subtitle={module.subtitle}
                         status={module.status}
                         lessons={module.lessons}
-                        onModuleClick={() => onModuleClick(module.id)}
+                        onModuleClick={() => handleModuleClick(module.id)}
                       />
                     ))}
                   </div>

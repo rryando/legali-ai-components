@@ -41,6 +41,7 @@ const files = [
   // Atomic
   { name: "legali-answer", type: "registry:ui", files: ["components/ui/legali/atomic/Answer.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-glass-card", type: "registry:ui", files: ["components/ui/legali/atomic/GlassCard.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
+  { name: "legali-typing-text", type: "registry:ui", files: ["components/ui/legali/atomic/TypingText.tsx"], dependencies: ["motion", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-lesson-dot", type: "registry:ui", files: ["components/ui/legali/atomic/LessonDot.tsx"], dependencies: ["class-variance-authority", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-progress-bar", type: "registry:ui", files: ["components/ui/legali/atomic/ProgressBar.tsx"], dependencies: ["class-variance-authority", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-stat-item", type: "registry:ui", files: ["components/ui/legali/atomic/StatItem.tsx"], dependencies: ["class-variance-authority", "lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
@@ -53,6 +54,7 @@ const files = [
 
   // Composite
   { name: "legali-module-card", type: "registry:ui", files: ["components/ui/legali/composite/ModuleCard.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-lesson-dot", "legali-glass-card", "legali-lib-utils"] },
+  { name: "legali-mascot-hero-card", type: "registry:ui", files: ["components/ui/legali/composite/MascotHeroCard.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-glass-card", "legali-mascot", "legali-typing-text", "legali-lib-utils"] },
   { name: "legali-navigation-bar", type: "registry:ui", files: ["components/ui/legali/composite/NavigationBar.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-progress-section", type: "registry:ui", files: ["components/ui/legali/composite/ProgressSection.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-progress-bar", "legali-glass-card", "legali-lib-utils"] },
   { name: "legali-quiz-feedback", type: "registry:ui", files: ["components/ui/legali/composite/QuizFeedback.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-button", "legali-lib-utils"] },
@@ -62,7 +64,7 @@ const files = [
   { name: "legali-user-stats-bar", type: "registry:ui", files: ["components/ui/legali/composite/UserStatsBar.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-stat-item", "legali-lib-utils"] },
 
   // Screens
-  { name: "legali-home-screen", type: "registry:ui", files: ["components/ui/legali/screens/HomeScreen.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-user-stats-bar", "legali-progress-section", "legali-module-card", "legali-navigation-bar", "legali-lib-utils"] },
+  { name: "legali-home-screen", type: "registry:ui", files: ["components/ui/legali/screens/HomeScreen.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-user-stats-bar", "legali-module-card", "legali-navigation-bar", "legali-mascot", "legali-mascot-hero-card", "legali-progress-screen", "legali-profile-screen", "legali-lib-utils"] },
   { name: "legali-quiz-screen", type: "registry:ui", files: ["components/ui/legali/screens/QuizScreen.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-quiz-header", "legali-quiz-question", "legali-quiz-feedback", "legali-answer", "legali-button", "legali-lib-utils"] },
   { name: "legali-review-screen", type: "registry:ui", files: ["components/ui/legali/screens/ReviewScreen.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-answer", "legali-explanation-card", "legali-question-number-badge", "legali-button", "legali-lib-utils"] },
   { name: "legali-results-screen", type: "registry:ui", files: ["components/ui/legali/screens/ResultsScreen.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-results-card", "legali-glass-card", "legali-lib-utils"] },
@@ -76,6 +78,7 @@ const files = [
   { name: "legali-demo-content", type: "registry:lib", files: ["components/ui/legali/data/legali-demo-content.ts"], registryDependencies: ["legali-quiz-screen"] },
   { name: "legali-kit", type: "registry:lib", files: ["components/ui/legali/index.ts"], registryDependencies: [
     "legali-answer",
+    "legali-typing-text",
     "legali-glass-card",
     "legali-lesson-dot",
     "legali-progress-bar",
@@ -85,6 +88,7 @@ const files = [
     "legali-user-stats-bar",
     "legali-progress-section",
     "legali-module-card",
+    "legali-mascot-hero-card",
     "legali-quiz-header",
     "legali-quiz-question",
     "legali-quiz-feedback",
@@ -93,6 +97,8 @@ const files = [
     "legali-home-screen",
     "legali-quiz-screen",
     "legali-results-screen",
+    "legali-progress-screen",
+    "legali-profile-screen",
     "legali-mascot",
   ] },
 ]
