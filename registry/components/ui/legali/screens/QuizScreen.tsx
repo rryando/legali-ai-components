@@ -235,34 +235,27 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
     const promptActive = React.useMemo(() => {
       if (showFeedback && pendingResult != null) return true
-      if (shouldPlayReaction) return true
-      if (!questionTypedDone && !showFeedback) return true
-      return questionTypedDone && promptDelayDone
-    }, [pendingResult, promptDelayDone, questionTypedDone, shouldPlayReaction, showFeedback])
+      if (showFeedback) return false
+      return true
+    }, [pendingResult, showFeedback])
 
     const promptTriggerKey = React.useMemo(() => {
       const resultKey = pendingResult == null ? "none" : pendingResult ? "correct" : "incorrect"
-      const phaseKey = showFeedback
-        ? "feedback"
-        : !questionTypedDone
-          ? "reading"
-          : promptDelayDone
-            ? "hint"
-            : "idle"
+      const phaseKey = showFeedback ? "feedback" : !promptDelayDone ? "reading" : "hint"
       return `${String(currentQuestion.id)}:${phaseKey}:${resultKey}`
-    }, [currentQuestion.id, pendingResult, promptDelayDone, questionTypedDone, showFeedback])
+    }, [currentQuestion.id, pendingResult, promptDelayDone, showFeedback])
 
     const promptScript = React.useMemo<QuizMascotScriptStep[]>(() => {
       if (shouldPlayReaction) return pendingResult ? correctScript : incorrectScript
       if (showFeedback && pendingResult != null) return pendingResult ? correctScript : incorrectScript
-      if (!questionTypedDone) return readingScript
+      if (!promptDelayDone) return readingScript
       return hintScript
     }, [
       correctScript,
       hintScript,
       incorrectScript,
       pendingResult,
-      questionTypedDone,
+      promptDelayDone,
       readingScript,
       shouldPlayReaction,
       showFeedback,

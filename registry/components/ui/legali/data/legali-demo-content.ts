@@ -21,11 +21,11 @@ export interface LegaliModuleContent {
 
 const DEMO_QUESTION_READING_SCRIPT = [
   {
-    motion: MascotMotion.WRITING,
-    durationMs: 5400,
-    lines: ["Take your time.", "Then pick the best answer."],
+    motion: MascotMotion.SPEAKING,
+    durationMs: null,
+    lines: ["I’m reading the question with you.", "Listen for the key legal detail."],
   },
-] as const
+]
 
 const module1Lessons: LegaliLessonContent[] = [
   {

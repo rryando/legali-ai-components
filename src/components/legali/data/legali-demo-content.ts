@@ -1,5 +1,7 @@
 import type { Question } from "../screens/QuizScreen"
 import { MascotMotion } from "../mascot"
+import type { QuizMascotScriptStep } from "../composite/QuizMascotPrompt"
+
 
 export interface LegaliLessonContent {
   id: string
@@ -19,13 +21,13 @@ export interface LegaliModuleContent {
   lessons: LegaliLessonContent[]
 }
 
-const DEMO_QUESTION_READING_SCRIPT = [
+const DEMO_QUESTION_READING_SCRIPT: QuizMascotScriptStep[] = [
   {
     motion: MascotMotion.WRITING,
     durationMs: 5400,
     lines: ["Take your time.", "Then pick the best answer."],
   },
-] as const
+]
 
 const module1Lessons: LegaliLessonContent[] = [
   {

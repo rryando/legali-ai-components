@@ -128,14 +128,18 @@ export function TypingText({
       // Typing complete
       onComplete?.();
 
-      if (loop && texts && texts.length > 1) {
-        const timeout = setTimeout(() => {
-          setDisplayText('');
-          setCurrentIndex(0);
-          setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-        }, pauseDuration);
+      if (texts && texts.length > 1) {
+        const isLast = currentTextIndex >= texts.length - 1;
+        if (loop || !isLast) {
+          const nextIndex = loop ? (currentTextIndex + 1) % texts.length : currentTextIndex + 1;
+          const timeout = setTimeout(() => {
+            setDisplayText('');
+            setCurrentIndex(0);
+            setCurrentTextIndex(nextIndex);
+          }, pauseDuration);
 
-        return () => clearTimeout(timeout);
+          return () => clearTimeout(timeout);
+        }
       }
     }
   }, [currentIndex, currentText, isTyping, speed, loop, texts, pauseDuration, onComplete]);
