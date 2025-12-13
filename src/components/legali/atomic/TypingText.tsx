@@ -88,6 +88,19 @@ export function TypingText({
   // Determine if we should start animation
   const shouldStart = !startOnView || (isInView && (!once || !hasAnimated));
 
+  // Reset typing when input text(s) change
+  const textSignature = (texts && texts.length > 0 ? texts : [text])
+    .map((t) => t ?? '')
+    .join('\u0000');
+
+  useEffect(() => {
+    setDisplayText('');
+    setCurrentIndex(0);
+    setCurrentTextIndex(0);
+    setIsTyping(false);
+    setHasAnimated(false);
+  }, [textSignature]);
+
   const textArray = texts && texts.length > 0 ? texts : [text];
   const currentText = textArray[currentTextIndex] ?? '';
 
@@ -99,7 +112,7 @@ export function TypingText({
     }, delay);
 
     return () => clearTimeout(timeout);
-  }, [delay, shouldStart]);
+  }, [delay, shouldStart, textSignature]);
 
   useEffect(() => {
     if (!isTyping) return;

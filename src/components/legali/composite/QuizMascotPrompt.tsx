@@ -230,22 +230,24 @@ const QuizMascotPrompt = React.forwardRef<HTMLDivElement, QuizMascotPromptProps>
             <div className={cn("rounded-2xl border border-white/60 bg-white/70 backdrop-blur-md px-2 py-3")}> 
               <div className="text-sm md:text-base text-slate-700 leading-relaxed">
                 {prefersReducedMotion ? (
-                  <p className="font-semibold">{stepLines[0] ?? ""}</p>
+                  active ? <p className="font-semibold">{stepLines[0] ?? ""}</p> : null
                 ) : (
-                  <TypingText
-                    key={`${stepIndex}:${String(triggerKey ?? "")}`}
-                    className="font-semibold"
-                    texts={stepLines}
-                    speed={computeTypingSpeedMs()}
-                    delay={500}
-                    showCursor={streamConfig.showCursor}
-                    cursor="▍"
-                    cursorClassName="text-slate-500"
-                    loop={streamConfig.loop}
-                    pauseDuration={streamConfig.linePauseMs}
-                    startOnView={false}
-                    once={false}
-                  />
+                  active ? (
+                    <TypingText
+                      key={`${stepIndex}:${String(triggerKey ?? "")}`}
+                      className="font-semibold"
+                      texts={stepLines}
+                      speed={computeTypingSpeedMs()}
+                      delay={500}
+                      showCursor={streamConfig.showCursor}
+                      cursor="▍"
+                      cursorClassName="text-slate-500"
+                      loop={streamConfig.loop}
+                      pauseDuration={streamConfig.linePauseMs}
+                      startOnView={false}
+                      once={false}
+                    />
+                  ) : null
                 )}
               </div>
             </div>

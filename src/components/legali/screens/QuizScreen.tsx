@@ -28,6 +28,8 @@ export interface Question {
   }
 
   mascot?: {
+    /** Looping script that runs while the question is typing (pre-hint, pre-feedback). */
+    onReading?: QuizMascotScriptStep[]
     /** Looping script that runs after the question finishes typing (until feedback). */
     script?: QuizMascotScriptStep[]
     /** One-shot script to run (after question typing) when the answer is correct. */
@@ -108,6 +110,21 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
       ]
     }, [])
 
+    const defaultReadingScript = React.useMemo<QuizMascotScriptStep[]>(() => {
+      return [
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: 2600,
+          lines: ["Let’s read this carefully.", "Focus on the key detail."],
+        },
+        {
+          motion: MascotMotion.SPEAKING,
+          durationMs: null,
+          lines: ["Take your time.", "Then choose the best answer."],
+        },
+      ]
+    }, [])
+
     const defaultCorrectScript = React.useMemo<QuizMascotScriptStep[]>(() => {
       return [
         {
@@ -141,6 +158,12 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     const hintScript = React.useMemo(() => {
       return currentQuestion.mascot?.script?.length ? currentQuestion.mascot.script : defaultHintScript
     }, [currentQuestion.mascot?.script, defaultHintScript])
+
+    const readingScript = React.useMemo(() => {
+      return currentQuestion.mascot?.onReading?.length
+        ? currentQuestion.mascot.onReading
+        : defaultReadingScript
+    }, [currentQuestion.mascot?.onReading, defaultReadingScript])
 
     const correctScript = React.useMemo(() => {
       return currentQuestion.mascot?.onRevealCorrect?.length
@@ -211,15 +234,39 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     }
 
     const promptActive = React.useMemo(() => {
+      if (showFeedback && pendingResult != null) return true
       if (shouldPlayReaction) return true
-      if (showFeedback) return false
+      if (!questionTypedDone && !showFeedback) return true
       return questionTypedDone && promptDelayDone
-    }, [promptDelayDone, questionTypedDone, shouldPlayReaction, showFeedback])
+    }, [pendingResult, promptDelayDone, questionTypedDone, shouldPlayReaction, showFeedback])
+
+    const promptTriggerKey = React.useMemo(() => {
+      const resultKey = pendingResult == null ? "none" : pendingResult ? "correct" : "incorrect"
+      const phaseKey = showFeedback
+        ? "feedback"
+        : !questionTypedDone
+          ? "reading"
+          : promptDelayDone
+            ? "hint"
+            : "idle"
+      return `${String(currentQuestion.id)}:${phaseKey}:${resultKey}`
+    }, [currentQuestion.id, pendingResult, promptDelayDone, questionTypedDone, showFeedback])
 
     const promptScript = React.useMemo<QuizMascotScriptStep[]>(() => {
       if (shouldPlayReaction) return pendingResult ? correctScript : incorrectScript
+      if (showFeedback && pendingResult != null) return pendingResult ? correctScript : incorrectScript
+      if (!questionTypedDone) return readingScript
       return hintScript
-    }, [correctScript, hintScript, incorrectScript, pendingResult, shouldPlayReaction])
+    }, [
+      correctScript,
+      hintScript,
+      incorrectScript,
+      pendingResult,
+      questionTypedDone,
+      readingScript,
+      shouldPlayReaction,
+      showFeedback,
+    ])
 
     const promptStream = React.useMemo<QuizMascotStreamConfig>(() => {
       const base = currentQuestion.mascot?.stream ?? {}
@@ -230,9 +277,12 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     }, [currentQuestion.mascot?.stream, shouldPlayReaction])
 
     const inactiveMotion = React.useMemo(() => {
-      if (showFeedback) return MascotMotion.IDLE
+      if (showFeedback) {
+        if (pendingResult === true) return MascotMotion.CELEBRATE
+        return MascotMotion.IDLE
+      }
       return questionTypedDone ? MascotMotion.IDLE : MascotMotion.WRITING
-    }, [questionTypedDone, showFeedback])
+    }, [pendingResult, questionTypedDone, showFeedback])
 
     return (
       <div
@@ -273,6 +323,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
             <QuizMascotPrompt
               className="mb-6"
               active={promptActive}
+              triggerKey={promptTriggerKey}
               script={promptScript}
               stream={promptStream}
               inactiveMotion={inactiveMotion}

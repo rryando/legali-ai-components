@@ -19,6 +19,14 @@ export interface LegaliModuleContent {
   lessons: LegaliLessonContent[]
 }
 
+const DEMO_QUESTION_READING_SCRIPT = [
+  {
+    motion: MascotMotion.WRITING,
+    durationMs: 5400,
+    lines: ["Take your time.", "Then pick the best answer."],
+  },
+] as const
+
 const module1Lessons: LegaliLessonContent[] = [
   {
     id: "module-1-lesson-1",
@@ -36,6 +44,7 @@ const module1Lessons: LegaliLessonContent[] = [
         question: "What's the first thing Legali helps you determine?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
           script: [
             {
               motion: MascotMotion.SPEAKING,
@@ -54,6 +63,7 @@ const module1Lessons: LegaliLessonContent[] = [
           ],
           onRevealIncorrect: [
             { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Not quite.", "First we confirm small claims + venue."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["First we confirm small claims + venue."] },
             { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Then everything else follows." ] },
           ],
         },
@@ -71,6 +81,7 @@ const module1Lessons: LegaliLessonContent[] = [
         question: "How does Legali check your claim amount eligibility?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
           script: [
             {
               motion: MascotMotion.SPEAKING,
@@ -106,6 +117,7 @@ const module1Lessons: LegaliLessonContent[] = [
         question: "What happens if Legali finds your claim is too large for small claims?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
           script: [
             {
               motion: MascotMotion.SPEAKING,
@@ -141,6 +153,7 @@ const module1Lessons: LegaliLessonContent[] = [
         question: "How does Legali help with the statute of limitations?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
           script: [
             {
               motion: MascotMotion.SPEAKING,
@@ -176,6 +189,7 @@ const module1Lessons: LegaliLessonContent[] = [
         question: "What if you're not sure what type of case you have?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
           script: [
             {
               motion: MascotMotion.SPEAKING,
