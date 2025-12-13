@@ -8,6 +8,15 @@ import { Answer } from "../atomic/Answer"
 import { Button } from "@/components/ui/legali/button"
 import { MascotMotion } from "../mascot"
 
+const shuffleArray = <T,>(items: readonly T[]) => {
+  const result = items.slice()
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[result[i], result[j]] = [result[j], result[i]]
+  }
+  return result
+}
+
 export interface AnswerOption {
   id: string | number
   text: string
@@ -41,6 +50,13 @@ export interface Question {
   }
 }
 
+const EMPTY_QUESTION: Question = {
+  id: "__empty__",
+  question: "",
+  answers: [],
+  explanation: "",
+}
+
 export interface QuizScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   questions: Question[]
   onClose: () => void
@@ -61,14 +77,15 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     const [pendingResult, setPendingResult] = React.useState<boolean | null>(null)
     const [reactionPlayed, setReactionPlayed] = React.useState(false)
 
-    const currentQuestion = questions?.[currentQuestionIndex]
-    
-    if (!currentQuestion) {
-      return <div className="p-8 text-center text-slate-500">No questions available.</div>
-    }
+    const hasCurrentQuestion = Boolean(questions?.[currentQuestionIndex])
+    const currentQuestion = questions?.[currentQuestionIndex] ?? EMPTY_QUESTION
+
+    const shuffledAnswers = React.useMemo(() => {
+      return shuffleArray(currentQuestion.answers)
+    }, [currentQuestion.id])
 
     const isLastQuestion = currentQuestionIndex === questions.length - 1
-    const progress = ((currentQuestionIndex) / questions.length) * 100
+    const progress = questions.length ? (currentQuestionIndex / questions.length) * 100 : 0
 
     React.useEffect(() => {
       setQuestionTypedDone(false)
@@ -277,6 +294,10 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
       return questionTypedDone ? MascotMotion.IDLE : MascotMotion.WRITING
     }, [pendingResult, questionTypedDone, showFeedback])
 
+    if (!hasCurrentQuestion) {
+      return <div className="p-8 text-center text-slate-500">No questions available.</div>
+    }
+
     return (
       <div
         ref={ref}
@@ -324,22 +345,25 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
               mascotHeight={240}
             />
 
-            <div className="space-y-3 animate-slide-in-from-bottom">
-              {currentQuestion.answers.map((answer, index) => (
-                <Answer
-                  key={answer.id}
-                  selected={selectedAnswerId === answer.id}
-                  correct={isAnswerChecked && answer.correct}
-                  incorrect={isAnswerChecked && selectedAnswerId === answer.id && !answer.correct}
-                  onClick={() => handleAnswerSelect(answer.id)}
-                  disabled={isAnswerChecked}
-                  shortcut={String.fromCharCode(65 + index)} // A, B, C, D
-                  className="animate-fade-in bg-white/60 backdrop-blur-sm border-white/40 hover:bg-white/80"
-                >
-                  {answer.text}
-                </Answer>
-              ))}
-            </div>
+            {questionTypedDone && (
+              <div key={String(currentQuestion.id)} className="space-y-3 animate-slide-in-from-bottom">
+                {shuffledAnswers.map((answer, index) => (
+                  <Answer
+                    key={answer.id}
+                    selected={selectedAnswerId === answer.id}
+                    correct={isAnswerChecked && answer.correct}
+                    incorrect={isAnswerChecked && selectedAnswerId === answer.id && !answer.correct}
+                    onClick={() => handleAnswerSelect(answer.id)}
+                    disabled={isAnswerChecked}
+                    shortcut={String.fromCharCode(65 + index)} // A, B, C, D
+                    style={{ animationDelay: `${index * 60}ms`, animationFillMode: "both" }}
+                    className="animate-fade-in bg-white/60 backdrop-blur-sm border-white/40 hover:bg-white/80"
+                  >
+                    {answer.text}
+                  </Answer>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
