@@ -24,9 +24,86 @@ export interface LegaliModuleContent {
 const DEMO_QUESTION_READING_SCRIPT: QuizMascotScriptStep[] = [
   {
     motion: MascotMotion.WRITING,
-    durationMs: 5400,
-    lines: ["Take your time.", "Then pick the best answer."],
+    durationMs: 2400,
+    lines: ["I’m pulling up the question—read it for the gist.", "Read it once more for the key detail, then choose the best fit."],
   },
+]
+
+const DEMO_QUESTION_TYPING = { speedMs: 18, showCursor: true }
+
+const DEMO_REVEAL_CORRECT_GENERIC: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Nice.", "That’s the right move."] },
+  { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Keep going — we’re building this step by step."] },
+]
+
+const DEMO_REVEAL_INCORRECT_GENERIC: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.CONFUSED, durationMs: 2200, lines: ["Not this one.", "Match the option to the process."] },
+  { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Re-read the question — one phrase usually gives it away."] },
+]
+
+const DEMO_MODULE1_LESSON2_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["We’re in the case interview.", "One clean fact at a time — like building a record."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Answer only what’s asked.", "Stay factual.", "Let the prompts guide the story."] },
+]
+
+const DEMO_MODULE1_LESSON3_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Now we talk strategy.", "Settle, file, or negotiate — with numbers in front of you."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Costs, timelines, odds.", "Pick the move that fits your goal."] },
+]
+
+const DEMO_MODULE1_LESSON4_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Paperwork time.", "We make the packet court-ready — no guessing."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Court-specific forms.", "Validation checks.", "Instructions bundled in order."] },
+]
+
+const DEMO_MODULE2_LESSON1_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["We’re at filing — picture the clerk window.", "What’s the cleanest path to get stamped?"] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["E-file vs print-and-file.", "Fees vs waivers.", "Confirmation + tracking."] },
+]
+
+const DEMO_MODULE2_LESSON2_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Service is the handshake the court requires.", "Done right, your case can move."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Good address + schedule.", "Right method.", "Proof filed on time."] },
+]
+
+const DEMO_MODULE2_LESSON3_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Dates drive everything.", "Once the hearing is set, we run the timeline."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Automatic dates or clerk script.", "Enter it once.", "Reminders + continuance flow."] },
+]
+
+const DEMO_MODULE2_LESSON4_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["A clean file reads like credibility.", "Let’s keep your case binder tight."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Auto-categorize.", "Search fast.", "Build exhibits + track next steps."] },
+]
+
+const DEMO_MODULE3_LESSON1_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Trial prep is just a story with receipts.", "We practice until it feels normal."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Opening → exhibits → closing.", "Answer judge questions calmly.", "Keep it simple."] },
+]
+
+const DEMO_MODULE3_LESSON2_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Evidence needs a system.", "We label it, list it, and explain it cleanly."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Exhibit list.", "Multiple copies.", "One sentence: what it proves."] },
+]
+
+const DEMO_MODULE3_LESSON3_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Witnesses win cases when they’re prepared.", "We coach them to be clear and factual."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Likely questions.", "Subpoena tools.", "Declarations when needed."] },
+]
+
+const DEMO_MODULE3_LESSON4_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Assume the defense is coming.", "We meet it with receipts and calm responses."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Common defenses.", "Counter-evidence.", "Bridge phrases for surprises."] },
+]
+
+const DEMO_MODULE4_LESSON1_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["Final 24 hours.", "We protect your focus and remove morning chaos."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Print + pack.", "Maps + timing.", "Etiquette + calm routine."] },
+]
+
+const DEMO_MODULE4_LESSON2_SCRIPT: QuizMascotScriptStep[] = [
+  { motion: MascotMotion.SPEAKING, durationMs: 2600, lines: ["In the courtroom: simple beats perfect.", "Stay on script and move exhibit by exhibit."] },
+  { motion: MascotMotion.THINKING, durationMs: null, lines: ["Printed prompts.", "Evidence checklist.", "Notes + bridge phrases."] },
 ]
 
 const module1Lessons: LegaliLessonContent[] = [
@@ -47,26 +124,26 @@ const module1Lessons: LegaliLessonContent[] = [
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
-          script: [
+          onWaitingAnswer: [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: ["Start with the forum.", "Small claims first — then the right court."],
+              lines: ["Start at the beginning: where does this case belong?", "First small claims eligibility, then the right court."],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: ["Ask: do I qualify?", "Ask: where do I file?", "Then: build the case."],
+              lines: ["Do I qualify?", "Which court has venue?", "Then we build the case."],
             },
           ],
           onRevealCorrect: [
-            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Yes!", "Eligibility + court selection comes first."] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Now we can move confidently." ] },
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Exactly.", "Eligibility + venue come first."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Now the rest of the process gets easier."] },
           ],
           onRevealIncorrect: [
-            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Not quite.", "First we confirm small claims + venue."] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["First we confirm small claims + venue."] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Then everything else follows." ] },
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Close.", "Start with eligibility and venue."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["Get the forum right first — then everything else lines up."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["We’ll build the details once the court is set."] },
           ],
         },
         answers: [
@@ -84,25 +161,25 @@ const module1Lessons: LegaliLessonContent[] = [
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
-          script: [
+          onWaitingAnswer: [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: ["Think: totals.", "What are your losses, in dollars?"],
+              lines: ["Follow the dollars.", "What’s the total value of your losses?"],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: ["Add damages.", "Add unpaid amounts.", "Include allowed costs."],
+              lines: ["Itemize damages.", "Add unpaid amounts.", "Include allowed costs."],
             },
           ],
           onRevealCorrect: [
-            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Correct!", "Legali guides the math with prompts."] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["That keeps you under the limit." ] },
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Nice work.", "Legali walks you through the math with prompts."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["That’s how you stay within the limit."] },
           ],
           onRevealIncorrect: [
-            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Nope.", "Legali helps calculate — it’s not guessing." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["The calculator walks you through it." ] },
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Almost.", "Legali calculates from your inputs — no guessing."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Use the damage prompts and total it up."] },
           ],
         },
         answers: [
@@ -120,25 +197,25 @@ const module1Lessons: LegaliLessonContent[] = [
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
-          script: [
+          onWaitingAnswer: [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: ["Two paths.", "Waive down, or file in civil."],
+              lines: ["If the number’s over the cap, we don’t stop.", "We choose: waive down, or file in civil."],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: ["Is speed worth waiving?", "Or do you need full damages?"],
+              lines: ["Do you want speed and simplicity?", "Or do you need every dollar?"],
             },
           ],
           onRevealCorrect: [
-            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["That’s it.", "Reduce the claim or choose civil." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Strategy depends on your goal." ] },
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Exactly.", "Waive down or switch to civil."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["We’ll pick the path that serves your goal."] },
           ],
           onRevealIncorrect: [
-            { motion: MascotMotion.SHRUG, durationMs: 2200, lines: ["Not exactly.", "Legali suggests options — it doesn’t reject you." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["You pick: waive or switch tracks." ] },
+            { motion: MascotMotion.SHRUG, durationMs: 2200, lines: ["Not quite.", "Legali won’t shut the door — it gives you options."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2400, lines: ["You decide: waive part of it, or file civil."] },
           ],
         },
         answers: [
@@ -156,25 +233,25 @@ const module1Lessons: LegaliLessonContent[] = [
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
-          script: [
+          onWaitingAnswer: [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: ["Timing matters.", "Deadlines can end the case."],
+              lines: ["The clock matters.", "Deadlines can decide the whole case."],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: ["Enter the incident date.", "Legali checks the limit.", "Then warns early."],
+              lines: ["Start with the incident date.", "Legali matches it to the rule.", "Then warns you early."],
             },
           ],
           onRevealCorrect: [
-            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Yes.", "It flags deadline risk immediately." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["No surprises on timing." ] },
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Perfect.", "It flags limitation risk right away."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["That keeps you ahead of the calendar."] },
           ],
           onRevealIncorrect: [
-            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Not quite.", "Legali can’t extend deadlines — it warns you." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Think alerts, not magic." ] },
+            { motion: MascotMotion.CONFUSED, durationMs: 2400, lines: ["Almost.", "Legali can’t extend deadlines — it can warn you."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Think early alerts and clear cutoffs."] },
           ],
         },
         answers: [
@@ -192,25 +269,25 @@ const module1Lessons: LegaliLessonContent[] = [
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
-          script: [
+          onWaitingAnswer: [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: ["Classification helps.", "The claim type drives the rules."],
+              lines: ["Name the claim, and the rules follow.", "Let’s classify it before we write."],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: ["Answer a few questions.", "Legali routes you.", "Then you build that claim."],
+              lines: ["Answer a few plain questions.", "Legali routes you to the right track.", "Then we build from there."],
             },
           ],
           onRevealCorrect: [
-            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["Right!", "A simple classifier guides you." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["No need to guess." ] },
+            { motion: MascotMotion.CELEBRATE, durationMs: 2200, lines: ["You’ve got it.", "A quick classifier points you to the right claim type."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["No guessing — just the right pathway."] },
           ],
           onRevealIncorrect: [
-            { motion: MascotMotion.SHRUG, durationMs: 2400, lines: ["Nope.", "Legali can still help by identifying the claim type." ] },
-            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Describe it plainly — then route." ] },
+            { motion: MascotMotion.SHRUG, durationMs: 2400, lines: ["Not quite.", "Legali can still identify the claim type from your facts."] },
+            { motion: MascotMotion.SPEAKING, durationMs: 2200, lines: ["Describe it plainly and I’ll route you."] },
           ],
         },
         answers: [
@@ -238,6 +315,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-2-q1",
         question: "How does Legali gather your case information?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Using a 50-page form", correct: false },
           { id: "B", text: "Through a conversational interview that adapts to you", correct: true },
@@ -250,6 +334,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-2-q2",
         question: "What if you don't have all the information during the interview?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You can't proceed", correct: false },
           { id: "B", text: "Legali saves progress and reminds you what to gather", correct: true },
@@ -262,6 +353,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-2-q3",
         question: "How does Legali help you tell your story effectively?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't — you're on your own", correct: false },
           { id: "B", text: "Smart prompts guide you to include key facts judges need", correct: true },
@@ -274,6 +372,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-2-q4",
         question: "What happens if you use emotional language in your story?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Legali keeps it as-is", correct: false },
           { id: "B", text: "The system suggests factual phrasing while keeping your meaning", correct: true },
@@ -286,6 +391,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-2-q5",
         question: "Can you upload supporting documents during the interview?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "No, documents come later", correct: false },
           { id: "B", text: "Yes, and Legali auto-organizes and tags them", correct: true },
@@ -311,6 +423,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-3-q1",
         question: "After you complete the interview, what does Legali provide?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just a completed form", correct: false },
           { id: "B", text: "A personalized case assessment with strengths, weaknesses, and win probability", correct: true },
@@ -323,6 +442,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-3-q2",
         question: "How does Legali help you decide whether to settle or file?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It leaves you to guess", correct: false },
           { id: "B", text: "Shows settlement probabilities and generates a demand letter", correct: true },
@@ -335,6 +461,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-3-q3",
         question: "What if the defendant wants to settle after seeing your demand letter?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You're on your own", correct: false },
           { id: "B", text: "Legali provides a settlement calculator and agreement", correct: true },
@@ -347,6 +480,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-3-q4",
         question: "How does Legali help you understand court costs?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You must research fees yourself", correct: false },
           { id: "B", text: "Legali shows exact filing fees, service costs, and time investment", correct: true },
@@ -359,6 +499,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-3-q5",
         question: "What if you qualify for a fee waiver?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Legali doesn't handle that", correct: false },
           { id: "B", text: "It detects eligibility, auto-fills the waiver, and adds it to your packet", correct: true },
@@ -384,6 +531,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-4-q1",
         question: "How does Legali create your small claims forms?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You fill out blank PDFs", correct: false },
           { id: "B", text: "Interview answers auto-populate official forms", correct: true },
@@ -396,6 +550,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-4-q2",
         question: "What if your court uses different forms than another county?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You have to find them", correct: false },
           { id: "B", text: "Legali automatically uses your court's specific forms", correct: true },
@@ -408,6 +569,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-4-q3",
         question: "How does Legali help you avoid form errors?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't", correct: false },
           { id: "B", text: "Smart validation checks for missing info and logical issues", correct: true },
@@ -420,6 +588,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-4-q4",
         question: "Can you preview your documents before filing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "No, trust the system", correct: false },
           { id: "B", text: "Yes, with side-by-side tips explaining each section", correct: true },
@@ -432,6 +607,13 @@ const module1Lessons: LegaliLessonContent[] = [
       {
         id: "module-1-lesson-4-q5",
         question: "What does Legali's document packet include?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE1_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just the complaint", correct: false },
           { id: "B", text: "All required forms plus instructions for filing and service", correct: true },
@@ -460,6 +642,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-1-q1",
         question: "What filing options does Legali provide?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You must file in person", correct: false },
           { id: "B", text: "E-file through Legali or download packets to file yourself", correct: true },
@@ -472,6 +661,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-1-q2",
         question: "How does Legali's e-filing work?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Legali emails the court", correct: false },
           { id: "B", text: "Direct integration submits documents with one click", correct: true },
@@ -484,6 +680,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-1-q3",
         question: "What if your court doesn't accept e-filing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You can't use Legali", correct: false },
           { id: "B", text: "Legali generates a mail or in-person packet with instructions", correct: true },
@@ -496,6 +699,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-1-q4",
         question: "How does Legali help with filing fees?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Fees are part of the subscription", correct: false },
           { id: "B", text: "Legali shows exact fees and processes payments or waivers", correct: true },
@@ -508,6 +718,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-1-q5",
         question: "What happens immediately after e-filing through Legali?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You wait weeks for confirmation", correct: false },
           { id: "B", text: "You receive an instant case number, stamped docs, and tracking", correct: true },
@@ -533,6 +750,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-2-q1",
         question: "How does Legali help you serve the defendant?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You're on your own", correct: false },
           { id: "B", text: "Order a process server or follow detailed DIY instructions", correct: true },
@@ -545,6 +769,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-2-q2",
         question: "What information does Legali need to arrange service?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just the defendant's name", correct: false },
           { id: "B", text: "Address, description, and schedule details", correct: true },
@@ -557,6 +788,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-2-q3",
         question: "How does Legali handle tricky service situations?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It refuses difficult cases", correct: false },
           { id: "B", text: "Identifies issues and suggests alternative methods", correct: true },
@@ -569,6 +807,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-2-q4",
         question: "What does Legali provide after service is complete?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Nothing", correct: false },
           { id: "B", text: "Auto-filled proof of service forms and deadline tracking", correct: true },
@@ -581,6 +826,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-2-q5",
         question: "How does Legali track your service deadline?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't", correct: false },
           { id: "B", text: "Automatic countdown with reminders", correct: true },
@@ -606,6 +858,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-3-q1",
         question: "How does Legali help you get a hearing date?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You must call the court", correct: false },
           { id: "B", text: "E-filed cases receive dates automatically; others get scripts and tracking", correct: true },
@@ -618,6 +877,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-3-q2",
         question: "What happens when you enter your hearing date in Legali?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It's just saved", correct: false },
           { id: "B", text: "Prep timeline, reminders, and checklists activate", correct: true },
@@ -630,6 +896,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-3-q3",
         question: "How does Legali help if you need to change your hearing date?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You're stuck", correct: false },
           { id: "B", text: "It generates a continuance request with filing instructions", correct: true },
@@ -642,6 +915,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-3-q4",
         question: "What courthouse information does Legali provide?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just the address", correct: false },
           { id: "B", text: "Address, parking, security tips, courtroom location, and judge info", correct: true },
@@ -654,6 +934,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-3-q5",
         question: "How does Legali help with multiple hearings?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It tracks only one", correct: false },
           { id: "B", text: "Dashboard calendar shows all dates color-coded by urgency", correct: true },
@@ -679,6 +966,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-4-q1",
         question: "How does Legali organize your case documents?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "One big folder", correct: false },
           { id: "B", text: "Auto-categorized folders like Filed Docs and Evidence", correct: true },
@@ -691,6 +985,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-4-q2",
         question: "What if you need to find a specific document quickly?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Scroll through everything", correct: false },
           { id: "B", text: "Use smart search to filter by keywords or tags", correct: true },
@@ -703,6 +1004,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-4-q3",
         question: "How does Legali help you prepare evidence?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just stores files", correct: false },
           { id: "B", text: "Evidence builder organizes exhibits and generates exhibit lists", correct: true },
@@ -715,6 +1023,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-4-q4",
         question: "Can you access your case information on mobile?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Desktop only", correct: false },
           { id: "B", text: "Yes, with a full mobile app", correct: true },
@@ -727,6 +1042,13 @@ const module2Lessons: LegaliLessonContent[] = [
       {
         id: "module-2-lesson-4-q5",
         question: "How does Legali keep you on track?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE2_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "One reminder at filing", correct: false },
           { id: "B", text: "Smart timeline with automated reminders and checklists", correct: true },
@@ -755,6 +1077,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-1-q1",
         question: "How does Legali help you prepare what to say in court?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Generic scripts only", correct: false },
           { id: "B", text: "Custom trial script generator based on your case", correct: true },
@@ -767,6 +1096,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-1-q2",
         question: "What does Legali's script include?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just an opening statement", correct: false },
           { id: "B", text: "Opening, evidence presentation, closing, and objection responses", correct: true },
@@ -779,6 +1115,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-1-q3",
         question: "How does Legali help you practice?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "No practice tools", correct: false },
           { id: "B", text: "Interactive practice mode with AI judge", correct: true },
@@ -791,6 +1134,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-1-q4",
         question: "What if you're nervous about speaking in court?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Legali can't help", correct: false },
           { id: "B", text: "Guided relaxation tips, courtroom simulations, and confidence exercises", correct: true },
@@ -803,6 +1153,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-1-q5",
         question: "How does Legali organize your evidence presentation?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You decide the order", correct: false },
           { id: "B", text: "Suggests optimal sequencing to build a logical story", correct: true },
@@ -828,6 +1185,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-2-q1",
         question: "How does Legali help you organize physical evidence?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Digital only", correct: false },
           { id: "B", text: "Printable evidence packet with labels and exhibit list", correct: true },
@@ -840,6 +1204,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-2-q2",
         question: "What does Legali's exhibit list include?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just exhibit letters", correct: false },
           { id: "B", text: "Exhibit ID, description, date, and relevance", correct: true },
@@ -852,6 +1223,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-2-q3",
         question: "How many copies does Legali tell you to bring?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "One for yourself", correct: false },
           { id: "B", text: "Three sets plus an extra backup", correct: true },
@@ -864,6 +1242,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-2-q4",
         question: "How does Legali help you authenticate documents?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Notarize everything", correct: false },
           { id: "B", text: "Provides scripts for explaining each document", correct: true },
@@ -876,6 +1261,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-2-q5",
         question: "What if you have videos or audio recordings?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You can't use them", correct: false },
           { id: "B", text: "Legali provides format instructions and playback tips", correct: true },
@@ -901,6 +1293,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-3-q1",
         question: "How does Legali help you prepare witnesses?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Witnesses don't need preparation", correct: false },
           { id: "B", text: "Provides prep guides with question lists and mock testimony", correct: true },
@@ -913,6 +1312,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-3-q2",
         question: "What does Legali provide for each witness?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Nothing", correct: false },
           { id: "B", text: "Personalized prep packet with etiquette and likely questions", correct: true },
@@ -925,6 +1331,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-3-q3",
         question: "How does Legali help with subpoenas?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You can't subpoena in small claims", correct: false },
           { id: "B", text: "Generates small claims subpoenas with service instructions", correct: true },
@@ -937,6 +1350,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-3-q4",
         question: "What if your witness can't attend the hearing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You lose their testimony", correct: false },
           { id: "B", text: "Legali guides you through written declarations", correct: true },
@@ -949,6 +1369,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-3-q5",
         question: "How does Legali help you sequence witness testimony?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON3_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Alphabetical order", correct: false },
           { id: "B", text: "Recommends strategic order so your story builds momentum", correct: true },
@@ -974,6 +1401,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-4-q1",
         question: "How does Legali help you prepare for defendant's arguments?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It can't predict them", correct: false },
           { id: "B", text: "Shows common defenses and how to counter each", correct: true },
@@ -986,6 +1420,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-4-q2",
         question: "What does Legali's defense anticipation tool provide?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just a list of defenses", correct: false },
           { id: "B", text: "Defenses plus your counter-evidence and sample responses", correct: true },
@@ -998,6 +1439,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-4-q3",
         question: "How does Legali help if defendant claims you're wrong about damages?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't help", correct: false },
           { id: "B", text: "Provides damage breakdowns with receipts", correct: true },
@@ -1010,6 +1458,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-4-q4",
         question: "What if defendant brings surprise evidence?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Panic", correct: false },
           { id: "B", text: "Legali provides courtroom response scripts", correct: true },
@@ -1022,6 +1477,13 @@ const module3Lessons: LegaliLessonContent[] = [
       {
         id: "module-3-lesson-4-q5",
         question: "How does Legali prepare you for cross-examination?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE3_LESSON4_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "No cross-exam in small claims", correct: false },
           { id: "B", text: "Practice questions with suggested honest answers", correct: true },
@@ -1050,6 +1512,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-1-q1",
         question: "What does Legali provide the night before your hearing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Nothing", correct: false },
           { id: "B", text: "Complete hearing checklist, printable materials, and motivation", correct: true },
@@ -1062,6 +1531,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-1-q2",
         question: "What's in Legali's court day checklist?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Just documents", correct: false },
           { id: "B", text: "Documents, evidence, notepad, dress tips, and timing", correct: true },
@@ -1074,6 +1550,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-1-q3",
         question: "How does Legali help with morning-of jitters?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't", correct: false },
           { id: "B", text: "Quick meditation, key point review, and encouragement", correct: true },
@@ -1086,6 +1569,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-1-q4",
         question: "What if you can't find the courtroom?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "You're late", correct: false },
           { id: "B", text: "Legali provides maps, department numbers, and clerk contacts", correct: true },
@@ -1098,6 +1588,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-1-q5",
         question: "How does Legali remind you about courtroom rules?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON1_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't", correct: false },
           { id: "B", text: "Push notification with etiquette reminders", correct: true },
@@ -1123,6 +1620,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-2-q1",
         question: "Can you access Legali during the hearing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "No phones allowed", correct: false },
           { id: "B", text: "Use printed materials and check the app during breaks", correct: true },
@@ -1135,6 +1639,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-2-q2",
         question: "What if you forget what to say next?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Panic", correct: false },
           { id: "B", text: "Follow the printed script prompts", correct: true },
@@ -1147,6 +1658,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-2-q3",
         question: "How does Legali help you stay organized during testimony?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "It doesn't", correct: false },
           { id: "B", text: "Evidence checklist to mark each exhibit", correct: true },
@@ -1159,6 +1677,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-2-q4",
         question: "What if the judge asks an unexpected question?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Freeze", correct: false },
           { id: "B", text: "Use bridge phrases from your prep packet", correct: true },
@@ -1171,6 +1696,13 @@ const module4Lessons: LegaliLessonContent[] = [
       {
         id: "module-4-lesson-2-q5",
         question: "How does Legali help you take notes during the hearing?",
+        typing: DEMO_QUESTION_TYPING,
+        mascot: {
+          onReading: DEMO_QUESTION_READING_SCRIPT,
+          onWaitingAnswer: DEMO_MODULE4_LESSON2_SCRIPT,
+          onRevealCorrect: DEMO_REVEAL_CORRECT_GENERIC,
+          onRevealIncorrect: DEMO_REVEAL_INCORRECT_GENERIC,
+        },
         answers: [
           { id: "A", text: "Don't take notes", correct: false },
           { id: "B", text: "Provides note templates for claims, questions, and follow-ups", correct: true },
@@ -1192,7 +1724,7 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     description:
       "Confirm eligibility, collect facts, weigh strategic options, and generate error-free documents before you ever step into court.",
     mascotCopy:
-      "Welcome back. Let’s start by confirming small-claims eligibility and choosing the right court — it saves time later.",
+      "Welcome back — let’s get oriented like we’re walking into the clerk’s office. First: confirm small-claims eligibility and venue so every next step lands in the right place.",
     lessons: module1Lessons,
   },
   {
@@ -1202,7 +1734,7 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     description:
       "File the way you prefer, arrange perfect service, secure hearing dates, and stay organized with automated tracking.",
     mascotCopy:
-      "Next up: filing. I’ll help you prep documents, pick a filing method, and keep service and dates on track.",
+      "Now we file. I’ll help you assemble a clean packet, choose the best filing route, and track service and dates like a docket — no loose ends.",
     lessons: module2Lessons,
   },
   {
@@ -1212,7 +1744,7 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     description:
       "Craft persuasive trial plans, assemble polished evidence packets, coach witnesses, and outmaneuver defenses.",
     mascotCopy:
-      "Time to prepare. We’ll organize evidence, build your story, and practice the key points you’ll present.",
+      "Time to prep like a pro. We’ll organize your exhibits, tighten your story, and rehearse the key points until they sound calm, clear, and credible.",
     lessons: module3Lessons,
   },
   {
@@ -1222,7 +1754,7 @@ export const legaliDemoModules: LegaliModuleContent[] = [
     description:
       "Execute last-minute prep, navigate courtroom logistics, and stay collected during the hearing itself.",
     mascotCopy:
-      "Hearing day! I’ll keep you calm and ready — from last-minute checks to staying composed with the judge.",
+      "Hearing day. I’ll keep you steady — last-minute checklist, courtroom logistics, and simple scripts to stay composed when the judge asks questions.",
     lessons: module4Lessons,
   },
 ]

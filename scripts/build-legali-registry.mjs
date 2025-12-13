@@ -62,6 +62,7 @@ const files = [
   { name: "legali-quiz-question", type: "registry:ui", files: ["components/ui/legali/composite/QuizQuestion.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
   { name: "legali-results-card", type: "registry:ui", files: ["components/ui/legali/composite/ResultsCard.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-button", "legali-stat-row", "legali-glass-card", "legali-lib-utils"] },
   { name: "legali-user-stats-bar", type: "registry:ui", files: ["components/ui/legali/composite/UserStatsBar.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-stat-item", "legali-lib-utils"] },
+  { name: "legali-quiz-mascot-prompt", type: "registry:ui", files: ["components/ui/legali/composite/QuizMascotPrompt.tsx"], dependencies: ["clsx", "tailwind-merge"], registryDependencies: ["legali-lib-utils"] },
 
   // Screens
   { name: "legali-home-screen", type: "registry:ui", files: ["components/ui/legali/screens/HomeScreen.tsx"], dependencies: ["lucide-react", "clsx", "tailwind-merge"], registryDependencies: ["legali-user-stats-bar", "legali-module-card", "legali-navigation-bar", "legali-mascot", "legali-mascot-hero-card", "legali-progress-screen", "legali-profile-screen", "legali-lib-utils"] },
@@ -76,31 +77,33 @@ const files = [
 
   // Data and barrel
   { name: "legali-demo-content", type: "registry:lib", files: ["components/ui/legali/data/legali-demo-content.ts"], registryDependencies: ["legali-quiz-screen"] },
-  { name: "legali-kit", type: "registry:lib", files: ["components/ui/legali/index.ts"], registryDependencies: [
-    "legali-answer",
-    "legali-typing-text",
-    "legali-glass-card",
-    "legali-lesson-dot",
-    "legali-progress-bar",
-    "legali-stat-item",
-    "legali-stat-row",
-    "legali-status-bar",
-    "legali-user-stats-bar",
-    "legali-progress-section",
-    "legali-module-card",
-    "legali-mascot-hero-card",
-    "legali-quiz-header",
-    "legali-quiz-question",
-    "legali-quiz-feedback",
-    "legali-results-card",
-    "legali-navigation-bar",
-    "legali-home-screen",
-    "legali-quiz-screen",
-    "legali-results-screen",
-    "legali-progress-screen",
-    "legali-profile-screen",
-    "legali-mascot",
-  ] },
+  {
+    name: "legali-kit", type: "registry:lib", files: ["components/ui/legali/index.ts"], registryDependencies: [
+      "legali-answer",
+      "legali-typing-text",
+      "legali-glass-card",
+      "legali-lesson-dot",
+      "legali-progress-bar",
+      "legali-stat-item",
+      "legali-stat-row",
+      "legali-status-bar",
+      "legali-user-stats-bar",
+      "legali-progress-section",
+      "legali-module-card",
+      "legali-mascot-hero-card",
+      "legali-quiz-header",
+      "legali-quiz-question",
+      "legali-quiz-feedback",
+      "legali-results-card",
+      "legali-navigation-bar",
+      "legali-home-screen",
+      "legali-quiz-screen",
+      "legali-results-screen",
+      "legali-progress-screen",
+      "legali-profile-screen",
+      "legali-mascot",
+    ]
+  },
 ]
 
 async function rewriteContent(content) {
@@ -195,7 +198,7 @@ async function build() {
       }
       return dep // Keep shadcn core deps as-is (e.g., "button", "card")
     })
-    
+
     const itemWithResolvedDeps = {
       ...item,
       registryDependencies: resolvedDeps.length > 0 ? resolvedDeps : undefined,

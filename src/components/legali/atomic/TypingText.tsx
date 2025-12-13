@@ -128,21 +128,21 @@ export function TypingText({
       // Typing complete
       onComplete?.();
 
-      if (texts && texts.length > 1) {
-        const isLast = currentTextIndex >= texts.length - 1;
-        if (loop || !isLast) {
-          const nextIndex = loop ? (currentTextIndex + 1) % texts.length : currentTextIndex + 1;
-          const timeout = setTimeout(() => {
-            setDisplayText('');
-            setCurrentIndex(0);
-            setCurrentTextIndex(nextIndex);
-          }, pauseDuration);
+      const hasAnyText = textArray.length > 0;
+      const canCycle = loop || currentTextIndex < textArray.length - 1;
 
-          return () => clearTimeout(timeout);
-        }
+      if (hasAnyText && canCycle) {
+        const nextIndex = loop ? (currentTextIndex + 1) % textArray.length : currentTextIndex + 1;
+        const timeout = setTimeout(() => {
+          setDisplayText('');
+          setCurrentIndex(0);
+          setCurrentTextIndex(nextIndex);
+        }, pauseDuration);
+
+        return () => clearTimeout(timeout);
       }
     }
-  }, [currentIndex, currentText, isTyping, speed, loop, texts, pauseDuration, onComplete]);
+  }, [currentIndex, currentText, isTyping, speed, loop, texts, pauseDuration, onComplete, currentTextIndex, textArray.length]);
 
   // Animation variants for container (fadeIn by default, extendable)
   const finalVariants = {

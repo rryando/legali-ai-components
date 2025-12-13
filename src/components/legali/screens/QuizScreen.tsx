@@ -12,7 +12,7 @@ const shuffleArray = <T,>(items: readonly T[]) => {
   const result = items.slice()
   for (let i = result.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[result[i], result[j]] = [result[j], result[i]]
+      ;[result[i], result[j]] = [result[j], result[i]]
   }
   return result
 }
@@ -40,7 +40,7 @@ export interface Question {
     /** Looping script that runs while the question is typing (pre-hint, pre-feedback). */
     onReading?: QuizMascotScriptStep[]
     /** Looping script that runs after the question finishes typing (until feedback). */
-    script?: QuizMascotScriptStep[]
+    onWaitingAnswer?: QuizMascotScriptStep[]
     /** One-shot script to run (after question typing) when the answer is correct. */
     onRevealCorrect?: QuizMascotScriptStep[]
     /** One-shot script to run (after question typing) when the answer is incorrect. */
@@ -105,11 +105,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
         return
       }
 
-      const timer = window.setTimeout(() => {
-        setPromptDelayDone(true)
-      }, 8000)
-
-      return () => window.clearTimeout(timer)
+      setPromptDelayDone(true)
     }, [questionTypedDone, showFeedback, currentQuestion.id])
 
     const defaultHintScript = React.useMemo<QuizMascotScriptStep[]>(() => {
@@ -173,8 +169,8 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     }, [])
 
     const hintScript = React.useMemo(() => {
-      return currentQuestion.mascot?.script?.length ? currentQuestion.mascot.script : defaultHintScript
-    }, [currentQuestion.mascot?.script, defaultHintScript])
+      return currentQuestion.mascot?.onWaitingAnswer?.length ? currentQuestion.mascot.onWaitingAnswer : defaultHintScript
+    }, [currentQuestion.mascot?.onWaitingAnswer, defaultHintScript])
 
     const readingScript = React.useMemo(() => {
       return currentQuestion.mascot?.onReading?.length
@@ -216,15 +212,15 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
     const handleCheck = () => {
       if (!selectedAnswerId) return
-      
+
       const isCorrect = Boolean(currentQuestion.answers.find(a => a.id === selectedAnswerId)?.correct)
       if (isCorrect) setScore(s => s + 1)
-      
+
       setUserAnswers(prev => ({
         ...prev,
         [currentQuestion.id]: selectedAnswerId
       }))
-      
+
       setIsAnswerChecked(true)
       setShowFeedback(true)
 
@@ -323,7 +319,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
         <div className="flex-1 overflow-y-auto px-5 py-8 pb-32 relative z-0">
           <div className="max-w-2xl mx-auto">
-            
+
 
             <QuizQuestion
               question={currentQuestion.question}
@@ -376,8 +372,8 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
                 disabled={!selectedAnswerId}
                 className={cn(
                   "w-full font-bold py-6 text-lg rounded-2xl shadow-xl transition-all duration-300",
-                  selectedAnswerId 
-                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/30 hover:-translate-y-1 hover:shadow-2xl" 
+                  selectedAnswerId
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/30 hover:-translate-y-1 hover:shadow-2xl"
                     : "bg-slate-200 text-slate-400 cursor-not-allowed"
                 )}
               >
