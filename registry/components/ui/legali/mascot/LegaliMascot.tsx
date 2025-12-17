@@ -27,6 +27,11 @@ export const MascotMotion = {
   WAVING: 'WAVING',
   SHRUG: 'SHRUG',
   CELEBRATE: 'CELEBRATE',
+  SCHEDULED: 'SCHEDULED',
+  IDEA: 'IDEA',
+  READING: 'READING',
+  THROPHY: 'THROPHY',
+  THUMBSUP: 'THUMBSUP',
 } as const
 
 export type MascotMotionType = (typeof MascotMotion)[keyof typeof MascotMotion]
@@ -47,6 +52,11 @@ export const MascotMotionLabels: Record<MascotMotionType, string> = {
   [MascotMotion.WAVING]: 'Waving',
   [MascotMotion.SHRUG]: 'Shrug',
   [MascotMotion.CELEBRATE]: 'Celebrate',
+  [MascotMotion.SCHEDULED]: 'Scheduled',
+  [MascotMotion.IDEA]: 'Idea',
+  [MascotMotion.READING]: 'Reading',
+  [MascotMotion.THROPHY]: 'Throphy',
+  [MascotMotion.THUMBSUP]: 'Thumbsup',
 }
 
 export interface LegaliMascotProps {

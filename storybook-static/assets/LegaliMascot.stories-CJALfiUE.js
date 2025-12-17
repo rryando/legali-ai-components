@@ -1,4 +1,4 @@
-import{M as Et,a as t,L as Tt}from"./LegaliMascot-YN_T4VAf.js";import"./jsx-runtime-BjG_zV1W.js";import"./index-yIsmwZOr.js";const bt={title:"Legali/Mascot/LegaliMascot",component:Tt,parameters:{layout:"centered",docs:{description:{component:`
+import{M as Et,a as t,L as Tt}from"./LegaliMascot-DI_ht39e.js";import"./jsx-runtime-BjG_zV1W.js";import"./index-yIsmwZOr.js";const bt={title:"Legali/Mascot/LegaliMascot",component:Tt,parameters:{layout:"centered",docs:{description:{component:`
 The **LegaliMascot** component displays an animated mascot character using Rive animations.
 It supports multiple motion states and blinking control through View Model data binding.
 
