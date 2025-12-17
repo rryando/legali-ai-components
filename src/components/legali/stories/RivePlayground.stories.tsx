@@ -147,6 +147,11 @@ function getMotionIcon(motion: string): string {
     WAVING: '🙋',
     SHRUG: '🤷',
     CELEBRATE: '🎉',
+    SCHEDULED: '📅',
+    IDEA: '💡',
+    READING: '📖',
+    THROPHY: '🏆',
+    THUMBSUP: '👍',
   }
   return icons[motion] || '🎭'
 }
@@ -357,7 +362,7 @@ const meta: Meta<typeof MascotPlayground> = {
 An interactive playground to experiment with the Legali mascot animation.
 
 ## Features
-- 🎬 **12 Motion States** - Switch between all available animations
+- 🎬 **15 Motion States** - Switch between all available animations
 - 👁️ **Blink Control** - Toggle character blinking on/off
 - 🎲 **Random Motion** - Get a random animation
 - 🔄 **Reset** - Return to default state
