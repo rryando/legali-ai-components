@@ -8,9 +8,10 @@ storybook-static
 # Generated registry files
 registry
 
-# Lock files (using pnpm as primary package manager)
+# Lock files (bun.lock is committed for reproducible builds)
 pnpm-lock.yaml
-bun.lock
+package-lock.json
+yarn.lock
 
 # Logs
 *.log

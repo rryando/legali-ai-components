@@ -1,0 +1,37 @@
+name: Build Registry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/components/legali/**"
+      - "src/styles/**"
+      - "scripts/build-legali-registry.mjs"
+  workflow_dispatch:
+
+jobs:
+  build-registry:
+    name: Build Registry
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build Registry
+        run: bun run build:registry
+
+      - name: Upload Registry Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: registry
+          path: registry/
+          retention-days: 30
