@@ -32,7 +32,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu"
 import { Button } from "@/components/button"
-import { GlassCard } from "../atomic/GlassCard"
 import { LegaliMascot, MascotMotion, type MascotMotionType } from "../mascot/LegaliMascot"
 import {
   useTypingAnimation,
@@ -43,6 +42,55 @@ import {
   useIdleDetection,
   useParallax,
 } from "../hooks/useAnimations"
+
+// ============================================================================
+// Spotlight Card Component
+// ============================================================================
+
+const SpotlightCard = ({
+  children,
+  className = "",
+  spotlightColor = "rgba(78, 174, 208, 0.15)",
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { spotlightColor?: string }) => {
+  const divRef = React.useRef<HTMLDivElement>(null)
+  const [position, setPosition] = React.useState({ x: 0, y: 0 })
+  const [opacity, setOpacity] = React.useState(0)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return
+    const rect = divRef.current.getBoundingClientRect()
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+    setOpacity(1)
+  }
+
+  const handleMouseEnter = () => setOpacity(1)
+  const handleMouseLeave = () => setOpacity(0)
+
+  return (
+    <div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={cn(
+        "relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 backdrop-blur-xl transition-all duration-300",
+        "shadow-lg hover:shadow-xl hover:border-slate-300/50",
+        className
+      )}
+      {...props}
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+        }}
+      />
+      <div className="relative">{children}</div>
+    </div>
+  )
+}
 
 // ============================================================================
 // Asset URLs
@@ -94,7 +142,18 @@ const AnimatedBackground = ({ enableParallax = false }: { enableParallax?: boole
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-[#a78bfa]/15 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s', transform }} />
       
       {/* Noise texture overlay */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")' }} />
+      
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+        .animate-shimmer {
+          background-size: 200% 100%;
+          animation: shimmer 8s linear infinite;
+        }
+      `}</style>
     </div>
   )
 }
@@ -212,14 +271,14 @@ const LiveTicker = () => {
       "fixed bottom-6 left-6 z-40 transition-all duration-500 hidden md:block",
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
     )}>
-      <GlassCard intensity="high" className="px-4 py-3 rounded-xl flex items-center gap-3 shadow-lg">
+      <SpotlightCard className="px-4 py-3 rounded-xl flex items-center gap-3 shadow-lg bg-white/80">
         <Bell className="w-4 h-4 text-[#4eaed0]" />
         <p className="text-sm text-slate-700">
           <span className="font-semibold">{notification.name}</span>
           <span className="text-slate-500"> from {notification.location}</span>
           <span className="text-slate-600"> just {notification.action}</span>
         </p>
-      </GlassCard>
+      </SpotlightCard>
     </div>
   )
 }
@@ -247,12 +306,12 @@ const AnimatedCounter = ({
   }, [isInView, start])
 
   return (
-    <GlassCard ref={ref} intensity="medium" className="p-6 rounded-2xl text-center group hover:-translate-y-1 transition-transform duration-300">
-      <div className="text-3xl md:text-4xl font-bold text-slate-900 mb-1 group-hover:scale-105 transition-transform">
+    <SpotlightCard className="p-6 rounded-2xl text-center">
+      <div ref={ref} className="text-3xl md:text-4xl font-bold text-slate-900 mb-1 group-hover:scale-105 transition-transform">
         {prefix}{count}{suffix}
       </div>
       <div className="text-sm text-slate-600">{label}</div>
-    </GlassCard>
+    </SpotlightCard>
   )
 }
 
@@ -290,7 +349,7 @@ const NavDropdown = ({
   </DropdownMenu>
 )
 
-const HeaderV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
+const HeaderV3 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [scrolled, setScrolled] = React.useState(false)
 
@@ -405,7 +464,7 @@ const HeaderV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
 // Hero Section with Mascot
 // ============================================================================
 
-const HeroSectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
+const HeroSectionV3 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
   const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(MascotMotion.WAVING)
   const [inputValue, setInputValue] = React.useState('')
   const [isFocused, setIsFocused] = React.useState(false)
@@ -502,7 +561,7 @@ const HeroSectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
 
             {/* Search Input */}
             <div className="max-w-xl mx-auto lg:mx-0 mb-8 animate-in fade-in slide-in-from-bottom duration-700 delay-300">
-              <GlassCard intensity="high" className="rounded-2xl p-2 shadow-2xl shadow-slate-200/50 border-white/60 hover:shadow-3xl transition-shadow duration-500">
+              <SpotlightCard className="rounded-3xl p-2 shadow-2xl shadow-blue-500/5 border-white/40 ring-1 ring-white/50 backdrop-blur-2xl">
                 <div className="flex items-center gap-2">
                   <div className="flex-1 relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -518,12 +577,12 @@ const HeroSectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
                   </div>
                   <Button
                     onClick={handleAnalyzeClick}
-                    className="h-auto py-3.5 px-6 bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-[length:200%_100%] hover:bg-right text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all duration-500"
+                    className="h-auto py-3.5 px-6 bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-[length:200%_100%] hover:bg-right text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all duration-500 animate-shimmer"
                   >
                     Analyze
                   </Button>
                 </div>
-              </GlassCard>
+              </SpotlightCard>
             </div>
 
             {/* Quick Actions */}
@@ -594,7 +653,7 @@ const HeroSectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
 // Trust Logos with Marquee Effect
 // ============================================================================
 
-const TrustLogosV2 = () => (
+const TrustLogosV3 = () => (
   <section className="py-16 px-6 bg-gradient-to-b from-white to-slate-50/50 overflow-hidden">
     <div className="max-w-7xl mx-auto">
       <p className="text-center text-sm font-medium text-slate-500 uppercase tracking-wider mb-12">
@@ -626,7 +685,7 @@ const TrustLogosV2 = () => (
 // Problem Section with Mascot
 // ============================================================================
 
-const ProblemSectionV2 = () => {
+const ProblemSectionV3 = () => {
   const problems = [
     {
       stat: "15M",
@@ -673,10 +732,10 @@ const ProblemSectionV2 = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {problems.map((problem, index) => (
-            <GlassCard
+            <SpotlightCard
               key={problem.title}
-              intensity="high"
-              className="relative p-8 rounded-3xl group hover:-translate-y-2 transition-all duration-500"
+              className="relative p-8 rounded-3xl group transition-all duration-500 hover:-translate-y-2"
+              spotlightColor={problem.gradient.includes("rose") ? "rgba(225, 29, 72, 0.15)" : problem.gradient.includes("amber") ? "rgba(217, 119, 6, 0.15)" : "rgba(225, 29, 72, 0.15)"}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Gradient accent */}
@@ -697,7 +756,7 @@ const ProblemSectionV2 = () => {
               <p className="text-slate-600 leading-relaxed">
                 {problem.description}
               </p>
-            </GlassCard>
+            </SpotlightCard>
           ))}
         </div>
 
@@ -708,14 +767,14 @@ const ProblemSectionV2 = () => {
             width={200}
             height={200}
           />
-          <GlassCard intensity="high" className="p-6 rounded-2xl max-w-md relative">
+          <SpotlightCard className="p-6 rounded-2xl max-w-md relative">
             {/* Speech bubble tail */}
             <div className="absolute left-0 bottom-4 -translate-x-2 w-4 h-4 bg-white/80 rotate-45" />
             <p className="text-slate-700 font-medium relative z-10">
               "That's why we built Legali—to level the playing field and give everyone 
               <span className="text-[#4eaed0] font-bold"> equal access to justice</span>."
             </p>
-          </GlassCard>
+          </SpotlightCard>
         </div>
       </div>
     </section>
@@ -726,7 +785,7 @@ const ProblemSectionV2 = () => {
 // Features Section
 // ============================================================================
 
-const FeaturesSectionV2 = () => {
+const FeaturesSectionV3 = () => {
   const [activeFeature, setActiveFeature] = React.useState(0)
   const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(MascotMotion.LAPTOP)
 
@@ -866,8 +925,7 @@ const FeaturesSectionV2 = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${features[activeFeature].gradient} opacity-20 rounded-full blur-3xl scale-110 transition-all duration-500`} />
               
               {/* Feature card behind mascot */}
-              <GlassCard
-                intensity="high"
+              <SpotlightCard
                 className="absolute inset-x-0 bottom-0 p-6 rounded-2xl -z-10 transform translate-y-8"
               >
                 <div className="flex items-center gap-3 mb-3">
@@ -879,7 +937,7 @@ const FeaturesSectionV2 = () => {
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div className={`h-full bg-gradient-to-r ${features[activeFeature].gradient} rounded-full transition-all duration-500`} style={{ width: '75%' }} />
                 </div>
-              </GlassCard>
+              </SpotlightCard>
 
               <LegaliMascot
                 motion={mascotMotion}
@@ -899,7 +957,7 @@ const FeaturesSectionV2 = () => {
 // How It Works Section
 // ============================================================================
 
-const HowItWorksSectionV2 = () => {
+const HowItWorksSectionV3 = () => {
   const steps = [
     {
       number: "01",
@@ -944,9 +1002,9 @@ const HowItWorksSectionV2 = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div key={step.number} className="relative">
-                <GlassCard
-                  intensity="high"
+                <SpotlightCard
                   className="p-8 rounded-3xl text-center hover:-translate-y-2 transition-all duration-500 group"
+                  spotlightColor={step.gradient.includes("4eaed0") ? "rgba(78, 174, 208, 0.15)" : step.gradient.includes("764ba2") ? "rgba(118, 75, 162, 0.15)" : "rgba(244, 114, 182, 0.15)" }
                 >
                   {/* Step number */}
                   <div className={`relative z-10 w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center text-white text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300`}>
@@ -964,7 +1022,7 @@ const HowItWorksSectionV2 = () => {
                   <p className="text-slate-600">
                     {step.description}
                   </p>
-                </GlassCard>
+                </SpotlightCard>
                 
                 {/* Arrow between steps */}
                 {index < steps.length - 1 && (
@@ -985,7 +1043,7 @@ const HowItWorksSectionV2 = () => {
 // Testimonials Section
 // ============================================================================
 
-const TestimonialsSectionV2 = () => {
+const TestimonialsSectionV3 = () => {
   const testimonials = [
     {
       quote: "Legali helped me understand my contract dispute in minutes. I felt empowered to negotiate a fair settlement.",
@@ -1025,9 +1083,8 @@ const TestimonialsSectionV2 = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <GlassCard
+            <SpotlightCard
               key={testimonial.author}
-              intensity="high"
               className="p-8 rounded-3xl hover:-translate-y-2 transition-all duration-500"
             >
               {/* Stars */}
@@ -1050,7 +1107,7 @@ const TestimonialsSectionV2 = () => {
                   <div className="text-sm text-slate-500">{testimonial.role}</div>
                 </div>
               </div>
-            </GlassCard>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -1062,7 +1119,7 @@ const TestimonialsSectionV2 = () => {
 // FAQ Section
 // ============================================================================
 
-const FAQSectionV2 = () => {
+const FAQSectionV3 = () => {
   const faqs = [
     {
       question: "Is Legali a law firm?",
@@ -1102,9 +1159,8 @@ const FAQSectionV2 = () => {
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <GlassCard
+            <SpotlightCard
               key={index}
-              intensity="high"
               className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
             >
               <details className="group">
@@ -1118,7 +1174,7 @@ const FAQSectionV2 = () => {
                   {faq.answer}
                 </div>
               </details>
-            </GlassCard>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -1130,7 +1186,7 @@ const FAQSectionV2 = () => {
 // CTA Section
 // ============================================================================
 
-const CTASectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => (
+const CTASectionV3 = ({ onGetStarted }: { onGetStarted?: () => void }) => (
   <section id="cta" className="relative py-32 px-6 overflow-hidden">
     {/* Dark gradient background */}
     <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]" />
@@ -1208,7 +1264,7 @@ const CTASectionV2 = ({ onGetStarted }: { onGetStarted?: () => void }) => (
 // Footer
 // ============================================================================
 
-const FooterV2 = () => (
+const FooterV3 = () => (
   <footer className="bg-[#0f172a] text-slate-400 pt-20 pb-8 px-6">
     <div className="max-w-7xl mx-auto">
       {/* Main footer content */}
@@ -1289,7 +1345,7 @@ const FooterV2 = () => (
 // Main Component
 // ============================================================================
 
-const LandingPageV2 = React.forwardRef<HTMLDivElement, LandingPageV2Props>(
+const LandingPageV3 = React.forwardRef<HTMLDivElement, LandingPageV2Props>(
   ({ className, onGetStarted, onWatchDemo, ...props }, ref) => {
     return (
       <div
@@ -1303,21 +1359,21 @@ const LandingPageV2 = React.forwardRef<HTMLDivElement, LandingPageV2Props>(
         <LiveTicker />
         
         {/* Page Sections */}
-        <HeaderV2 onGetStarted={onGetStarted} />
-        <HeroSectionV2 onGetStarted={onGetStarted} />
-        <TrustLogosV2 />
-        <ProblemSectionV2 />
-        <FeaturesSectionV2 />
-        <HowItWorksSectionV2 />
-        <TestimonialsSectionV2 />
-        <FAQSectionV2 />
-        <CTASectionV2 onGetStarted={onGetStarted} />
-        <FooterV2 />
+        <HeaderV3 onGetStarted={onGetStarted} />
+        <HeroSectionV3 onGetStarted={onGetStarted} />
+        <TrustLogosV3 />
+        <ProblemSectionV3 />
+        <FeaturesSectionV3 />
+        <HowItWorksSectionV3 />
+        <TestimonialsSectionV3 />
+        <FAQSectionV3 />
+        <CTASectionV3 onGetStarted={onGetStarted} />
+        <FooterV3 />
       </div>
     )
   }
 )
 
-LandingPageV2.displayName = "LandingPageV2"
+LandingPageV3.displayName = "LandingPageV3"
 
-export { LandingPageV2 }
+export { LandingPageV3 }
