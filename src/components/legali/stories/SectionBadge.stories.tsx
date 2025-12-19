@@ -64,31 +64,15 @@ export const NoIcon: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <SectionBadge
-        icon={<Sparkles className="h-4 w-4" />}
-        label="Info"
-        variant="info"
-      />
+      <SectionBadge icon={<Sparkles className="h-4 w-4" />} label="Info" variant="info" />
       <SectionBadge
         icon={<AlertTriangle className="h-4 w-4" />}
         label="Warning"
         variant="warning"
       />
-      <SectionBadge
-        icon={<AlertTriangle className="h-4 w-4" />}
-        label="Danger"
-        variant="danger"
-      />
-      <SectionBadge
-        icon={<Shield className="h-4 w-4" />}
-        label="Success"
-        variant="success"
-      />
-      <SectionBadge
-        icon={<Star className="h-4 w-4" />}
-        label="Neutral"
-        variant="neutral"
-      />
+      <SectionBadge icon={<AlertTriangle className="h-4 w-4" />} label="Danger" variant="danger" />
+      <SectionBadge icon={<Shield className="h-4 w-4" />} label="Success" variant="success" />
+      <SectionBadge icon={<Star className="h-4 w-4" />} label="Neutral" variant="neutral" />
     </div>
   ),
 };

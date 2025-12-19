@@ -78,13 +78,9 @@ const ResultsCard = React.forwardRef<HTMLDivElement, ResultsCardProps>(
           <TrophyIcon className="h-12 w-12 text-emerald-600" />
         </div>
 
-        <h2 className="mb-2 font-bold font-serif text-3xl text-slate-900">
-          Lesson Complete!
-        </h2>
+        <h2 className="mb-2 font-bold font-serif text-3xl text-slate-900">Lesson Complete!</h2>
 
-        <div className="mb-8 font-medium text-lg text-slate-500">
-          You're making great progress.
-        </div>
+        <div className="mb-8 font-medium text-lg text-slate-500">You're making great progress.</div>
 
         {badgeTitle && (
           <div className="mb-8 flex w-full items-center justify-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-6 py-3 font-bold text-amber-800 shadow-sm">

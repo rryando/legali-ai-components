@@ -61,9 +61,7 @@ export const InContext: Story = {
       <h1 className="font-bold text-4xl text-slate-900">
         Legal guidance <GradientText variant="primary">reimagined</GradientText>
       </h1>
-      <p className="mt-4 text-lg text-slate-600">
-        This is how it looks in a real heading context.
-      </p>
+      <p className="mt-4 text-lg text-slate-600">This is how it looks in a real heading context.</p>
     </div>
   ),
 };

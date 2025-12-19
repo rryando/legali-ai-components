@@ -27,13 +27,11 @@ export const CustomFAQs: Story = {
       },
       {
         question: "Is there a free trial?",
-        answer:
-          "Yes! We offer a 14-day free trial with full access to all features.",
+        answer: "Yes! We offer a 14-day free trial with full access to all features.",
       },
       {
         question: "Can I cancel anytime?",
-        answer:
-          "Absolutely. You can cancel your subscription at any time with no penalties.",
+        answer: "Absolutely. You can cancel your subscription at any time with no penalties.",
       },
     ],
   },

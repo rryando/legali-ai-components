@@ -8,8 +8,7 @@ export interface NavItem {
   label: string;
 }
 
-export interface NavigationBarProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface NavigationBarProps extends React.HTMLAttributes<HTMLDivElement> {
   items: NavItem[];
   activeItem: string;
   onItemClick: (id: string) => void;
@@ -33,8 +32,7 @@ const NavigationBar = React.forwardRef<HTMLDivElement, NavigationBarProps>(
           let iconNode = item.icon;
           if (typeof item.icon === "string") {
             if (item.id === "learn") iconNode = <Home className="h-6 w-6" />;
-            if (item.id === "progress")
-              iconNode = <Trophy className="h-6 w-6" />;
+            if (item.id === "progress") iconNode = <Trophy className="h-6 w-6" />;
             if (item.id === "profile") iconNode = <User className="h-6 w-6" />;
           }
 
@@ -50,10 +48,7 @@ const NavigationBar = React.forwardRef<HTMLDivElement, NavigationBarProps>(
               onClick={() => onItemClick(item.id)}
             >
               <div
-                className={cn(
-                  "transition-transform duration-300",
-                  isActive && "-translate-y-0.5"
-                )}
+                className={cn("transition-transform duration-300", isActive && "-translate-y-0.5")}
               >
                 {iconNode}
               </div>

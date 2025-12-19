@@ -19,8 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    question:
-      "What is the maximum amount you can sue for in small claims court in California?",
+    question: "What is the maximum amount you can sue for in small claims court in California?",
     questionNumber: 1,
   },
 };
@@ -35,7 +34,6 @@ export const LongQuestion: Story = {
 
 export const NoNumber: Story = {
   args: {
-    question:
-      "Which of the following is NOT a valid reason to sue in small claims court?",
+    question: "Which of the following is NOT a valid reason to sue in small claims court?",
   },
 };

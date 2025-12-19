@@ -19,9 +19,7 @@ export const Default: Story = {
       <AnimatedBackground />
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center">
-          <h1 className="mb-4 font-bold text-4xl text-slate-900">
-            Animated Background
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl text-slate-900">Animated Background</h1>
           <p className="text-lg text-slate-600">
             Watch the gradient orbs pulse and animate in the background.
           </p>
@@ -37,9 +35,7 @@ export const WithParallax: Story = {
       <AnimatedBackground enableParallax parallaxIntensity={0.5} />
       <div className="relative z-10 flex h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="mb-4 font-bold text-4xl text-slate-900">
-            Parallax Background
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl text-slate-900">Parallax Background</h1>
           <p className="text-lg text-slate-600">
             Scroll to see the parallax effect on the background orbs.
           </p>
@@ -55,9 +51,7 @@ export const NoNoise: Story = {
       <AnimatedBackground showNoise={false} />
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="text-center">
-          <h1 className="mb-4 font-bold text-4xl text-slate-900">
-            Without Noise Overlay
-          </h1>
+          <h1 className="mb-4 font-bold text-4xl text-slate-900">Without Noise Overlay</h1>
           <p className="text-lg text-slate-600">
             This version has the noise texture overlay disabled.
           </p>

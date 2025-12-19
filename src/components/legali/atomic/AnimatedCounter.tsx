@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import { useCountUp, useInView } from "../hooks/useAnimations";
 import { SpotlightCard } from "./SpotlightCard";
 
-export interface AnimatedCounterProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface AnimatedCounterProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Target number to count up to */
   target: number;
   /** Text to display before the number */

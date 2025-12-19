@@ -48,8 +48,7 @@ const sampleQuestions = [
   },
   {
     id: 3,
-    question:
-      "How long do you typically have to respond to discovery requests?",
+    question: "How long do you typically have to respond to discovery requests?",
     answers: [
       { id: 1, text: "A) 24 hours", correct: false },
       { id: 2, text: "B) 30 days (in most jurisdictions)", correct: true },
@@ -97,8 +96,7 @@ export const FirstQuestion: Story = {
   args: {
     questions: sampleQuestions,
     onClose: () => console.log("Close clicked"),
-    onQuizComplete: (score, total) =>
-      console.log(`Quiz complete: ${score}/${total}`),
+    onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },
 };
 
@@ -106,8 +104,7 @@ export const MiddleQuestion: Story = {
   args: {
     questions: sampleQuestions,
     onClose: () => console.log("Close clicked"),
-    onQuizComplete: (score, total) =>
-      console.log(`Quiz complete: ${score}/${total}`),
+    onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },
 };
 
@@ -115,8 +112,7 @@ export const LastQuestion: Story = {
   args: {
     questions: sampleQuestions,
     onClose: () => console.log("Close clicked"),
-    onQuizComplete: (score, total) =>
-      console.log(`Quiz complete: ${score}/${total}`),
+    onQuizComplete: (score, total) => console.log(`Quiz complete: ${score}/${total}`),
   },
 };
 
@@ -124,7 +120,6 @@ export const Interactive: Story = {
   args: {
     questions: sampleQuestions,
     onClose: () => alert("Quiz closed"),
-    onQuizComplete: (score, total) =>
-      alert(`Quiz complete! Score: ${score}/${total}`),
+    onQuizComplete: (score, total) => alert(`Quiz complete! Score: ${score}/${total}`),
   },
 };

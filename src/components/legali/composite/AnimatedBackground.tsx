@@ -2,8 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useParallax } from "../hooks/useAnimations";
 
-export interface AnimatedBackgroundProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface AnimatedBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Enable parallax scrolling effect */
   enableParallax?: boolean;
   /** Parallax intensity (0-1) */
@@ -16,18 +15,9 @@ export interface AnimatedBackgroundProps
  * Animated gradient background with floating orbs.
  * Supports parallax scrolling and noise texture overlay.
  */
-const AnimatedBackground = React.forwardRef<
-  HTMLDivElement,
-  AnimatedBackgroundProps
->(
+const AnimatedBackground = React.forwardRef<HTMLDivElement, AnimatedBackgroundProps>(
   (
-    {
-      className,
-      enableParallax = false,
-      parallaxIntensity = 0.3,
-      showNoise = true,
-      ...props
-    },
+    { className, enableParallax = false, parallaxIntensity = 0.3, showNoise = true, ...props },
     ref
   ) => {
     const offset = useParallax(parallaxIntensity);
@@ -35,10 +25,7 @@ const AnimatedBackground = React.forwardRef<
 
     return (
       <div
-        className={cn(
-          "pointer-events-none absolute inset-0 overflow-hidden",
-          className
-        )}
+        className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
         ref={ref}
         {...props}
       >

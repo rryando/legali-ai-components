@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useState } from "react";
-import {
-  LegaliMascot,
-  MascotMotion,
-  MascotMotionLabels,
-  type MascotMotionType,
-} from "../mascot";
+import { LegaliMascot, MascotMotion, MascotMotionLabels, type MascotMotionType } from "../mascot";
 
 /**
  * Interactive Playground Component
@@ -102,11 +97,8 @@ function MascotPlayground() {
             <div style={styles.quickActions}>
               <button
                 onClick={() => {
-                  const motions = Object.values(
-                    MascotMotion
-                  ) as MascotMotionType[];
-                  const randomMotion =
-                    motions[Math.floor(Math.random() * motions.length)];
+                  const motions = Object.values(MascotMotion) as MascotMotionType[];
+                  const randomMotion = motions[Math.floor(Math.random() * motions.length)];
                   setMotion(randomMotion);
                 }}
                 style={styles.actionButton}

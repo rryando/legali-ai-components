@@ -34,11 +34,7 @@ export function useInView(options?: IntersectionObserverInit) {
 /**
  * Hook for animated counter
  */
-export function useCountUp(
-  target: number,
-  duration = 2000,
-  startOnView = true
-) {
+export function useCountUp(target: number, duration = 2000, startOnView = true) {
   const [count, setCount] = useState(0);
   const [isActive, setIsActive] = useState(!startOnView);
   const startTimeRef = useRef<number | null>(null);
@@ -51,10 +47,7 @@ export function useCountUp(
 
     const animate = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
-      const progress = Math.min(
-        (timestamp - startTimeRef.current) / duration,
-        1
-      );
+      const progress = Math.min((timestamp - startTimeRef.current) / duration, 1);
 
       // Easing function (ease-out-cubic)
       const eased = 1 - (1 - progress) ** 3;
@@ -145,13 +138,7 @@ export function useIdleDetection(timeout = 5000) {
       timeoutRef.current = setTimeout(() => setIsIdle(true), timeout);
     };
 
-    const events = [
-      "mousedown",
-      "mousemove",
-      "keydown",
-      "scroll",
-      "touchstart",
-    ];
+    const events = ["mousedown", "mousemove", "keydown", "scroll", "touchstart"];
     events.forEach((event) => window.addEventListener(event, resetTimer));
 
     resetTimer(); // Start initial timer
@@ -174,8 +161,7 @@ export function useScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setProgress(scrolled);
     };
@@ -201,10 +187,7 @@ export function useCurrentSection(sectionIds: string[]) {
         const element = document.getElementById(id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setCurrentSection(id);
             return;
           }

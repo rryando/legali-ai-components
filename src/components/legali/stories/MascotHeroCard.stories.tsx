@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import * as React from "react";
-import {
-  MascotHeroCard,
-  type MascotHeroScriptStep,
-} from "../composite/MascotHeroCard";
+import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard";
 import { MascotMotion } from "../mascot";
 
 const meta = {
@@ -27,11 +24,7 @@ const baseScript: MascotHeroScriptStep[] = [
   {
     motion: MascotMotion.SPEAKING,
     durationMs: 5000,
-    lines: [
-      "I’ll guide you through this.",
-      "Watch for key terms.",
-      "You’ve got this.",
-    ],
+    lines: ["I’ll guide you through this.", "Watch for key terms.", "You’ve got this."],
   },
   {
     motion: MascotMotion.IDLE,

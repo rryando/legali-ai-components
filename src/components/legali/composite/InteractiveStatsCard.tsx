@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import type { HTMLAttributes, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +16,9 @@ type InteractiveStatsCardProps = {
   accentColor?: string;
   /** Enable sparkline on hover */
   showSparkline?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  /** Additional CSS classes */
+  className?: string;
+};
 
 /**
  * Enhanced stat card with hover effects and optional sparkline.
@@ -31,10 +33,7 @@ type InteractiveStatsCardProps = {
  * />
  * ```
  */
-const InteractiveStatsCard = forwardRef<
-  HTMLDivElement,
-  InteractiveStatsCardProps
->(
+const InteractiveStatsCard = forwardRef<HTMLDivElement, InteractiveStatsCardProps>(
   (
     {
       className,
@@ -44,7 +43,6 @@ const InteractiveStatsCard = forwardRef<
       suffix = "",
       accentColor = "#4eaed0",
       showSparkline = true,
-      ...props
     },
     ref
   ) => {
@@ -93,27 +91,19 @@ const InteractiveStatsCard = forwardRef<
         {/* Content */}
         <div className="relative z-10">
           <div className="flex items-baseline gap-1">
-            {prefix && (
-              <span className="font-semibold text-lg text-slate-400">
-                {prefix}
-              </span>
-            )}
+            {prefix ? <span className="font-semibold text-lg text-slate-400">{prefix}</span> : null}
             <span
               className="font-bold text-4xl tabular-nums"
               style={{ color: isHovered ? accentColor : "#0f172a" }}
             >
               {value}
             </span>
-            {suffix && (
-              <span className="font-semibold text-lg text-slate-400">
-                {suffix}
-              </span>
-            )}
+            {suffix ? <span className="font-semibold text-lg text-slate-400">{suffix}</span> : null}
           </div>
           <p className="mt-1 text-slate-500 text-sm">{label}</p>
 
           {/* Sparkline on hover */}
-          {showSparkline && (
+          {showSparkline ? (
             <motion.div
               animate={{
                 opacity: isHovered ? 1 : 0,
@@ -124,28 +114,17 @@ const InteractiveStatsCard = forwardRef<
               transition={{ duration: 0.2 }}
             >
               <svg
+                aria-label={`Sparkline chart for ${label}`}
                 className="h-6 w-full"
                 preserveAspectRatio="none"
+                role="img"
                 viewBox="0 0 100 24"
               >
+                <title>Trend chart for {label}</title>
                 <defs>
-                  <linearGradient
-                    id={`sparkline-gradient-${label}`}
-                    x1="0"
-                    x2="0"
-                    y1="0"
-                    y2="1"
-                  >
-                    <stop
-                      offset="0%"
-                      stopColor={accentColor}
-                      stopOpacity="0.3"
-                    />
-                    <stop
-                      offset="100%"
-                      stopColor={accentColor}
-                      stopOpacity="0"
-                    />
+                  <linearGradient id={`sparkline-gradient-${label}`} x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stopColor={accentColor} stopOpacity="0.3" />
+                    <stop offset="100%" stopColor={accentColor} stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 {/* Fill area */}
@@ -163,7 +142,7 @@ const InteractiveStatsCard = forwardRef<
                 />
               </svg>
             </motion.div>
-          )}
+          ) : null}
         </div>
 
         {/* Bottom accent line */}

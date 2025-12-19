@@ -79,9 +79,7 @@ export const CompleteApp = () => {
 
       let newStreak = loaded.streak;
       if (lastLogin !== today) {
-        const yesterday = new Date(Date.now() - 86_400_000)
-          .toISOString()
-          .split("T")[0];
+        const yesterday = new Date(Date.now() - 86_400_000).toISOString().split("T")[0];
         if (lastLogin !== yesterday) {
           newStreak = 0; // Reset if missed a day
         }
@@ -96,14 +94,11 @@ export const CompleteApp = () => {
     legaliDemoModules[0]?.id ?? "module-1"
   );
   const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
-  const [userAnswers, setUserAnswers] = useState<
-    Record<string | number, string | number>
-  >({});
+  const [userAnswers, setUserAnswers] = useState<Record<string | number, string | number>>({});
   const [earnedXp, setEarnedXp] = useState(0);
 
   const selectedModule =
-    legaliDemoModules.find((module) => module.id === selectedModuleId) ??
-    legaliDemoModules[0];
+    legaliDemoModules.find((module) => module.id === selectedModuleId) ?? legaliDemoModules[0];
   // In a real app, we'd select the specific lesson. For this demo, we assume the first lesson of the module.
   const featuredLesson = selectedModule?.lessons?.[0];
   const quizQuestions = featuredLesson?.quiz ?? legaliDemoQuiz;
@@ -141,17 +136,12 @@ export const CompleteApp = () => {
     }
 
     // Mark Lesson Completed
-    if (
-      featuredLesson &&
-      !newProgress.completedLessons.includes(featuredLesson.id)
-    ) {
+    if (featuredLesson && !newProgress.completedLessons.includes(featuredLesson.id)) {
       newProgress.completedLessons.push(featuredLesson.id);
     }
 
     // Check Module Completion & Unlock Next
-    const currentModuleIndex = legaliDemoModules.findIndex(
-      (m) => m.id === selectedModuleId
-    );
+    const currentModuleIndex = legaliDemoModules.findIndex((m) => m.id === selectedModuleId);
     if (currentModuleIndex !== -1) {
       const nextModule = legaliDemoModules[currentModuleIndex + 1];
       if (nextModule && !newProgress.unlockedModules.includes(nextModule.id)) {
@@ -190,8 +180,7 @@ export const CompleteApp = () => {
     // If the user can only take one quiz, they can only complete one lesson.
     // So let's relax the "completed" check for the demo: if the *featured* lesson (first one) is done, mark module as completed.
     const isFeaturedLessonCompleted =
-      module.lessons.length > 0 &&
-      progress.completedLessons.includes(module.lessons[0].id);
+      module.lessons.length > 0 && progress.completedLessons.includes(module.lessons[0].id);
 
     let status: "locked" | "current" | "completed" = "locked";
     if (isFeaturedLessonCompleted) status = "completed";

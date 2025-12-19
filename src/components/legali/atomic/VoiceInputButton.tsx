@@ -1,5 +1,5 @@
 import { Mic } from "lucide-react";
-import type { HTMLAttributes, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +12,9 @@ type VoiceInputButtonProps = {
   activeColor?: string;
   /** Size of the button */
   size?: "sm" | "md" | "lg";
-} & Omit<HTMLAttributes<HTMLButtonElement>, "onClick">;
+  /** Additional CSS classes */
+  className?: string;
+};
 
 /**
  * Microphone button with waveform animation when active.
@@ -77,13 +79,12 @@ const VoiceInputButton = forwardRef<HTMLButtonElement, VoiceInputButtonProps>(
         ref={ref}
         style={{
           backgroundColor: isListening ? `${activeColor}20` : undefined,
-          focusRingColor: activeColor,
         }}
         type="button"
         {...props}
       >
         {/* Pulsing ring when listening */}
-        {isListening && (
+        {isListening ? (
           <>
             <span
               className="absolute inset-0 animate-ping rounded-full opacity-30"
@@ -94,15 +95,15 @@ const VoiceInputButton = forwardRef<HTMLButtonElement, VoiceInputButtonProps>(
               style={{ backgroundColor: activeColor }}
             />
           </>
-        )}
+        ) : null}
 
         {/* Mic icon or waveform */}
         {isListening ? (
           <div className="relative flex items-end justify-center gap-0.5">
-            {[1, 2, 3, 4, 3].map((height, i) => (
+            {["bar-1", "bar-2", "bar-3", "bar-4", "bar-5"].map((id, i) => (
               <div
                 className="w-0.5 rounded-full"
-                key={i}
+                key={id}
                 style={{
                   backgroundColor: activeColor,
                   height: "16px",

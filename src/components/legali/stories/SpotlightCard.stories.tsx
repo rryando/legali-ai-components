@@ -17,9 +17,7 @@ export const Default: Story = {
   args: {
     children: (
       <div className="p-8">
-        <h3 className="mb-2 font-bold text-slate-900 text-xl">
-          Spotlight Card
-        </h3>
+        <h3 className="mb-2 font-bold text-slate-900 text-xl">Spotlight Card</h3>
         <p className="text-slate-600">
           Hover over this card to see the spotlight effect follow your cursor.
         </p>
@@ -33,12 +31,8 @@ export const CustomColor: Story = {
     spotlightColor: "rgba(244, 114, 182, 0.2)",
     children: (
       <div className="p-8">
-        <h3 className="mb-2 font-bold text-slate-900 text-xl">
-          Pink Spotlight
-        </h3>
-        <p className="text-slate-600">
-          This card has a custom pink spotlight color.
-        </p>
+        <h3 className="mb-2 font-bold text-slate-900 text-xl">Pink Spotlight</h3>
+        <p className="text-slate-600">This card has a custom pink spotlight color.</p>
       </div>
     ),
   },
@@ -49,12 +43,8 @@ export const LargeSpotlight: Story = {
     spotlightSize: 800,
     children: (
       <div className="p-8">
-        <h3 className="mb-2 font-bold text-slate-900 text-xl">
-          Large Spotlight
-        </h3>
-        <p className="text-slate-600">
-          This card has a larger spotlight radius.
-        </p>
+        <h3 className="mb-2 font-bold text-slate-900 text-xl">Large Spotlight</h3>
+        <p className="text-slate-600">This card has a larger spotlight radius.</p>
       </div>
     ),
   },
@@ -66,9 +56,7 @@ export const CardGrid: Story = {
       {["Analytics", "Reports", "Settings", "Users"].map((title) => (
         <SpotlightCard className="p-6" key={title}>
           <h3 className="mb-2 font-bold text-slate-900">{title}</h3>
-          <p className="text-slate-600 text-sm">
-            Manage your {title.toLowerCase()} here.
-          </p>
+          <p className="text-slate-600 text-sm">Manage your {title.toLowerCase()} here.</p>
         </SpotlightCard>
       ))}
     </div>

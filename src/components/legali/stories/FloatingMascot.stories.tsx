@@ -20,12 +20,11 @@ export const Default: Story = {
       <div className="mx-auto max-w-2xl p-8">
         <h1 className="mb-4 font-bold text-3xl">Floating Mascot Demo</h1>
         <p className="mb-4 text-slate-600">
-          The mascot floats in the bottom-right corner. Click it 5 times for an
-          easter egg!
+          The mascot floats in the bottom-right corner. Click it 5 times for an easter egg!
         </p>
         <p className="text-slate-600">
-          The mascot changes poses based on which section is in view. Scroll
-          through a page with sections to see it react to different content.
+          The mascot changes poses based on which section is in view. Scroll through a page with
+          sections to see it react to different content.
         </p>
       </div>
     </div>
@@ -41,9 +40,7 @@ export const LargerSize: Story = {
       <FloatingMascot {...args} />
       <div className="mx-auto max-w-2xl p-8">
         <h1 className="mb-4 font-bold text-3xl">Larger Mascot</h1>
-        <p className="text-slate-600">
-          This mascot is larger than the default size.
-        </p>
+        <p className="text-slate-600">This mascot is larger than the default size.</p>
       </div>
     </div>
   ),
@@ -60,8 +57,7 @@ export const CustomSections: Story = {
       <div className="mx-auto max-w-2xl p-8">
         <h1 className="mb-4 font-bold text-3xl">Custom Sections</h1>
         <p className="text-slate-600">
-          This mascot is configured to track custom sections. Check the console
-          for section changes.
+          This mascot is configured to track custom sections. Check the console for section changes.
         </p>
       </div>
     </div>

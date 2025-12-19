@@ -1,14 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useCurrentSection, useIdleDetection } from "../hooks/useAnimations";
-import {
-  LegaliMascot,
-  MascotMotion,
-  type MascotMotionType,
-} from "../mascot/LegaliMascot";
+import { LegaliMascot, MascotMotion, type MascotMotionType } from "../mascot/LegaliMascot";
 
-export interface FloatingMascotProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface FloatingMascotProps extends React.HTMLAttributes<HTMLDivElement> {
   /** List of section IDs to track */
   sections?: string[];
   /** Callback when section changes */
@@ -39,15 +34,7 @@ const FloatingMascot = React.forwardRef<HTMLDivElement, FloatingMascotProps>(
   (
     {
       className,
-      sections = [
-        "hero",
-        "problem",
-        "features",
-        "how-it-works",
-        "testimonials",
-        "faq",
-        "cta",
-      ],
+      sections = ["hero", "problem", "features", "how-it-works", "testimonials", "faq", "cta"],
       onSectionChange,
       idleTimeout = 5000,
       size = 80,

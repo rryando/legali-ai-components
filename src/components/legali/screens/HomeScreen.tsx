@@ -1,15 +1,8 @@
 import { BarChart2, BookOpen, User } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import {
-  MascotHeroCard,
-  type MascotHeroScriptStep,
-} from "../composite/MascotHeroCard";
-import {
-  type Lesson,
-  ModuleCard,
-  type ModuleStatus,
-} from "../composite/ModuleCard";
+import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard";
+import { type Lesson, ModuleCard, type ModuleStatus } from "../composite/ModuleCard";
 import { NavigationBar } from "../composite/NavigationBar";
 import { UserStatsBar } from "../composite/UserStatsBar";
 import { MascotMotion } from "../mascot";
@@ -35,18 +28,7 @@ export interface HomeScreenProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
-  (
-    {
-      className,
-      modules,
-      onModuleClick,
-      streak = 5,
-      points = 1250,
-      hearts = 5,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, modules, onModuleClick, streak = 5, points = 1250, hearts = 5, ...props }, ref) => {
     const [activeTab, setActiveTab] = React.useState("learn");
     const [heroTrigger, setHeroTrigger] = React.useState(0);
 
@@ -171,9 +153,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
                 <item.icon
                   className={cn(
                     "h-5 w-5 transition-transform duration-300",
-                    activeTab === item.id
-                      ? "animate-pulse"
-                      : "group-hover:scale-110"
+                    activeTab === item.id ? "animate-pulse" : "group-hover:scale-110"
                   )}
                 />
                 <span className="font-bold">{item.label}</span>
@@ -189,12 +169,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
               {/* Header Area (Mobile Only for Stats) */}
               <div className="sticky top-0 z-10 border-white/20 border-b bg-white/30 px-5 pt-6 pb-4 backdrop-blur-md md:border-none md:bg-transparent md:backdrop-blur-none">
                 <div className="md:hidden">
-                  <UserStatsBar
-                    className="mb-6"
-                    hearts={hearts}
-                    points={points}
-                    streak={streak}
-                  />
+                  <UserStatsBar className="mb-6" hearts={hearts} points={points} streak={streak} />
                 </div>
 
                 <div className="mx-auto w-full max-w-4xl">

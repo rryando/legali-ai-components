@@ -30,18 +30,7 @@ type SuggestionChipProps = {
  * ```
  */
 const SuggestionChip = forwardRef<HTMLButtonElement, SuggestionChipProps>(
-  (
-    {
-      className,
-      icon,
-      label,
-      isSelected = false,
-      animationDelay = 0,
-      onClick,
-      ...props
-    },
-    ref
-  ) => (
+  ({ className, icon, label, isSelected = false, animationDelay = 0, onClick }, ref) => (
     <motion.button
       animate={{ opacity: 1, y: 0, scale: 1 }}
       className={cn(
@@ -67,9 +56,7 @@ const SuggestionChip = forwardRef<HTMLButtonElement, SuggestionChipProps>(
       whileTap={{ scale: 0.98 }}
     >
       {icon && (
-        <span className="text-[#4eaed0] transition-transform group-hover:scale-110">
-          {icon}
-        </span>
+        <span className="text-[#4eaed0] transition-transform group-hover:scale-110">{icon}</span>
       )}
       <span>{label}</span>
     </motion.button>

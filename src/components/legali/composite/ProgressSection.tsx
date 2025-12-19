@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import { GlassCard } from "../atomic/GlassCard";
 import { ProgressBar } from "../atomic/ProgressBar";
 
-export interface ProgressSectionProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProgressSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   progress: number;
   variant?: "header" | "card";
@@ -12,17 +11,7 @@ export interface ProgressSectionProps
 }
 
 const ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(
-  (
-    {
-      className,
-      title,
-      progress,
-      variant = "header",
-      showPercentage = true,
-      ...props
-    },
-    ref
-  ) => (
+  ({ className, title, progress, variant = "header", showPercentage = true, ...props }, ref) => (
     <GlassCard
       className={cn(
         "rounded-xl p-4",
@@ -36,15 +25,9 @@ const ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(
     >
       <div className="mb-3 flex items-center justify-between text-sm">
         <span className="font-semibold text-slate-700">{title}</span>
-        {showPercentage && (
-          <span className="font-bold text-slate-900">{progress}%</span>
-        )}
+        {showPercentage && <span className="font-bold text-slate-900">{progress}%</span>}
       </div>
-      <ProgressBar
-        className="bg-slate-100/50"
-        value={progress}
-        variant="default"
-      />
+      <ProgressBar className="bg-slate-100/50" value={progress} variant="default" />
     </GlassCard>
   )
 );

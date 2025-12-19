@@ -56,9 +56,7 @@ let glowIdCounter = 0;
  * );
  * ```
  */
-export function useCursorGlow(
-  options: UseCursorGlowOptions = {}
-): UseCursorGlowReturn {
+export function useCursorGlow(options: UseCursorGlowOptions = {}): UseCursorGlowReturn {
   const {
     glowSize = 400,
     glowColor = "rgba(78, 174, 208, 0.15)",

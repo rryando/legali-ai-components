@@ -2,19 +2,6 @@ import type { HTMLAttributes, MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 
-type UseTilt3DOptions = {
-  /** Maximum tilt angle in degrees */
-  maxTilt?: number;
-  /** Perspective distance in pixels */
-  perspective?: number;
-  /** Transition speed in ms */
-  transitionSpeed?: number;
-  /** Enable glare effect */
-  enableGlare?: boolean;
-  /** Glare maximum opacity */
-  glareMaxOpacity?: number;
-};
-
 type Tilt3DState = {
   tiltX: number;
   tiltY: number;

@@ -28,14 +28,8 @@ const LEGAL_ICONS = [
  * <FloatingParticlesSystem particleCount={8} />
  * ```
  */
-const FloatingParticlesSystem = forwardRef<
-  HTMLDivElement,
-  FloatingParticlesSystemProps
->(
-  (
-    { className, particleCount = 6, enableMouseInteraction = false, ...props },
-    ref
-  ) => {
+const FloatingParticlesSystem = forwardRef<HTMLDivElement, FloatingParticlesSystemProps>(
+  ({ className, particleCount = 6, enableMouseInteraction = false, ...props }, ref) => {
     const particles = useMemo(() => {
       return Array.from({ length: particleCount }, (_, i) => {
         const iconData = LEGAL_ICONS[i % LEGAL_ICONS.length];
@@ -62,11 +56,7 @@ const FloatingParticlesSystem = forwardRef<
     }, [particleCount]);
 
     return (
-      <div
-        className={cn("pointer-events-none absolute inset-0", className)}
-        ref={ref}
-        {...props}
-      >
+      <div className={cn("pointer-events-none absolute inset-0", className)} ref={ref} {...props}>
         {particles.map((particle) => (
           <FloatingParticle
             delay={particle.delay}

@@ -1,12 +1,5 @@
-import {
-  AlertTriangle,
-  FileText,
-  HelpCircle,
-  Scale,
-  Shield,
-} from "lucide-react";
+import { AlertTriangle, FileText, HelpCircle, Scale, Shield } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import type { HTMLAttributes } from "react";
 import { forwardRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { SuggestionChip } from "../atomic/SuggestionChip";
@@ -26,7 +19,9 @@ type SmartSuggestionsDropdownProps = {
   onSelect?: (suggestion: Suggestion) => void;
   /** Maximum suggestions to show */
   maxSuggestions?: number;
-} & HTMLAttributes<HTMLDivElement>;
+  /** Additional CSS classes */
+  className?: string;
+};
 
 const defaultSuggestions: Suggestion[] = [
   {
@@ -68,19 +63,9 @@ const defaultSuggestions: Suggestion[] = [
  * />
  * ```
  */
-const SmartSuggestionsDropdown = forwardRef<
-  HTMLDivElement,
-  SmartSuggestionsDropdownProps
->(
+const SmartSuggestionsDropdown = forwardRef<HTMLDivElement, SmartSuggestionsDropdownProps>(
   (
-    {
-      className,
-      isOpen = false,
-      suggestions = defaultSuggestions,
-      onSelect,
-      maxSuggestions = 5,
-      ...props
-    },
+    { className, isOpen = false, suggestions = defaultSuggestions, onSelect, maxSuggestions = 5 },
     ref
   ) => {
     const [shouldRender, setShouldRender] = useState(isOpen);

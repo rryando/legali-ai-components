@@ -85,9 +85,7 @@ const FAQSection = React.forwardRef<HTMLElement, FAQSectionProps>(
             >
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-center justify-between p-6">
-                  <h3 className="pr-8 font-semibold text-lg text-slate-900">
-                    {faq.question}
-                  </h3>
+                  <h3 className="pr-8 font-semibold text-lg text-slate-900">{faq.question}</h3>
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4eaed0]/10 text-[#4eaed0] transition-all duration-300 group-open:rotate-180 group-open:bg-[#4eaed0] group-open:text-white">
                     <ChevronDown className="h-5 w-5" />
                   </div>

@@ -2,8 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useScrollProgress } from "../hooks/useAnimations";
 
-export interface ScrollProgressIndicatorProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ScrollProgressIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Color of the progress bar (CSS gradient) */
   progressColor?: string;
   /** Whether to show percentage text */
@@ -16,10 +15,7 @@ export interface ScrollProgressIndicatorProps
  * A fixed vertical progress bar showing scroll position.
  * Hidden on smaller screens.
  */
-const ScrollProgressIndicator = React.forwardRef<
-  HTMLDivElement,
-  ScrollProgressIndicatorProps
->(
+const ScrollProgressIndicator = React.forwardRef<HTMLDivElement, ScrollProgressIndicatorProps>(
   (
     {
       className,
@@ -54,9 +50,7 @@ const ScrollProgressIndicator = React.forwardRef<
           />
         </div>
         {showPercentage && (
-          <span className="font-medium text-slate-400 text-xs">
-            {Math.round(progress)}%
-          </span>
+          <span className="font-medium text-slate-400 text-xs">{Math.round(progress)}%</span>
         )}
       </div>
     );

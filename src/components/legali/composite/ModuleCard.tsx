@@ -21,19 +21,7 @@ export interface ModuleCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
-  (
-    {
-      className,
-      icon,
-      title,
-      subtitle,
-      status,
-      lessons,
-      onModuleClick,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, icon, title, subtitle, status, lessons, onModuleClick, ...props }, ref) => {
     const isLocked = status === "locked";
     const isCompleted = status === "completed";
     const isCurrent = status === "current";
@@ -46,8 +34,7 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
           // Status specific styles
           isCurrent &&
             "animate-border-glow border-blue-400/50 bg-gradient-to-br from-white/90 via-white/70 to-blue-50/30 shadow-[0_0_25px_rgba(59,130,246,0.2),inset_0_0_15px_rgba(59,130,246,0.1)]",
-          isCompleted &&
-            "border-sky-200/50 bg-gradient-to-br from-sky-50/60 to-sky-100/30",
+          isCompleted && "border-sky-200/50 bg-gradient-to-br from-sky-50/60 to-sky-100/30",
           isLocked &&
             "bg-gradient-to-br from-slate-50/50 to-slate-100/20 opacity-60 grayscale-[0.5]",
           className
@@ -90,14 +77,9 @@ const ModuleCard = React.forwardRef<HTMLDivElement, ModuleCardProps>(
               {/* Status Icon */}
               <div className="shrink-0">
                 {isCompleted && (
-                  <Check
-                    className="h-6 w-6 text-sky-500 drop-shadow-sm"
-                    strokeWidth={3}
-                  />
+                  <Check className="h-6 w-6 text-sky-500 drop-shadow-sm" strokeWidth={3} />
                 )}
-                {isCurrent && (
-                  <PlayCircle className="h-6 w-6 fill-blue-100 text-blue-500" />
-                )}
+                {isCurrent && <PlayCircle className="h-6 w-6 fill-blue-100 text-blue-500" />}
                 {isLocked && <Lock className="h-4 w-4 text-slate-400" />}
               </div>
             </div>

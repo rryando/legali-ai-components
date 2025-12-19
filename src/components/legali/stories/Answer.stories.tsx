@@ -47,9 +47,7 @@ export const QuizFlow: Story = {
   render: () => (
     <div className="max-w-md space-y-3">
       <Answer>A) Finding the courthouse location</Answer>
-      <Answer selected>
-        B) The process of exchanging information before trial
-      </Answer>
+      <Answer selected>B) The process of exchanging information before trial</Answer>
       <Answer>C) Discovering new evidence during trial</Answer>
       <Answer>D) Looking up legal definitions</Answer>
     </div>
@@ -62,9 +60,7 @@ export const WithResults: Story = {
       <Answer incorrect selected>
         A) Finding the courthouse location
       </Answer>
-      <Answer correct>
-        B) The process of exchanging information before trial
-      </Answer>
+      <Answer correct>B) The process of exchanging information before trial</Answer>
       <Answer>C) Discovering new evidence during trial</Answer>
       <Answer>D) Looking up legal definitions</Answer>
     </div>

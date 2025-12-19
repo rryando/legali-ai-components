@@ -12,8 +12,7 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface TestimonialsSectionProps
-  extends React.HTMLAttributes<HTMLElement> {
+export interface TestimonialsSectionProps extends React.HTMLAttributes<HTMLElement> {
   /** Testimonials to display */
   testimonials?: Testimonial[];
   /** Section title */
@@ -51,17 +50,9 @@ const defaultTestimonials: Testimonial[] = [
  * Testimonials section with customer quotes and ratings.
  * Displays testimonial cards with avatars and star ratings.
  */
-const TestimonialsSection = React.forwardRef<
-  HTMLElement,
-  TestimonialsSectionProps
->(
+const TestimonialsSection = React.forwardRef<HTMLElement, TestimonialsSectionProps>(
   (
-    {
-      className,
-      testimonials = defaultTestimonials,
-      title = "Loved by thousands",
-      ...props
-    },
+    { className, testimonials = defaultTestimonials, title = "Loved by thousands", ...props },
     ref
   ) => {
     return (
@@ -96,10 +87,7 @@ const TestimonialsSection = React.forwardRef<
                 {/* Stars */}
                 <div className="mb-6 flex gap-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      className="h-5 w-5 fill-current text-amber-400"
-                      key={i}
-                    />
+                    <Star className="h-5 w-5 fill-current text-amber-400" key={i} />
                   ))}
                 </div>
 
@@ -112,12 +100,8 @@ const TestimonialsSection = React.forwardRef<
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900">
-                      {testimonial.author}
-                    </div>
-                    <div className="text-slate-500 text-sm">
-                      {testimonial.role}
-                    </div>
+                    <div className="font-bold text-slate-900">{testimonial.author}</div>
+                    <div className="text-slate-500 text-sm">{testimonial.role}</div>
                   </div>
                 </div>
               </SpotlightCard>

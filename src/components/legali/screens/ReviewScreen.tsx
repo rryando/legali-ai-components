@@ -7,8 +7,7 @@ import { ExplanationCard } from "../atomic/ExplanationCard";
 import { QuestionNumberBadge } from "../atomic/QuestionNumberBadge";
 import type { Question } from "./QuizScreen";
 
-export interface ReviewScreenProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ReviewScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   questions: Question[];
   userAnswers: Record<string | number, string | number>;
   onClose: () => void;
@@ -18,21 +17,13 @@ export const ReviewScreen = React.forwardRef<HTMLDivElement, ReviewScreenProps>(
   ({ className, questions, userAnswers, onClose, ...props }, ref) => {
     return (
       <div
-        className={cn(
-          "flex h-full min-h-screen flex-col bg-slate-50",
-          className
-        )}
+        className={cn("flex h-full min-h-screen flex-col bg-slate-50", className)}
         ref={ref}
         {...props}
       >
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center gap-4 border-slate-200 border-b bg-white/80 px-5 py-4 backdrop-blur-md">
-          <Button
-            className="-ml-2"
-            onClick={onClose}
-            size="icon"
-            variant="ghost"
-          >
+          <Button className="-ml-2" onClick={onClose} size="icon" variant="ghost">
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <h1 className="font-bold text-lg text-slate-900">Review Answers</h1>
@@ -42,9 +33,7 @@ export const ReviewScreen = React.forwardRef<HTMLDivElement, ReviewScreenProps>(
           <div className="mx-auto max-w-2xl space-y-12">
             {questions.map((question, index) => {
               const userAnswerId = userAnswers[question.id];
-              const isCorrect = question.answers.find(
-                (a) => a.id === userAnswerId
-              )?.correct;
+              const isCorrect = question.answers.find((a) => a.id === userAnswerId)?.correct;
 
               return (
                 <div className="space-y-6" key={question.id}>
@@ -82,9 +71,7 @@ export const ReviewScreen = React.forwardRef<HTMLDivElement, ReviewScreenProps>(
                       <ExplanationCard explanation={question.explanation} />
                     </div>
                   </div>
-                  {index < questions.length - 1 && (
-                    <div className="h-px bg-slate-200" />
-                  )}
+                  {index < questions.length - 1 && <div className="h-px bg-slate-200" />}
                 </div>
               );
             })}
@@ -93,10 +80,7 @@ export const ReviewScreen = React.forwardRef<HTMLDivElement, ReviewScreenProps>(
 
         <div className="border-slate-200 border-t bg-white p-5">
           <div className="mx-auto max-w-2xl">
-            <Button
-              className="w-full rounded-2xl py-6 text-lg"
-              onClick={onClose}
-            >
+            <Button className="w-full rounded-2xl py-6 text-lg" onClick={onClose}>
               Return to Results
             </Button>
           </div>

@@ -16,21 +16,18 @@ type Story = StoryObj<typeof meta>;
 const sampleQuestions = [
   {
     id: "q1",
-    question:
-      "What is the maximum amount you can sue for in small claims court in California?",
+    question: "What is the maximum amount you can sue for in small claims court in California?",
     answers: [
       { id: "a", text: "$5,000", correct: false },
       { id: "b", text: "$10,000", correct: true },
       { id: "c", text: "$12,500", correct: false },
       { id: "d", text: "$25,000", correct: false },
     ],
-    explanation:
-      "In California, an individual can sue for up to $10,000 in small claims court.",
+    explanation: "In California, an individual can sue for up to $10,000 in small claims court.",
   },
   {
     id: "q2",
-    question:
-      "Which of the following is NOT a valid reason to sue in small claims court?",
+    question: "Which of the following is NOT a valid reason to sue in small claims court?",
     answers: [
       { id: "a", text: "Unpaid rent", correct: false },
       { id: "b", text: "Property damage", correct: false },

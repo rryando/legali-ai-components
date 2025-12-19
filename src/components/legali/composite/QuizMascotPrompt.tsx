@@ -24,8 +24,7 @@ export type QuizMascotStreamConfig = {
   fitToStepDuration?: boolean;
 };
 
-export interface QuizMascotPromptProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface QuizMascotPromptProps extends React.HTMLAttributes<HTMLDivElement> {
   active?: boolean;
 
   /** Primary script that runs when activated. */
@@ -53,25 +52,16 @@ const DEFAULT_SCRIPT: QuizMascotScriptStep[] = [
   {
     motion: MascotMotion.SPEAKING,
     durationMs: 3500,
-    lines: [
-      "Quick tip:",
-      "Read for what the court needs: amount, venue, and timing.",
-    ],
+    lines: ["Quick tip:", "Read for what the court needs: amount, venue, and timing."],
   },
   {
     motion: MascotMotion.THINKING,
     durationMs: null,
-    lines: [
-      "Pick the best answer.",
-      "If unsure, eliminate obvious mismatches.",
-    ],
+    lines: ["Pick the best answer.", "If unsure, eliminate obvious mismatches."],
   },
 ];
 
-const QuizMascotPrompt = React.forwardRef<
-  HTMLDivElement,
-  QuizMascotPromptProps
->(
+const QuizMascotPrompt = React.forwardRef<HTMLDivElement, QuizMascotPromptProps>(
   ({
     className,
     active = true,
@@ -95,8 +85,7 @@ const QuizMascotPrompt = React.forwardRef<
     }, []);
 
     const [stepIndex, setStepIndex] = React.useState(0);
-    const [motion, setMotion] =
-      React.useState<MascotMotionType>(inactiveMotion);
+    const [motion, setMotion] = React.useState<MascotMotionType>(inactiveMotion);
 
     const setStep = React.useCallback(
       (nextIndex: number, nextMotion: MascotMotionType) => {
@@ -136,19 +125,14 @@ const QuizMascotPrompt = React.forwardRef<
       [clearScriptTimers, inactiveMotion, setStep]
     );
 
-    const activeScript = React.useMemo(
-      () => (script?.length ? script : DEFAULT_SCRIPT),
-      [script]
-    );
+    const activeScript = React.useMemo(() => (script?.length ? script : DEFAULT_SCRIPT), [script]);
 
     const interruptScriptResolved = React.useMemo(
       () => (interruptScript?.length ? interruptScript : undefined),
       [interruptScript]
     );
 
-    const prevTriggerKeyRef = React.useRef<string | number | undefined>(
-      triggerKey
-    );
+    const prevTriggerKeyRef = React.useRef<string | number | undefined>(triggerKey);
 
     React.useEffect(() => {
       if (!active) {
@@ -160,11 +144,7 @@ const QuizMascotPrompt = React.forwardRef<
       const isInterrupt = prevTriggerKeyRef.current !== triggerKey;
       prevTriggerKeyRef.current = triggerKey;
 
-      startScript(
-        isInterrupt && interruptScriptResolved
-          ? interruptScriptResolved
-          : activeScript
-      );
+      startScript(isInterrupt && interruptScriptResolved ? interruptScriptResolved : activeScript);
 
       return () => {
         clearScriptTimers();
@@ -184,11 +164,7 @@ const QuizMascotPrompt = React.forwardRef<
       DEFAULT_SCRIPT[0]) as QuizMascotScriptStep;
 
     const prefersReducedMotion = React.useMemo(() => {
-      if (
-        typeof window === "undefined" ||
-        typeof window.matchMedia !== "function"
-      )
-        return false;
+      if (typeof window === "undefined" || typeof window.matchMedia !== "function") return false;
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     }, []);
 
@@ -204,8 +180,7 @@ const QuizMascotPrompt = React.forwardRef<
     );
 
     const stepLines = React.useMemo(
-      () =>
-        (step?.lines ?? []).map((l) => l?.trim()).filter(Boolean) as string[],
+      () => (step?.lines ?? []).map((l) => l?.trim()).filter(Boolean) as string[],
       [step?.lines]
     );
 
@@ -221,8 +196,7 @@ const QuizMascotPrompt = React.forwardRef<
       const totalChars = stepLines.reduce((sum, l) => sum + l.length, 0);
       if (totalChars <= 0) return clamp(streamConfig.charIntervalMs);
 
-      const pauses =
-        Math.max(0, stepLines.length - 1) * streamConfig.linePauseMs;
+      const pauses = Math.max(0, stepLines.length - 1) * streamConfig.linePauseMs;
       const available = Math.max(0, step.durationMs - pauses);
       const computed = available / totalChars;
       return clamp(computed);

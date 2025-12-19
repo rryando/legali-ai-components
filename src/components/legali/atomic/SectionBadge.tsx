@@ -1,15 +1,9 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type SectionBadgeVariant =
-  | "info"
-  | "warning"
-  | "success"
-  | "danger"
-  | "neutral";
+export type SectionBadgeVariant = "info" | "warning" | "success" | "danger" | "neutral";
 
-export interface SectionBadgeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SectionBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Icon to display before the label */
   icon?: React.ReactNode;
   /** Badge label text */

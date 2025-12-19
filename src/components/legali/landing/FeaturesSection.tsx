@@ -11,11 +11,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { SectionBadge } from "../atomic/SectionBadge";
 import { SpotlightCard } from "../atomic/SpotlightCard";
-import {
-  LegaliMascot,
-  MascotMotion,
-  type MascotMotionType,
-} from "../mascot/LegaliMascot";
+import { LegaliMascot, MascotMotion, type MascotMotionType } from "../mascot/LegaliMascot";
 
 export interface Feature {
   id: number;
@@ -28,8 +24,7 @@ export interface Feature {
   highlights: string[];
 }
 
-export interface FeaturesSectionProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+export interface FeaturesSectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   /** Features to display */
   features?: Feature[];
   /** Section title */
@@ -126,9 +121,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
     ref
   ) => {
     const [activeFeature, setActiveFeature] = React.useState(0);
-    const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(
-      MascotMotion.LAPTOP
-    );
+    const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(MascotMotion.LAPTOP);
 
     React.useEffect(() => {
       setMascotMotion(features[activeFeature].mascotMotion);
@@ -136,10 +129,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
 
     return (
       <section
-        className={cn(
-          "relative overflow-hidden bg-slate-50/50 px-6 py-24",
-          className
-        )}
+        className={cn("relative overflow-hidden bg-slate-50/50 px-6 py-24", className)}
         id="features"
         ref={ref}
         {...props}
@@ -186,9 +176,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
                         <h3
                           className={cn(
                             "font-bold text-lg transition-colors",
-                            activeFeature === index
-                              ? "text-slate-900"
-                              : "text-slate-700"
+                            activeFeature === index ? "text-slate-900" : "text-slate-700"
                           )}
                         >
                           {feature.title}
@@ -200,9 +188,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
                       <p
                         className={cn(
                           "text-sm transition-colors",
-                          activeFeature === index
-                            ? "text-slate-600"
-                            : "text-slate-500"
+                          activeFeature === index ? "text-slate-600" : "text-slate-500"
                         )}
                       >
                         {feature.subtitle}
@@ -212,9 +198,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
 
                   {activeFeature === index && (
                     <div className="fade-in slide-in-from-top mt-4 animate-in border-slate-100 border-t pt-4 duration-300">
-                      <p className="mb-4 text-slate-600">
-                        {feature.description}
-                      </p>
+                      <p className="mb-4 text-slate-600">{feature.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {feature.highlights.map((highlight) => (
                           <span

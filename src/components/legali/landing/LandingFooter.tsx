@@ -89,9 +89,7 @@ const LandingFooter = React.forwardRef<HTMLElement, LandingFooterProps>(
                 className="mb-6 h-10 opacity-80 brightness-0 invert"
                 src={logoSrc}
               />
-              <p className="mb-6 max-w-xs text-slate-500 text-sm">
-                {description}
-              </p>
+              <p className="mb-6 max-w-xs text-slate-500 text-sm">{description}</p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -113,10 +111,7 @@ const LandingFooter = React.forwardRef<HTMLElement, LandingFooterProps>(
                 <ul className="space-y-3 text-sm">
                   {group.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        className="transition-colors hover:text-[#4eaed0]"
-                        href={link.href}
-                      >
+                      <a className="transition-colors hover:text-[#4eaed0]" href={link.href}>
                         {link.label}
                       </a>
                     </li>

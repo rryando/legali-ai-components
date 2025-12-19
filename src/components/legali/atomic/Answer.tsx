@@ -2,8 +2,7 @@ import { Check, X } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface AnswerProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AnswerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   selected?: boolean;
   correct?: boolean;
   incorrect?: boolean;
@@ -11,10 +10,7 @@ export interface AnswerProps
 }
 
 const Answer = React.forwardRef<HTMLButtonElement, AnswerProps>(
-  (
-    { className, children, selected, correct, incorrect, shortcut, ...props },
-    ref
-  ) => {
+  ({ className, children, selected, correct, incorrect, shortcut, ...props }, ref) => {
     return (
       <button
         className={cn(

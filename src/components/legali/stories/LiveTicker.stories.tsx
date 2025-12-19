@@ -20,8 +20,7 @@ export const Default: Story = {
       <div className="mx-auto max-w-2xl p-8">
         <h1 className="mb-4 font-bold text-3xl">Live Ticker Demo</h1>
         <p className="text-slate-600">
-          Watch the bottom-left corner for rotating notifications showing recent
-          user activity.
+          Watch the bottom-left corner for rotating notifications showing recent user activity.
         </p>
       </div>
     </div>
@@ -47,8 +46,7 @@ export const CustomNotifications: Story = {
       <div className="mx-auto max-w-2xl p-8">
         <h1 className="mb-4 font-bold text-3xl">Custom Notifications</h1>
         <p className="text-slate-600">
-          This ticker shows custom notifications with a faster rotation
-          interval.
+          This ticker shows custom notifications with a faster rotation interval.
         </p>
       </div>
     </div>

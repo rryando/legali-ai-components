@@ -59,11 +59,8 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
       problems = defaultProblems,
       mascotMessage = (
         <>
-          "That's why we built Legali—to level the playing field and give
-          everyone{" "}
-          <span className="font-bold text-[#4eaed0]">
-            equal access to justice
-          </span>
+          "That's why we built Legali—to level the playing field and give everyone{" "}
+          <span className="font-bold text-[#4eaed0]">equal access to justice</span>
           ."
         </>
       ),
@@ -102,8 +99,8 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
               </span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Millions of people are denied justice every year simply because
-              they can't afford—or access—proper legal help.
+              Millions of people are denied justice every year simply because they can't afford—or
+              access—proper legal help.
             </p>
           </div>
 
@@ -129,13 +126,9 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
                   {problem.stat}
                 </div>
 
-                <h3 className="mb-3 font-bold text-slate-800 text-xl">
-                  {problem.title}
-                </h3>
+                <h3 className="mb-3 font-bold text-slate-800 text-xl">{problem.title}</h3>
 
-                <p className="text-slate-600 leading-relaxed">
-                  {problem.description}
-                </p>
+                <p className="text-slate-600 leading-relaxed">{problem.description}</p>
               </SpotlightCard>
             ))}
           </div>

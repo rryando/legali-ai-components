@@ -16,10 +16,7 @@ export interface GradientTextProps {
   children?: React.ReactNode;
 }
 
-const variantGradients: Record<
-  Exclude<GradientTextVariant, "custom">,
-  string
-> = {
+const variantGradients: Record<Exclude<GradientTextVariant, "custom">, string> = {
   primary: "from-[#4eaed0] via-[#667eea] to-[#764ba2]",
   secondary: "from-[#4eaed0] to-[#667eea]",
   danger: "from-rose-500 to-pink-500",
@@ -36,13 +33,10 @@ const GradientText = ({
   as: Component = "span",
   children,
 }: GradientTextProps) => {
-  const gradientClass =
-    variant === "custom" ? "" : `bg-gradient-to-r ${variantGradients[variant]}`;
+  const gradientClass = variant === "custom" ? "" : `bg-gradient-to-r ${variantGradients[variant]}`;
 
   const customStyle =
-    variant === "custom" && customGradient
-      ? { backgroundImage: customGradient }
-      : undefined;
+    variant === "custom" && customGradient ? { backgroundImage: customGradient } : undefined;
 
   return (
     <Component

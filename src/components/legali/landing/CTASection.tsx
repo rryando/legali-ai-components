@@ -4,8 +4,7 @@ import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
 import { LegaliMascot, MascotMotion } from "../mascot/LegaliMascot";
 
-export interface CTASectionProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+export interface CTASectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   /** Callback when Get Started is clicked */
   onGetStarted?: () => void;
   /** Callback when Watch Demo is clicked */
@@ -78,9 +77,7 @@ const CTASection = React.forwardRef<HTMLElement, CTASectionProps>(
             {title}
           </h2>
 
-          <p className="mx-auto mb-12 max-w-2xl text-slate-300 text-xl">
-            {subtitle}
-          </p>
+          <p className="mx-auto mb-12 max-w-2xl text-slate-300 text-xl">{subtitle}</p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button

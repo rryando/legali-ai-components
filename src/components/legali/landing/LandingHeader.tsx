@@ -114,16 +114,10 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 lg:flex">
             {navigationItems.litigation101 && (
-              <NavDropdown
-                items={navigationItems.litigation101}
-                label="Litigation 101"
-              />
+              <NavDropdown items={navigationItems.litigation101} label="Litigation 101" />
             )}
             {navigationItems.solutions && (
-              <NavDropdown
-                items={navigationItems.solutions}
-                label="Solutions"
-              />
+              <NavDropdown items={navigationItems.solutions} label="Solutions" />
             )}
             {navLinks.map((link) => (
               <a
@@ -160,11 +154,7 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
             className="rounded-xl p-2.5 text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -188,10 +178,7 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
                 </a>
               ))}
               <div className="mt-2 flex flex-col gap-3 border-slate-100 border-t pt-4">
-                <Button
-                  className="w-full rounded-xl border-slate-200"
-                  variant="outline"
-                >
+                <Button className="w-full rounded-xl border-slate-200" variant="outline">
                   Log In
                 </Button>
                 <Button

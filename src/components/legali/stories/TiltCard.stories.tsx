@@ -53,9 +53,7 @@ export const WithContent: Story = {
     children: (
       <div className="w-80 rounded-2xl bg-gradient-to-br from-[#4eaed0] to-[#667eea] p-6 text-white">
         <h3 className="mb-2 font-bold text-xl">Premium Card</h3>
-        <p className="text-white/80">
-          This card has a 3D tilt effect that follows your cursor.
-        </p>
+        <p className="text-white/80">This card has a 3D tilt effect that follows your cursor.</p>
       </div>
     ),
   },

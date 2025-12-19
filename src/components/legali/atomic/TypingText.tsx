@@ -140,9 +140,7 @@ export function TypingText({
     if (texts && texts.length > 1) {
       const isLast = currentTextIndex >= texts.length - 1;
       if (loop || !isLast) {
-        const nextIndex = loop
-          ? (currentTextIndex + 1) % texts.length
-          : currentTextIndex + 1;
+        const nextIndex = loop ? (currentTextIndex + 1) % texts.length : currentTextIndex + 1;
         const timeout = setTimeout(() => {
           setDisplayText("");
           setCurrentIndex(0);
@@ -152,16 +150,7 @@ export function TypingText({
         return () => clearTimeout(timeout);
       }
     }
-  }, [
-    currentIndex,
-    currentText,
-    isTyping,
-    speed,
-    loop,
-    texts,
-    pauseDuration,
-    onComplete,
-  ]);
+  }, [currentIndex, currentText, isTyping, speed, loop, texts, pauseDuration, onComplete]);
 
   // Animation variants for container (fadeIn by default, extendable)
   const finalVariants = {

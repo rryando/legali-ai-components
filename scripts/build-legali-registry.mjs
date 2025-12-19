@@ -5,8 +5,7 @@ const repoRoot = process.cwd();
 const outDir = path.join(repoRoot, "registry");
 
 // Public URLs for assets so consumers don't need to handle binary files manually.
-const ASSET_BASE =
-  "https://raw.githubusercontent.com/rryando/legali-ai-components/main";
+const ASSET_BASE = "https://raw.githubusercontent.com/rryando/legali-ai-components/main";
 
 const replacements = [
   // Move legali components under the shadcn-conventional ui path.
@@ -121,12 +120,7 @@ const files = [
     name: "legali-stat-item",
     type: "registry:ui",
     files: ["components/ui/legali/atomic/StatItem.tsx"],
-    dependencies: [
-      "class-variance-authority",
-      "lucide-react",
-      "clsx",
-      "tailwind-merge",
-    ],
+    dependencies: ["class-variance-authority", "lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
@@ -178,11 +172,7 @@ const files = [
     type: "registry:ui",
     files: ["components/ui/legali/composite/ModuleCard.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
-    registryDependencies: [
-      "legali-lesson-dot",
-      "legali-glass-card",
-      "legali-lib-utils",
-    ],
+    registryDependencies: ["legali-lesson-dot", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-mascot-hero-card",
@@ -208,11 +198,7 @@ const files = [
     type: "registry:ui",
     files: ["components/ui/legali/composite/ProgressSection.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
-    registryDependencies: [
-      "legali-progress-bar",
-      "legali-glass-card",
-      "legali-lib-utils",
-    ],
+    registryDependencies: ["legali-progress-bar", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-quiz-feedback",
@@ -304,22 +290,14 @@ const files = [
     type: "registry:ui",
     files: ["components/ui/legali/screens/ResultsScreen.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
-    registryDependencies: [
-      "legali-results-card",
-      "legali-glass-card",
-      "legali-lib-utils",
-    ],
+    registryDependencies: ["legali-results-card", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-progress-screen",
     type: "registry:ui",
     files: ["components/ui/legali/screens/ProgressScreen.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge", "recharts"],
-    registryDependencies: [
-      "legali-glass-card",
-      "legali-lib-utils",
-      "legali-chart",
-    ],
+    registryDependencies: ["legali-glass-card", "legali-lib-utils", "legali-chart"],
   },
   {
     name: "legali-profile-screen",
@@ -389,25 +367,14 @@ const files = [
 ];
 
 async function rewriteContent(content) {
-  return replacements.reduce(
-    (acc, rule) => acc.replace(rule.from, rule.to),
-    content
-  );
+  return replacements.reduce((acc, rule) => acc.replace(rule.from, rule.to), content);
 }
 
 async function copyWithRewrite(srcRel, destRel) {
   const candidatePaths = [
     path.join(repoRoot, "src", srcRel),
-    path.join(
-      repoRoot,
-      "src",
-      srcRel.replace(/^components\/ui\/legali\//, "components/legali/")
-    ),
-    path.join(
-      repoRoot,
-      "src",
-      srcRel.replace(/^components\/ui\/legali\//, "components/")
-    ),
+    path.join(repoRoot, "src", srcRel.replace(/^components\/ui\/legali\//, "components/legali/")),
+    path.join(repoRoot, "src", srcRel.replace(/^components\/ui\/legali\//, "components/")),
   ];
 
   const srcPath = await (async () => {
@@ -466,14 +433,8 @@ async function build() {
     items,
   };
 
-  await fs.writeFile(
-    path.join(outDir, "index.json"),
-    JSON.stringify(index, null, 2)
-  );
-  await fs.writeFile(
-    path.join(outDir, "registry.json"),
-    JSON.stringify(index, null, 2)
-  );
+  await fs.writeFile(path.join(outDir, "index.json"), JSON.stringify(index, null, 2));
+  await fs.writeFile(path.join(outDir, "registry.json"), JSON.stringify(index, null, 2));
 
   // Emit per-item files so CLI can consume a direct URL without a registry mapping.
   // Convert registryDependencies from names to full URLs for external resolution.

@@ -107,12 +107,7 @@ export const HighProgress: Story = {
     hearts: 3,
     modules: sampleModules.map((m, i) => ({
       ...m,
-      status:
-        i < 3
-          ? ("completed" as const)
-          : i === 3
-            ? ("current" as const)
-            : ("locked" as const),
+      status: i < 3 ? ("completed" as const) : i === 3 ? ("current" as const) : ("locked" as const),
     })),
   },
 };

@@ -20,14 +20,8 @@ type AIThinkingIndicatorProps = {
  * <AIThinkingIndicator state="thinking" />
  * ```
  */
-const AIThinkingIndicator = forwardRef<
-  HTMLDivElement,
-  AIThinkingIndicatorProps
->(
-  (
-    { className, state = "idle", size = "md", color = "#4eaed0", ...props },
-    ref
-  ) => {
+const AIThinkingIndicator = forwardRef<HTMLDivElement, AIThinkingIndicatorProps>(
+  ({ className, state = "idle", size = "md", color = "#4eaed0", ...props }, ref) => {
     const sizeClasses = {
       sm: "h-4 gap-1",
       md: "h-6 gap-1.5",
@@ -46,11 +40,7 @@ const AIThinkingIndicator = forwardRef<
 
     if (state === "complete") {
       return (
-        <div
-          className={cn("flex items-center", sizeClasses[size], className)}
-          ref={ref}
-          {...props}
-        >
+        <div className={cn("flex items-center", sizeClasses[size], className)} ref={ref} {...props}>
           <svg
             className="zoom-in h-4 w-4 animate-in duration-300"
             fill="none"
@@ -58,22 +48,14 @@ const AIThinkingIndicator = forwardRef<
             strokeWidth="2.5"
             viewBox="0 0 24 24"
           >
-            <path
-              d="M5 13l4 4L19 7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       );
     }
 
     return (
-      <div
-        className={cn("flex items-center", sizeClasses[size], className)}
-        ref={ref}
-        {...props}
-      >
+      <div className={cn("flex items-center", sizeClasses[size], className)} ref={ref} {...props}>
         {[0, 1, 2].map((i) => (
           <div
             className={cn("rounded-full", dotSizes[size])}

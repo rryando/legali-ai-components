@@ -51,9 +51,7 @@ const NavDropdown = React.forwardRef<HTMLButtonElement, NavDropdownProps>(
                 {item.label}
               </span>
               {item.description && (
-                <span className="text-slate-500 text-xs">
-                  {item.description}
-                </span>
+                <span className="text-slate-500 text-xs">{item.description}</span>
               )}
             </a>
           </DropdownMenuItem>

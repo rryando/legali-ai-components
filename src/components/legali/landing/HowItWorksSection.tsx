@@ -12,8 +12,7 @@ export interface Step {
   gradient: string;
 }
 
-export interface HowItWorksSectionProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
+export interface HowItWorksSectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   /** Steps to display */
   steps?: Step[];
   /** Section title */
@@ -115,9 +114,7 @@ const HowItWorksSection = React.forwardRef<HTMLElement, HowItWorksSectionProps>(
                       Step {step.number}
                     </div>
 
-                    <h3 className="mb-3 font-bold text-slate-900 text-xl">
-                      {step.title}
-                    </h3>
+                    <h3 className="mb-3 font-bold text-slate-900 text-xl">{step.title}</h3>
 
                     <p className="text-slate-600">{step.description}</p>
                   </SpotlightCard>

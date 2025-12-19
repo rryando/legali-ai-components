@@ -22,47 +22,40 @@ type GradientMeshBackgroundProps = {
  * </GradientMeshBackground>
  * ```
  */
-const GradientMeshBackground = forwardRef<
-  HTMLDivElement,
-  GradientMeshBackgroundProps
->(
+const GradientMeshBackground = forwardRef<HTMLDivElement, GradientMeshBackgroundProps>(
   (
-    {
-      className,
-      children,
-      enableParallax = false,
-      animationSpeed = 1,
-      showNoise = true,
-      ...props
-    },
+    { className, children, enableParallax = false, animationSpeed = 1, showNoise = true, ...props },
     ref
   ) => {
     const baseAnimDuration = 20 / animationSpeed;
 
     return (
-      <div
-        className={cn("relative overflow-hidden", className)}
-        ref={ref}
-        {...props}
-      >
+      <div className={cn("relative overflow-hidden", className)} ref={ref} {...props}>
+        {/* Base gradient fill - ensures full coverage */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(78, 174, 208, 0.08) 0%, rgba(102, 126, 234, 0.05) 50%, rgba(118, 75, 162, 0.08) 100%)",
+          }}
+        />
+
         {/* Gradient mesh blobs */}
         <div className="pointer-events-none absolute inset-0">
           {/* Primary blob - top left */}
           <div
-            className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full opacity-60"
+            className="absolute -top-1/4 -left-1/4 h-[80vw] max-h-[800px] w-[80vw] max-w-[800px] rounded-full opacity-60"
             style={{
-              background:
-                "radial-gradient(circle, rgba(78, 174, 208, 0.4), transparent 70%)",
+              background: "radial-gradient(circle, rgba(78, 174, 208, 0.4), transparent 70%)",
               animation: `meshFloat1 ${baseAnimDuration}s ease-in-out infinite`,
             }}
           />
 
           {/* Secondary blob - top right */}
           <div
-            className="absolute -top-20 -right-20 h-[500px] w-[500px] rounded-full opacity-50"
+            className="absolute -top-1/4 -right-1/4 h-[70vw] max-h-[700px] w-[70vw] max-w-[700px] rounded-full opacity-50"
             style={{
-              background:
-                "radial-gradient(circle, rgba(102, 126, 234, 0.35), transparent 70%)",
+              background: "radial-gradient(circle, rgba(102, 126, 234, 0.35), transparent 70%)",
               animation: `meshFloat2 ${baseAnimDuration * 0.8}s ease-in-out infinite`,
               animationDelay: "-5s",
             }}
@@ -70,10 +63,9 @@ const GradientMeshBackground = forwardRef<
 
           {/* Tertiary blob - bottom left */}
           <div
-            className="absolute -bottom-40 -left-20 h-[550px] w-[550px] rounded-full opacity-45"
+            className="absolute -bottom-1/4 -left-1/4 h-[75vw] max-h-[750px] w-[75vw] max-w-[750px] rounded-full opacity-45"
             style={{
-              background:
-                "radial-gradient(circle, rgba(118, 75, 162, 0.3), transparent 70%)",
+              background: "radial-gradient(circle, rgba(118, 75, 162, 0.3), transparent 70%)",
               animation: `meshFloat3 ${baseAnimDuration * 1.2}s ease-in-out infinite`,
               animationDelay: "-10s",
             }}
@@ -81,10 +73,9 @@ const GradientMeshBackground = forwardRef<
 
           {/* Quaternary blob - bottom right */}
           <div
-            className="absolute -right-40 -bottom-20 h-[450px] w-[450px] rounded-full opacity-40"
+            className="absolute -right-1/4 -bottom-1/4 h-[65vw] max-h-[650px] w-[65vw] max-w-[650px] rounded-full opacity-40"
             style={{
-              background:
-                "radial-gradient(circle, rgba(244, 114, 182, 0.25), transparent 70%)",
+              background: "radial-gradient(circle, rgba(244, 114, 182, 0.25), transparent 70%)",
               animation: `meshFloat4 ${baseAnimDuration * 0.9}s ease-in-out infinite`,
               animationDelay: "-3s",
             }}
@@ -92,17 +83,16 @@ const GradientMeshBackground = forwardRef<
 
           {/* Center accent blob */}
           <div
-            className="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
+            className="absolute top-1/2 left-1/2 h-[50vw] max-h-[500px] w-[50vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
             style={{
-              background:
-                "radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%)",
+              background: "radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%)",
               animation: `meshPulse ${baseAnimDuration * 0.7}s ease-in-out infinite`,
             }}
           />
         </div>
 
         {/* Noise texture overlay */}
-        {showNoise && (
+        {!!showNoise && (
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.025] mix-blend-overlay"
             style={{

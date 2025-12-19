@@ -1,12 +1,4 @@
-import {
-  AlertTriangle,
-  BookOpen,
-  FileText,
-  Gavel,
-  Scale,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { AlertTriangle, BookOpen, FileText, Gavel, Scale, Search, Sparkles } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
@@ -14,11 +6,7 @@ import { AnimatedCounter } from "../atomic/AnimatedCounter";
 import { SpotlightCard } from "../atomic/SpotlightCard";
 import { AnimatedBackground } from "../composite/AnimatedBackground";
 import { useTypingAnimation } from "../hooks/useAnimations";
-import {
-  LegaliMascot,
-  MascotMotion,
-  type MascotMotionType,
-} from "../mascot/LegaliMascot";
+import { LegaliMascot, MascotMotion, type MascotMotionType } from "../mascot/LegaliMascot";
 
 export interface QuickAction {
   icon: React.ReactNode;
@@ -80,9 +68,7 @@ const LandingHero = React.forwardRef<HTMLElement, LandingHeroProps>(
     },
     ref
   ) => {
-    const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(
-      MascotMotion.WAVING
-    );
+    const [mascotMotion, setMascotMotion] = React.useState<MascotMotionType>(MascotMotion.WAVING);
     const [inputValue, setInputValue] = React.useState("");
     const [isFocused, setIsFocused] = React.useState(false);
 
@@ -129,10 +115,7 @@ const LandingHero = React.forwardRef<HTMLElement, LandingHeroProps>(
 
     return (
       <section
-        className={cn(
-          "relative min-h-screen overflow-hidden px-6 pt-32 pb-20",
-          className
-        )}
+        className={cn("relative min-h-screen overflow-hidden px-6 pt-32 pb-20", className)}
         id="hero"
         ref={ref}
         {...props}
@@ -171,13 +154,7 @@ const LandingHero = React.forwardRef<HTMLElement, LandingHeroProps>(
                       strokeWidth="3"
                     />
                     <defs>
-                      <linearGradient
-                        id="underline-gradient"
-                        x1="0"
-                        x2="300"
-                        y1="0"
-                        y2="0"
-                      >
+                      <linearGradient id="underline-gradient" x1="0" x2="300" y1="0" y2="0">
                         <stop stopColor="#4eaed0" />
                         <stop offset="0.5" stopColor="#667eea" />
                         <stop offset="1" stopColor="#764ba2" />
@@ -189,9 +166,8 @@ const LandingHero = React.forwardRef<HTMLElement, LandingHeroProps>(
 
               {/* Subtext */}
               <p className="fade-in slide-in-from-bottom mx-auto mb-10 max-w-xl animate-in text-lg text-slate-600 leading-relaxed delay-200 duration-700 md:text-xl lg:mx-0">
-                Navigate the legal system with confidence. Get instant
-                AI-powered analysis, build your case, and connect with qualified
-                attorneys—all in one platform.
+                Navigate the legal system with confidence. Get instant AI-powered analysis, build
+                your case, and connect with qualified attorneys—all in one platform.
               </p>
 
               {/* Search Input */}
@@ -206,9 +182,7 @@ const LandingHero = React.forwardRef<HTMLElement, LandingHeroProps>(
                         onChange={handleInputChange}
                         onFocus={handleInputFocus}
                         placeholder={
-                          inputValue
-                            ? ""
-                            : typingText || "Describe your legal situation..."
+                          inputValue ? "" : typingText || "Describe your legal situation..."
                         }
                         type="text"
                         value={inputValue}

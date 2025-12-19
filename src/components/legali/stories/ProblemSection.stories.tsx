@@ -20,8 +20,8 @@ export const CustomMascotMessage: Story = {
     mascotMessage: (
       <>
         "We believe everyone deserves{" "}
-        <span className="font-bold text-[#4eaed0]">access to justice</span>,
-        regardless of their background or financial situation."
+        <span className="font-bold text-[#4eaed0]">access to justice</span>, regardless of their
+        background or financial situation."
       </>
     ),
   },

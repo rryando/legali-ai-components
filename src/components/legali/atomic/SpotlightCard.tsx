@@ -1,8 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface SpotlightCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Color of the spotlight effect (CSS color value) */
   spotlightColor?: string;
   /** Size of the spotlight radius in pixels */

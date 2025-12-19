@@ -21,9 +21,7 @@ const StatRow = React.forwardRef<HTMLDivElement, StatRowProps>(
         {icon && <span aria-hidden="true">{icon}</span>}
         {label}
       </span>
-      <span className="font-semibold text-gray-900 text-sm md:text-base">
-        {value}
-      </span>
+      <span className="font-semibold text-gray-900 text-sm md:text-base">{value}</span>
     </div>
   )
 );

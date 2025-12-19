@@ -1,4 +1,4 @@
-import * as React from "react";
+import { type HTMLAttributes, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 import { FloatingMascot } from "../composite/FloatingMascot";
 import { LiveTicker } from "../composite/LiveTicker";
@@ -20,8 +20,7 @@ import { TrustLogos } from "../landing/TrustLogos";
 // Types
 // ============================================================================
 
-export interface LandingPageV3Props
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface LandingPageV3Props extends HTMLAttributes<HTMLDivElement> {
   onGetStarted?: () => void;
   onWatchDemo?: () => void;
 }
@@ -30,11 +29,11 @@ export interface LandingPageV3Props
 // Main Component
 // ============================================================================
 
-const LandingPageV3 = React.forwardRef<HTMLDivElement, LandingPageV3Props>(
+const LandingPageV3 = forwardRef<HTMLDivElement, LandingPageV3Props>(
   ({ className, onGetStarted, onWatchDemo, ...props }, ref) => {
     return (
       <div
-        className={cn("min-h-screen bg-white font-sans antialiased", className)}
+        className={cn("min-h-screen overflow-x-hidden bg-white font-sans antialiased", className)}
         ref={ref}
         {...props}
       >
