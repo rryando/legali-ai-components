@@ -3,13 +3,6 @@ import { cn } from "@/lib/utils"
 import { 
   ChevronDown,
   Search,
-  Plus,
-  Minus,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Youtube,
   Menu,
   X,
   AlertTriangle,

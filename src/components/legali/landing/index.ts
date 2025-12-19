@@ -1,0 +1,11 @@
+// Landing page section components
+export { LandingHeader, type LandingHeaderProps } from "./LandingHeader"
+export { LandingHero, type LandingHeroProps, type QuickAction } from "./LandingHero"
+export { TrustLogos, type TrustLogosProps, type TrustLogo } from "./TrustLogos"
+export { ProblemSection, type ProblemSectionProps, type ProblemItem } from "./ProblemSection"
+export { FeaturesSection, type FeaturesSectionProps, type Feature } from "./FeaturesSection"
+export { HowItWorksSection, type HowItWorksSectionProps, type Step } from "./HowItWorksSection"
+export { TestimonialsSection, type TestimonialsSectionProps, type Testimonial } from "./TestimonialsSection"
+export { FAQSection, type FAQSectionProps, type FAQ } from "./FAQSection"
+export { CTASection, type CTASectionProps } from "./CTASection"
+export { LandingFooter, type LandingFooterProps, type FooterLinkGroup } from "./LandingFooter"
