@@ -279,3 +279,45 @@ export function useStaggeredAnimation(itemCount: number, delay = 100) {
 
   return { ref, visibleItems, isInView };
 }
+
+/**
+ * Hook for tracking mouse position relative to an element
+ */
+export function useLocalMousePosition(ref: { current: HTMLElement | null }) {
+  const [localPosition, setLocalPosition] = useState({ x: 0, y: 0 });
+  const [isInside, setIsInside] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = element.getBoundingClientRect();
+      setLocalPosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    const handleMouseEnter = () => {
+      setIsInside(true);
+    };
+    const handleMouseLeave = () => {
+      setIsInside(false);
+    };
+
+    element.addEventListener("mousemove", handleMouseMove);
+    element.addEventListener("mouseenter", handleMouseEnter);
+    element.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      element.removeEventListener("mousemove", handleMouseMove);
+      element.removeEventListener("mouseenter", handleMouseEnter);
+      element.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [ref]);
+
+  return { localPosition, isInside };
+}

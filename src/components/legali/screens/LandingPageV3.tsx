@@ -11,7 +11,7 @@ import { HowItWorksSection } from "../landing/HowItWorksSection";
 import { LandingFooter } from "../landing/LandingFooter";
 // Landing section components
 import { LandingHeader } from "../landing/LandingHeader";
-import { LandingHero } from "../landing/LandingHero";
+import { LandingHeroV2 } from "../landing/LandingHeroV2";
 import { ProblemSection } from "../landing/ProblemSection";
 import { TestimonialsSection } from "../landing/TestimonialsSection";
 import { TrustLogos } from "../landing/TrustLogos";
@@ -45,7 +45,7 @@ const LandingPageV3 = React.forwardRef<HTMLDivElement, LandingPageV3Props>(
 
         {/* Page Sections */}
         <LandingHeader onGetStarted={onGetStarted} />
-        <LandingHero onGetStarted={onGetStarted} />
+        <LandingHeroV2 onGetStarted={onGetStarted} />
         <TrustLogos />
         <ProblemSection />
         <FeaturesSection />

@@ -125,11 +125,6 @@ export {
   type HomeScreenProps,
   type Module,
 } from "./screens/HomeScreen";
-export { LandingPage, type LandingPageProps } from "./screens/LandingPage";
-export {
-  LandingPageV2,
-  type LandingPageV2Props,
-} from "./screens/LandingPageV2";
 export type { LandingPageV3Props } from "./screens/LandingPageV3";
 export { LandingPageV3 } from "./screens/LandingPageV3";
 export {
