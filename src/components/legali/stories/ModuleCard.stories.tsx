@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { ModuleCard } from '../composite/ModuleCard'
+import type { Meta, StoryObj } from "@storybook/react";
+import { ModuleCard } from "../composite/ModuleCard";
 
 const meta: Meta<typeof ModuleCard> = {
-  title: 'Legali/Composite/ModuleCard',
+  title: "Legali/Composite/ModuleCard",
   component: ModuleCard,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
-}
+  tags: ["autodocs"],
+};
 
-export default meta
-type Story = StoryObj<typeof ModuleCard>
+export default meta;
+type Story = StoryObj<typeof ModuleCard>;
 
 const sampleLessons = [
   { id: 1, completed: true },
   { id: 2, completed: true },
   { id: 3, completed: false },
   { id: 4, completed: false },
-]
+];
 
 export const Completed: Story = {
   args: {
-    icon: '📄',
-    title: 'Module 1: Court Documents Basics',
-    subtitle: 'Motions, Notices & Pleadings',
-    status: 'completed',
+    icon: "📄",
+    title: "Module 1: Court Documents Basics",
+    subtitle: "Motions, Notices & Pleadings",
+    status: "completed",
     lessons: [
       { id: 1, completed: true },
       { id: 2, completed: true },
@@ -33,24 +33,24 @@ export const Completed: Story = {
       { id: 4, completed: true },
     ],
   },
-}
+};
 
 export const Current: Story = {
   args: {
-    icon: '🔍',
-    title: 'Module 2: Discovery Fundamentals',
-    subtitle: 'Getting information before trial',
-    status: 'current',
+    icon: "🔍",
+    title: "Module 2: Discovery Fundamentals",
+    subtitle: "Getting information before trial",
+    status: "current",
     lessons: sampleLessons,
   },
-}
+};
 
 export const Locked: Story = {
   args: {
-    icon: '⚖️',
-    title: 'Module 3: Pleadings vs. Motions',
-    subtitle: 'Understanding document types',
-    status: 'locked',
+    icon: "⚖️",
+    title: "Module 3: Pleadings vs. Motions",
+    subtitle: "Understanding document types",
+    status: "locked",
     lessons: [
       { id: 1, completed: false },
       { id: 2, completed: false },
@@ -58,42 +58,42 @@ export const Locked: Story = {
       { id: 4, completed: false },
     ],
   },
-}
+};
 
 export const AllModules: Story = {
   render: () => (
-    <div className="space-y-4 max-w-md">
+    <div className="max-w-md space-y-4">
       <ModuleCard
         icon="📄"
-        title="Module 1: Court Documents Basics"
-        subtitle="Motions, Notices & Pleadings"
-        status="completed"
         lessons={[
           { id: 1, completed: true },
           { id: 2, completed: true },
           { id: 3, completed: true },
           { id: 4, completed: true },
         ]}
+        status="completed"
+        subtitle="Motions, Notices & Pleadings"
+        title="Module 1: Court Documents Basics"
       />
       <ModuleCard
         icon="🔍"
-        title="Module 2: Discovery Fundamentals"
-        subtitle="Getting information before trial"
-        status="current"
         lessons={sampleLessons}
+        status="current"
+        subtitle="Getting information before trial"
+        title="Module 2: Discovery Fundamentals"
       />
       <ModuleCard
         icon="⚖️"
-        title="Module 3: Pleadings vs. Motions"
-        subtitle="Understanding document types"
-        status="locked"
         lessons={[
           { id: 1, completed: false },
           { id: 2, completed: false },
           { id: 3, completed: false },
           { id: 4, completed: false },
         ]}
+        status="locked"
+        subtitle="Understanding document types"
+        title="Module 3: Pleadings vs. Motions"
       />
     </div>
   ),
-}
+};

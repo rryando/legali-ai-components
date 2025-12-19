@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { UserStatsBar } from "../composite/UserStatsBar"
+import type { Meta, StoryObj } from "@storybook/react";
+import { UserStatsBar } from "../composite/UserStatsBar";
 
 const meta = {
   title: "Legali/Composite/UserStatsBar",
@@ -14,10 +14,10 @@ const meta = {
     hearts: { control: "number" },
     maxHearts: { control: "number" },
   },
-} satisfies Meta<typeof UserStatsBar>
+} satisfies Meta<typeof UserStatsBar>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -26,7 +26,7 @@ export const Default: Story = {
     hearts: 5,
     maxHearts: 5,
   },
-}
+};
 
 export const LowHearts: Story = {
   args: {
@@ -35,13 +35,13 @@ export const LowHearts: Story = {
     hearts: 1,
     maxHearts: 5,
   },
-}
+};
 
 export const HighStreak: Story = {
   args: {
     streak: 100,
-    points: 50000,
+    points: 50_000,
     hearts: 5,
     maxHearts: 5,
   },
-}
+};

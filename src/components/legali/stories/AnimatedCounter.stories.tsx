@@ -1,58 +1,58 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { AnimatedCounter } from '../atomic/AnimatedCounter'
+import type { Meta, StoryObj } from "@storybook/react";
+import { AnimatedCounter } from "../atomic/AnimatedCounter";
 
 const meta: Meta<typeof AnimatedCounter> = {
-  title: 'Legali/Atomic/AnimatedCounter',
+  title: "Legali/Atomic/AnimatedCounter",
   component: AnimatedCounter,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
-}
+  tags: ["autodocs"],
+};
 
-export default meta
-type Story = StoryObj<typeof AnimatedCounter>
+export default meta;
+type Story = StoryObj<typeof AnimatedCounter>;
 
 export const Default: Story = {
   args: {
     target: 1500,
-    label: 'Users',
+    label: "Users",
   },
-}
+};
 
 export const WithSuffix: Story = {
   args: {
     target: 98,
-    suffix: '%',
-    label: 'Accuracy Rate',
+    suffix: "%",
+    label: "Accuracy Rate",
   },
-}
+};
 
 export const WithPrefix: Story = {
   args: {
     target: 500,
-    prefix: '$',
-    suffix: 'K',
-    label: 'Revenue',
+    prefix: "$",
+    suffix: "K",
+    label: "Revenue",
   },
-}
+};
 
 export const NoCard: Story = {
   args: {
     target: 100,
-    suffix: '+',
-    label: 'Partners',
+    suffix: "+",
+    label: "Partners",
     useCard: false,
   },
-}
+};
 
 export const CounterGrid: Story = {
   render: () => (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <AnimatedCounter target={50} suffix="K+" label="Cases Analyzed" />
-      <AnimatedCounter target={98} suffix="%" label="Accuracy Rate" />
-      <AnimatedCounter target={500} suffix="+" label="Partner Attorneys" />
-      <AnimatedCounter target={49} label="User Rating" />
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <AnimatedCounter label="Cases Analyzed" suffix="K+" target={50} />
+      <AnimatedCounter label="Accuracy Rate" suffix="%" target={98} />
+      <AnimatedCounter label="Partner Attorneys" suffix="+" target={500} />
+      <AnimatedCounter label="User Rating" target={49} />
     </div>
   ),
-}
+};

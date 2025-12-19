@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { LegaliMascot, MascotMotion, MascotMotionLabels } from '../mascot'
+import type { Meta, StoryObj } from "@storybook/react";
+import { LegaliMascot, MascotMotion, MascotMotionLabels } from "../mascot";
 
 const meta: Meta<typeof LegaliMascot> = {
-  title: 'Legali/Mascot/LegaliMascot',
+  title: "Legali/Mascot/LegaliMascot",
   component: LegaliMascot,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -26,40 +26,40 @@ EXIT, NORMAL, LAPTOP, WRITING, IDLE, THINKING, CRYING, SPEAKING, CONFUSED, WAVIN
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     motion: {
-      control: 'select',
+      control: "select",
       options: Object.values(MascotMotion),
       mapping: MascotMotion,
       labels: MascotMotionLabels,
-      description: 'The current motion/animation state to display',
+      description: "The current motion/animation state to display",
     },
     isBlink: {
-      control: 'boolean',
-      description: 'Whether the mascot should blink',
+      control: "boolean",
+      description: "Whether the mascot should blink",
     },
     width: {
-      control: { type: 'range', min: 100, max: 500, step: 50 },
-      description: 'Width of the canvas container',
+      control: { type: "range", min: 100, max: 500, step: 50 },
+      description: "Width of the canvas container",
     },
     height: {
-      control: { type: 'range', min: 100, max: 500, step: 50 },
-      description: 'Height of the canvas container',
+      control: { type: "range", min: 100, max: 500, step: 50 },
+      description: "Height of the canvas container",
     },
     src: {
-      control: 'text',
-      description: 'Path to the .riv animation file',
+      control: "text",
+      description: "Path to the .riv animation file",
     },
     stateMachine: {
-      control: 'text',
-      description: 'Name of the state machine to use',
+      control: "text",
+      description: "Name of the state machine to use",
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof LegaliMascot>
+export default meta;
+type Story = StoryObj<typeof LegaliMascot>;
 
 /**
  * Default idle state animation.
@@ -72,7 +72,7 @@ export const Default: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Thinking animation.
@@ -85,7 +85,7 @@ export const Thinking: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Speaking animation.
@@ -98,7 +98,7 @@ export const Speaking: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Celebration animation.
@@ -111,7 +111,7 @@ export const Celebrate: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Waving animation.
@@ -124,7 +124,7 @@ export const Waving: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Working on laptop animation.
@@ -137,7 +137,7 @@ export const Laptop: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Writing animation.
@@ -150,7 +150,7 @@ export const Writing: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Confused animation.
@@ -163,7 +163,7 @@ export const Confused: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Crying animation.
@@ -176,7 +176,7 @@ export const Crying: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Shrug animation.
@@ -189,7 +189,7 @@ export const Shrug: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * No blinking demonstration.
@@ -202,7 +202,7 @@ export const NoBlink: Story = {
     width: 300,
     height: 300,
   },
-}
+};
 
 /**
  * Small size variant.
@@ -215,7 +215,7 @@ export const Small: Story = {
     width: 150,
     height: 150,
   },
-}
+};
 
 /**
  * Large size variant.
@@ -228,4 +228,4 @@ export const Large: Story = {
     width: 400,
     height: 400,
   },
-}
+};

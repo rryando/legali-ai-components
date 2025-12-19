@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { GlassCard } from "../atomic/GlassCard"
+import type { Meta, StoryObj } from "@storybook/react";
+import { GlassCard } from "../atomic/GlassCard";
 
 const meta = {
   title: "Legali/Atomic/GlassCard",
@@ -18,10 +18,10 @@ const meta = {
       options: ["low", "medium", "high"],
     },
   },
-} satisfies Meta<typeof GlassCard>
+} satisfies Meta<typeof GlassCard>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -29,7 +29,7 @@ export const Default: Story = {
     variant: "default",
     intensity: "medium",
   },
-}
+};
 
 export const Interactive: Story = {
   args: {
@@ -37,7 +37,7 @@ export const Interactive: Story = {
     variant: "interactive",
     intensity: "medium",
   },
-}
+};
 
 export const Dark: Story = {
   args: {
@@ -45,18 +45,18 @@ export const Dark: Story = {
     variant: "dark",
     intensity: "medium",
   },
-}
+};
 
 export const LowIntensity: Story = {
   args: {
     children: <div className="p-4">Low intensity glass effect.</div>,
     intensity: "low",
   },
-}
+};
 
 export const HighIntensity: Story = {
   args: {
     children: <div className="p-4">High intensity glass effect.</div>,
     intensity: "high",
   },
-}
+};

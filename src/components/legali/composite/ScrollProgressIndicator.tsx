@@ -1,21 +1,25 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { useScrollProgress } from "../hooks/useAnimations"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { useScrollProgress } from "../hooks/useAnimations";
 
-export interface ScrollProgressIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ScrollProgressIndicatorProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /** Color of the progress bar (CSS gradient) */
-  progressColor?: string
+  progressColor?: string;
   /** Whether to show percentage text */
-  showPercentage?: boolean
+  showPercentage?: boolean;
   /** Position of the indicator */
-  position?: "left" | "right"
+  position?: "left" | "right";
 }
 
 /**
  * A fixed vertical progress bar showing scroll position.
  * Hidden on smaller screens.
  */
-const ScrollProgressIndicator = React.forwardRef<HTMLDivElement, ScrollProgressIndicatorProps>(
+const ScrollProgressIndicator = React.forwardRef<
+  HTMLDivElement,
+  ScrollProgressIndicatorProps
+>(
   (
     {
       className,
@@ -26,21 +30,21 @@ const ScrollProgressIndicator = React.forwardRef<HTMLDivElement, ScrollProgressI
     },
     ref
   ) => {
-    const progress = useScrollProgress()
+    const progress = useScrollProgress();
 
-    const positionClasses = position === "left" ? "left-4" : "right-4"
+    const positionClasses = position === "left" ? "left-4" : "right-4";
 
     return (
       <div
-        ref={ref}
         className={cn(
-          "fixed top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-2",
+          "fixed top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 xl:flex",
           positionClasses,
           className
         )}
+        ref={ref}
         {...props}
       >
-        <div className="w-1 h-32 bg-slate-200 rounded-full overflow-hidden">
+        <div className="h-32 w-1 overflow-hidden rounded-full bg-slate-200">
           <div
             className="w-full rounded-full transition-all duration-150"
             style={{
@@ -50,15 +54,15 @@ const ScrollProgressIndicator = React.forwardRef<HTMLDivElement, ScrollProgressI
           />
         </div>
         {showPercentage && (
-          <span className="text-xs text-slate-400 font-medium">
+          <span className="font-medium text-slate-400 text-xs">
             {Math.round(progress)}%
           </span>
         )}
       </div>
-    )
+    );
   }
-)
+);
 
-ScrollProgressIndicator.displayName = "ScrollProgressIndicator"
+ScrollProgressIndicator.displayName = "ScrollProgressIndicator";
 
-export { ScrollProgressIndicator }
+export { ScrollProgressIndicator };

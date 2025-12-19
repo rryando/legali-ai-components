@@ -1,26 +1,29 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
-export type GradientTextVariant = "primary" | "danger" | "secondary" | "custom"
+export type GradientTextVariant = "primary" | "danger" | "secondary" | "custom";
 
 export interface GradientTextProps {
   /** Predefined gradient variant or 'custom' for customGradient */
-  variant?: GradientTextVariant
+  variant?: GradientTextVariant;
   /** Custom gradient CSS (used when variant is 'custom') */
-  customGradient?: string
+  customGradient?: string;
   /** HTML element to render as */
-  as?: "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p"
+  as?: "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   /** Additional class names */
-  className?: string
+  className?: string;
   /** Children to render */
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
-const variantGradients: Record<Exclude<GradientTextVariant, "custom">, string> = {
+const variantGradients: Record<
+  Exclude<GradientTextVariant, "custom">,
+  string
+> = {
   primary: "from-[#4eaed0] via-[#667eea] to-[#764ba2]",
   secondary: "from-[#4eaed0] to-[#667eea]",
   danger: "from-rose-500 to-pink-500",
-}
+};
 
 /**
  * Text component with gradient coloring.
@@ -34,29 +37,23 @@ const GradientText = ({
   children,
 }: GradientTextProps) => {
   const gradientClass =
-    variant === "custom"
-      ? ""
-      : `bg-gradient-to-r ${variantGradients[variant]}`
+    variant === "custom" ? "" : `bg-gradient-to-r ${variantGradients[variant]}`;
 
   const customStyle =
     variant === "custom" && customGradient
       ? { backgroundImage: customGradient }
-      : undefined
+      : undefined;
 
   return (
     <Component
-      className={cn(
-        "text-transparent bg-clip-text",
-        gradientClass,
-        className
-      )}
+      className={cn("bg-clip-text text-transparent", gradientClass, className)}
       style={customStyle}
     >
       {children}
     </Component>
-  )
-}
+  );
+};
 
-GradientText.displayName = "GradientText"
+GradientText.displayName = "GradientText";
 
-export { GradientText }
+export { GradientText };

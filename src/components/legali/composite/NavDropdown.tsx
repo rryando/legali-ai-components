@@ -1,26 +1,26 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react";
+import * as React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/dropdown-menu"
+} from "@/components/dropdown-menu";
+import { cn } from "@/lib/utils";
 
 export interface NavDropdownItem {
-  label: string
-  href: string
-  description?: string
+  label: string;
+  href: string;
+  description?: string;
 }
 
 export interface NavDropdownProps {
   /** Trigger label text */
-  label: string
+  label: string;
   /** Menu items to display */
-  items: NavDropdownItem[]
+  items: NavDropdownItem[];
   /** Additional class names for the trigger */
-  className?: string
+  className?: string;
 }
 
 /**
@@ -28,41 +28,41 @@ export interface NavDropdownProps {
  * Designed for use in navigation headers.
  */
 const NavDropdown = React.forwardRef<HTMLButtonElement, NavDropdownProps>(
-  ({ label, items, className }, ref) => {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          ref={ref}
-          className={cn(
-            "flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-[#4eaed0] transition-colors outline-none group",
-            className
-          )}
-        >
-          {label}
-          <ChevronDown className="w-3.5 h-3.5 group-data-[state=open]:rotate-180 transition-transform duration-200" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-slate-200/50 border border-slate-200/50 p-3 min-w-[280px]">
-          {items.map((item) => (
-            <DropdownMenuItem key={item.label} asChild>
-              <a
-                href={item.href}
-                className="flex flex-col gap-1 px-4 py-3 rounded-xl hover:bg-gradient-to-r hover:from-[#4eaed0]/5 hover:to-transparent transition-all group"
-              >
-                <span className="font-medium text-slate-800 group-hover:text-[#4eaed0] transition-colors">
-                  {item.label}
+  ({ label, items, className }, ref) => (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        className={cn(
+          "group flex items-center gap-1.5 font-medium text-slate-700 text-sm outline-none transition-colors hover:text-[#4eaed0]",
+          className
+        )}
+        ref={ref}
+      >
+        {label}
+        <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="min-w-[280px] rounded-2xl border border-slate-200/50 bg-white/95 p-3 shadow-2xl shadow-slate-200/50 backdrop-blur-xl">
+        {items.map((item) => (
+          <DropdownMenuItem asChild key={item.label}>
+            <a
+              className="group flex flex-col gap-1 rounded-xl px-4 py-3 transition-all hover:bg-gradient-to-r hover:from-[#4eaed0]/5 hover:to-transparent"
+              href={item.href}
+            >
+              <span className="font-medium text-slate-800 transition-colors group-hover:text-[#4eaed0]">
+                {item.label}
+              </span>
+              {item.description && (
+                <span className="text-slate-500 text-xs">
+                  {item.description}
                 </span>
-                {item.description && (
-                  <span className="text-xs text-slate-500">{item.description}</span>
-                )}
-              </a>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
-  }
-)
+              )}
+            </a>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+);
 
-NavDropdown.displayName = "NavDropdown"
+NavDropdown.displayName = "NavDropdown";
 
-export { NavDropdown }
+export { NavDropdown };

@@ -1,19 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: [
-    './src/**/*.{ts,tsx}',
-    './.storybook/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ["./src/**/*.{ts,tsx}", "./.storybook/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ["Inter", "sans-serif"],
       },
       animation: {
-        'slide-up': 'slideInFromBottom 0.3s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out',
-        'zoom-in': 'zoomIn 0.3s ease-out',
+        "slide-up": "slideInFromBottom 0.3s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        "zoom-in": "zoomIn 0.3s ease-out",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -58,4 +55,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

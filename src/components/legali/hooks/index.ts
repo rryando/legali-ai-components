@@ -1,11 +1,11 @@
 export {
-  useInView,
   useCountUp,
-  useTypingAnimation,
-  useIdleDetection,
-  useScrollProgress,
   useCurrentSection,
+  useIdleDetection,
+  useInView,
   useMousePosition,
   useParallax,
+  useScrollProgress,
   useStaggeredAnimation,
-} from './useAnimations'
+  useTypingAnimation,
+} from "./useAnimations";

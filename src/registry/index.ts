@@ -7,7 +7,7 @@ export const registry = {
     registryDependencies: [],
   },
   // Atomic
-  "answer": {
+  answer: {
     name: "answer",
     type: "components:ui",
     files: ["src/components/legali/atomic/Answer.tsx"],
@@ -115,4 +115,4 @@ export const registry = {
   },
 };
 
-export type RegistryEntry = typeof registry[keyof typeof registry];
+export type RegistryEntry = (typeof registry)[keyof typeof registry];

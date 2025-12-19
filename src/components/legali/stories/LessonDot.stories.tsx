@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { LessonDot } from '../atomic/LessonDot'
+import type { Meta, StoryObj } from "@storybook/react";
+import { LessonDot } from "../atomic/LessonDot";
 
 const meta: Meta<typeof LessonDot> = {
-  title: 'Legali/Atomic/LessonDot',
+  title: "Legali/Atomic/LessonDot",
   component: LessonDot,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
-}
+  tags: ["autodocs"],
+};
 
-export default meta
-type Story = StoryObj<typeof LessonDot>
+export default meta;
+type Story = StoryObj<typeof LessonDot>;
 
 export const Pending: Story = {
   args: {
@@ -19,7 +19,7 @@ export const Pending: Story = {
     current: false,
     locked: false,
   },
-}
+};
 
 export const Current: Story = {
   args: {
@@ -27,7 +27,7 @@ export const Current: Story = {
     current: true,
     locked: false,
   },
-}
+};
 
 export const Completed: Story = {
   args: {
@@ -35,7 +35,7 @@ export const Completed: Story = {
     current: false,
     locked: false,
   },
-}
+};
 
 export const Locked: Story = {
   args: {
@@ -43,7 +43,7 @@ export const Locked: Story = {
     current: false,
     locked: true,
   },
-}
+};
 
 export const ProgressSequence: Story = {
   render: () => (
@@ -55,7 +55,7 @@ export const ProgressSequence: Story = {
       <LessonDot />
     </div>
   ),
-}
+};
 
 export const LockedSequence: Story = {
   render: () => (
@@ -66,7 +66,7 @@ export const LockedSequence: Story = {
       <LessonDot locked />
     </div>
   ),
-}
+};
 
 export const CompletedSequence: Story = {
   render: () => (
@@ -77,4 +77,4 @@ export const CompletedSequence: Story = {
       <LessonDot completed />
     </div>
   ),
-}
+};

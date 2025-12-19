@@ -1,21 +1,22 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { useCountUp, useInView } from "../hooks/useAnimations"
-import { SpotlightCard } from "./SpotlightCard"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { useCountUp, useInView } from "../hooks/useAnimations";
+import { SpotlightCard } from "./SpotlightCard";
 
-export interface AnimatedCounterProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AnimatedCounterProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /** Target number to count up to */
-  target: number
+  target: number;
   /** Text to display before the number */
-  prefix?: string
+  prefix?: string;
   /** Text to display after the number */
-  suffix?: string
+  suffix?: string;
   /** Label text below the counter */
-  label: string
+  label: string;
   /** Animation duration in milliseconds */
-  duration?: number
+  duration?: number;
   /** Whether to use a spotlight card wrapper */
-  useCard?: boolean
+  useCard?: boolean;
 }
 
 /**
@@ -36,47 +37,47 @@ const AnimatedCounter = React.forwardRef<HTMLDivElement, AnimatedCounterProps>(
     },
     ref
   ) => {
-    const { ref: inViewRef, isInView } = useInView()
-    const { count, start } = useCountUp(target, duration, true)
+    const { ref: inViewRef, isInView } = useInView();
+    const { count, start } = useCountUp(target, duration, true);
 
     React.useEffect(() => {
-      if (isInView) start()
-    }, [isInView, start])
+      if (isInView) start();
+    }, [isInView, start]);
 
     const content = (
       <>
         <div
+          className="mb-1 font-bold text-3xl text-slate-900 transition-transform group-hover:scale-105 md:text-4xl"
           ref={inViewRef}
-          className="text-3xl md:text-4xl font-bold text-slate-900 mb-1 group-hover:scale-105 transition-transform"
         >
           {prefix}
           {count}
           {suffix}
         </div>
-        <div className="text-sm text-slate-600">{label}</div>
+        <div className="text-slate-600 text-sm">{label}</div>
       </>
-    )
+    );
 
     if (useCard) {
       return (
         <SpotlightCard
+          className={cn("rounded-2xl p-6 text-center", className)}
           ref={ref}
-          className={cn("p-6 rounded-2xl text-center", className)}
           {...props}
         >
           {content}
         </SpotlightCard>
-      )
+      );
     }
 
     return (
-      <div ref={ref} className={cn("text-center", className)} {...props}>
+      <div className={cn("text-center", className)} ref={ref} {...props}>
         {content}
       </div>
-    )
+    );
   }
-)
+);
 
-AnimatedCounter.displayName = "AnimatedCounter"
+AnimatedCounter.displayName = "AnimatedCounter";
 
-export { AnimatedCounter }
+export { AnimatedCounter };

@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { HowItWorksSection } from '../landing/HowItWorksSection'
+import type { Meta, StoryObj } from "@storybook/react";
+import { HowItWorksSection } from "../landing/HowItWorksSection";
 
 const meta: Meta<typeof HowItWorksSection> = {
-  title: 'Legali/Landing/HowItWorksSection',
+  title: "Legali/Landing/HowItWorksSection",
   component: HowItWorksSection,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
-}
+  tags: ["autodocs"],
+};
 
-export default meta
-type Story = StoryObj<typeof HowItWorksSection>
+export default meta;
+type Story = StoryObj<typeof HowItWorksSection>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const CustomTitle: Story = {
   args: {
@@ -21,10 +21,10 @@ export const CustomTitle: Story = {
       <>
         Get started in
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2]">
+        <span className="bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
           minutes
         </span>
       </>
     ),
   },
-}
+};

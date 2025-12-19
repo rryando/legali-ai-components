@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { FeaturesSection } from '../landing/FeaturesSection'
+import type { Meta, StoryObj } from "@storybook/react";
+import { FeaturesSection } from "../landing/FeaturesSection";
 
 const meta: Meta<typeof FeaturesSection> = {
-  title: 'Legali/Landing/FeaturesSection',
+  title: "Legali/Landing/FeaturesSection",
   component: FeaturesSection,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
-}
+  tags: ["autodocs"],
+};
 
-export default meta
-type Story = StoryObj<typeof FeaturesSection>
+export default meta;
+type Story = StoryObj<typeof FeaturesSection>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const CustomTitle: Story = {
   args: {
@@ -21,10 +21,10 @@ export const CustomTitle: Story = {
       <>
         Powerful tools for
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4eaed0] to-[#667eea]">
+        <span className="bg-gradient-to-r from-[#4eaed0] to-[#667eea] bg-clip-text text-transparent">
           legal professionals
         </span>
       </>
     ),
   },
-}
+};

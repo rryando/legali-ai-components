@@ -1,21 +1,21 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ChevronDown } from "lucide-react"
-import { AnimatedBackground } from "../composite/AnimatedBackground"
-import { SpotlightCard } from "../atomic/SpotlightCard"
+import { ChevronDown } from "lucide-react";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { SpotlightCard } from "../atomic/SpotlightCard";
+import { AnimatedBackground } from "../composite/AnimatedBackground";
 
 export interface FAQ {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 export interface FAQSectionProps extends React.HTMLAttributes<HTMLElement> {
   /** FAQ items to display */
-  faqs?: FAQ[]
+  faqs?: FAQ[];
   /** Section title */
-  title?: string
+  title?: string;
   /** Section subtitle */
-  subtitle?: string
+  subtitle?: string;
 }
 
 const defaultFAQs: FAQ[] = [
@@ -44,7 +44,7 @@ const defaultFAQs: FAQ[] = [
     answer:
       "Absolutely. We use bank-level encryption, are SOC 2 Type II compliant, and never share your data with third parties. Your legal information stays completely private.",
   },
-]
+];
 
 /**
  * FAQ section with expandable accordion items.
@@ -60,52 +60,50 @@ const FAQSection = React.forwardRef<HTMLElement, FAQSectionProps>(
       ...props
     },
     ref
-  ) => {
-    return (
-      <section
-        id="faq"
-        ref={ref}
-        className={cn("relative py-24 px-6 overflow-hidden", className)}
-        {...props}
-      >
-        <AnimatedBackground />
+  ) => (
+    <section
+      className={cn("relative overflow-hidden px-6 py-24", className)}
+      id="faq"
+      ref={ref}
+      {...props}
+    >
+      <AnimatedBackground />
 
-        <div className="relative max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-              {title}
-            </h2>
-            <p className="text-lg text-slate-600">{subtitle}</p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <SpotlightCard
-                key={index}
-                className="rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
-              >
-                <details className="group">
-                  <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <h3 className="text-lg font-semibold text-slate-900 pr-8">
-                      {faq.question}
-                    </h3>
-                    <div className="w-10 h-10 rounded-xl bg-[#4eaed0]/10 flex items-center justify-center text-[#4eaed0] transition-all duration-300 group-open:rotate-180 group-open:bg-[#4eaed0] group-open:text-white">
-                      <ChevronDown className="w-5 h-5" />
-                    </div>
-                  </summary>
-                  <div className="px-6 pb-6 text-slate-600 leading-relaxed animate-in fade-in slide-in-from-top-2 duration-300">
-                    {faq.answer}
-                  </div>
-                </details>
-              </SpotlightCard>
-            ))}
-          </div>
+      <div className="relative mx-auto max-w-3xl">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 font-bold text-3xl text-slate-900 tracking-tight md:text-4xl">
+            {title}
+          </h2>
+          <p className="text-lg text-slate-600">{subtitle}</p>
         </div>
-      </section>
-    )
-  }
-)
 
-FAQSection.displayName = "FAQSection"
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <SpotlightCard
+              className="overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-lg"
+              key={index}
+            >
+              <details className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between p-6">
+                  <h3 className="pr-8 font-semibold text-lg text-slate-900">
+                    {faq.question}
+                  </h3>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#4eaed0]/10 text-[#4eaed0] transition-all duration-300 group-open:rotate-180 group-open:bg-[#4eaed0] group-open:text-white">
+                    <ChevronDown className="h-5 w-5" />
+                  </div>
+                </summary>
+                <div className="fade-in slide-in-from-top-2 animate-in px-6 pb-6 text-slate-600 leading-relaxed duration-300">
+                  {faq.answer}
+                </div>
+              </details>
+            </SpotlightCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+);
 
-export { FAQSection }
+FAQSection.displayName = "FAQSection";
+
+export { FAQSection };

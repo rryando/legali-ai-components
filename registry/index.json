@@ -14,10 +14,7 @@
           "type": "registry:lib"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -54,14 +51,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -74,12 +65,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-avatar"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["@radix-ui/react-avatar"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -92,14 +79,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -112,12 +93,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@radix-ui/react-switch"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["@radix-ui/react-switch"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -130,12 +107,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "recharts"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["recharts"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -148,14 +121,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -168,13 +135,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -187,14 +149,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "motion",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -207,14 +163,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -227,14 +177,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -253,9 +197,7 @@
         "clsx",
         "tailwind-merge"
       ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -268,13 +210,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -287,13 +224,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -306,14 +238,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils",
-        "legali-glass-card"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils", "legali-glass-card"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -326,13 +252,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -345,12 +266,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "legali-switch"
-      ]
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["legali-switch"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -363,15 +280,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils",
-        "legali-glass-card"
-      ]
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils", "legali-glass-card"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -384,11 +294,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-lesson-dot",
         "legali-glass-card",
@@ -406,10 +312,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-glass-card",
         "legali-mascot",
@@ -428,14 +331,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -448,10 +345,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-progress-bar",
         "legali-glass-card",
@@ -469,15 +363,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-button",
-        "legali-lib-utils"
-      ]
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-button", "legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -490,15 +377,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-progress-bar",
-        "legali-lib-utils"
-      ]
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-progress-bar", "legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -511,13 +391,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -530,11 +405,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-button",
         "legali-stat-row",
@@ -553,14 +424,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
-      "registryDependencies": [
-        "legali-stat-item",
-        "legali-lib-utils"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["legali-stat-item", "legali-lib-utils"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -573,11 +438,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-user-stats-bar",
         "legali-module-card",
@@ -600,10 +461,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-quiz-header",
         "legali-quiz-question",
@@ -624,11 +482,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-answer",
         "legali-explanation-card",
@@ -648,10 +502,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-results-card",
         "legali-glass-card",
@@ -669,12 +520,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge",
-        "recharts"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge", "recharts"],
       "registryDependencies": [
         "legali-glass-card",
         "legali-lib-utils",
@@ -692,11 +538,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "lucide-react",
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
       "registryDependencies": [
         "legali-glass-card",
         "legali-profile-stat-card",
@@ -728,9 +570,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "@rive-app/react-canvas"
-      ]
+      "dependencies": ["@rive-app/react-canvas"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",
@@ -743,9 +583,7 @@
           "type": "registry:lib"
         }
       ],
-      "registryDependencies": [
-        "legali-quiz-screen"
-      ]
+      "registryDependencies": ["legali-quiz-screen"]
     },
     {
       "$schema": "https://ui.shadcn.com/schema/registry-item.json",

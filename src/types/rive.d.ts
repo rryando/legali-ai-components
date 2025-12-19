@@ -1,4 +1,4 @@
-declare module '*.riv' {
-  const content: string
-  export default content
+declare module "*.riv" {
+  const content: string;
+  export default content;
 }

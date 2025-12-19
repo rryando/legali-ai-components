@@ -1,30 +1,29 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { FloatingMascot } from "../composite/FloatingMascot";
+import { LiveTicker } from "../composite/LiveTicker";
 // Composite components
-import { ScrollProgressIndicator } from "../composite/ScrollProgressIndicator"
-import { FloatingMascot } from "../composite/FloatingMascot"
-import { LiveTicker } from "../composite/LiveTicker"
-
+import { ScrollProgressIndicator } from "../composite/ScrollProgressIndicator";
+import { CTASection } from "../landing/CTASection";
+import { FAQSection } from "../landing/FAQSection";
+import { FeaturesSection } from "../landing/FeaturesSection";
+import { HowItWorksSection } from "../landing/HowItWorksSection";
+import { LandingFooter } from "../landing/LandingFooter";
 // Landing section components
-import { LandingHeader } from "../landing/LandingHeader"
-import { LandingHero } from "../landing/LandingHero"
-import { TrustLogos } from "../landing/TrustLogos"
-import { ProblemSection } from "../landing/ProblemSection"
-import { FeaturesSection } from "../landing/FeaturesSection"
-import { HowItWorksSection } from "../landing/HowItWorksSection"
-import { TestimonialsSection } from "../landing/TestimonialsSection"
-import { FAQSection } from "../landing/FAQSection"
-import { CTASection } from "../landing/CTASection"
-import { LandingFooter } from "../landing/LandingFooter"
+import { LandingHeader } from "../landing/LandingHeader";
+import { LandingHero } from "../landing/LandingHero";
+import { ProblemSection } from "../landing/ProblemSection";
+import { TestimonialsSection } from "../landing/TestimonialsSection";
+import { TrustLogos } from "../landing/TrustLogos";
 
 // ============================================================================
 // Types
 // ============================================================================
 
-export interface LandingPageV3Props extends React.HTMLAttributes<HTMLDivElement> {
-  onGetStarted?: () => void
-  onWatchDemo?: () => void
+export interface LandingPageV3Props
+  extends React.HTMLAttributes<HTMLDivElement> {
+  onGetStarted?: () => void;
+  onWatchDemo?: () => void;
 }
 
 // ============================================================================
@@ -35,8 +34,8 @@ const LandingPageV3 = React.forwardRef<HTMLDivElement, LandingPageV3Props>(
   ({ className, onGetStarted, onWatchDemo, ...props }, ref) => {
     return (
       <div
-        ref={ref}
         className={cn("min-h-screen bg-white font-sans antialiased", className)}
+        ref={ref}
         {...props}
       >
         {/* Global Interactive Components */}
@@ -56,10 +55,10 @@ const LandingPageV3 = React.forwardRef<HTMLDivElement, LandingPageV3Props>(
         <CTASection onGetStarted={onGetStarted} onWatchDemo={onWatchDemo} />
         <LandingFooter />
       </div>
-    )
+    );
   }
-)
+);
 
-LandingPageV3.displayName = "LandingPageV3"
+LandingPageV3.displayName = "LandingPageV3";
 
-export { LandingPageV3 }
+export { LandingPageV3 };

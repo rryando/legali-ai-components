@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { ProfileScreen } from "../screens/ProfileScreen"
+import type { Meta, StoryObj } from "@storybook/react";
+import { ProfileScreen } from "../screens/ProfileScreen";
 
 const meta = {
   title: "Legali/Screens/ProfileScreen",
@@ -8,10 +8,10 @@ const meta = {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof ProfileScreen>
+} satisfies Meta<typeof ProfileScreen>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -29,7 +29,7 @@ export const Default: Story = {
       accuracy: 92,
     },
   },
-}
+};
 
 export const NewUser: Story = {
   args: {
@@ -47,7 +47,7 @@ export const NewUser: Story = {
       accuracy: 0,
     },
   },
-}
+};
 
 export const PowerUser: Story = {
   args: {
@@ -59,10 +59,10 @@ export const PowerUser: Story = {
       joinDate: "January 2024",
     },
     stats: {
-      xp: 50000,
+      xp: 50_000,
       streak: 365,
       lessonsCompleted: 500,
       accuracy: 99,
     },
   },
-}
+};

@@ -1,11 +1,12 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-export interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SpotlightCardProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /** Color of the spotlight effect (CSS color value) */
-  spotlightColor?: string
+  spotlightColor?: string;
   /** Size of the spotlight radius in pixels */
-  spotlightSize?: number
+  spotlightSize?: number;
 }
 
 /**
@@ -23,34 +24,34 @@ const SpotlightCard = React.forwardRef<HTMLDivElement, SpotlightCardProps>(
     },
     ref
   ) => {
-    const divRef = React.useRef<HTMLDivElement>(null)
-    const [position, setPosition] = React.useState({ x: 0, y: 0 })
-    const [opacity, setOpacity] = React.useState(0)
+    const divRef = React.useRef<HTMLDivElement>(null);
+    const [position, setPosition] = React.useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = React.useState(0);
 
     // Merge refs
-    React.useImperativeHandle(ref, () => divRef.current as HTMLDivElement)
+    React.useImperativeHandle(ref, () => divRef.current as HTMLDivElement);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!divRef.current) return
-      const rect = divRef.current.getBoundingClientRect()
-      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
-      setOpacity(1)
-    }
+      if (!divRef.current) return;
+      const rect = divRef.current.getBoundingClientRect();
+      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+      setOpacity(1);
+    };
 
-    const handleMouseEnter = () => setOpacity(1)
-    const handleMouseLeave = () => setOpacity(0)
+    const handleMouseEnter = () => setOpacity(1);
+    const handleMouseLeave = () => setOpacity(0);
 
     return (
       <div
-        ref={divRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         className={cn(
           "relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 backdrop-blur-xl transition-all duration-300",
-          "shadow-lg hover:shadow-xl hover:border-slate-300/50",
+          "shadow-lg hover:border-slate-300/50 hover:shadow-xl",
           className
         )}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
+        ref={divRef}
         {...props}
       >
         <div
@@ -62,10 +63,10 @@ const SpotlightCard = React.forwardRef<HTMLDivElement, SpotlightCardProps>(
         />
         <div className="relative">{children}</div>
       </div>
-    )
+    );
   }
-)
+);
 
-SpotlightCard.displayName = "SpotlightCard"
+SpotlightCard.displayName = "SpotlightCard";
 
-export { SpotlightCard }
+export { SpotlightCard };

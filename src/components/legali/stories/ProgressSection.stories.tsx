@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { ProgressSection } from "../composite/ProgressSection"
+import type { Meta, StoryObj } from "@storybook/react";
+import { ProgressSection } from "../composite/ProgressSection";
 
 const meta = {
   title: "Legali/Composite/ProgressSection",
@@ -17,10 +17,10 @@ const meta = {
     },
     showPercentage: { control: "boolean" },
   },
-} satisfies Meta<typeof ProgressSection>
+} satisfies Meta<typeof ProgressSection>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const HeaderVariant: Story = {
   args: {
@@ -29,7 +29,7 @@ export const HeaderVariant: Story = {
     variant: "header",
     showPercentage: true,
   },
-}
+};
 
 export const CardVariant: Story = {
   args: {
@@ -38,7 +38,7 @@ export const CardVariant: Story = {
     variant: "card",
     showPercentage: true,
   },
-}
+};
 
 export const NoPercentage: Story = {
   args: {
@@ -47,4 +47,4 @@ export const NoPercentage: Story = {
     variant: "card",
     showPercentage: false,
   },
-}
+};

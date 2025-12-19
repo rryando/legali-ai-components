@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { ResultsCard } from "../composite/ResultsCard"
+import type { Meta, StoryObj } from "@storybook/react";
+import { ResultsCard } from "../composite/ResultsCard";
 
 const meta = {
   title: "Legali/Composite/ResultsCard",
@@ -16,10 +16,10 @@ const meta = {
     streak: { control: "number" },
     badgeTitle: { control: "text" },
   },
-} satisfies Meta<typeof ResultsCard>
+} satisfies Meta<typeof ResultsCard>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const PerfectScore: Story = {
   args: {
@@ -32,7 +32,7 @@ export const PerfectScore: Story = {
     onContinue: () => console.log("Continue clicked"),
     onReviewMistakes: () => console.log("Review clicked"),
   },
-}
+};
 
 export const GoodScore: Story = {
   args: {
@@ -45,7 +45,7 @@ export const GoodScore: Story = {
     onContinue: () => console.log("Continue clicked"),
     onReviewMistakes: () => console.log("Review clicked"),
   },
-}
+};
 
 export const NeedsImprovement: Story = {
   args: {
@@ -58,4 +58,4 @@ export const NeedsImprovement: Story = {
     onContinue: () => console.log("Continue clicked"),
     onReviewMistakes: () => console.log("Review clicked"),
   },
-}
+};

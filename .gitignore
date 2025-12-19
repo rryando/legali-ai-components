@@ -1,6 +1,35 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
-.storybook-static
-*.log
-.DS_Store
+storybook-static
+
+# Generated registry files
+registry
+
+# Lock files (using pnpm as primary package manager)
 pnpm-lock.yaml
+bun.lock
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor settings
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache directories
+.cache
+.turbo

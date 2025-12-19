@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { TypingText } from "../atomic/TypingText"
+import type { Meta, StoryObj } from "@storybook/react";
+import { TypingText } from "../atomic/TypingText";
 
 const meta = {
   title: "Legali/Atomic/TypingText",
@@ -14,14 +14,16 @@ const meta = {
     showCursor: { control: "boolean" },
     cursor: { control: "text" },
     loop: { control: "boolean" },
-    pauseDuration: { control: { type: "number", min: 0, max: 6000, step: 250 } },
+    pauseDuration: {
+      control: { type: "number", min: 0, max: 6000, step: 250 },
+    },
     startOnView: { control: "boolean" },
     once: { control: "boolean" },
   },
-} satisfies Meta<typeof TypingText>
+} satisfies Meta<typeof TypingText>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const SingleText: Story = {
   args: {
@@ -34,7 +36,7 @@ export const SingleText: Story = {
     once: false,
     className: "text-slate-800 font-semibold",
   },
-}
+};
 
 export const MultipleTextsLoop: Story = {
   args: {
@@ -52,4 +54,4 @@ export const MultipleTextsLoop: Story = {
     once: false,
     className: "text-slate-800 font-semibold",
   },
-}
+};

@@ -1,14 +1,12 @@
-const { dirname, join } = require('path');
+"use strict";
+const { dirname, join } = require("path");
 
 /** @type {import('@storybook/react-vite').StorybookConfig} */
 const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-  ],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
-    name: '@storybook/react-vite',
+    name: "@storybook/react-vite",
     options: {},
   },
   viteFinal: async (config) => {
@@ -16,10 +14,10 @@ const config = {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        '@': join(__dirname, '../src'),
+        "@": join(__dirname, "../src"),
       };
     }
-    
+
     return config;
   },
 };

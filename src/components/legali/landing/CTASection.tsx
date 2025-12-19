@@ -1,27 +1,28 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ArrowRight, Play, Shield, Clock, Star } from "lucide-react"
-import { Button } from "@/components/button"
-import { LegaliMascot, MascotMotion } from "../mascot/LegaliMascot"
+import { ArrowRight, Clock, Play, Shield, Star } from "lucide-react";
+import * as React from "react";
+import { Button } from "@/components/button";
+import { cn } from "@/lib/utils";
+import { LegaliMascot, MascotMotion } from "../mascot/LegaliMascot";
 
-export interface CTASectionProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+export interface CTASectionProps
+  extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   /** Callback when Get Started is clicked */
-  onGetStarted?: () => void
+  onGetStarted?: () => void;
   /** Callback when Watch Demo is clicked */
-  onWatchDemo?: () => void
+  onWatchDemo?: () => void;
   /** Section title */
-  title?: React.ReactNode
+  title?: React.ReactNode;
   /** Section subtitle */
-  subtitle?: string
+  subtitle?: string;
   /** Trust badges to display */
-  badges?: { icon: React.ReactNode; label: string }[]
+  badges?: { icon: React.ReactNode; label: string }[];
 }
 
 const defaultBadges = [
-  { icon: <Shield className="w-5 h-5" />, label: "SOC 2 Compliant" },
-  { icon: <Clock className="w-5 h-5" />, label: "24/7 Support" },
-  { icon: <Star className="w-5 h-5" />, label: "4.9/5 Rating" },
-]
+  { icon: <Shield className="h-5 w-5" />, label: "SOC 2 Compliant" },
+  { icon: <Clock className="h-5 w-5" />, label: "24/7 Support" },
+  { icon: <Star className="h-5 w-5" />, label: "4.9/5 Rating" },
+];
 
 /**
  * Call-to-action section with dark theme and mascot.
@@ -37,7 +38,7 @@ const CTASection = React.forwardRef<HTMLElement, CTASectionProps>(
         <>
           Ready to take control of your
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2]">
+          <span className="bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-clip-text text-transparent">
             legal journey?
           </span>
         </>
@@ -50,53 +51,55 @@ const CTASection = React.forwardRef<HTMLElement, CTASectionProps>(
   ) => {
     return (
       <section
+        className={cn("relative overflow-hidden px-6 py-32", className)}
         id="cta"
         ref={ref}
-        className={cn("relative py-32 px-6 overflow-hidden", className)}
         {...props}
       >
         {/* Dark gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]" />
 
         {/* Animated gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#4eaed0]/30 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-[#764ba2]/30 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#4eaed0]/30 to-transparent blur-3xl" />
+        <div className="absolute right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-[#764ba2]/30 to-transparent blur-3xl" />
 
-        <div className="relative max-w-4xl mx-auto text-center">
+        <div className="relative mx-auto max-w-4xl text-center">
           {/* Mascot */}
           <div className="mb-12">
             <LegaliMascot
+              className="mx-auto max-w-[200px]"
+              height="auto"
               motion={MascotMotion.CELEBRATE}
               width="100%"
-              height="auto"
-              className="mx-auto max-w-[200px]"
             />
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="mb-6 font-bold text-4xl text-white leading-tight tracking-tight md:text-5xl lg:text-6xl">
             {title}
           </h2>
 
-          <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">{subtitle}</p>
+          <p className="mx-auto mb-12 max-w-2xl text-slate-300 text-xl">
+            {subtitle}
+          </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
+              className="group h-14 rounded-2xl bg-[length:200%_100%] bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] px-10 font-semibold text-lg text-white shadow-2xl shadow-purple-500/30 transition-all duration-500 hover:bg-right"
               onClick={onGetStarted}
-              className="h-14 px-10 text-lg font-semibold bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-[length:200%_100%] hover:bg-right text-white rounded-2xl shadow-2xl shadow-purple-500/30 transition-all duration-500 group"
             >
               <span className="flex items-center gap-2">
                 Get Started Free
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </span>
             </Button>
 
             <Button
-              variant="ghost"
+              className="group h-14 rounded-2xl px-8 font-medium text-lg text-white/80 transition-all hover:bg-white/10 hover:text-white"
               onClick={onWatchDemo}
-              className="h-14 px-8 text-lg font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-2xl transition-all group"
+              variant="ghost"
             >
               <span className="flex items-center gap-2">
-                <Play className="w-5 h-5" />
+                <Play className="h-5 w-5" />
                 Watch Demo
               </span>
             </Button>
@@ -105,7 +108,7 @@ const CTASection = React.forwardRef<HTMLElement, CTASectionProps>(
           {/* Trust badges */}
           <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-slate-400">
             {badges.map((badge) => (
-              <div key={badge.label} className="flex items-center gap-2">
+              <div className="flex items-center gap-2" key={badge.label}>
                 {badge.icon}
                 <span className="text-sm">{badge.label}</span>
               </div>
@@ -113,10 +116,10 @@ const CTASection = React.forwardRef<HTMLElement, CTASectionProps>(
           </div>
         </div>
       </section>
-    )
+    );
   }
-)
+);
 
-CTASection.displayName = "CTASection"
+CTASection.displayName = "CTASection";
 
-export { CTASection }
+export { CTASection };

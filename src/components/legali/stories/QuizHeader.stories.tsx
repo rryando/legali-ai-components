@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { QuizHeader } from "../composite/QuizHeader"
+import type { Meta, StoryObj } from "@storybook/react";
+import { QuizHeader } from "../composite/QuizHeader";
 
 const meta = {
   title: "Legali/Composite/QuizHeader",
@@ -13,10 +13,10 @@ const meta = {
     totalQuestions: { control: "number" },
     progress: { control: { type: "range", min: 0, max: 100 } },
   },
-} satisfies Meta<typeof QuizHeader>
+} satisfies Meta<typeof QuizHeader>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -25,7 +25,7 @@ export const Default: Story = {
     progress: 20,
     onClose: () => console.log("Close clicked"),
   },
-}
+};
 
 export const Halfway: Story = {
   args: {
@@ -34,7 +34,7 @@ export const Halfway: Story = {
     progress: 60,
     onClose: () => console.log("Close clicked"),
   },
-}
+};
 
 export const NearEnd: Story = {
   args: {
@@ -43,4 +43,4 @@ export const NearEnd: Story = {
     progress: 100,
     onClose: () => console.log("Close clicked"),
   },
-}
+};
