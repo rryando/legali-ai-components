@@ -201,8 +201,11 @@ const HeroSection = ({ onGetStarted }: { onGetStarted?: () => void }) => {
 
   return (
     <section className="relative py-16 md:py-24 px-6 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#f8fbfc] via-white to-white" />
+      {/* Background gradients - soft pink and blue corners */}
+      <div className="absolute inset-0 bg-white" />
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#fce4ec]/40 via-[#f8bbd9]/20 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#e3f2fd]/50 via-[#bbdefb]/30 to-transparent rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-[#e8f5e9]/30 to-transparent rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
       
       <div className="relative max-w-5xl mx-auto text-center">
         {/* MyLegali / TeamLegali Tabs */}
@@ -358,13 +361,17 @@ const StatsSection = () => {
           {stats.map(({ value, label }) => (
             <div 
               key={value} 
-              className="relative p-12 rounded-xl overflow-hidden shadow-lg"
-              style={{
-                background: "linear-gradient(147deg, rgba(52, 148, 230, 0.8) 12%, rgba(154, 217, 242, 0) 85%)"
-              }}
+              className="relative p-12 rounded-2xl overflow-hidden shadow-[0_0_24px_rgba(0,0,0,0.08)] bg-white/80 backdrop-blur-sm"
             >
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-semibold text-black mb-3 tracking-tight">
+              {/* Gradient overlay */}
+              <div 
+                className="absolute inset-0 opacity-60"
+                style={{
+                  background: "linear-gradient(147deg, rgba(52, 148, 230, 0.5) 0%, rgba(154, 217, 242, 0.3) 40%, rgba(255, 255, 255, 0) 80%)"
+                }}
+              />
+              <div className="relative text-center">
+                <div className="text-5xl md:text-6xl font-semibold text-[#14213d] mb-3 tracking-tight">
                   {value}
                 </div>
                 <p className="text-lg text-[#535769]">{label}</p>
@@ -398,8 +405,13 @@ const PainPointsSection = () => {
   ]
 
   return (
-    <section className="py-20 px-6 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-20 px-6 overflow-hidden">
+      {/* Background with soft pink gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#fce4ec]/30 via-white to-[#e3f2fd]/20" />
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-to-r from-[#f8bbd9]/30 to-transparent rounded-full blur-3xl -translate-x-1/2" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-gradient-to-l from-[#bbdefb]/30 to-transparent rounded-full blur-3xl translate-x-1/3" />
+      
+      <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#14213d] tracking-tight mb-4">
             The challenges people face
@@ -413,7 +425,7 @@ const PainPointsSection = () => {
           {painPoints.map(({ title, description, icon }) => (
             <div 
               key={title}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-lg transition-shadow"
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-white/50 hover:shadow-lg transition-shadow"
             >
               <div className="mb-6">{icon}</div>
               <h3 className="text-xl font-semibold text-[#14213d] mb-3">{title}</h3>
@@ -469,8 +481,11 @@ const LegalToolkitSection = () => {
   ]
 
   return (
-    <section id="features" className="py-20 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="features" className="relative py-20 px-6 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fa] to-white" />
+      
+      <div className="relative max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#14213d] tracking-tight mb-4">
@@ -555,8 +570,10 @@ const LegalToolkitSection = () => {
 
 // Value Proposition (kept as additional content per user request)
 const ValueProposition = () => (
-  <section className="py-20 px-6 bg-slate-50">
-    <div className="max-w-4xl mx-auto text-center">
+  <section className="relative py-20 px-6 overflow-hidden">
+    {/* Soft gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#fce4ec]/20 via-white to-[#e3f2fd]/20" />
+    <div className="relative max-w-4xl mx-auto text-center">
       <blockquote className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#14213d] leading-relaxed">
         "The legal system shouldn't only work for those
         <br className="hidden md:block" />
@@ -607,8 +624,14 @@ const HowWeEmpower = () => {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="how-it-works" className="relative py-20 px-6 overflow-hidden">
+      {/* Background decorative gradients */}
+      <div className="absolute inset-0 bg-white" />
+      <div className="absolute top-20 left-0 w-[300px] h-[300px] bg-gradient-to-br from-[#e8d5f9]/40 to-transparent rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-[#d4f1f9]/40 to-transparent rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/4 w-[200px] h-[200px] bg-gradient-to-r from-[#fce4ec]/30 to-transparent rounded-full blur-2xl" />
+      
+      <div className="relative max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#14213d] tracking-tight mb-4">
             How We{" "}
@@ -685,8 +708,10 @@ const FAQSection = () => {
   ]
 
   return (
-    <section id="faq" className="py-20 px-6 bg-slate-50">
-      <div className="max-w-3xl mx-auto">
+    <section id="faq" className="relative py-20 px-6 overflow-hidden">
+      {/* Soft gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f5f7fa] via-white to-[#f0f4f8]" />
+      <div className="relative max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#14213d] tracking-tight mb-4">
             Frequently asked questions
