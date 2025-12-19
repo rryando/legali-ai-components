@@ -602,9 +602,30 @@ const HeroSectionV3 = ({ onGetStarted }: { onGetStarted?: () => void }) => {
               ))}
             </div>
           </div>
+          
+          {/* Mobile Mascot (Visible on Mobile Only, positioned between text and buttons) */}
+          <div className="lg:hidden relative w-full h-[300px] my-8 animate-in fade-in zoom-in duration-1000 order-last">
+             {/* Glow effect */}
+             <div className="absolute inset-0 bg-gradient-to-br from-[#4eaed0]/30 via-[#667eea]/20 to-[#764ba2]/30 rounded-full blur-3xl scale-110" />
+             
+             {/* Floating elements (Simplified for mobile) */}
+             <div className="absolute top-0 right-10 w-12 h-12 bg-white/80 backdrop-blur-xl rounded-xl shadow-xl flex items-center justify-center animate-bounce" style={{ animationDuration: '3s' }}>
+                <Scale className="w-6 h-6 text-[#4eaed0]" />
+             </div>
+             <div className="absolute bottom-10 left-10 w-10 h-10 bg-white/80 backdrop-blur-xl rounded-lg shadow-xl flex items-center justify-center animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}>
+                <Sparkles className="w-5 h-5 text-[#764ba2]" />
+             </div>
 
-          {/* Right - Mascot */}
-          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end animate-in fade-in zoom-in duration-1000">
+             <LegaliMascot
+               motion={mascotMotion}
+               width="100%"
+               height={300}
+               className="relative z-10 drop-shadow-2xl mx-auto"
+             />
+          </div>
+
+          {/* Desktop Mascot (Hidden on Mobile) */}
+          <div className="hidden lg:flex relative order-1 lg:order-2 justify-center lg:justify-end animate-in fade-in zoom-in duration-1000">
             <div className="relative">
               {/* Glow effect behind mascot */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#4eaed0]/30 via-[#667eea]/20 to-[#764ba2]/30 rounded-full blur-3xl scale-110" />
@@ -761,16 +782,20 @@ const ProblemSectionV3 = () => {
         </div>
 
         {/* Mascot with speech bubble */}
-        <div className="mt-16 flex justify-center items-end gap-4">
+        <div className="mt-16 flex flex-col md:flex-row justify-center items-center md:items-end gap-8 md:gap-4">
           <LegaliMascot
             motion={MascotMotion.IDEA}
             width={200}
             height={200}
+            className="shrink-0"
           />
-          <SpotlightCard className="p-6 rounded-2xl max-w-md relative">
-            {/* Speech bubble tail */}
-            <div className="absolute left-0 bottom-4 -translate-x-2 w-4 h-4 bg-white/80 rotate-45" />
-            <p className="text-slate-700 font-medium relative z-10">
+          <SpotlightCard className="p-6 rounded-2xl max-w-md relative w-full">
+            {/* Speech bubble tail - hidden on mobile, shown on md */}
+            <div className="hidden md:block absolute left-0 bottom-4 -translate-x-2 w-4 h-4 bg-white/80 rotate-45" />
+            {/* Mobile speech bubble tail (top) */}
+             <div className="md:hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-4 h-4 bg-white/80 rotate-45" />
+            
+            <p className="text-slate-700 font-medium relative z-10 text-center md:text-left">
               "That's why we built Legali—to level the playing field and give everyone 
               <span className="text-[#4eaed0] font-bold"> equal access to justice</span>."
             </p>
@@ -920,7 +945,7 @@ const FeaturesSectionV3 = () => {
 
           {/* Mascot Display */}
           <div className="relative flex justify-center">
-            <div className="relative">
+            <div className="relative w-full max-w-[350px]">
               {/* Background glow */}
               <div className={`absolute inset-0 bg-gradient-to-br ${features[activeFeature].gradient} opacity-20 rounded-full blur-3xl scale-110 transition-all duration-500`} />
               
@@ -941,9 +966,9 @@ const FeaturesSectionV3 = () => {
 
               <LegaliMascot
                 motion={mascotMotion}
-                width={350}
+                width="100%"
                 height={350}
-                className="relative z-10"
+                className="relative z-10 drop-shadow-2xl max-w-[280px] md:max-w-[350px]"
               />
             </div>
           </div>
@@ -1200,9 +1225,9 @@ const CTASectionV3 = ({ onGetStarted }: { onGetStarted?: () => void }) => (
       <div className="mb-12">
         <LegaliMascot
           motion={MascotMotion.CELEBRATE}
-          width={200}
-          height={200}
-          className="mx-auto"
+          width="100%"
+          height="auto"
+          className="mx-auto max-w-[200px]"
         />
       </div>
       
