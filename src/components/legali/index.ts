@@ -21,6 +21,7 @@ export { HomeScreen, type HomeScreenProps, type Module } from './screens/HomeScr
 export { QuizScreen, type QuizScreenProps, type Question } from './screens/QuizScreen'
 export { ResultsScreen, type ResultsScreenProps } from './screens/ResultsScreen'
 export { LandingPage, type LandingPageProps } from './screens/LandingPage'
+export { LandingPageV2, type LandingPageV2Props } from './screens/LandingPageV2'
 
 // Mascot Components
 export {
