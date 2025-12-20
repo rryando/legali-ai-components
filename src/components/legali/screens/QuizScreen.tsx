@@ -395,7 +395,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
         <QuizFeedback
           className="border-white/40 border-t bg-white/80 backdrop-blur-xl"
-          correct={currentQuestion.answers.find((a) => a.id === selectedAnswerId)?.correct}
+          correct={currentQuestion.answers.find((a) => a.id === selectedAnswerId)?.correct ?? false}
           explanation={currentQuestion.explanation}
           onContinue={handleContinue}
           show={showFeedback}
