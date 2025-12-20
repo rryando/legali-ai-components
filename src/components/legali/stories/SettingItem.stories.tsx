@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { SettingItem } from "../atomic/SettingItem"
-import { Bell, Moon, Shield, User } from "lucide-react"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Bell, Moon, Shield, User } from "lucide-react";
+import { SettingItem } from "../atomic/SettingItem";
 
 const meta = {
   title: "Legali/Atomic/SettingItem",
@@ -17,10 +17,10 @@ const meta = {
     },
     value: { control: "boolean" },
   },
-} satisfies Meta<typeof SettingItem>
+} satisfies Meta<typeof SettingItem>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const SwitchType: Story = {
   args: {
@@ -29,7 +29,7 @@ export const SwitchType: Story = {
     type: "switch",
     value: true,
   },
-}
+};
 
 export const SwitchOff: Story = {
   args: {
@@ -38,7 +38,7 @@ export const SwitchOff: Story = {
     type: "switch",
     value: false,
   },
-}
+};
 
 export const ArrowType: Story = {
   args: {
@@ -46,7 +46,7 @@ export const ArrowType: Story = {
     label: "Account Settings",
     type: "arrow",
   },
-}
+};
 
 export const SecuritySettings: Story = {
   args: {
@@ -54,4 +54,4 @@ export const SecuritySettings: Story = {
     label: "Privacy & Security",
     type: "arrow",
   },
-}
+};

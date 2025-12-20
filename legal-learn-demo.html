@@ -1,288 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Learn 101 - Component Demo</title>
-    <meta name="description" content="Interactive demo of Legal Learn component library">
+    <meta
+      name="description"
+      content="Interactive demo of Legal Learn component library"
+    >
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f8fafc;
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-        }
+    body {
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+        Cantarell, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
 
-        .header {
-            text-align: center;
-            color: #0f172a;
-            margin-bottom: 40px;
-            max-width: 800px;
-        }
+    .header {
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-        .header p {
-            font-size: 1.1rem;
-            color: #64748b;
-            line-height: 1.6;
-        }
+    .header p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
 
-        .links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        .link-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #0f172a;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+    .link-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #0f172a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
 
-        .link-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            background: #1e293b;
-        }
+    .link-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      background: #1e293b;
+    }
 
-        .link-button.secondary {
-            background: white;
-            color: #0f172a;
-            border: 1px solid #e2e8f0;
-        }
+    .link-button.secondary {
+      background: white;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+    }
 
-        .link-button.secondary:hover {
-            background: #f8fafc;
-        }
+    .link-button.secondary:hover {
+      background: #f8fafc;
+    }
 
-        .demo-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1400px;
-        }
+    .demo-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+    }
 
-        .info-card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            max-width: 500px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-        }
+    .info-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 500px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
 
-        .info-card h2 {
-            color: #0f172a;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+    .info-card h2 {
+      color: #0f172a;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
 
-        .info-card h3 {
-            color: #334155;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
+    .info-card h3 {
+      color: #334155;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
 
-        .info-card ul {
-            list-style: none;
-            padding: 0;
-        }
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
 
-        .info-card li {
-            padding: 8px 0;
-            color: #64748b;
-            border-bottom: 1px solid #f1f5f9;
-        }
+    .info-card li {
+      padding: 8px 0;
+      color: #64748b;
+      border-bottom: 1px solid #f1f5f9;
+    }
 
-        .info-card li:last-child {
-            border-bottom: none;
-        }
+    .info-card li:last-child {
+      border-bottom: none;
+    }
 
-        .info-card li::before {
-            content: '✓';
-            color: #22c55e;
-            font-weight: bold;
-            margin-right: 10px;
-        }
+    .info-card li::before {
+      content: "✓";
+      color: #22c55e;
+      font-weight: bold;
+      margin-right: 10px;
+    }
 
-        .component-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
+    .component-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
 
-        .component-tag {
-            background: #f8fafc;
-            color: #475569;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
+    .component-tag {
+      background: #f8fafc;
+      color: #475569;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
 
-        .footer {
-            margin-top: 60px;
-            text-align: center;
-            color: #94a3b8;
-        }
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #94a3b8;
+    }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
 
-            .demo-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+      .demo-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <h1>🎓 Legal Learn 101</h1>
-        <p>
-            A comprehensive React component library for building engaging legal education applications. 
-            Modern, clean, and professional design.
-        </p>
-        <div class="links">
-            <a href="http://localhost:6006" class="link-button" target="_blank">
-                📚 View Storybook
-            </a>
-            <a href="http://localhost:6006/?path=/story/legali-demo-complete-app--complete-app" class="link-button secondary" target="_blank">
-                🚀 Interactive Demo
-            </a>
-            <a href="legal-learn-101-mockup.html" class="link-button secondary" target="_blank">
-                📱 Original Mockup
-            </a>
-        </div>
+      <h1>🎓 Legal Learn 101</h1>
+      <p>
+        A comprehensive React component library for building engaging legal
+        education applications. Modern, clean, and professional design.
+      </p>
+      <div class="links">
+        <a href="http://localhost:6006" class="link-button" target="_blank">
+          📚 View Storybook
+        </a>
+        <a
+          href="http://localhost:6006/?path=/story/legali-demo-complete-app--complete-app"
+          class="link-button secondary"
+          target="_blank"
+        >
+          🚀 Interactive Demo
+        </a>
+        <a
+          href="legal-learn-101-mockup.html"
+          class="link-button secondary"
+          target="_blank"
+        >
+          📱 Original Mockup
+        </a>
+      </div>
     </div>
 
     <div class="demo-container">
-        <div class="info-card">
-            <h2>📦 Component Library</h2>
-            <p style="color: #64748b; margin-bottom: 1rem;">
-                20+ reusable components organized into three tiers for building complete learning experiences.
-            </p>
+      <div class="info-card">
+        <h2>📦 Component Library</h2>
+        <p style="color: #64748b; margin-bottom: 1rem;">
+          20+ reusable components organized into three tiers for building
+          complete learning experiences.
+        </p>
 
-            <h3>🧱 Atomic Components</h3>
-            <div class="component-list">
-                <div class="component-tag">StatItem</div>
-                <div class="component-tag">ProgressBar</div>
-                <div class="component-tag">LessonDot</div>
-                <div class="component-tag">Answer</div>
-                <div class="component-tag">StatRow</div>
-                <div class="component-tag">StatusBar</div>
-            </div>
-
-            <h3>🏗️ Composite Components</h3>
-            <div class="component-list">
-                <div class="component-tag">UserStatsBar</div>
-                <div class="component-tag">ProgressSection</div>
-                <div class="component-tag">ModuleCard</div>
-                <div class="component-tag">QuizHeader</div>
-                <div class="component-tag">QuizQuestion</div>
-                <div class="component-tag">QuizFeedback</div>
-                <div class="component-tag">ResultsCard</div>
-                <div class="component-tag">NavigationBar</div>
-            </div>
-
-            <h3>📱 Screen Components</h3>
-            <div class="component-list">
-                <div class="component-tag">HomeScreen</div>
-                <div class="component-tag">QuizScreen</div>
-                <div class="component-tag">ResultsScreen</div>
-            </div>
+        <h3>🧱 Atomic Components</h3>
+        <div class="component-list">
+          <div class="component-tag">StatItem</div>
+          <div class="component-tag">ProgressBar</div>
+          <div class="component-tag">LessonDot</div>
+          <div class="component-tag">Answer</div>
+          <div class="component-tag">StatRow</div>
+          <div class="component-tag">StatusBar</div>
         </div>
 
-        <div class="info-card">
-            <h2>✨ Features</h2>
-            <ul>
-                <li>Complete learning flow (Home → Quiz → Results)</li>
-                <li>Modern, flat design aesthetic</li>
-                <li>Fully accessible with ARIA labels</li>
-                <li>100% TypeScript with type safety</li>
-                <li>Interactive Storybook documentation</li>
-                <li>Responsive and mobile-friendly</li>
-                <li>Customizable variants and props</li>
-                <li>Smooth animations and transitions</li>
-            </ul>
+        <h3>🏗️ Composite Components</h3>
+        <div class="component-list">
+          <div class="component-tag">UserStatsBar</div>
+          <div class="component-tag">ProgressSection</div>
+          <div class="component-tag">ModuleCard</div>
+          <div class="component-tag">QuizHeader</div>
+          <div class="component-tag">QuizQuestion</div>
+          <div class="component-tag">QuizFeedback</div>
+          <div class="component-tag">ResultsCard</div>
+          <div class="component-tag">NavigationBar</div>
+        </div>
 
-            <h3>📚 Documentation</h3>
-            <p style="color: #64748b; margin-top: 1rem;">
-                Each component includes:
-            </p>
-            <ul>
-                <li>Interactive examples in Storybook</li>
-                <li>Complete TypeScript interfaces</li>
-                <li>Usage examples and code snippets</li>
-                <li>Accessibility guidelines</li>
-                <li>Multiple variants and states</li>
-            </ul>
+        <h3>📱 Screen Components</h3>
+        <div class="component-list">
+          <div class="component-tag">HomeScreen</div>
+          <div class="component-tag">QuizScreen</div>
+          <div class="component-tag">ResultsScreen</div>
+        </div>
+      </div>
 
-            <h3>🚀 Quick Start</h3>
-            <p style="color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem;">
-                Install and import:
-            </p>
-            <pre style="background: #f1f5f9; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; border: 1px solid #e2e8f0;"><code>npm install legali-ai-components
+      <div class="info-card">
+        <h2>✨ Features</h2>
+        <ul>
+          <li>Complete learning flow (Home → Quiz → Results)</li>
+          <li>Modern, flat design aesthetic</li>
+          <li>Fully accessible with ARIA labels</li>
+          <li>100% TypeScript with type safety</li>
+          <li>Interactive Storybook documentation</li>
+          <li>Responsive and mobile-friendly</li>
+          <li>Customizable variants and props</li>
+          <li>Smooth animations and transitions</li>
+        </ul>
+
+        <h3>📚 Documentation</h3>
+        <p style="color: #64748b; margin-top: 1rem;">
+          Each component includes:
+        </p>
+        <ul>
+          <li>Interactive examples in Storybook</li>
+          <li>Complete TypeScript interfaces</li>
+          <li>Usage examples and code snippets</li>
+          <li>Accessibility guidelines</li>
+          <li>Multiple variants and states</li>
+        </ul>
+
+        <h3>🚀 Quick Start</h3>
+        <p style="color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem;">
+          Install and import:
+        </p>
+        <pre
+          style="background: #f1f5f9; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; border: 1px solid #e2e8f0;"
+        ><code>npm install legali-ai-components
 249: 
 250: import { HomeScreen } from 'legali-ai-components'</code></pre>
-        </div>
+      </div>
     </div>
 
     <div class="footer">
-        <p>Built with React, TypeScript, Tailwind CSS, and Storybook</p>
-        <p style="margin-top: 0.5rem;">Component Registry for Legal Education Apps</p>
+      <p>Built with React, TypeScript, Tailwind CSS, and Storybook</p>
+      <p style="margin-top: 0.5rem;">
+        Component Registry for Legal Education Apps
+      </p>
     </div>
 
     <script>
-        // Check if Storybook is running
-        fetch('http://localhost:6006')
-            .then(() => {
-                console.log('✓ Storybook is running at http://localhost:6006');
-            })
-            .catch(() => {
-                console.log('⚠ Storybook is not running. Run `npm run storybook` to start it.');
-                // Update links to show they're not available
-                document.querySelectorAll('.link-button').forEach(link => {
-                    if (link.href.includes('localhost:6006')) {
-                        link.style.opacity = '0.5';
-                        link.style.pointerEvents = 'none';
-                        link.innerHTML += ' (Not Running)';
-                    }
-                });
-            });
+    "use strict";
+    // Check if Storybook is running
+    fetch("http://localhost:6006")
+      .then(() => {
+        console.log("✓ Storybook is running at http://localhost:6006");
+      })
+      .catch(() => {
+        console.log(
+          "⚠ Storybook is not running. Run `npm run storybook` to start it."
+        );
+        // Update links to show they're not available
+        document.querySelectorAll(".link-button").forEach((link) => {
+          if (link.href.includes("localhost:6006")) {
+            link.style.opacity = "0.5";
+            link.style.pointerEvents = "none";
+            link.innerHTML += " (Not Running)";
+          }
+        });
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,62 +1,75 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ResultsCard } from "../composite/ResultsCard"
-import { GlassCard } from "../atomic/GlassCard"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { GlassCard } from "../atomic/GlassCard";
+import { ResultsCard } from "../composite/ResultsCard";
 
 export interface ResultsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
-  score: number
-  totalQuestions: number
-  badgeTitle?: string
-  onContinue: () => void
-  onReviewMistakes?: () => void
-  streak?: number
-  xpEarned?: number
+  score: number;
+  totalQuestions: number;
+  badgeTitle?: string;
+  onContinue: () => void;
+  onReviewMistakes?: () => void;
+  streak?: number;
+  xpEarned?: number;
 }
 
 const ResultsScreen = React.forwardRef<HTMLDivElement, ResultsScreenProps>(
-  ({ className, score, totalQuestions, badgeTitle, onContinue, onReviewMistakes, streak = 5, xpEarned, ...props }, ref) => {
+  (
+    {
+      className,
+      score,
+      totalQuestions,
+      badgeTitle,
+      onContinue,
+      onReviewMistakes,
+      streak = 5,
+      xpEarned,
+      ...props
+    },
+    ref
+  ) => {
     // Calculate stats based on score
-    const percentage = Math.round((score / totalQuestions) * 100)
-    const finalXpEarned = xpEarned ?? (score * 10 + 20) // Base XP + Bonus
+    const percentage = Math.round((score / totalQuestions) * 100);
+    const finalXpEarned = xpEarned ?? score * 10 + 20; // Base XP + Bonus
 
     return (
       <div
-        ref={ref}
         className={cn(
-          "flex flex-col h-full min-h-screen relative overflow-hidden items-center justify-center p-6",
+          "relative flex h-full min-h-screen flex-col items-center justify-center overflow-hidden p-6",
           // Celebratory Blue/Gold Gradient
           "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-100 via-blue-50 to-white",
           className
         )}
+        ref={ref}
         {...props}
       >
         {/* Decorative Confetti/Orbs */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-           <div className="absolute top-[10%] left-[10%] w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
-           <div className="absolute bottom-[10%] right-[10%] w-64 h-64 bg-sky-400/20 rounded-full blur-3xl animate-pulse delay-700" />
-           <div className="absolute top-[20%] right-[20%] w-32 h-32 bg-yellow-400/30 rounded-full blur-2xl animate-bounce duration-[3000ms]" />
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
+          <div className="absolute top-[10%] left-[10%] h-64 w-64 animate-pulse rounded-full bg-blue-400/20 blur-3xl" />
+          <div className="absolute right-[10%] bottom-[10%] h-64 w-64 animate-pulse rounded-full bg-sky-400/20 blur-3xl delay-700" />
+          <div className="absolute top-[20%] right-[20%] h-32 w-32 animate-bounce rounded-full bg-yellow-400/30 blur-2xl duration-[3000ms]" />
         </div>
 
-        <GlassCard 
-          intensity="high" 
-          className="w-full max-w-md rounded-3xl shadow-2xl shadow-blue-500/10 border-white/60"
+        <GlassCard
+          className="w-full max-w-md rounded-3xl border-white/60 shadow-2xl shadow-blue-500/10"
+          intensity="high"
         >
           <ResultsCard
-            score={score}
-            totalQuestions={totalQuestions}
-            xpEarned={finalXpEarned}
             accuracy={percentage}
-            streak={streak}
             badgeTitle={badgeTitle}
+            className="bg-transparent"
             onContinue={onContinue}
             onReviewMistakes={onReviewMistakes}
-            className="bg-transparent" // Allow GlassCard background to show
+            score={score}
+            streak={streak}
+            totalQuestions={totalQuestions}
+            xpEarned={finalXpEarned} // Allow GlassCard background to show
           />
         </GlassCard>
       </div>
-    )
+    );
   }
-)
-ResultsScreen.displayName = "ResultsScreen"
+);
+ResultsScreen.displayName = "ResultsScreen";
 
-export { ResultsScreen }
+export { ResultsScreen };

@@ -1,0 +1,67 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  "files": {
+    "includes": [
+      "src/**/*.{ts,tsx,css}",
+      "scripts/**/*.{ts,tsx}",
+      "styles.css",
+      "vite.config.ts",
+      "tsconfig.json"
+    ]
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
+  "formatter": {
+    "lineWidth": 100,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noUnknownAtRules": "off"
+      },
+      "performance": {
+        "noNamespaceImport": "off"
+      },
+      "nursery": {
+        "noReactForwardRef": "off"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.html", ".storybook/**", "dist/**", "node_modules/**"],
+      "linter": { "enabled": false },
+      "formatter": { "enabled": false }
+    },
+    {
+      "includes": ["src/routeTree.gen.ts"],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": ["src/index.ts"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noBarrelFile": "off"
+          }
+        }
+      }
+    }
+  ],
+  "extends": ["ultracite/core", "ultracite/react"]
+}

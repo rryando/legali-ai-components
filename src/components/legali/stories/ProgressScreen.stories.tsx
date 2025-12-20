@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { ProgressScreen } from "../screens/ProgressScreen"
+import type { Meta, StoryObj } from "@storybook/react";
+import { ProgressScreen } from "../screens/ProgressScreen";
 
 const meta = {
   title: "Legali/Screens/ProgressScreen",
@@ -8,10 +8,10 @@ const meta = {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof ProgressScreen>
+} satisfies Meta<typeof ProgressScreen>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
@@ -37,7 +37,7 @@ export const Default: Story = {
       { title: "Civil Procedure Basics", date: "2 days ago", score: 90 },
     ],
   },
-}
+};
 
 export const EmptyState: Story = {
   args: {
@@ -53,4 +53,4 @@ export const EmptyState: Story = {
     skills: [],
     recentActivity: [],
   },
-}
+};

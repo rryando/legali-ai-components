@@ -1,48 +1,49 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { UserStatsBar } from "../composite/UserStatsBar"
-import { ModuleCard, type ModuleStatus, type Lesson } from "../composite/ModuleCard"
-import { NavigationBar } from "../composite/NavigationBar"
-import { BookOpen, BarChart2, User } from "lucide-react"
-import { ProfileScreen } from "./ProfileScreen"
-import { ProgressScreen } from "./ProgressScreen"
-import { MascotMotion } from "../mascot"
-import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard"
+import { BarChart2, BookOpen, User } from "lucide-react";
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { MascotHeroCard, type MascotHeroScriptStep } from "../composite/MascotHeroCard";
+import { type Lesson, ModuleCard, type ModuleStatus } from "../composite/ModuleCard";
+import { NavigationBar } from "../composite/NavigationBar";
+import { UserStatsBar } from "../composite/UserStatsBar";
+import { MascotMotion } from "../mascot";
+import { ProfileScreen } from "./ProfileScreen";
+import { ProgressScreen } from "./ProgressScreen";
 
 export interface Module {
-  id: string | number
-  icon: React.ReactNode
-  title: string
-  subtitle: string
-  mascotCopy?: string
-  status: ModuleStatus
-  lessons: Lesson[]
+  id: string | number;
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+  mascotCopy?: string;
+  status: ModuleStatus;
+  lessons: Lesson[];
 }
 
 export interface HomeScreenProps extends React.HTMLAttributes<HTMLDivElement> {
-  modules: Module[]
-  onModuleClick: (id: string | number) => void
-  streak?: number
-  points?: number
-  hearts?: number
+  modules: Module[];
+  onModuleClick: (id: string | number) => void;
+  streak?: number;
+  points?: number;
+  hearts?: number;
 }
 
 const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
   ({ className, modules, onModuleClick, streak = 5, points = 1250, hearts = 5, ...props }, ref) => {
-    const [activeTab, setActiveTab] = React.useState('learn')
-    const [heroTrigger, setHeroTrigger] = React.useState(0)
+    const [activeTab, setActiveTab] = React.useState("learn");
+    const [heroTrigger, setHeroTrigger] = React.useState(0);
 
-    const currentModule = React.useMemo(() => {
-      return modules.find((m) => m.status === "current") ?? modules[0]
-    }, [modules])
+    const currentModule = React.useMemo(
+      () => modules.find((m) => m.status === "current") ?? modules[0],
+      [modules]
+    );
 
     const mascotText = React.useMemo(() => {
-      if (!currentModule) return ""
-      return currentModule.mascotCopy ?? currentModule.subtitle
-    }, [currentModule])
+      if (!currentModule) return "";
+      return currentModule.mascotCopy ?? currentModule.subtitle;
+    }, [currentModule]);
 
-    const heroScript = React.useMemo<MascotHeroScriptStep[]>(() => {
-      return [
+    const heroScript = React.useMemo<MascotHeroScriptStep[]>(
+      () => [
         {
           motion: MascotMotion.WAVING,
           durationMs: 2000,
@@ -54,7 +55,7 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         },
         {
           motion: MascotMotion.SPEAKING,
-          durationMs: 30000,
+          durationMs: 30_000,
           lines: [
             mascotText,
             currentModule?.title ? `Today: ${currentModule.title}` : "",
@@ -65,16 +66,14 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
         {
           motion: MascotMotion.IDLE,
           durationMs: null,
-          lines: [
-            "Tap any module to continue",
-            "I’m here if you need a hint",
-          ],
+          lines: ["Tap any module to continue", "I’m here if you need a hint"],
         },
-      ]
-    }, [currentModule?.title, mascotText])
+      ],
+      [currentModule?.title, mascotText]
+    );
 
-    const heroInterruptScript = React.useMemo<MascotHeroScriptStep[]>(() => {
-      return [
+    const heroInterruptScript = React.useMemo<MascotHeroScriptStep[]>(
+      () => [
         {
           motion: MascotMotion.THINKING,
           durationMs: 450,
@@ -90,39 +89,40 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
           durationMs: null,
           lines: ["Tap a lesson to start"],
         },
-      ]
-    }, [mascotText])
+      ],
+      [mascotText]
+    );
 
     const handleModuleClick = React.useCallback(
       (id: string | number) => {
-        setHeroTrigger((v) => v + 1)
-        onModuleClick(id)
+        setHeroTrigger((v) => v + 1);
+        onModuleClick(id);
       },
       [onModuleClick]
-    )
+    );
 
     return (
       <div
-        ref={ref}
         className={cn(
-          "flex flex-col md:flex-row h-full min-h-screen relative overflow-hidden",
+          "relative flex h-full min-h-screen flex-col overflow-hidden md:flex-row",
           // New Bluish Gradient Background
           "bg-gradient-to-br from-sky-100 via-blue-50 to-white",
           className
         )}
+        ref={ref}
         {...props}
       >
         {/* Decorative Orbs */}
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-sky-200/40 rounded-full blur-3xl pointer-events-none animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl pointer-events-none animate-pulse delay-700" />
+        <div className="pointer-events-none absolute top-[-10%] right-[-10%] h-[600px] w-[600px] animate-pulse rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[-10%] left-[-10%] h-[500px] w-[500px] animate-pulse rounded-full bg-blue-200/40 blur-3xl delay-700" />
 
         {/* Desktop Sidebar */}
-        <div className="hidden md:flex flex-col w-64 bg-white/60 backdrop-blur-xl border-r border-blue-100 p-6 z-20 shadow-xl shadow-blue-900/5">
+        <div className="z-20 hidden w-64 flex-col border-blue-100 border-r bg-white/60 p-6 shadow-blue-900/5 shadow-xl backdrop-blur-xl md:flex">
           <div className="mb-8">
             <img
-              src="/logo/logo.png"
               alt="Legali AI Logo"
-              className="h-auto w-auto" // Adjust height and width as needed
+              className="h-auto w-auto"
+              src="/logo/logo.png" // Adjust height and width as needed
             />
           </div>
 
@@ -134,81 +134,84 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
                 className="mb-6"
               />
           </div> */}
-          <nav className="space-y-2 flex-1">
+          <nav className="flex-1 space-y-2">
             {[
-              { id: 'learn', label: 'Learn', icon: BookOpen },
-              { id: 'progress', label: 'Progress', icon: BarChart2 },
-              { id: 'profile', label: 'Profile', icon: User },
+              { id: "learn", label: "Learn", icon: BookOpen },
+              { id: "progress", label: "Progress", icon: BarChart2 },
+              { id: "profile", label: "Profile", icon: User },
             ].map((item) => (
               <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
                 className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-300 group",
+                  "group flex w-full items-center gap-3 rounded-2xl px-4 py-3 transition-all duration-300",
                   activeTab === item.id
-                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-105"
+                    ? "scale-105 bg-blue-600 text-white shadow-blue-500/30 shadow-lg"
                     : "text-slate-500 hover:bg-blue-50 hover:text-blue-600"
                 )}
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
               >
-                <item.icon className={cn("w-5 h-5 transition-transform duration-300", activeTab === item.id ? "animate-pulse" : "group-hover:scale-110")} />
+                <item.icon
+                  className={cn(
+                    "h-5 w-5 transition-transform duration-300",
+                    activeTab === item.id ? "animate-pulse" : "group-hover:scale-110"
+                  )}
+                />
                 <span className="font-bold">{item.label}</span>
               </button>
             ))}
           </nav>
-
-          
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col h-full overflow-hidden relative">
-          {activeTab === 'learn' && (
+        <div className="relative flex h-full flex-1 flex-col overflow-hidden">
+          {activeTab === "learn" && (
             <>
               {/* Header Area (Mobile Only for Stats) */}
-              <div className="sticky top-0 z-10 px-5 pt-6 pb-4 backdrop-blur-md bg-white/30 border-b border-white/20 md:bg-transparent md:border-none md:backdrop-blur-none">
+              <div className="sticky top-0 z-10 border-white/20 border-b bg-white/30 px-5 pt-6 pb-4 backdrop-blur-md md:border-none md:bg-transparent md:backdrop-blur-none">
                 <div className="md:hidden">
-                  <UserStatsBar
-                    streak={streak}
-                    points={points}
-                    hearts={hearts}
-                    className="mb-6"
-                  />
+                  <UserStatsBar className="mb-6" hearts={hearts} points={points} streak={streak} />
                 </div>
-                
-                <div className="max-w-4xl mx-auto w-full">
+
+                <div className="mx-auto w-full max-w-4xl">
                   {/* <ProgressSection
                     title={currentModule?.title ?? "Learning"}
                     progress={progressFromStatus}
                   /> */}
 
                   <MascotHeroCard
+                    active={activeTab === "learn"}
                     className="mt-4"
                     heroTitle={currentModule?.title ?? "Let’s learn"}
-                    active={activeTab === "learn"}
-                    script={heroScript}
                     interruptScript={heroInterruptScript}
+                    script={heroScript}
+                    stream={{
+                      fitToStepDuration: true,
+                      loop: true,
+                      showCursor: true,
+                      linePauseMs: 5000,
+                    }}
                     triggerKey={heroTrigger}
-                    stream={{ fitToStepDuration: true, loop: true, showCursor: true, linePauseMs: 5000 }}
                   />
                 </div>
               </div>
 
               {/* Modules Scroll Area */}
               <div className="flex-1 overflow-y-auto px-5 py-6 pb-24 md:pb-6">
-                <div className="max-w-4xl mx-auto w-full space-y-6">
-                  <h2 className="font-bold text-2xl text-slate-800 mb-4 tracking-tight">
+                <div className="mx-auto w-full max-w-4xl space-y-6">
+                  <h2 className="mb-4 font-bold text-2xl text-slate-800 tracking-tight">
                     Learning Path
                   </h2>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-0">
+
+                  <div className="grid grid-cols-1 gap-4 space-y-0 md:grid-cols-2">
                     {modules.map((module) => (
                       <ModuleCard
-                        key={module.id}
                         icon={module.icon}
-                        title={module.title}
-                        subtitle={module.subtitle}
-                        status={module.status}
+                        key={module.id}
                         lessons={module.lessons}
                         onModuleClick={() => handleModuleClick(module.id)}
+                        status={module.status}
+                        subtitle={module.subtitle}
+                        title={module.title}
                       />
                     ))}
                   </div>
@@ -217,27 +220,27 @@ const HomeScreen = React.forwardRef<HTMLDivElement, HomeScreenProps>(
             </>
           )}
 
-          {activeTab === 'progress' && <ProgressScreen />}
-          {activeTab === 'profile' && <ProfileScreen />}
+          {activeTab === "progress" && <ProgressScreen />}
+          {activeTab === "profile" && <ProfileScreen />}
         </div>
 
         {/* Bottom Navigation (Mobile Only) */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-20 p-4">
+        <div className="fixed right-0 bottom-0 left-0 z-20 p-4 md:hidden">
           <NavigationBar
-            items={[
-              { id: 'learn', label: 'Learn', icon: 'learn' },
-              { id: 'progress', label: 'Progress', icon: 'progress' },
-              { id: 'profile', label: 'Profile', icon: 'profile' },
-            ]}
             activeItem={activeTab}
+            className="mx-auto max-w-md rounded-2xl border-white/50 bg-white/80 shadow-2xl shadow-indigo-500/20 backdrop-blur-xl"
+            items={[
+              { id: "learn", label: "Learn", icon: "learn" },
+              { id: "progress", label: "Progress", icon: "progress" },
+              { id: "profile", label: "Profile", icon: "profile" },
+            ]}
             onItemClick={setActiveTab}
-            className="rounded-2xl shadow-2xl shadow-indigo-500/20 border-white/50 bg-white/80 backdrop-blur-xl mx-auto max-w-md"
           />
         </div>
       </div>
-    )
+    );
   }
-)
-HomeScreen.displayName = "HomeScreen"
+);
+HomeScreen.displayName = "HomeScreen";
 
-export { HomeScreen }
+export { HomeScreen };

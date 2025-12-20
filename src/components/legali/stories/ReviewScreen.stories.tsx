@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { ReviewScreen } from "../screens/ReviewScreen"
+import type { Meta, StoryObj } from "@storybook/react";
+import { ReviewScreen } from "../screens/ReviewScreen";
 
 const meta = {
   title: "Legali/Screens/ReviewScreen",
@@ -8,10 +8,10 @@ const meta = {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof ReviewScreen>
+} satisfies Meta<typeof ReviewScreen>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const sampleQuestions = [
   {
@@ -34,9 +34,10 @@ const sampleQuestions = [
       { id: "c", text: "Divorce", correct: true },
       { id: "d", text: "Breach of contract", correct: false },
     ],
-    explanation: "Family law matters like divorce are handled in family court, not small claims court.",
+    explanation:
+      "Family law matters like divorce are handled in family court, not small claims court.",
   },
-]
+];
 
 export const Default: Story = {
   args: {
@@ -47,7 +48,7 @@ export const Default: Story = {
     },
     onClose: () => console.log("Close clicked"),
   },
-}
+};
 
 export const AllCorrect: Story = {
   args: {
@@ -58,7 +59,7 @@ export const AllCorrect: Story = {
     },
     onClose: () => console.log("Close clicked"),
   },
-}
+};
 
 export const AllIncorrect: Story = {
   args: {
@@ -69,4 +70,4 @@ export const AllIncorrect: Story = {
     },
     onClose: () => console.log("Close clicked"),
   },
-}
+};

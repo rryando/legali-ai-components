@@ -6,8 +6,8 @@
 
 export {
   LegaliMascot,
+  type LegaliMascotProps,
   MascotMotion,
   MascotMotionLabels,
   type MascotMotionType,
-  type LegaliMascotProps,
-} from './LegaliMascot'
+} from "./LegaliMascot";

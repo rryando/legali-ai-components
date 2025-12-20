@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { QuestionNumberBadge } from "../atomic/QuestionNumberBadge"
+import type { Meta, StoryObj } from "@storybook/react";
+import { QuestionNumberBadge } from "../atomic/QuestionNumberBadge";
 
 const meta = {
   title: "Legali/Atomic/QuestionNumberBadge",
@@ -15,28 +15,28 @@ const meta = {
       options: ["correct", "incorrect", "neutral"],
     },
   },
-} satisfies Meta<typeof QuestionNumberBadge>
+} satisfies Meta<typeof QuestionNumberBadge>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Neutral: Story = {
   args: {
     number: 1,
     status: "neutral",
   },
-}
+};
 
 export const Correct: Story = {
   args: {
     number: 2,
     status: "correct",
   },
-}
+};
 
 export const Incorrect: Story = {
   args: {
     number: 3,
     status: "incorrect",
   },
-}
+};

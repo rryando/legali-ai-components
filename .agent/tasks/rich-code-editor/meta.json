@@ -1,49 +1,45 @@
 {
-    "task_id": "rich-code-editor-001",
-    "task_slug": "rich-code-editor",
-    "title": "Rich Code Editor Component",
-    "status": "in_progress",
-    "summary": "Create a rich code editor component for the component library.",
-    "created_at": "2025-11-19T11:38:57+07:00",
-    "updated_at": "2025-11-19T11:38:57+07:00",
-    "tags": [
-        "component",
-        "editor",
-        "ui"
-    ],
-    "checklist": [],
-    "references": [],
-    "open_questions": [
-        "What is the preferred underlying editor library (Monaco, CodeMirror, Ace)?",
-        "What specific features are required (syntax highlighting, diff view, minimap)?",
-        "Is there a specific language target or generic support needed?"
-    ],
-    "decisions": [],
-    "milestones": [],
-    "agents": {
-        "research": {
-            "owner": "Antigravity",
-            "status": "in_progress",
-            "artifact": ".agent/tasks/rich-code-editor/research/rich-code-editor-research.md",
-            "notes": "Initial setup."
-        },
-        "planning": {
-            "owner": "",
-            "status": "pending",
-            "artifact": "",
-            "notes": ""
-        },
-        "executor": {
-            "owner": "",
-            "status": "pending",
-            "artifact": "",
-            "notes": ""
-        },
-        "documentation": {
-            "owner": "",
-            "status": "pending",
-            "artifact": "",
-            "notes": ""
-        }
+  "task_id": "rich-code-editor-001",
+  "task_slug": "rich-code-editor",
+  "title": "Rich Code Editor Component",
+  "status": "in_progress",
+  "summary": "Create a rich code editor component for the component library.",
+  "created_at": "2025-11-19T11:38:57+07:00",
+  "updated_at": "2025-11-19T11:38:57+07:00",
+  "tags": ["component", "editor", "ui"],
+  "checklist": [],
+  "references": [],
+  "open_questions": [
+    "What is the preferred underlying editor library (Monaco, CodeMirror, Ace)?",
+    "What specific features are required (syntax highlighting, diff view, minimap)?",
+    "Is there a specific language target or generic support needed?"
+  ],
+  "decisions": [],
+  "milestones": [],
+  "agents": {
+    "research": {
+      "owner": "Antigravity",
+      "status": "in_progress",
+      "artifact": ".agent/tasks/rich-code-editor/research/rich-code-editor-research.md",
+      "notes": "Initial setup."
+    },
+    "planning": {
+      "owner": "",
+      "status": "pending",
+      "artifact": "",
+      "notes": ""
+    },
+    "executor": {
+      "owner": "",
+      "status": "pending",
+      "artifact": "",
+      "notes": ""
+    },
+    "documentation": {
+      "owner": "",
+      "status": "pending",
+      "artifact": "",
+      "notes": ""
     }
+  }
 }

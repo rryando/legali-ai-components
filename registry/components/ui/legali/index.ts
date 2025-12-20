@@ -1,31 +1,68 @@
 // Atomic Components
-export { StatItem, statItemVariants, type StatItemProps } from './atomic/StatItem'
-export { ProgressBar, progressBarVariants, type ProgressBarProps } from './atomic/ProgressBar'
-export { LessonDot, lessonDotVariants, type LessonDotProps } from './atomic/LessonDot'
-export { Answer, type AnswerProps } from './atomic/Answer'
-export { StatRow, type StatRowProps } from './atomic/StatRow'
-export { StatusBar, type StatusBarProps } from './atomic/StatusBar'
 
+export { Answer, type AnswerProps } from "./atomic/Answer";
+export {
+  LessonDot,
+  type LessonDotProps,
+  lessonDotVariants,
+} from "./atomic/LessonDot";
+export {
+  ProgressBar,
+  type ProgressBarProps,
+  progressBarVariants,
+} from "./atomic/ProgressBar";
+export {
+  StatItem,
+  type StatItemProps,
+  statItemVariants,
+} from "./atomic/StatItem";
+export { StatRow, type StatRowProps } from "./atomic/StatRow";
+export { StatusBar, type StatusBarProps } from "./atomic/StatusBar";
+export {
+  type Lesson,
+  ModuleCard,
+  type ModuleCardProps,
+  type ModuleStatus,
+} from "./composite/ModuleCard";
+export {
+  type NavItem,
+  NavigationBar,
+  type NavigationBarProps,
+} from "./composite/NavigationBar";
+export {
+  ProgressSection,
+  type ProgressSectionProps,
+} from "./composite/ProgressSection";
+export { QuizFeedback, type QuizFeedbackProps } from "./composite/QuizFeedback";
+export { QuizHeader, type QuizHeaderProps } from "./composite/QuizHeader";
+export { QuizQuestion, type QuizQuestionProps } from "./composite/QuizQuestion";
+export {
+  ResultsCard,
+  type ResultsCardProps,
+  type ResultsStat,
+} from "./composite/ResultsCard";
 // Composite Components
-export { UserStatsBar, type UserStatsBarProps } from './composite/UserStatsBar'
-export { ProgressSection, type ProgressSectionProps } from './composite/ProgressSection'
-export { ModuleCard, type ModuleCardProps, type ModuleStatus, type Lesson } from './composite/ModuleCard'
-export { QuizHeader, type QuizHeaderProps } from './composite/QuizHeader'
-export { QuizQuestion, type QuizQuestionProps } from './composite/QuizQuestion'
-export { QuizFeedback, type QuizFeedbackProps } from './composite/QuizFeedback'
-export { ResultsCard, type ResultsCardProps, type ResultsStat } from './composite/ResultsCard'
-export { NavigationBar, type NavigationBarProps, type NavItem } from './composite/NavigationBar'
-
-// Screen Components
-export { HomeScreen, type HomeScreenProps, type Module } from './screens/HomeScreen'
-export { QuizScreen, type QuizScreenProps, type Question } from './screens/QuizScreen'
-export { ResultsScreen, type ResultsScreenProps } from './screens/ResultsScreen'
-
+export { UserStatsBar, type UserStatsBarProps } from "./composite/UserStatsBar";
 // Mascot Components
 export {
   LegaliMascot,
+  type LegaliMascotProps,
   MascotMotion,
   MascotMotionLabels,
   type MascotMotionType,
-  type LegaliMascotProps,
-} from './mascot'
+} from "./mascot";
+// Screen Components
+export {
+  HomeScreen,
+  type HomeScreenProps,
+  type Module,
+} from "./screens/HomeScreen";
+export {
+  type Question,
+  QuizScreen,
+  type QuizScreenProps,
+} from "./screens/QuizScreen";
+export {
+  ResultsScreen,
+  type ResultsScreenProps,
+} from "./screens/ResultsScreen";

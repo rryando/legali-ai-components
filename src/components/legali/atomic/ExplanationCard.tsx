@@ -1,27 +1,25 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { GlassCard } from "./GlassCard"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { GlassCard } from "./GlassCard";
 
 export interface ExplanationCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  explanation: string
+  explanation: string;
 }
 
 export const ExplanationCard = React.forwardRef<HTMLDivElement, ExplanationCardProps>(
-  ({ className, explanation, ...props }, ref) => {
-    return (
-      <GlassCard
-        ref={ref}
-        intensity="low"
-        className={cn(
-          "mt-4 p-4 rounded-xl text-sm text-blue-800 leading-relaxed border-blue-200/50 bg-blue-50/30",
-          className
-        )}
-        {...props}
-      >
-        <span className="font-bold block mb-1">Explanation:</span>
-        {explanation}
-      </GlassCard>
-    )
-  }
-)
-ExplanationCard.displayName = "ExplanationCard"
+  ({ className, explanation, ...props }, ref) => (
+    <GlassCard
+      className={cn(
+        "mt-4 rounded-xl border-blue-200/50 bg-blue-50/30 p-4 text-blue-800 text-sm leading-relaxed",
+        className
+      )}
+      intensity="low"
+      ref={ref}
+      {...props}
+    >
+      <span className="mb-1 block font-bold">Explanation:</span>
+      {explanation}
+    </GlassCard>
+  )
+);
+ExplanationCard.displayName = "ExplanationCard";

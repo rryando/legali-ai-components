@@ -19,7 +19,5 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": [
-    "@rive-app/react-canvas"
-  ]
+  "dependencies": ["@rive-app/react-canvas"]
 }

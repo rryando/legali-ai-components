@@ -1,6 +1,6 @@
+import { Menu, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sun } from "lucide-react";
 
 /**
  * Props for the FloatingNavbar component.
@@ -14,7 +14,7 @@ interface FloatingNavbarProps {
 
 /**
  * A responsive navbar that transforms from a full-width header to a floating pill on scroll.
- * 
+ *
  * @component
  * @example
  * ```tsx
@@ -39,25 +39,27 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ease-in-out pt-4 pointer-events-none">
+    <div className="pointer-events-none fixed top-0 right-0 left-0 z-50 flex justify-center pt-4 transition-all duration-300 ease-in-out">
       <nav
         className={cn(
-          "flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pointer-events-auto",
+          "pointer-events-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
           isScrolled
-            ? "w-[90%] md:w-[700px] rounded-full bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 shadow-lg py-3 px-6 mt-2"
-            : "w-full bg-transparent py-6 px-8 mt-0 border-transparent",
+            ? "mt-2 w-[90%] rounded-full border border-white/20 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-md md:w-[700px] dark:bg-black/70"
+            : "mt-0 w-full border-transparent bg-transparent px-8 py-6",
           className
         )}
       >
         {/* Logo Section */}
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground">
             L
           </div>
           <span
             className={cn(
               "font-bold text-lg transition-opacity duration-300",
-              isScrolled ? "opacity-0 w-0 overflow-hidden md:opacity-100 md:w-auto" : "opacity-100"
+              isScrolled
+                ? "w-0 overflow-hidden opacity-0 md:w-auto md:opacity-100"
+                : "opacity-100"
             )}
           >
             Legali
@@ -65,12 +67,12 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-8 md:flex">
           {["Features", "Solutions", "Pricing", "About"].map((item) => (
             <a
-              key={item}
+              className="font-medium text-muted-foreground text-sm transition-colors hover:text-primary"
               href={`#${item.toLowerCase()}`}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              key={item}
             >
               {item}
             </a>
@@ -79,42 +81,46 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button className="p-2 rounded-full hover:bg-accent transition-colors">
-            <Sun className="w-4 h-4" />
+          <button className="rounded-full p-2 transition-colors hover:bg-accent">
+            <Sun className="h-4 w-4" />
           </button>
           <button
             className={cn(
-              "bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-all",
+              "rounded-full bg-primary px-4 py-2 font-medium text-primary-foreground text-sm transition-all hover:bg-primary/90",
               isScrolled ? "h-9 px-4" : "h-10 px-6"
             )}
           >
             Get Started
           </button>
-          
+
           {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden p-2"
+          <button
+            className="p-2 md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
       </nav>
-      
+
       {/* Mobile Menu Overlay (Simple implementation for demo) */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background border-b p-4 md:hidden pointer-events-auto shadow-xl animate-in slide-in-from-top-5">
-           <div className="flex flex-col gap-4">
+        <div className="slide-in-from-top-5 pointer-events-auto absolute top-full right-0 left-0 animate-in border-b bg-background p-4 shadow-xl md:hidden">
+          <div className="flex flex-col gap-4">
             {["Features", "Solutions", "Pricing", "About"].map((item) => (
               <a
-                key={item}
+                className="rounded-md p-2 font-medium text-sm hover:bg-accent"
                 href="#"
-                className="text-sm font-medium p-2 hover:bg-accent rounded-md"
+                key={item}
               >
                 {item}
               </a>
             ))}
-           </div>
+          </div>
         </div>
       )}
     </div>
