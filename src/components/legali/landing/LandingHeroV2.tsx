@@ -133,16 +133,16 @@ const LandingHeroV2 = forwardRef<HTMLElement, LandingHeroV2Props>(
         <GradientMeshBackground className="absolute inset-0" enableParallax />
 
         {/* Content Container with Padding */}
-        <div className="relative w-full lg:pt-28 lg:pb-20">
+        <div className="relative w-full mt-20 lg:pb-20">
           <CursorGlow
             blurAmount={100}
-            className="relative mx-auto h-full max-w-7xl"
+            className="relative mx-auto h-full -mt-20"
             glowColor="rgba(78, 174, 208, 0.12)"
             glowSize={600}
           >
-            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div className="grid mt-20 max-w-7xl mx-auto items-center gap-8 lg:grid-cols-2 lg:gap-16">
               {/* Left Content */}
-              <div className="order-2 text-center lg:order-1 lg:text-left">
+              <div className="order-1 text-center lg:text-left">
                 {/* Badge */}
                 <div className="fade-in slide-in-from-bottom mb-8 inline-flex animate-in items-center gap-2 rounded-full border border-[#4eaed0]/20 bg-gradient-to-r from-[#4eaed0]/10 to-[#667eea]/10 px-4 py-2 duration-700">
                   <Sparkles className="h-4 w-4 text-[#4eaed0]" />
@@ -193,7 +193,7 @@ const LandingHeroV2 = forwardRef<HTMLElement, LandingHeroV2Props>(
                 <div className="fade-in slide-in-from-bottom mx-auto mb-4 max-w-xl animate-in delay-300 duration-700 lg:mx-0">
                   <TiltCard
                     className="rounded-3xl border-white/40 bg-white/60 p-2 shadow-2xl shadow-blue-500/5 ring-1 ring-white/50 backdrop-blur-2xl"
-                    enableGlare
+                    // enableGlare
                     maxTilt={8}
                   >
                     <div className="flex items-center gap-2">
@@ -240,7 +240,7 @@ const LandingHeroV2 = forwardRef<HTMLElement, LandingHeroV2Props>(
               </div>
 
               {/* Right - Mascot with Floating Particles */}
-              <div className="fade-in zoom-in relative order-1 flex animate-in justify-center duration-1000 lg:order-2 lg:justify-end">
+              <div className="fade-in zoom-in relative order-2 flex animate-in justify-center duration-1000 lg:justify-end">
                 <div className="relative h-[350px] w-[350px] md:h-[400px] md:w-[400px]">
                   {/* Glow background */}
                   <div className="absolute inset-0 scale-110 rounded-full bg-gradient-to-br from-[#4eaed0]/30 via-[#667eea]/20 to-[#764ba2]/30 blur-3xl" />
@@ -260,7 +260,7 @@ const LandingHeroV2 = forwardRef<HTMLElement, LandingHeroV2Props>(
             </div>
 
             {/* Interactive Stats Row */}
-            <div className="fade-in slide-in-from-bottom mt-12 grid animate-in grid-cols-2 gap-4 delay-500 duration-700 md:grid-cols-4 md:gap-6 lg:mt-16">
+            <div className="fade-in   max-w-7xl mx-auto  slide-in-from-bottom mt-12 grid animate-in grid-cols-2 gap-4 delay-500 duration-700 md:grid-cols-4 md:gap-6 lg:mt-16">
               {stats.map((stat) => (
                 <InteractiveStatsCard
                   accentColor={stat.color}

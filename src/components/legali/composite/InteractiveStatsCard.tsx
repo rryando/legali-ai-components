@@ -70,7 +70,6 @@ const InteractiveStatsCard = forwardRef<HTMLDivElement, InteractiveStatsCardProp
         className={cn(
           "group relative overflow-hidden rounded-2xl p-6",
           "border border-white/40 bg-white/60 backdrop-blur-xl",
-          "shadow-lg transition-shadow duration-300",
           isHovered && "shadow-2xl shadow-slate-200/50",
           className
         )}
