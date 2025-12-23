@@ -22,7 +22,6 @@ export {
   type HeroStat,
   LandingHero,
   type LandingHeroProps,
-  type QuickAction,
 } from "./LandingHero";
 export {
   type ProblemItem,

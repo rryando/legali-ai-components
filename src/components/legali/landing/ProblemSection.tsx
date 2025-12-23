@@ -14,11 +14,17 @@ export interface ProblemItem {
   gradient: string;
 }
 
-export interface ProblemSectionProps extends React.HTMLAttributes<HTMLElement> {
+export interface ProblemSectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   /** Problems/stats to display */
   problems?: ProblemItem[];
   /** Mascot speech bubble text */
   mascotMessage?: React.ReactNode;
+  /** Badge label text */
+  badgeLabel?: string;
+  /** Section title */
+  title?: React.ReactNode;
+  /** Section subtitle */
+  subtitle?: string;
 }
 
 const defaultProblems: ProblemItem[] = [
@@ -64,6 +70,17 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
           ."
         </>
       ),
+      badgeLabel = "The Justice Gap",
+      title = (
+        <>
+          The legal system wasn't built
+          <br />
+          <span className="bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent">
+            for everyone
+          </span>
+        </>
+      ),
+      subtitle = "Millions of people are denied justice every year simply because they can't afford—or access—proper legal help.",
       ...props
     },
     ref
@@ -88,19 +105,14 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
             <SectionBadge
               className="mb-6"
               icon={<AlertTriangle className="h-4 w-4" />}
-              label="The Justice Gap"
+              label={badgeLabel}
               variant="danger"
             />
             <h2 className="mb-4 font-bold text-3xl text-slate-900 tracking-tight md:text-4xl lg:text-5xl">
-              The legal system wasn't built
-              <br />
-              <span className="bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent">
-                for everyone
-              </span>
+              {title}
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Millions of people are denied justice every year simply because they can't afford—or
-              access—proper legal help.
+              {subtitle}
             </p>
           </div>
 

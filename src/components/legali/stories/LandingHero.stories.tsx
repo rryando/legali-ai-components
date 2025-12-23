@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FileSearch, Gavel, Scale } from "lucide-react";
 import { LandingHero } from "../landing/LandingHero";
 
 const meta: Meta<typeof LandingHero> = {
@@ -20,25 +19,25 @@ export const Default: Story = {
   },
 };
 
-export const CustomQuickActions: Story = {
+export const WithCustomText: Story = {
   args: {
     onGetStarted: () => console.log("Get started clicked"),
-    quickActions: [
-      { icon: <FileSearch className="h-4 w-4" />, label: "Contract Review" },
-      { icon: <Gavel className="h-4 w-4" />, label: "Court Filing" },
-      { icon: <Scale className="h-4 w-4" />, label: "Dispute Resolution" },
-    ],
+    badgeText: "Custom Badge Text",
+    headline: "Custom Headline Here",
+    subtitle: "This is a custom subtitle for the hero section.",
+    analyzeButtonText: "Get Started",
+    defaultInputPlaceholder: "Enter your legal question...",
   },
 };
 
-export const CustomStats: Story = {
+export const WithCustomStats: Story = {
   args: {
     onGetStarted: () => console.log("Get started clicked"),
     stats: [
-      { target: 100, suffix: "K+", label: "Documents Processed" },
-      { target: 99, suffix: "%", label: "Uptime" },
-      { target: 24, suffix: "/7", label: "Support" },
-      { target: 50, suffix: "+", label: "Integrations" },
+      { value: 100, suffix: "K+", label: "Users", color: "#4eaed0" },
+      { value: 99, suffix: "%", label: "Satisfaction", color: "#667eea" },
+      { value: 24, suffix: "/7", label: "Support", color: "#764ba2" },
+      { value: 5, suffix: "★", label: "Rating", color: "#f472b6" },
     ],
   },
 };

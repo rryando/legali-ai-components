@@ -102,7 +102,6 @@ export {
   type ProblemItem,
   ProblemSection,
   type ProblemSectionProps,
-  type QuickAction,
   type Step,
   type Testimonial,
   TestimonialsSection,
@@ -125,8 +124,8 @@ export {
   type HomeScreenProps,
   type Module,
 } from "./screens/HomeScreen";
-export type { LandingPageV3Props } from "./screens/LandingPageV3";
-export { LandingPageV3 } from "./screens/LandingPageV3";
+export type { LandingPageProps, LandingPageTextConfig } from "./screens/LandingPage";
+export { LandingPage } from "./screens/LandingPage";
 export {
   type Question,
   QuizScreen,

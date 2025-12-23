@@ -29,6 +29,8 @@ export interface FeaturesSectionProps extends Omit<React.HTMLAttributes<HTMLElem
   features?: Feature[];
   /** Section title */
   title?: React.ReactNode;
+  /** Badge label text */
+  badgeLabel?: string;
 }
 
 const defaultFeatures: Feature[] = [
@@ -116,6 +118,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
           </span>
         </>
       ),
+      badgeLabel = "Complete Legal Toolkit",
       ...props
     },
     ref
@@ -139,7 +142,7 @@ const FeaturesSection = React.forwardRef<HTMLElement, FeaturesSectionProps>(
             <SectionBadge
               className="mb-6"
               icon={<Sparkles className="h-4 w-4" />}
-              label="Complete Legal Toolkit"
+              label={badgeLabel}
             />
             <h2 className="mb-4 font-bold text-3xl text-slate-900 tracking-tight md:text-4xl lg:text-5xl">
               {title}

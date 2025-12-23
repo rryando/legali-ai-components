@@ -16,6 +16,10 @@ export interface LiveTickerProps extends React.HTMLAttributes<HTMLDivElement> {
   interval?: number;
   /** Icon to display */
   icon?: React.ReactNode;
+  /** "from" connector text */
+  fromLabel?: string;
+  /** "just" connector text */
+  justLabel?: string;
 }
 
 const defaultNotifications: LiveTickerNotification[] = [
@@ -36,6 +40,8 @@ const LiveTicker = React.forwardRef<HTMLDivElement, LiveTickerProps>(
       notifications = defaultNotifications,
       interval = 4000,
       icon = <Bell className="h-4 w-4 text-[#4eaed0]" />,
+      fromLabel = "from",
+      justLabel = "just",
       ...props
     },
     ref
@@ -70,8 +76,8 @@ const LiveTicker = React.forwardRef<HTMLDivElement, LiveTickerProps>(
           {icon}
           <p className="text-slate-700 text-sm">
             <span className="font-semibold">{notification.name}</span>
-            <span className="text-slate-500"> from {notification.location}</span>
-            <span className="text-slate-600"> just {notification.action}</span>
+            <span className="text-slate-500"> {fromLabel} {notification.location}</span>
+            <span className="text-slate-600"> {justLabel} {notification.action}</span>
           </p>
         </SpotlightCard>
       </div>
