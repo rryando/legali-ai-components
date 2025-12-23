@@ -76,8 +76,14 @@ const LiveTicker = React.forwardRef<HTMLDivElement, LiveTickerProps>(
           {icon}
           <p className="text-slate-700 text-sm">
             <span className="font-semibold">{notification.name}</span>
-            <span className="text-slate-500"> {fromLabel} {notification.location}</span>
-            <span className="text-slate-600"> {justLabel} {notification.action}</span>
+            <span className="text-slate-500">
+              {" "}
+              {fromLabel} {notification.location}
+            </span>
+            <span className="text-slate-600">
+              {" "}
+              {justLabel} {notification.action}
+            </span>
           </p>
         </SpotlightCard>
       </div>

@@ -57,9 +57,7 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
           <span
             className={cn(
               "font-bold text-lg transition-opacity duration-300",
-              isScrolled
-                ? "w-0 overflow-hidden opacity-0 md:w-auto md:opacity-100"
-                : "opacity-100"
+              isScrolled ? "w-0 overflow-hidden opacity-0 md:w-auto md:opacity-100" : "opacity-100"
             )}
           >
             Legali
@@ -94,15 +92,8 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
           </button>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="p-2 md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+          <button className="p-2 md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
@@ -112,11 +103,7 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
         <div className="slide-in-from-top-5 pointer-events-auto absolute top-full right-0 left-0 animate-in border-b bg-background p-4 shadow-xl md:hidden">
           <div className="flex flex-col gap-4">
             {["Features", "Solutions", "Pricing", "About"].map((item) => (
-              <a
-                className="rounded-md p-2 font-medium text-sm hover:bg-accent"
-                href="#"
-                key={item}
-              >
+              <a className="rounded-md p-2 font-medium text-sm hover:bg-accent" href="#" key={item}>
                 {item}
               </a>
             ))}
