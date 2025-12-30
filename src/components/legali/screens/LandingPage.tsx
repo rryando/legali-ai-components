@@ -23,32 +23,29 @@ import { type TrustLogosProps, TrustLogos } from "../landing/TrustLogos";
 /** Configuration for all customizable text in the landing page */
 export type LandingPageTextConfig = {
   /** Header section text */
-  header?: Pick<LandingHeaderProps, "loginLabel" | "ctaLabel">;
+  header?: Partial<LandingHeaderProps>;
   /** Hero section text */
-  hero?: Pick<
-    LandingHeroProps,
-    "badgeText" | "headline" | "subtitle" | "analyzeButtonText" | "defaultInputPlaceholder"
-  >;
+  hero?: Partial<LandingHeroProps>;
   /** Trust logos section text */
-  trustLogos?: Pick<TrustLogosProps, "title">;
+  trustLogos?: Partial<TrustLogosProps>;
   /** Problem section text */
-  problem?: Pick<ProblemSectionProps, "badgeLabel" | "title" | "subtitle" | "mascotMessage">;
+  problem?: Partial<ProblemSectionProps>;
   /** Features section text */
-  features?: Pick<FeaturesSectionProps, "badgeLabel" | "title">;
+  features?: Partial<FeaturesSectionProps>;
   /** How it works section text */
-  howItWorks?: Pick<HowItWorksSectionProps, "title">;
+  howItWorks?: Partial<HowItWorksSectionProps>;
   /** Testimonials section text */
-  testimonials?: Pick<TestimonialsSectionProps, "badgeLabel" | "title">;
+  testimonials?: Partial<TestimonialsSectionProps>;
   /** FAQ section text */
-  faq?: Pick<FAQSectionProps, "title" | "subtitle">;
+  faq?: Partial<FAQSectionProps>;
   /** CTA section text */
-  cta?: Pick<CTASectionProps, "title" | "subtitle">;
+  cta?: Partial<CTASectionProps>;
   /** Footer section text */
-  footer?: Pick<LandingFooterProps, "description" | "copyright" | "disclaimer">;
+  footer?: Partial<LandingFooterProps>;
   /** Live ticker text */
-  liveTicker?: Pick<LiveTickerProps, "fromLabel" | "justLabel">;
+  liveTicker?: Partial<LiveTickerProps>;
   /** Floating mascot text */
-  floatingMascot?: Pick<FloatingMascotProps, "easterEggMessage">;
+  floatingMascot?: Partial<FloatingMascotProps>;
 };
 
 export type LandingPageProps = {
