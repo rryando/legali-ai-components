@@ -10,4 +10,4 @@ export {
   MascotMotion,
   MascotMotionLabels,
   type MascotMotionType,
-} from "./LegaliMascot";
+} from "./legali-mascot";

@@ -54,7 +54,13 @@ const defaultTestimonials: Testimonial[] = [
  */
 const TestimonialsSection = React.forwardRef<HTMLElement, TestimonialsSectionProps>(
   (
-    { className, testimonials = defaultTestimonials, title = "Loved by thousands", badgeLabel = "Customer Stories", ...props },
+    {
+      className,
+      testimonials = defaultTestimonials,
+      title = "Loved by thousands",
+      badgeLabel = "Customer Stories",
+      ...props
+    },
     ref
   ) => {
     return (

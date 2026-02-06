@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 /**
  * Props for the FloatingNavbar component.
  */
-interface FloatingNavbarProps {
+type FloatingNavbarProps = {
   /**
    * Optional class name to override styles.
    */
   className?: string;
-}
+};
 
 /**
  * A responsive navbar that transforms from a full-width header to a floating pill on scroll.
@@ -57,9 +57,7 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
           <span
             className={cn(
               "font-bold text-lg transition-opacity duration-300",
-              isScrolled
-                ? "w-0 overflow-hidden opacity-0 md:w-auto md:opacity-100"
-                : "opacity-100"
+              isScrolled ? "w-0 overflow-hidden opacity-0 md:w-auto md:opacity-100" : "opacity-100"
             )}
           >
             Legali
@@ -81,7 +79,7 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button className="rounded-full p-2 transition-colors hover:bg-accent">
+          <button className="rounded-full p-2 transition-colors hover:bg-accent" type="button">
             <Sun className="h-4 w-4" />
           </button>
           <button
@@ -89,6 +87,7 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
               "rounded-full bg-primary px-4 py-2 font-medium text-primary-foreground text-sm transition-all hover:bg-primary/90",
               isScrolled ? "h-9 px-4" : "h-10 px-6"
             )}
+            type="button"
           >
             Get Started
           </button>
@@ -97,24 +96,21 @@ export const FloatingNavbar = ({ className }: FloatingNavbarProps) => {
           <button
             className="p-2 md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            type="button"
           >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay (Simple implementation for demo) */}
-      {isMobileMenuOpen && (
+      {!!isMobileMenuOpen && (
         <div className="slide-in-from-top-5 pointer-events-auto absolute top-full right-0 left-0 animate-in border-b bg-background p-4 shadow-xl md:hidden">
           <div className="flex flex-col gap-4">
             {["Features", "Solutions", "Pricing", "About"].map((item) => (
               <a
                 className="rounded-md p-2 font-medium text-sm hover:bg-accent"
-                href="#"
+                href={`#${item.toLowerCase()}`}
                 key={item}
               >
                 {item}

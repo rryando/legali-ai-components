@@ -48,6 +48,7 @@ const AIThinkingIndicator = forwardRef<HTMLDivElement, AIThinkingIndicatorProps>
             strokeWidth="2.5"
             viewBox="0 0 24 24"
           >
+            <title>Complete</title>
             <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>

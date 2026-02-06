@@ -4,12 +4,15 @@
   "type": "registry:ui",
   "files": [
     {
-      "path": "components/ui/legali/composite/ProgressSection.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { ProgressBar } from \"../atomic/ProgressBar\"\nimport { GlassCard } from \"../atomic/GlassCard\"\n\nexport interface ProgressSectionProps extends React.HTMLAttributes<HTMLDivElement> {\n  title: string\n  progress: number\n  variant?: \"header\" | \"card\"\n  showPercentage?: boolean\n}\n\nconst ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(\n  ({ \n    className, \n    title, \n    progress, \n    variant = \"header\",\n    showPercentage = true,\n    ...props \n  }, ref) => {\n    return (\n      <GlassCard\n        ref={ref}\n        intensity={variant === \"header\" ? \"high\" : \"low\"}\n        className={cn(\n          \"rounded-xl p-4\",\n          variant === \"header\" && \"border-white/40\",\n          variant === \"card\" && \"border-slate-200/50\",\n          className\n        )}\n        {...props}\n      >\n        <div className=\"flex items-center justify-between mb-3 text-sm\">\n          <span className=\"font-semibold text-slate-700\">\n            {title}\n          </span>\n          {showPercentage && (\n            <span className=\"font-bold text-slate-900\">\n              {progress}%\n            </span>\n          )}\n        </div>\n        <ProgressBar\n          value={progress}\n          variant=\"default\"\n          className=\"bg-slate-100/50\"\n        />\n      </GlassCard>\n    )\n  }\n)\nProgressSection.displayName = \"ProgressSection\"\n\nexport { ProgressSection }\n",
+      "path": "components/ui/legali/composite/progress-section.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { GlassCard } from \"../atomic/GlassCard\";\nimport { ProgressBar } from \"../atomic/ProgressBar\";\n\nexport interface ProgressSectionProps extends React.HTMLAttributes<HTMLDivElement> {\n  title: string;\n  progress: number;\n  variant?: \"header\" | \"card\";\n  showPercentage?: boolean;\n}\n\nconst ProgressSection = React.forwardRef<HTMLDivElement, ProgressSectionProps>(\n  ({ className, title, progress, variant = \"header\", showPercentage = true, ...props }, ref) => (\n    <GlassCard\n      className={cn(\n        \"rounded-xl p-4\",\n        variant === \"header\" && \"border-white/40\",\n        variant === \"card\" && \"border-slate-200/50\",\n        className\n      )}\n      intensity={variant === \"header\" ? \"high\" : \"low\"}\n      ref={ref}\n      {...props}\n    >\n      <div className=\"mb-3 flex items-center justify-between text-sm\">\n        <span className=\"font-semibold text-slate-700\">{title}</span>\n        {showPercentage && <span className=\"font-bold text-slate-900\">{progress}%</span>}\n      </div>\n      <ProgressBar className=\"bg-slate-100/50\" value={progress} variant=\"default\" />\n    </GlassCard>\n  )\n);\nProgressSection.displayName = \"ProgressSection\";\n\nexport { ProgressSection };\n",
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-bar.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json",

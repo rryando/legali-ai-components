@@ -111,9 +111,7 @@ const ProblemSection = React.forwardRef<HTMLElement, ProblemSectionProps>(
             <h2 className="mb-4 font-bold text-3xl text-slate-900 tracking-tight md:text-4xl lg:text-5xl">
               {title}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              {subtitle}
-            </p>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">{subtitle}</p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-3">

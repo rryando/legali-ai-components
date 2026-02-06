@@ -1,5 +1,5 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const repoRoot = process.cwd();
 const outDir = path.join(repoRoot, "registry");
@@ -7,19 +7,30 @@ const outDir = path.join(repoRoot, "registry");
 // Public URLs for assets so consumers don't need to handle binary files manually.
 const ASSET_BASE = "https://raw.githubusercontent.com/rryando/legali-ai-components/main";
 
+const COMPONENT_LEGALI_REGEX = /@\/components\/legali/g;
+const COMPONENT_BUTTON_REGEX = /@\/components\/button/g;
+const COMPONENT_SWITCH_REGEX = /@\/components\/switch/g;
+const COMPONENT_AVATAR_REGEX = /@\/components\/avatar/g;
+const COMPONENT_BADGE_REGEX = /@\/components\/badge/g;
+const COMPONENT_CHART_REGEX = /@\/components\/chart/g;
+const LOGO_PNG_REGEX = /\/logo\/logo\.png/g;
+const ANIMATIONS_RIV_REGEX = /\/animations\/legali\.riv/g;
+
+const REPLACEMENT_UI_LEGALI_REGEX = /^components\/ui\/legali\//;
+
 const replacements = [
   // Move legali components under the shadcn-conventional ui path.
-  { from: /@\/components\/legali/g, to: "@/components/ui/legali" },
+  { from: COMPONENT_LEGALI_REGEX, to: "@/components/ui/legali" },
   // Map shared ui dependencies to prefixed versions shipped in this registry.
-  { from: /@\/components\/button/g, to: "@/components/ui/legali/button" },
-  { from: /@\/components\/switch/g, to: "@/components/ui/legali/switch" },
-  { from: /@\/components\/avatar/g, to: "@/components/ui/legali/avatar" },
-  { from: /@\/components\/badge/g, to: "@/components/ui/legali/badge" },
-  { from: /@\/components\/chart/g, to: "@/components/ui/legali/chart" },
+  { from: COMPONENT_BUTTON_REGEX, to: "@/components/ui/legali/button" },
+  { from: COMPONENT_SWITCH_REGEX, to: "@/components/ui/legali/switch" },
+  { from: COMPONENT_AVATAR_REGEX, to: "@/components/ui/legali/avatar" },
+  { from: COMPONENT_BADGE_REGEX, to: "@/components/ui/legali/badge" },
+  { from: COMPONENT_CHART_REGEX, to: "@/components/ui/legali/chart" },
   // Keep logos and animation assets fetchable when added via registry.
-  { from: /\/logo\/logo\.png/g, to: `${ASSET_BASE}/public/logo/logo.png` },
+  { from: LOGO_PNG_REGEX, to: `${ASSET_BASE}/public/logo/logo.png` },
   {
-    from: /\/animations\/legali\.riv/g,
+    from: ANIMATIONS_RIV_REGEX,
     to: `${ASSET_BASE}/public/animations/legali.riv`,
   },
 ];
@@ -84,84 +95,84 @@ const files = [
   {
     name: "legali-answer",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/Answer.tsx"],
+    files: ["components/ui/legali/atomic/answer.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-glass-card",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/GlassCard.tsx"],
+    files: ["components/ui/legali/atomic/glass-card.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-typing-text",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/TypingText.tsx"],
+    files: ["components/ui/legali/atomic/typing-text.tsx"],
     dependencies: ["motion", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-lesson-dot",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/LessonDot.tsx"],
+    files: ["components/ui/legali/atomic/lesson-dot.tsx"],
     dependencies: ["class-variance-authority", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-progress-bar",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/ProgressBar.tsx"],
+    files: ["components/ui/legali/atomic/progress-bar.tsx"],
     dependencies: ["class-variance-authority", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-stat-item",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/StatItem.tsx"],
+    files: ["components/ui/legali/atomic/stat-item.tsx"],
     dependencies: ["class-variance-authority", "lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-stat-row",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/StatRow.tsx"],
+    files: ["components/ui/legali/atomic/stat-row.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-status-bar",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/StatusBar.tsx"],
+    files: ["components/ui/legali/atomic/status-bar.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-explanation-card",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/ExplanationCard.tsx"],
+    files: ["components/ui/legali/atomic/explanation-card.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils", "legali-glass-card"],
   },
   {
     name: "legali-question-number-badge",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/QuestionNumberBadge.tsx"],
+    files: ["components/ui/legali/atomic/question-number-badge.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-setting-item",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/SettingItem.tsx"],
+    files: ["components/ui/legali/atomic/setting-item.tsx"],
     dependencies: ["lucide-react"],
     registryDependencies: ["legali-switch"],
   },
   {
     name: "legali-profile-stat-card",
     type: "registry:ui",
-    files: ["components/ui/legali/atomic/ProfileStatCard.tsx"],
+    files: ["components/ui/legali/atomic/profile-stat-card.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils", "legali-glass-card"],
   },
@@ -170,14 +181,14 @@ const files = [
   {
     name: "legali-module-card",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/ModuleCard.tsx"],
+    files: ["components/ui/legali/composite/module-card.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lesson-dot", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-mascot-hero-card",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/MascotHeroCard.tsx"],
+    files: ["components/ui/legali/composite/mascot-hero-card.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-glass-card",
@@ -189,42 +200,42 @@ const files = [
   {
     name: "legali-navigation-bar",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/NavigationBar.tsx"],
+    files: ["components/ui/legali/composite/navigation-bar.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-progress-section",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/ProgressSection.tsx"],
+    files: ["components/ui/legali/composite/progress-section.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-progress-bar", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-quiz-feedback",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/QuizFeedback.tsx"],
+    files: ["components/ui/legali/composite/quiz-feedback.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-button", "legali-lib-utils"],
   },
   {
     name: "legali-quiz-header",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/QuizHeader.tsx"],
+    files: ["components/ui/legali/composite/quiz-header.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-progress-bar", "legali-lib-utils"],
   },
   {
     name: "legali-quiz-question",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/QuizQuestion.tsx"],
+    files: ["components/ui/legali/composite/quiz-question.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
     name: "legali-results-card",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/ResultsCard.tsx"],
+    files: ["components/ui/legali/composite/results-card.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-button",
@@ -236,7 +247,7 @@ const files = [
   {
     name: "legali-user-stats-bar",
     type: "registry:ui",
-    files: ["components/ui/legali/composite/UserStatsBar.tsx"],
+    files: ["components/ui/legali/composite/user-stats-bar.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-stat-item", "legali-lib-utils"],
   },
@@ -245,7 +256,7 @@ const files = [
   {
     name: "legali-home-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/HomeScreen.tsx"],
+    files: ["components/ui/legali/screens/home-screen.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-user-stats-bar",
@@ -261,7 +272,7 @@ const files = [
   {
     name: "legali-quiz-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/QuizScreen.tsx"],
+    files: ["components/ui/legali/screens/quiz-screen.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-quiz-header",
@@ -275,7 +286,7 @@ const files = [
   {
     name: "legali-review-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/ReviewScreen.tsx"],
+    files: ["components/ui/legali/screens/review-screen.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-answer",
@@ -288,21 +299,21 @@ const files = [
   {
     name: "legali-results-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/ResultsScreen.tsx"],
+    files: ["components/ui/legali/screens/results-screen.tsx"],
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["legali-results-card", "legali-glass-card", "legali-lib-utils"],
   },
   {
     name: "legali-progress-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/ProgressScreen.tsx"],
+    files: ["components/ui/legali/screens/progress-screen.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge", "recharts"],
     registryDependencies: ["legali-glass-card", "legali-lib-utils", "legali-chart"],
   },
   {
     name: "legali-profile-screen",
     type: "registry:ui",
-    files: ["components/ui/legali/screens/ProfileScreen.tsx"],
+    files: ["components/ui/legali/screens/profile-screen.tsx"],
     dependencies: ["lucide-react", "clsx", "tailwind-merge"],
     registryDependencies: [
       "legali-glass-card",
@@ -320,7 +331,7 @@ const files = [
     name: "legali-mascot",
     type: "registry:ui",
     files: [
-      "components/ui/legali/mascot/LegaliMascot.tsx",
+      "components/ui/legali/mascot/legali-mascot.tsx",
       "components/ui/legali/mascot/index.ts",
       "components/ui/legali/mascot/RiveGuide.mdx",
     ],
@@ -366,15 +377,15 @@ const files = [
   },
 ];
 
-async function rewriteContent(content) {
+function rewriteContent(content) {
   return replacements.reduce((acc, rule) => acc.replace(rule.from, rule.to), content);
 }
 
 async function copyWithRewrite(srcRel, destRel) {
   const candidatePaths = [
     path.join(repoRoot, "src", srcRel),
-    path.join(repoRoot, "src", srcRel.replace(/^components\/ui\/legali\//, "components/legali/")),
-    path.join(repoRoot, "src", srcRel.replace(/^components\/ui\/legali\//, "components/")),
+    path.join(repoRoot, "src", srcRel.replace(REPLACEMENT_UI_LEGALI_REGEX, "components/legali/")),
+    path.join(repoRoot, "src", srcRel.replace(REPLACEMENT_UI_LEGALI_REGEX, "components/")),
   ];
 
   const srcPath = await (async () => {
@@ -391,7 +402,7 @@ async function copyWithRewrite(srcRel, destRel) {
 
   const destPath = path.join(outDir, destRel);
   const raw = await fs.readFile(srcPath, "utf8");
-  const rewritten = await rewriteContent(raw);
+  const rewritten = rewriteContent(raw);
   await fs.mkdir(path.dirname(destPath), { recursive: true });
   await fs.writeFile(destPath, rewritten, "utf8");
 }

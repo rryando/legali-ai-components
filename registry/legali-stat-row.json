@@ -4,12 +4,15 @@
   "type": "registry:ui",
   "files": [
     {
-      "path": "components/ui/legali/atomic/StatRow.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StatRowProps extends React.HTMLAttributes<HTMLDivElement> {\n  label: string\n  value: string | number\n  icon?: React.ReactNode\n}\n\nconst StatRow = React.forwardRef<HTMLDivElement, StatRowProps>(\n  ({ className, label, value, icon, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"flex items-center justify-between py-3 border-b border-slate-200/50 last:border-b-0\",\n          className\n        )}\n        {...props}\n      >\n        <span className=\"text-gray-600 text-sm md:text-base flex items-center gap-2\">\n          {icon && <span aria-hidden=\"true\">{icon}</span>}\n          {label}\n        </span>\n        <span className=\"text-gray-900 font-semibold text-sm md:text-base\">\n          {value}\n        </span>\n      </div>\n    )\n  }\n)\nStatRow.displayName = \"StatRow\"\n\nexport { StatRow }\n",
+      "path": "components/ui/legali/atomic/stat-row.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface StatRowProps extends React.HTMLAttributes<HTMLDivElement> {\n  label: string;\n  value: string | number;\n  icon?: React.ReactNode;\n}\n\nconst StatRow = React.forwardRef<HTMLDivElement, StatRowProps>(\n  ({ className, label, value, icon, ...props }, ref) => (\n    <div\n      className={cn(\n        \"flex items-center justify-between border-slate-200/50 border-b py-3 last:border-b-0\",\n        className\n      )}\n      ref={ref}\n      {...props}\n    >\n      <span className=\"flex items-center gap-2 text-gray-600 text-sm md:text-base\">\n        {icon && <span aria-hidden=\"true\">{icon}</span>}\n        {label}\n      </span>\n      <span className=\"font-semibold text-gray-900 text-sm md:text-base\">{value}</span>\n    </div>\n  )\n);\nStatRow.displayName = \"StatRow\";\n\nexport { StatRow };\n",
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
   ]

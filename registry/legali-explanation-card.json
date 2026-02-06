@@ -4,12 +4,15 @@
   "type": "registry:ui",
   "files": [
     {
-      "path": "components/ui/legali/atomic/ExplanationCard.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { GlassCard } from \"./GlassCard\"\n\nexport interface ExplanationCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  explanation: string\n}\n\nexport const ExplanationCard = React.forwardRef<HTMLDivElement, ExplanationCardProps>(\n  ({ className, explanation, ...props }, ref) => {\n    return (\n      <GlassCard\n        ref={ref}\n        intensity=\"low\"\n        className={cn(\n          \"mt-4 p-4 rounded-xl text-sm text-blue-800 leading-relaxed border-blue-200/50 bg-blue-50/30\",\n          className\n        )}\n        {...props}\n      >\n        <span className=\"font-bold block mb-1\">Explanation:</span>\n        {explanation}\n      </GlassCard>\n    )\n  }\n)\nExplanationCard.displayName = \"ExplanationCard\"\n",
+      "path": "components/ui/legali/atomic/explanation-card.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { GlassCard } from \"./GlassCard\";\n\nexport interface ExplanationCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  explanation: string;\n}\n\nexport const ExplanationCard = React.forwardRef<HTMLDivElement, ExplanationCardProps>(\n  ({ className, explanation, ...props }, ref) => (\n    <GlassCard\n      className={cn(\n        \"mt-4 rounded-xl border-blue-200/50 bg-blue-50/30 p-4 text-blue-800 text-sm leading-relaxed\",\n        className\n      )}\n      intensity=\"low\"\n      ref={ref}\n      {...props}\n    >\n      <span className=\"mb-1 block font-bold\">Explanation:</span>\n      {explanation}\n    </GlassCard>\n  )\n);\nExplanationCard.displayName = \"ExplanationCard\";\n",
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"

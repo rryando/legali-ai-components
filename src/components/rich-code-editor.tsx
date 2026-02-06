@@ -7,7 +7,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import type React from "react";
 import { cn } from "@/lib/utils";
 
-export interface RichCodeEditorProps {
+export type RichCodeEditorProps = {
   value: string;
   onChange?: (value: string) => void;
   language?: "javascript" | "typescript" | "python" | "json" | "sql";
@@ -16,7 +16,7 @@ export interface RichCodeEditorProps {
   height?: string;
   minHeight?: string;
   maxHeight?: string;
-}
+};
 
 const getLanguageExtension = (lang: RichCodeEditorProps["language"]) => {
   switch (lang) {

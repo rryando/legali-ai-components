@@ -1,36 +1,36 @@
 // Landing page section components
 
-export { CTASection, type CTASectionProps } from "./CTASection";
-export { type FAQ, FAQSection, type FAQSectionProps } from "./FAQSection";
+export { CTASection, type CTASectionProps } from "./cta-section";
+export { type FAQ, FAQSection, type FAQSectionProps } from "./faq-section";
 export {
   type Feature,
   FeaturesSection,
   type FeaturesSectionProps,
-} from "./FeaturesSection";
+} from "./features-section";
 export {
   HowItWorksSection,
   type HowItWorksSectionProps,
   type Step,
-} from "./HowItWorksSection";
+} from "./how-it-works-section";
 export {
   type FooterLinkGroup,
   LandingFooter,
   type LandingFooterProps,
-} from "./LandingFooter";
-export { LandingHeader, type LandingHeaderProps } from "./LandingHeader";
+} from "./landing-footer";
+export { LandingHeader, type LandingHeaderProps } from "./landing-header";
 export {
   type HeroStat,
   LandingHero,
   type LandingHeroProps,
-} from "./LandingHero";
+} from "./landing-hero";
 export {
   type ProblemItem,
   ProblemSection,
   type ProblemSectionProps,
-} from "./ProblemSection";
+} from "./problem-section";
 export {
   type Testimonial,
   TestimonialsSection,
   type TestimonialsSectionProps,
-} from "./TestimonialsSection";
-export { type TrustLogo, TrustLogos, type TrustLogosProps } from "./TrustLogos";
+} from "./testimonials-section";
+export { type TrustLogo, TrustLogos, type TrustLogosProps } from "./trust-logos";

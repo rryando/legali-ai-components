@@ -34,3 +34,6 @@ Thumbs.db
 # Cache directories
 .cache
 .turbo
+# RRCE-Workflow Generated
+# Uncomment the following lines if you want to ignore rrce-workflow generated files:
+# *.code-workspace
