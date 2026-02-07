@@ -28,7 +28,7 @@ export const Default: Story = {
 export const Large: Story = {
   args: {
     src: "https://api.dicebear.com/9.x/avataaars/svg?seed=Thomas&backgroundColor=c0aede",
-    alt: "Thomas Müller",
+    alt: "Thomas Miller",
     size: "xl",
     status: "offline",
     isVerified: true,

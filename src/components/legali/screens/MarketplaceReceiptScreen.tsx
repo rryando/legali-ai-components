@@ -12,10 +12,10 @@ export type MarketplaceReceiptScreenProps = {
 };
 
 const STEPS = [
-  { label: "Aufnahme" },
+  { label: "Intake" },
   { label: "Matching" },
-  { label: "Beratung" },
-  { label: "Beleg" },
+  { label: "Consultation" },
+  { label: "Receipt" },
 ];
 
 const MarketplaceReceiptScreen = forwardRef<HTMLDivElement, MarketplaceReceiptScreenProps>(

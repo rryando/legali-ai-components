@@ -12,10 +12,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const STEPS = [
-  { label: "Aufnahme" },
+  { label: "Intake" },
   { label: "Matching" },
-  { label: "Beratung" },
-  { label: "Beleg" },
+  { label: "Consultation" },
+  { label: "Receipt" },
 ];
 
 export const Step1: Story = {

@@ -15,27 +15,27 @@ export const demoLawyers: Lawyer[] = [
     id: "lawyer-1",
     name: "Dr. Sarah Fischer",
     avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4",
-    title: "Fachanwältin für Familienrecht",
-    firm: "Fischer & Partner Rechtsanwälte",
+    title: "Family Law Specialist",
+    firm: "Fischer & Partners Law Firm",
     specializations: ["Family Law", "Divorce", "Child Custody", "Prenuptial Agreements"],
     rating: 4.9,
     reviewCount: 127,
     consultationFee: 190,
-    bio: "Über 15 Jahre Erfahrung im Familienrecht. Spezialisiert auf einvernehmliche Scheidungen und Sorgerechtsvereinbarungen. Bekannt für empathische und lösungsorientierte Beratung.",
+    bio: "Over 15 years of experience in family law. Specialized in amicable divorces and custody agreements. Known for empathetic and solution-oriented counseling.",
     isVerified: true,
     isOnline: true,
   },
   {
     id: "lawyer-2",
-    name: "Thomas Müller, LL.M.",
+    name: "Thomas Miller, LL.M.",
     avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Thomas&backgroundColor=c0aede",
-    title: "Fachanwalt für Arbeitsrecht",
-    firm: "Müller & Kollegen",
+    title: "Employment Law Specialist",
+    firm: "Miller & Associates",
     specializations: ["Employment Law", "Wrongful Termination", "Discrimination", "Labor Disputes"],
     rating: 4.8,
     reviewCount: 93,
     consultationFee: 220,
-    bio: "Spezialist für Arbeitnehmerrechte und Kündigungsschutz. Vertritt seit über 12 Jahren Mandanten in komplexen arbeitsrechtlichen Streitigkeiten vor deutschen Arbeitsgerichten.",
+    bio: "Specialist in employee rights and wrongful termination protection. Has represented clients in complex employment disputes for over 12 years.",
     isVerified: true,
     isOnline: false,
   },
@@ -46,47 +46,47 @@ export const demoLawyers: Lawyer[] = [
 export const intakeChatScript: IntakeChatScriptStep[] = [
   {
     aiMessage:
-      "Willkommen bei Legali AI! 👋 Ich bin Ihr KI-Rechtsassistent. Ich helfe Ihnen, den passenden Anwalt für Ihr Anliegen zu finden. Was beschäftigt Sie?",
+      "Welcome to Legali AI! I'm your AI legal assistant. I'll help you find the right lawyer for your situation. What's on your mind?",
     suggestions: [
-      "Ich brauche Hilfe bei meiner Scheidung",
-      "Mein Arbeitgeber hat mir ungerechtfertigt gekündigt",
-      "Ich möchte einen Vertrag prüfen lassen",
+      "I need help with my divorce",
+      "My employer fired me unfairly",
+      "I'd like to have a contract reviewed",
     ],
     mascotMotion: MascotMotion.WAVING,
     delayMs: 1000,
   },
   {
     aiMessage:
-      "Verstehe, das klingt belastend. Können Sie mir mehr über Ihre Situation erzählen? Zum Beispiel: Seit wann besteht das Problem und was haben Sie bereits unternommen?",
+      "I understand, that sounds stressful. Can you tell me more about your situation? For example: how long has this been going on and what steps have you taken so far?",
     suggestions: [
-      "Es geht seit ca. 3 Monaten",
-      "Ich habe noch nichts unternommen",
-      "Ich habe bereits einen Brief erhalten",
+      "It's been going on for about 3 months",
+      "I haven't taken any steps yet",
+      "I've already received a letter",
     ],
     mascotMotion: MascotMotion.THINKING,
     delayMs: 1500,
   },
   {
     aiMessage:
-      "Danke für die Details. Gibt es Dokumente oder Unterlagen, die für Ihren Fall relevant sein könnten? Das hilft mir, die Komplexität besser einzuschätzen.",
+      "Thanks for the details. Do you have any documents or records that might be relevant to your case? This will help me better assess the complexity.",
     suggestions: [
-      "Ja, ich habe relevante Dokumente",
-      "Nein, noch keine Dokumente",
-      "Ich bin mir nicht sicher",
+      "Yes, I have relevant documents",
+      "No documents yet",
+      "I'm not sure",
     ],
     mascotMotion: MascotMotion.READING,
     delayMs: 1500,
   },
   {
     aiMessage:
-      "Sehr gut. Um Sie mit dem passenden Anwalt zu verbinden, brauche ich noch Ihre Kontaktdaten. Bitte füllen Sie das folgende Formular aus.",
+      "Great. To connect you with the right lawyer, I'll need your contact details. Please fill out the form below.",
     mascotMotion: MascotMotion.SPEAKING,
     delayMs: 1200,
     showContactForm: true,
   },
   {
     aiMessage:
-      "Vielen Dank! Ich habe jetzt ein gutes Bild von Ihrem Fall. Lassen Sie mich mein Verständnis zusammenfassen — bitte bestätigen Sie, ob alles korrekt ist.",
+      "Thank you! I now have a good picture of your case. Let me summarize my understanding — please confirm whether everything is correct.",
     mascotMotion: MascotMotion.IDEA,
     delayMs: 1000,
   },
@@ -97,17 +97,17 @@ export const intakeChatScript: IntakeChatScriptStep[] = [
 export const consultationScript: ConsultationScriptStep[] = [
   {
     lawyerMessage:
-      "Guten Tag! Ich habe die Zusammenfassung Ihres Falles von Legali AI erhalten. Lassen Sie uns Ihre Situation im Detail besprechen.",
+      "Hello! I've received the summary of your case from Legali AI. Let's discuss your situation in detail.",
     delayMs: 1500,
   },
   {
     lawyerMessage:
-      "Basierend auf den bisherigen Informationen sehe ich hier einige wichtige Aspekte, die wir klären sollten. Haben Sie Fragen, bevor wir beginnen?",
+      "Based on the information so far, I see several important aspects we should clarify. Do you have any questions before we begin?",
     delayMs: 2000,
   },
   {
     lawyerMessage:
-      "Ich habe nun eine erste Einschätzung Ihres Falles vorbereitet. Lassen Sie mich Ihnen meine Analyse vorstellen.",
+      "I've now prepared an initial assessment of your case. Let me present my analysis to you.",
     delayMs: 2500,
     showAssessment: true,
   },
@@ -116,25 +116,25 @@ export const consultationScript: ConsultationScriptStep[] = [
 // ─── Pre-built Case Details ──────────────────────────────────────────────────
 
 export const demoCaseDetails: CaseDetails = {
-  category: "Familienrecht",
+  category: "Family Law",
   summary:
-    "Einvernehmliche Scheidung nach 8 Jahren Ehe. Beide Parteien wünschen eine faire Aufteilung des gemeinsamen Vermögens und eine Sorgerechtsvereinbarung für zwei minderjährige Kinder.",
+    "Amicable divorce after 8 years of marriage. Both parties seek a fair division of shared assets and a custody agreement for two minor children.",
   keyFacts: [
-    "Ehedauer: 8 Jahre",
-    "2 gemeinsame Kinder (6 und 9 Jahre)",
-    "Gemeinsame Immobilie vorhanden",
-    "Beide Parteien berufstätig",
-    "Einvernehmliche Trennung angestrebt",
+    "Marriage duration: 8 years",
+    "2 children together (ages 6 and 9)",
+    "Shared real estate property",
+    "Both parties employed",
+    "Amicable separation desired",
   ],
   complexity: "medium",
   urgency: "normal",
   recommendedSpecialization: "Family Law",
   attachments: [],
   contactInfo: {
-    firstName: "Max",
-    lastName: "Mustermann",
-    email: "max.mustermann@example.com",
-    phone: "+49 170 1234567",
+    firstName: "John",
+    lastName: "Smith",
+    email: "john.smith@example.com",
+    phone: "+1 555 123 4567",
   },
 };
 
@@ -142,27 +142,27 @@ export const demoCaseDetails: CaseDetails = {
 
 export const demoCaseAssessment: CaseAssessment = {
   summary:
-    "Der Fall hat gute Aussichten auf eine einvernehmliche Lösung. Die Bereitschaft beider Parteien zur Kooperation ist ein entscheidender positiver Faktor.",
+    "The case has good prospects for an amicable resolution. The willingness of both parties to cooperate is a decisive positive factor.",
   strengths: [
-    "Einvernehmliche Einigung beider Parteien",
-    "Klare Vermögensverhältnisse",
-    "Beide Elternteile kooperationsbereit beim Sorgerecht",
-    "Keine strittigen Unterhaltsfragen",
+    "Mutual agreement between both parties",
+    "Clear financial situation",
+    "Both parents cooperative regarding custody",
+    "No contentious alimony issues",
   ],
   concerns: [
-    "Immobilienbewertung kann komplex werden",
-    "Steuerliche Aspekte bei Vermögensaufteilung beachten",
-    "Umgangsrecht muss im Detail geregelt werden",
+    "Property valuation may become complex",
+    "Tax implications of asset division need attention",
+    "Visitation rights must be defined in detail",
   ],
   recommendedSteps: [
-    "Vermögensaufstellung beider Parteien erstellen",
-    "Immobiliengutachten in Auftrag geben",
-    "Entwurf einer Scheidungsfolgenvereinbarung",
-    "Sorgerechts- und Umgangsregelung ausarbeiten",
-    "Notarielle Beurkundung vorbereiten",
+    "Prepare asset inventory for both parties",
+    "Commission property appraisal",
+    "Draft divorce settlement agreement",
+    "Work out custody and visitation arrangement",
+    "Prepare notarization of agreements",
   ],
-  timeline: "3-6 Monate",
-  costRange: "€2.500 – €4.500",
+  timeline: "3-6 months",
+  costRange: "$2,500 - $4,500",
   decision: "accepted",
 };
 
@@ -174,16 +174,16 @@ export const demoReceipt: ReceiptData = {
   assessment: demoCaseAssessment,
   duration: 32,
   lineItems: [
-    { label: "Erstberatung (30 Min.)", amount: 190 },
-    { label: "Plattformgebühr", amount: 0 },
-    { label: "MwSt. (19%)", amount: 36.1 },
+    { label: "Initial consultation (30 min)", amount: 190 },
+    { label: "Platform fee", amount: 0 },
+    { label: "Tax", amount: 36.1 },
   ],
   total: 226.1,
   nextSteps: [
-    "Vermögensaufstellung bis zum nächsten Termin vorbereiten",
-    "Relevante Dokumente (Grundbuchauszug, Einkommensnachweise) zusammenstellen",
-    "Folgetermin in 2 Wochen bestätigen",
-    "Bei Fragen direkt über die Plattform Kontakt aufnehmen",
+    "Prepare asset inventory before the next appointment",
+    "Gather relevant documents (property deed, income records)",
+    "Confirm follow-up appointment in 2 weeks",
+    "For questions, contact directly through the platform",
   ],
   referenceNumber: "LEG-2025-001847",
 };
@@ -191,9 +191,9 @@ export const demoReceipt: ReceiptData = {
 // ─── Matching Search Messages ────────────────────────────────────────────────
 
 export const matchingSearchMessages: string[] = [
-  "Analysiere Ihren Rechtsbedarf…",
-  "Suche Fachanwälte für Familienrecht…",
-  "Prüfe Verfügbarkeit und Bewertungen…",
-  "Optimiere Kompatibilität…",
-  "Perfekte Übereinstimmung gefunden!",
+  "Analyzing your legal needs...",
+  "Searching for specialized lawyers...",
+  "Checking availability and ratings...",
+  "Optimizing compatibility...",
+  "Perfect match found!",
 ];

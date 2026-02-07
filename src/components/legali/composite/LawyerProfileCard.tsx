@@ -46,7 +46,7 @@ const LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(
                 </span>
                 <span className="text-xs text-slate-400">•</span>
                 <span className="font-medium text-sm text-[#4eaed0]">
-                  €{lawyer.consultationFee}
+                  ${lawyer.consultationFee}
                 </span>
               </div>
             </div>
@@ -70,7 +70,7 @@ const LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(
             onClick={onStartConsultation}
           >
             <MessageCircle className="mr-2 h-4 w-4" />
-            Beratung starten
+            Start Consultation
           </Button>
         </SpotlightCard>
       </motion.div>

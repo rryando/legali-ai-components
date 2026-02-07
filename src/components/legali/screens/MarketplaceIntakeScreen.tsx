@@ -19,10 +19,10 @@ export type MarketplaceIntakeScreenProps = {
 };
 
 const STEPS = [
-  { label: "Aufnahme" },
+  { label: "Intake" },
   { label: "Matching" },
-  { label: "Beratung" },
-  { label: "Beleg" },
+  { label: "Consultation" },
+  { label: "Receipt" },
 ];
 
 const MarketplaceIntakeScreen = forwardRef<HTMLDivElement, MarketplaceIntakeScreenProps>(

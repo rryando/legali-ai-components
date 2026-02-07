@@ -7,13 +7,13 @@ const sampleMessages: ChatMessage[] = [
   {
     id: "1",
     sender: "lawyer",
-    text: "Guten Tag! Ich habe die Zusammenfassung Ihres Falles erhalten.",
+    text: "Hello! I've received the summary of your case.",
     timestamp: new Date(),
   },
   {
     id: "2",
     sender: "user",
-    text: "Vielen Dank! Ich freue mich auf Ihre Einschätzung.",
+    text: "Thank you! I'm looking forward to your assessment.",
     timestamp: new Date(),
   },
 ];

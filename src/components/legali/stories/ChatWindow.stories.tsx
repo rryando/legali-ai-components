@@ -3,9 +3,9 @@ import type { ChatMessage } from "../data/marketplace-types";
 import { ChatWindow } from "../composite/ChatWindow";
 
 const sampleMessages: ChatMessage[] = [
-  { id: "1", sender: "ai", text: "Willkommen! Wie kann ich Ihnen helfen?", timestamp: new Date() },
-  { id: "2", sender: "user", text: "Ich brauche Hilfe bei meiner Scheidung.", timestamp: new Date() },
-  { id: "3", sender: "ai", text: "Verstehe. Können Sie mir mehr über Ihre Situation erzählen?", timestamp: new Date() },
+  { id: "1", sender: "ai", text: "Welcome! How can I help you?", timestamp: new Date() },
+  { id: "2", sender: "user", text: "I need help with my divorce.", timestamp: new Date() },
+  { id: "3", sender: "ai", text: "I understand. Can you tell me more about your situation?", timestamp: new Date() },
 ];
 
 const meta = {

@@ -55,7 +55,7 @@ const CallInterface = forwardRef<HTMLDivElement, CallInterfaceProps>(
         {mode === "video" && (
           <div className="flex h-48 w-full items-center justify-center rounded-xl bg-slate-700/50">
             <p className="text-sm text-slate-400">
-              {isVideoOff ? "Kamera ausgeschaltet" : "Video-Vorschau"}
+              {isVideoOff ? "Camera off" : "Video preview"}
             </p>
           </div>
         )}

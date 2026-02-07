@@ -20,7 +20,7 @@ const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
       className,
       onSend,
       onAttach,
-      placeholder = "Nachricht eingeben…",
+      placeholder = "Type a message...",
       disabled = false,
       showVoice = true,
       showAttach = true,

@@ -60,36 +60,36 @@ const ContactInfoForm = forwardRef<HTMLDivElement, ContactInfoFormProps>(
           intensity="medium"
           ref={ref}
         >
-          <h3 className="mb-3 font-semibold text-sm text-slate-700">Kontaktdaten</h3>
+          <h3 className="mb-3 font-semibold text-sm text-slate-700">Contact Details</h3>
           <div className="grid grid-cols-2 gap-3">
             <ContactInfoField
-              label="Vorname"
+              label="First Name"
               onChange={(e) => update("firstName", e.target.value)}
-              placeholder="Max"
+              placeholder="John"
               validation={getValidation(form.firstName)}
               value={form.firstName}
             />
             <ContactInfoField
-              label="Nachname"
+              label="Last Name"
               onChange={(e) => update("lastName", e.target.value)}
-              placeholder="Mustermann"
+              placeholder="Smith"
               validation={getValidation(form.lastName)}
               value={form.lastName}
             />
           </div>
           <div className="mt-3 space-y-3">
             <ContactInfoField
-              label="E-Mail"
+              label="Email"
               onChange={(e) => update("email", e.target.value)}
-              placeholder="max@beispiel.de"
+              placeholder="john@example.com"
               type="email"
               validation={getValidation(form.email, validateEmail)}
               value={form.email}
             />
             <ContactInfoField
-              label="Telefon"
+              label="Phone"
               onChange={(e) => update("phone", e.target.value)}
-              placeholder="+49 170 1234567"
+              placeholder="+1 555 123 4567"
               type="tel"
               validation={getValidation(form.phone, validatePhone)}
               value={form.phone}
@@ -101,7 +101,7 @@ const ContactInfoForm = forwardRef<HTMLDivElement, ContactInfoFormProps>(
             onClick={handleSubmit}
             size="sm"
           >
-            Weiter
+            Continue
           </Button>
         </GlassCard>
       </motion.div>

@@ -119,14 +119,14 @@ const ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(
         <ChatWindow
           isTyping={isLawyerTyping}
           messages={uniqueMessages}
-          typingLabel={`${lawyer.name.split(" ")[0]} schreibt…`}
+          typingLabel={`${lawyer.name.split(" ")[0]} is typing...`}
         />
 
         {/* Input */}
         <div className="border-t border-slate-200/40 p-3">
           <ChatInput
             onSend={handleSend}
-            placeholder={`Nachricht an ${lawyer.name.split(" ")[0]}…`}
+            placeholder={`Message ${lawyer.name.split(" ")[0]}...`}
           />
         </div>
       </div>

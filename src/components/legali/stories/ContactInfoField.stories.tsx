@@ -15,18 +15,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Idle: Story = {
-  args: { label: "E-Mail", placeholder: "max@beispiel.de", validation: "idle" },
+  args: { label: "Email", placeholder: "john@example.com", validation: "idle" },
 };
 
 export const Valid: Story = {
-  args: { label: "E-Mail", value: "max@beispiel.de", validation: "valid" },
+  args: { label: "Email", value: "john@example.com", validation: "valid" },
 };
 
 export const Invalid: Story = {
   args: {
-    label: "E-Mail",
+    label: "Email",
     value: "invalid",
     validation: "invalid",
-    errorMessage: "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    errorMessage: "Please enter a valid email address.",
   },
 };

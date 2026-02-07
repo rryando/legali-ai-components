@@ -15,17 +15,17 @@ type CaseAssessmentCardProps = {
 const decisionConfig: Record<CaseDecision, { label: string; color: string; icon: typeof Shield }> =
   {
     accepted: {
-      label: "Fall angenommen",
+      label: "Case Accepted",
       color: "bg-green-100 text-green-700 border-green-200",
       icon: CheckCircle2,
     },
     declined: {
-      label: "Fall abgelehnt",
+      label: "Case Declined",
       color: "bg-red-100 text-red-700 border-red-200",
       icon: AlertTriangle,
     },
     referred: {
-      label: "Weitervermittlung empfohlen",
+      label: "Referral Recommended",
       color: "bg-amber-100 text-amber-700 border-amber-200",
       icon: FileText,
     },
@@ -46,7 +46,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
           {/* Header */}
           <div className="mb-4 flex items-center justify-between">
             <GradientText as="h3" className="font-bold text-lg">
-              Falleinschätzung
+              Case Assessment
             </GradientText>
             <span
               className={cn(
@@ -65,7 +65,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
           <div className="mb-4">
             <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-green-600 uppercase tracking-wider">
               <CheckCircle2 className="h-3.5 w-3.5" />
-              Stärken
+              Strengths
             </p>
             <ul className="space-y-1.5">
               {assessment.strengths.map((s) => (
@@ -81,7 +81,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
           <div className="mb-4">
             <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-amber-600 uppercase tracking-wider">
               <AlertTriangle className="h-3.5 w-3.5" />
-              Bedenken
+              Concerns
             </p>
             <ul className="space-y-1.5">
               {assessment.concerns.map((c) => (
@@ -97,7 +97,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
           <div className="mb-4">
             <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-[#4eaed0] uppercase tracking-wider">
               <FileText className="h-3.5 w-3.5" />
-              Empfohlene Schritte
+              Recommended Steps
             </p>
             <ol className="space-y-1.5">
               {assessment.recommendedSteps.map((step, i) => (
@@ -116,7 +116,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-slate-400" />
               <div>
-                <p className="text-[10px] text-slate-400 uppercase">Zeitrahmen</p>
+                <p className="text-[10px] text-slate-400 uppercase">Timeline</p>
                 <p className="font-semibold text-sm">{assessment.timeline}</p>
               </div>
             </div>
@@ -124,7 +124,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
             <div className="flex items-center gap-2">
               <Shield className="h-4 w-4 text-slate-400" />
               <div>
-                <p className="text-[10px] text-slate-400 uppercase">Kostenrahmen</p>
+                <p className="text-[10px] text-slate-400 uppercase">Cost Range</p>
                 <p className="font-semibold text-sm">{assessment.costRange}</p>
               </div>
             </div>
@@ -136,7 +136,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
               onClick={onViewReceipt}
               type="button"
             >
-              Beleg anzeigen
+              View Receipt
             </button>
           )}
         </GlassCard>

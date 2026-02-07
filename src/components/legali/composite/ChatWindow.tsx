@@ -12,7 +12,7 @@ type ChatWindowProps = {
 };
 
 const ChatWindow = forwardRef<HTMLDivElement, ChatWindowProps>(
-  ({ className, messages, isTyping = false, typingLabel = "KI denkt nach" }, ref) => {
+  ({ className, messages, isTyping = false, typingLabel = "AI is thinking" }, ref) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {

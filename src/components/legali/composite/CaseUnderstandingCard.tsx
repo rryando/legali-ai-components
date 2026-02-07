@@ -15,9 +15,9 @@ type CaseUnderstandingCardProps = {
 };
 
 const complexityLabels: Record<string, string> = {
-  low: "Niedrig",
-  medium: "Mittel",
-  high: "Hoch",
+  low: "Low",
+  medium: "Medium",
+  high: "High",
 };
 
 const complexityColors: Record<string, string> = {
@@ -37,7 +37,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
         <SpotlightCard className={cn("p-6", className)} ref={ref}>
           <div className="mb-4 flex items-center justify-between">
             <GradientText as="h3" className="font-bold text-lg">
-              Fallverständnis
+              Case Understanding
             </GradientText>
             <span
               className={cn(
@@ -53,7 +53,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
 
           <div className="mb-4">
             <p className="mb-2 font-semibold text-xs text-slate-500 uppercase tracking-wider">
-              Kernpunkte
+              Key Facts
             </p>
             <ul className="space-y-1.5">
               {caseDetails.keyFacts.map((fact) => (
@@ -67,7 +67,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
 
           <div className="mb-5 rounded-xl bg-slate-50/80 px-3 py-2">
             <p className="text-xs text-slate-500">
-              <span className="font-medium">Empfohlene Spezialisierung:</span>{" "}
+              <span className="font-medium">Recommended Specialization:</span>{" "}
               {caseDetails.recommendedSpecialization}
             </p>
           </div>
@@ -75,7 +75,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
           <div className="flex gap-3">
             <Button className="flex-1 rounded-xl" onClick={onConfirm} size="sm">
               <Check className="mr-1 h-4 w-4" />
-              Bestätigen
+              Confirm
             </Button>
             <Button
               className="rounded-xl"
@@ -84,7 +84,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
               variant="outline"
             >
               <Pencil className="mr-1 h-4 w-4" />
-              Bearbeiten
+              Edit
             </Button>
           </div>
         </SpotlightCard>

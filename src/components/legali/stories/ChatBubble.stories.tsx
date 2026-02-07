@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const User: Story = {
   args: {
-    text: "Ich brauche Hilfe bei meiner Scheidung.",
+    text: "I need help with my divorce.",
     sender: "user",
     timestamp: new Date(),
     showTimestamp: true,
@@ -28,7 +28,7 @@ export const User: Story = {
 
 export const AI: Story = {
   args: {
-    text: "Willkommen bei Legali AI! Ich helfe Ihnen, den passenden Anwalt zu finden. Was beschäftigt Sie?",
+    text: "Welcome to Legali AI! I'll help you find the right lawyer. What's on your mind?",
     sender: "ai",
     timestamp: new Date(),
     showTimestamp: true,
@@ -37,7 +37,7 @@ export const AI: Story = {
 
 export const Lawyer: Story = {
   args: {
-    text: "Guten Tag! Ich habe die Zusammenfassung Ihres Falles erhalten. Lassen Sie uns Ihre Situation besprechen.",
+    text: "Hello! I've received the summary of your case. Let's discuss your situation.",
     sender: "lawyer",
     timestamp: new Date(),
     showTimestamp: true,
@@ -46,18 +46,18 @@ export const Lawyer: Story = {
 
 export const System: Story = {
   args: {
-    text: "Kontaktdaten übermittelt: Max Mustermann",
+    text: "Contact details submitted: John Smith",
     sender: "system",
   },
 };
 
 export const WithAttachments: Story = {
   args: {
-    text: "Hier sind die relevanten Dokumente.",
+    text: "Here are the relevant documents.",
     sender: "user",
     attachments: [
-      { id: "1", type: "pdf", name: "Vertrag.pdf", url: "#" },
-      { id: "2", type: "document", name: "Bescheid.docx", url: "#" },
+      { id: "1", type: "pdf", name: "Contract.pdf", url: "#" },
+      { id: "2", type: "document", name: "Notice.docx", url: "#" },
     ],
   },
 };

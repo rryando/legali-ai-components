@@ -113,7 +113,7 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
           ...prev,
           createMessage(
             "system",
-            `Kontaktdaten übermittelt: ${info.firstName} ${info.lastName}`
+            `Contact details submitted: ${info.firstName} ${info.lastName}`
           ),
         ]);
         setTimeout(advanceScript, 300);
@@ -135,8 +135,8 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
             <LegaliMascot height={40} motion={mascotMotion} width={40} />
           </div>
           <div>
-            <p className="font-semibold text-sm text-slate-800">Legali KI-Assistent</p>
-            <p className="text-xs text-slate-400">Ihr Rechtsberater</p>
+            <p className="font-semibold text-sm text-slate-800">Legali AI Assistant</p>
+            <p className="text-xs text-slate-400">Your legal advisor</p>
           </div>
         </div>
 

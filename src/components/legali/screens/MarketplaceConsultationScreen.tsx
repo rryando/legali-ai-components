@@ -21,10 +21,10 @@ export type MarketplaceConsultationScreenProps = {
 };
 
 const STEPS = [
-  { label: "Aufnahme" },
+  { label: "Intake" },
   { label: "Matching" },
-  { label: "Beratung" },
-  { label: "Beleg" },
+  { label: "Consultation" },
+  { label: "Receipt" },
 ];
 
 function createLawyerMessage(text: string, id?: string): ChatMessage {

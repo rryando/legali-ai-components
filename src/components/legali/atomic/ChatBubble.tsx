@@ -62,7 +62,7 @@ const ChatBubble = forwardRef<HTMLDivElement, ChatBubbleProps>(
               sender === "user" ? "text-right" : "text-left"
             )}
           >
-            {timestamp.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })}
+            {timestamp.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
           </span>
         )}
       </motion.div>
