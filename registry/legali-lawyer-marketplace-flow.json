@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lawyer-marketplace-flow",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/LawyerMarketplaceFlow.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-marketplace-flow.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-marketplace-flow.json\"\n */\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { forwardRef, useCallback } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  assessmentWritingScript,\n  demoCaseRequests,\n  demoPayout,\n  lawyerConsultationScript,\n} from \"../data/marketplace-demo-content\";\nimport type { CaseAssessment, CaseRequest } from \"../data/marketplace-types\";\nimport { useLawyerMarketplaceFlow } from \"../hooks/useLawyerMarketplaceFlow\";\nimport { LawyerAssessmentScreen } from \"./LawyerAssessmentScreen\";\nimport { LawyerCaseReviewScreen } from \"./LawyerCaseReviewScreen\";\nimport { LawyerConsultationScreen } from \"./LawyerConsultationScreen\";\nimport { LawyerDashboardScreen } from \"./LawyerDashboardScreen\";\nimport { LawyerPayoutScreen } from \"./LawyerPayoutScreen\";\n\nexport type LawyerMarketplaceFlowProps = {\n  className?: string;\n};\n\nconst LawyerMarketplaceFlow = forwardRef<HTMLDivElement, LawyerMarketplaceFlowProps>(\n  ({ className }, ref) => {\n    const flow = useLawyerMarketplaceFlow(demoCaseRequests);\n    const { state } = flow;\n\n    const handleSelectCase = useCallback(\n      (caseRequest: CaseRequest) => {\n        flow.selectCase(caseRequest);\n        flow.nextStep();\n      },\n      [flow]\n    );\n\n    const handleAcceptCase = useCallback(() => {\n      flow.nextStep();\n    }, [flow]);\n\n    const handleConsultationComplete = useCallback(() => {\n      flow.nextStep();\n    }, [flow]);\n\n    const handleAssessmentComplete = useCallback(\n      (assessment: CaseAssessment) => {\n        flow.setAssessment(assessment);\n        flow.setPayout(demoPayout);\n        flow.nextStep();\n      },\n      [flow]\n    );\n\n    const handleReturnHome = useCallback(() => {\n      flow.reset();\n    }, [flow]);\n\n    return (\n      <div className={cn(\"relative min-h-screen\", className)} ref={ref}>\n        <AnimatePresence mode=\"wait\">\n          {state.currentStep === \"dashboard\" && (\n            <motion.div\n              animate={{ opacity: 1, x: 0 }}\n              exit={{ opacity: 0, x: -50 }}\n              initial={{ opacity: 0, x: 50 }}\n              key=\"dashboard\"\n              transition={{ duration: 0.4 }}\n            >\n              <LawyerDashboardScreen\n                caseRequests={state.caseRequests}\n                lawyer={state.currentLawyer}\n                onSelectCase={handleSelectCase}\n              />\n            </motion.div>\n          )}\n\n          {state.currentStep === \"case-review\" && state.selectedCase && (\n            <motion.div\n              animate={{ opacity: 1, x: 0 }}\n              exit={{ opacity: 0, x: -50 }}\n              initial={{ opacity: 0, x: 50 }}\n              key=\"case-review\"\n              transition={{ duration: 0.4 }}\n            >\n              <LawyerCaseReviewScreen\n                caseRequest={state.selectedCase}\n                onAccept={handleAcceptCase}\n              />\n            </motion.div>\n          )}\n\n          {state.currentStep === \"consultation\" && (\n            <motion.div\n              animate={{ opacity: 1, x: 0 }}\n              exit={{ opacity: 0, x: -50 }}\n              initial={{ opacity: 0, x: 50 }}\n              key=\"consultation\"\n              transition={{ duration: 0.4 }}\n            >\n              <LawyerConsultationScreen\n                lawyer={state.currentLawyer}\n                onConsultationComplete={handleConsultationComplete}\n                script={lawyerConsultationScript}\n              />\n            </motion.div>\n          )}\n\n          {state.currentStep === \"assessment\" && (\n            <motion.div\n              animate={{ opacity: 1, x: 0 }}\n              exit={{ opacity: 0, x: -50 }}\n              initial={{ opacity: 0, x: 50 }}\n              key=\"assessment\"\n              transition={{ duration: 0.4 }}\n            >\n              <LawyerAssessmentScreen\n                onAssessmentComplete={handleAssessmentComplete}\n                script={assessmentWritingScript}\n              />\n            </motion.div>\n          )}\n\n          {state.currentStep === \"payout\" && (\n            <motion.div\n              animate={{ opacity: 1, x: 0 }}\n              exit={{ opacity: 0, x: -50 }}\n              initial={{ opacity: 0, x: 50 }}\n              key=\"payout\"\n              transition={{ duration: 0.4 }}\n            >\n              <LawyerPayoutScreen\n                onReturnHome={handleReturnHome}\n                payout={state.payout ?? demoPayout}\n              />\n            </motion.div>\n          )}\n        </AnimatePresence>\n      </div>\n    );\n  }\n);\n\nLawyerMarketplaceFlow.displayName = \"LawyerMarketplaceFlow\";\n\nexport { LawyerMarketplaceFlow };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+=======
+  "dependencies": [
+    "motion"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-demo-content.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-lawyer-marketplace-flow.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-case-review-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-assessment-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-payout-screen.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

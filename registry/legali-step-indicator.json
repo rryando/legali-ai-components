@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-step-indicator",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/StepIndicator.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json\"\n */\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Check } from \"lucide-react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst stepVariants = cva(\n  \"flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-bold text-xs transition-all duration-300\",\n  {\n    variants: {\n      state: {\n        completed: \"bg-[#4eaed0] text-white shadow-[#4eaed0]/30 shadow-sm\",\n        current: \"bg-[#4eaed0]/10 text-[#4eaed0] ring-2 ring-[#4eaed0] ring-offset-2\",\n        upcoming: \"bg-slate-100 text-slate-400\",\n      },\n    },\n    defaultVariants: {\n      state: \"upcoming\",\n    },\n  }\n);\n\ntype StepIndicatorStep = {\n  label: string;\n};\n\ntype StepIndicatorProps = {\n  steps: StepIndicatorStep[];\n  currentStep: number;\n  className?: string;\n};\n\ntype StepState = NonNullable<VariantProps<typeof stepVariants>[\"state\"]>;\n\nconst StepIndicator = forwardRef<HTMLDivElement, StepIndicatorProps>(\n  ({ className, steps, currentStep }, ref) => {\n    const getState = (index: number): StepState => {\n      if (index < currentStep) return \"completed\";\n      if (index === currentStep) return \"current\";\n      return \"upcoming\";\n    };\n\n    return (\n      <div className={cn(\"flex items-center gap-1\", className)} ref={ref}>\n        {steps.map((step, i) => {\n          const state = getState(i);\n          const key = `step-${step.label}`;\n          return (\n            <div className=\"flex items-center gap-1\" key={key}>\n              <div className=\"flex flex-col items-center gap-1\">\n                <div className={cn(stepVariants({ state }))}>\n                  {state === \"completed\" ? <Check className=\"h-4 w-4\" /> : i + 1}\n                </div>\n                <span\n                  className={cn(\n                    \"max-w-[80px] text-center text-[10px] leading-tight\",\n                    state === \"current\" ? \"font-semibold text-[#4eaed0]\" : \"text-slate-400\"\n                  )}\n                >\n                  {step.label}\n                </span>\n              </div>\n\n              {i < steps.length - 1 && (\n                <div\n                  className={cn(\n                    \"mb-4 h-0.5 w-6 rounded-full transition-colors duration-300 sm:w-10\",\n                    i < currentStep ? \"bg-[#4eaed0]\" : \"bg-slate-200\"\n                  )}\n                />\n              )}\n            </div>\n          );\n        })}\n      </div>\n    );\n  }\n);\n\nStepIndicator.displayName = \"StepIndicator\";\n\nexport { StepIndicator, stepVariants };\nexport type { StepIndicatorProps, StepIndicatorStep };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["class-variance-authority", "lucide-react"],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+=======
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+>>>>>>> Stashed changes

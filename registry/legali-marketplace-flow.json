@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-marketplace-flow",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/MarketplaceFlow.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json\"\n */\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { forwardRef, useCallback } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport {\n  demoCaseAssessment,\n  demoCaseDetails,\n  demoLawyers,\n  demoReceipt,\n  consultationScript,\n  intakeChatScript,\n  matchingSearchMessages,\n} from \"../data/marketplace-demo-content\";\nimport type { CaseDetails } from \"../data/marketplace-types\";\nimport { useMarketplaceFlow } from \"../hooks/useMarketplaceFlow\";\nimport { MarketplaceConsultationScreen } from \"./MarketplaceConsultationScreen\";\nimport { MarketplaceIntakeScreen } from \"./MarketplaceIntakeScreen\";\nimport { MarketplaceMatchingScreen } from \"./MarketplaceMatchingScreen\";\nimport { MarketplaceReceiptScreen } from \"./MarketplaceReceiptScreen\";\n\nexport type MarketplaceFlowProps = {\n  className?: string;\n};\n\nconst MarketplaceFlow = forwardRef<HTMLDivElement, MarketplaceFlowProps>(({ className }, ref) => {\n  const flow = useMarketplaceFlow();\n  const { state } = flow;\n\n  const handleConfirmCase = useCallback(\n    (caseDetails: CaseDetails) => {\n      flow.setCaseDetails(caseDetails);\n      flow.setSelectedLawyer(demoLawyers[0]);\n      flow.nextStep();\n    },\n    [flow]\n  );\n\n  const handleStartConsultation = useCallback(() => {\n    flow.nextStep();\n  }, [flow]);\n\n  const handleViewReceipt = useCallback(() => {\n    flow.setAssessment(demoCaseAssessment);\n    flow.setReceipt(demoReceipt);\n    flow.nextStep();\n  }, [flow]);\n\n  const handleReturnHome = useCallback(() => {\n    flow.reset();\n  }, [flow]);\n\n  return (\n    <div className={cn(\"relative min-h-screen\", className)} ref={ref}>\n      <AnimatePresence mode=\"wait\">\n        {state.currentStep === \"intake\" && (\n          <motion.div\n            animate={{ opacity: 1, x: 0 }}\n            exit={{ opacity: 0, x: -50 }}\n            initial={{ opacity: 0, x: 50 }}\n            key=\"intake\"\n            transition={{ duration: 0.4 }}\n          >\n            <MarketplaceIntakeScreen\n              caseDetails={demoCaseDetails}\n              onConfirmCase={handleConfirmCase}\n              script={intakeChatScript}\n            />\n          </motion.div>\n        )}\n\n        {state.currentStep === \"matching\" && (\n          <motion.div\n            animate={{ opacity: 1, x: 0 }}\n            exit={{ opacity: 0, x: -50 }}\n            initial={{ opacity: 0, x: 50 }}\n            key=\"matching\"\n            transition={{ duration: 0.4 }}\n          >\n            <MarketplaceMatchingScreen\n              matchedLawyer={state.selectedLawyer ?? demoLawyers[0]}\n              onStartConsultation={handleStartConsultation}\n              searchMessages={matchingSearchMessages}\n            />\n          </motion.div>\n        )}\n\n        {state.currentStep === \"consultation\" && (\n          <motion.div\n            animate={{ opacity: 1, x: 0 }}\n            exit={{ opacity: 0, x: -50 }}\n            initial={{ opacity: 0, x: 50 }}\n            key=\"consultation\"\n            transition={{ duration: 0.4 }}\n          >\n            <MarketplaceConsultationScreen\n              assessment={demoCaseAssessment}\n              lawyer={state.selectedLawyer ?? demoLawyers[0]}\n              onViewReceipt={handleViewReceipt}\n              script={consultationScript}\n            />\n          </motion.div>\n        )}\n\n        {state.currentStep === \"receipt\" && (\n          <motion.div\n            animate={{ opacity: 1, x: 0 }}\n            exit={{ opacity: 0, x: -50 }}\n            initial={{ opacity: 0, x: 50 }}\n            key=\"receipt\"\n            transition={{ duration: 0.4 }}\n          >\n            <MarketplaceReceiptScreen\n              onReturnHome={handleReturnHome}\n              receipt={state.receipt ?? demoReceipt}\n            />\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  );\n});\n\nMarketplaceFlow.displayName = \"MarketplaceFlow\";\n\nexport { MarketplaceFlow };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+=======
+  "dependencies": [
+    "motion"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-demo-content.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-intake-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-matching-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-receipt-screen.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

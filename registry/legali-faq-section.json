@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-faq-section",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/landing/FAQSection.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json\"\n */\nimport { ChevronDown } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { SpotlightCard } from \"../atomic/SpotlightCard\";\nimport { AnimatedBackground } from \"../composite/AnimatedBackground\";\n\nexport interface FAQ {\n  question: string;\n  answer: string;\n}\n\nexport interface FAQSectionProps extends React.HTMLAttributes<HTMLElement> {\n  /** FAQ items to display */\n  faqs?: FAQ[];\n  /** Section title */\n  title?: string;\n  /** Section subtitle */\n  subtitle?: string;\n}\n\nconst defaultFAQs: FAQ[] = [\n  {\n    question: \"Is Legali a law firm?\",\n    answer:\n      \"No, Legali is an AI-powered legal intelligence platform. We provide information, tools, and connections to lawyers, but we do not provide legal advice or representation directly.\",\n  },\n  {\n    question: \"How accurate is the AI analysis?\",\n    answer:\n      \"Our AI is trained on millions of legal documents and case laws. While highly accurate for identifying risks and issues, it should be used as a starting point and verified by a qualified attorney for important decisions.\",\n  },\n  {\n    question: \"Can I use Legali for any type of case?\",\n    answer:\n      \"Legali currently specializes in civil litigation, contract disputes, employment law, and personal injury. We are constantly expanding our capabilities to cover more practice areas.\",\n  },\n  {\n    question: \"How much does it cost?\",\n    answer:\n      \"We offer a free tier for basic analysis and document organization. Premium features like advanced case building and lawyer matching are available starting at $29/month.\",\n  },\n  {\n    question: \"Is my data secure?\",\n    answer:\n      \"Absolutely. We use bank-level encryption, are SOC 2 Type II compliant, and never share your data with third parties. Your legal information stays completely private.\",\n  },\n];\n\n/**\n * FAQ section with expandable accordion items.\n * Uses native details/summary elements with custom styling.\n */\nconst FAQSection = React.forwardRef<HTMLElement, FAQSectionProps>(\n  (\n    {\n      className,\n      faqs = defaultFAQs,\n      title = \"Frequently asked questions\",\n      subtitle = \"Everything you need to know about Legali\",\n      ...props\n    },\n    ref\n  ) => (\n    <section\n      className={cn(\"relative overflow-hidden px-6 py-24\", className)}\n      id=\"faq\"\n      ref={ref}\n      {...props}\n    >\n      <AnimatedBackground />\n\n      <div className=\"relative mx-auto max-w-3xl\">\n        <div className=\"mb-16 text-center\">\n          <h2 className=\"mb-4 font-bold text-3xl text-slate-900 tracking-tight md:text-4xl\">\n            {title}\n          </h2>\n          <p className=\"text-lg text-slate-600\">{subtitle}</p>\n        </div>\n\n        <div className=\"space-y-4\">\n          {faqs.map((faq, index) => (\n            <SpotlightCard\n              className=\"overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-lg\"\n              key={index}\n            >\n              <details className=\"group\">\n                <summary className=\"flex cursor-pointer list-none items-center justify-between p-6\">\n                  <h3 className=\"pr-8 font-semibold text-lg text-slate-900\">{faq.question}</h3>\n                  <div className=\"flex h-10 w-10 items-center justify-center rounded-xl bg-[#4eaed0]/10 text-[#4eaed0] transition-all duration-300 group-open:rotate-180 group-open:bg-[#4eaed0] group-open:text-white\">\n                    <ChevronDown className=\"h-5 w-5\" />\n                  </div>\n                </summary>\n                <div className=\"fade-in slide-in-from-top-2 animate-in px-6 pb-6 text-slate-600 leading-relaxed duration-300\">\n                  {faq.answer}\n                </div>\n              </details>\n            </SpotlightCard>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n);\n\nFAQSection.displayName = \"FAQSection\";\n\nexport { FAQSection };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-background.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

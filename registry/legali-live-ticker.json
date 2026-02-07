@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-live-ticker",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/LiveTicker.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-live-ticker.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-live-ticker.json\"\n */\nimport { Bell } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { SpotlightCard } from \"../atomic/SpotlightCard\";\n\nexport interface LiveTickerNotification {\n  name: string;\n  location: string;\n  action: string;\n}\n\nexport interface LiveTickerProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** List of notifications to cycle through */\n  notifications?: LiveTickerNotification[];\n  /** Interval between notifications in milliseconds */\n  interval?: number;\n  /** Icon to display */\n  icon?: React.ReactNode;\n  /** \"from\" connector text */\n  fromLabel?: string;\n  /** \"just\" connector text */\n  justLabel?: string;\n}\n\nconst defaultNotifications: LiveTickerNotification[] = [\n  { name: \"Sarah M.\", location: \"Colorado\", action: \"analyzed a contract\" },\n  { name: \"David C.\", location: \"New York\", action: \"found a lawyer\" },\n  { name: \"Marcus J.\", location: \"Texas\", action: \"built their case\" },\n  { name: \"Emily R.\", location: \"California\", action: \"analyzed a lease\" },\n];\n\n/**\n * A rotating notification ticker showing recent activity.\n * Displays one notification at a time with fade transitions.\n */\nconst LiveTicker = React.forwardRef<HTMLDivElement, LiveTickerProps>(\n  (\n    {\n      className,\n      notifications = defaultNotifications,\n      interval = 4000,\n      icon = <Bell className=\"h-4 w-4 text-[#4eaed0]\" />,\n      fromLabel = \"from\",\n      justLabel = \"just\",\n      ...props\n    },\n    ref\n  ) => {\n    const [currentIndex, setCurrentIndex] = React.useState(0);\n    const [isVisible, setIsVisible] = React.useState(true);\n\n    React.useEffect(() => {\n      const timer = setInterval(() => {\n        setIsVisible(false);\n        setTimeout(() => {\n          setCurrentIndex((prev) => (prev + 1) % notifications.length);\n          setIsVisible(true);\n        }, 500);\n      }, interval);\n      return () => clearInterval(timer);\n    }, [notifications.length, interval]);\n\n    const notification = notifications[currentIndex];\n\n    return (\n      <div\n        className={cn(\n          \"fixed bottom-6 left-6 z-40 hidden transition-all duration-500 md:block\",\n          isVisible ? \"translate-y-0 opacity-100\" : \"translate-y-4 opacity-0\",\n          className\n        )}\n        ref={ref}\n        {...props}\n      >\n        <SpotlightCard className=\"flex items-center gap-3 rounded-xl bg-white/80 px-4 py-3 shadow-lg\">\n          {icon}\n          <p className=\"text-slate-700 text-sm\">\n            <span className=\"font-semibold\">{notification.name}</span>\n            <span className=\"text-slate-500\">\n              {\" \"}\n              {fromLabel} {notification.location}\n            </span>\n            <span className=\"text-slate-600\">\n              {\" \"}\n              {justLabel} {notification.action}\n            </span>\n          </p>\n        </SpotlightCard>\n      </div>\n    );\n  }\n);\n\nLiveTicker.displayName = \"LiveTicker\";\n\nexport { LiveTicker };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

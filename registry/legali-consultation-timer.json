@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-consultation-timer",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/ConsultationTimer.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json\"\n */\nimport { forwardRef, useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype ConsultationTimerProps = {\n  isRunning?: boolean;\n  startTime?: number;\n  className?: string;\n};\n\nfunction formatDuration(seconds: number): string {\n  const mins = Math.floor(seconds / 60);\n  const secs = seconds % 60;\n  return `${mins.toString().padStart(2, \"0\")}:${secs.toString().padStart(2, \"0\")}`;\n}\n\nconst ConsultationTimer = forwardRef<HTMLDivElement, ConsultationTimerProps>(\n  ({ className, isRunning = true, startTime = 0 }, ref) => {\n    const [elapsed, setElapsed] = useState(startTime);\n\n    useEffect(() => {\n      if (!isRunning) return;\n      const interval = setInterval(() => {\n        setElapsed((prev) => prev + 1);\n      }, 1000);\n      return () => clearInterval(interval);\n    }, [isRunning]);\n\n    return (\n      <div\n        className={cn(\"inline-flex items-center gap-2 font-mono text-slate-600 text-sm\", className)}\n        ref={ref}\n      >\n        <span\n          className={cn(\n            \"h-2 w-2 rounded-full\",\n            isRunning ? \"animate-pulse bg-red-400 shadow-red-400/50 shadow-sm\" : \"bg-slate-300\"\n          )}\n        />\n        <span>{formatDuration(elapsed)}</span>\n      </div>\n    );\n  }\n);\n\nConsultationTimer.displayName = \"ConsultationTimer\";\n\nexport { ConsultationTimer };\nexport type { ConsultationTimerProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

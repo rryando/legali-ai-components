@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-floating-particles-system",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/FloatingParticlesSystem.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particles-system.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particles-system.json\"\n */\nimport { BookOpen, FileText, Gavel, Scale, Sparkles } from \"lucide-react\";\nimport type { HTMLAttributes } from \"react\";\nimport { forwardRef, useMemo } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { FloatingParticle } from \"../atomic/FloatingParticle\";\n\ntype FloatingParticlesSystemProps = {\n  /** Number of particles to display */\n  particleCount?: number;\n  /** Enable mouse interaction */\n  enableMouseInteraction?: boolean;\n} & HTMLAttributes<HTMLDivElement>;\n\nconst LEGAL_ICONS = [\n  { icon: Scale, color: \"text-[#4eaed0]\", glow: \"rgba(78, 174, 208, 0.3)\" },\n  { icon: Gavel, color: \"text-[#667eea]\", glow: \"rgba(102, 126, 234, 0.3)\" },\n  { icon: FileText, color: \"text-[#764ba2]\", glow: \"rgba(118, 75, 162, 0.3)\" },\n  { icon: BookOpen, color: \"text-[#f472b6]\", glow: \"rgba(244, 114, 182, 0.3)\" },\n  { icon: Sparkles, color: \"text-[#06b6d4]\", glow: \"rgba(6, 182, 212, 0.3)\" },\n];\n\n/**\n * Container that renders multiple floating particles with\n * randomized properties. Uses legal-themed icons.\n *\n * @example\n * ```tsx\n * <FloatingParticlesSystem particleCount={8} />\n * ```\n */\nconst FloatingParticlesSystem = forwardRef<HTMLDivElement, FloatingParticlesSystemProps>(\n  ({ className, particleCount = 6, enableMouseInteraction = false, ...props }, ref) => {\n    const particles = useMemo(() => {\n      return Array.from({ length: particleCount }, (_, i) => {\n        const iconData = LEGAL_ICONS[i % LEGAL_ICONS.length];\n        const Icon = iconData.icon;\n\n        // Distribute particles around the container edges\n        const angle = (i / particleCount) * 360;\n        const radius = 35 + Math.random() * 15; // 35-50% from center\n\n        // Convert polar to cartesian coordinates\n        const x = 50 + Math.cos((angle * Math.PI) / 180) * radius;\n        const y = 50 + Math.sin((angle * Math.PI) / 180) * radius;\n\n        return {\n          id: i,\n          icon: <Icon className={cn(\"h-5 w-5\", iconData.color)} />,\n          size: 36 + Math.random() * 16, // 36-52px\n          duration: 12 + Math.random() * 8, // 12-20s\n          delay: Math.random() * 5,\n          glowColor: iconData.glow,\n          position: { x, y },\n        };\n      });\n    }, [particleCount]);\n\n    return (\n      <div className={cn(\"pointer-events-none absolute inset-0\", className)} ref={ref} {...props}>\n        {particles.map((particle) => (\n          <FloatingParticle\n            delay={particle.delay}\n            duration={particle.duration}\n            glowColor={particle.glowColor}\n            icon={particle.icon}\n            initialPosition={particle.position}\n            key={particle.id}\n            size={particle.size}\n          />\n        ))}\n      </div>\n    );\n  }\n);\n\nFloatingParticlesSystem.displayName = \"FloatingParticlesSystem\";\n\nexport { FloatingParticlesSystem };\nexport type { FloatingParticlesSystemProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

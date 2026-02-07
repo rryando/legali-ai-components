@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-suggestion-chip",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/SuggestionChip.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json\"\n */\nimport { motion } from \"motion/react\";\nimport type { HTMLAttributes, ReactNode } from \"react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype SuggestionChipProps = {\n  /** Icon to display before label */\n  icon?: ReactNode;\n  /** Label text */\n  label: string;\n  /** Whether chip is selected/active */\n  isSelected?: boolean;\n  /** Animation delay for staggered entrance */\n  animationDelay?: number;\n  /** Click handler */\n  onClick?: () => void;\n} & Omit<HTMLAttributes<HTMLButtonElement>, \"onClick\">;\n\n/**\n * Animated suggestion pill with staggered entrance animation.\n * Used in SmartSuggestionsDropdown for search suggestions.\n *\n * @example\n * ```tsx\n * <SuggestionChip\n *   icon={<FileText className=\"h-4 w-4\" />}\n *   label=\"Review a contract\"\n *   onClick={() => setInput(\"Review a contract\")}\n * />\n * ```\n */\nconst SuggestionChip = forwardRef<HTMLButtonElement, SuggestionChipProps>(\n  ({ className, icon, label, isSelected = false, animationDelay = 0, onClick }, ref) => (\n    <motion.button\n      animate={{ opacity: 1, y: 0, scale: 1 }}\n      className={cn(\n        \"group inline-flex items-center gap-2 rounded-full px-4 py-2\",\n        \"border border-slate-200/60 bg-white/80 backdrop-blur-sm\",\n        \"font-medium text-slate-700 text-sm\",\n        \"transition-all duration-200\",\n        \"hover:border-[#4eaed0]/40 hover:bg-white hover:shadow-md\",\n        \"focus:outline-none focus:ring-2 focus:ring-[#4eaed0]/30\",\n        isSelected && \"border-[#4eaed0] bg-[#4eaed0]/10 text-[#4eaed0]\",\n        className\n      )}\n      initial={{ opacity: 0, y: 10, scale: 0.95 }}\n      onClick={onClick}\n      ref={ref}\n      transition={{\n        duration: 0.3,\n        delay: animationDelay,\n        ease: [0.4, 0, 0.2, 1],\n      }}\n      type=\"button\"\n      whileHover={{ scale: 1.02 }}\n      whileTap={{ scale: 0.98 }}\n    >\n      {icon && (\n        <span className=\"text-[#4eaed0] transition-transform group-hover:scale-110\">{icon}</span>\n      )}\n      <span>{label}</span>\n    </motion.button>\n  )\n);\n\nSuggestionChip.displayName = \"SuggestionChip\";\n\nexport { SuggestionChip };\nexport type { SuggestionChipProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+=======
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+>>>>>>> Stashed changes

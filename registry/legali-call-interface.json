@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-call-interface",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/CallInterface.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json\"\n */\nimport { motion } from \"motion/react\";\nimport { Mic, MicOff, Phone, PhoneOff, Video, VideoOff } from \"lucide-react\";\nimport { forwardRef, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ConsultationTimer } from \"../atomic/ConsultationTimer\";\nimport { LawyerAvatar } from \"../atomic/LawyerAvatar\";\nimport type { Lawyer } from \"../data/marketplace-types\";\n\ntype CallMode = \"call\" | \"video\";\n\ntype CallInterfaceProps = {\n  lawyer: Lawyer;\n  mode?: CallMode;\n  onEnd?: () => void;\n  className?: string;\n};\n\nconst CallInterface = forwardRef<HTMLDivElement, CallInterfaceProps>(\n  ({ className, lawyer, mode = \"call\", onEnd }, ref) => {\n    const [isMuted, setIsMuted] = useState(false);\n    const [isVideoOff, setIsVideoOff] = useState(false);\n\n    return (\n      <motion.div\n        animate={{ opacity: 1, scale: 1 }}\n        className={cn(\n          \"flex flex-col items-center justify-center gap-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 text-white\",\n          className\n        )}\n        initial={{ opacity: 0, scale: 0.95 }}\n        ref={ref}\n        transition={{ duration: 0.4 }}\n      >\n        {/* Lawyer info */}\n        <div className=\"flex flex-col items-center gap-3\">\n          <div className=\"relative\">\n            <LawyerAvatar alt={lawyer.name} size=\"xl\" src={lawyer.avatar} status=\"online\" />\n            {mode === \"call\" && (\n              <motion.div\n                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.2, 0.5] }}\n                className=\"absolute inset-0 rounded-full border-2 border-[#4eaed0]\"\n                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}\n              />\n            )}\n          </div>\n          <h3 className=\"font-bold text-lg\">{lawyer.name}</h3>\n          <ConsultationTimer className=\"text-white/80\" />\n        </div>\n\n        {mode === \"video\" && (\n          <div className=\"flex h-48 w-full items-center justify-center rounded-xl bg-slate-700/50\">\n            <p className=\"text-slate-400 text-sm\">{isVideoOff ? \"Camera off\" : \"Video preview\"}</p>\n          </div>\n        )}\n\n        {/* Controls */}\n        <div className=\"flex gap-4\">\n          <button\n            className={cn(\n              \"flex h-12 w-12 items-center justify-center rounded-full transition-colors\",\n              isMuted ? \"bg-red-500/20 text-red-400\" : \"bg-white/10 text-white hover:bg-white/20\"\n            )}\n            onClick={() => setIsMuted((v) => !v)}\n            type=\"button\"\n          >\n            {isMuted ? <MicOff className=\"h-5 w-5\" /> : <Mic className=\"h-5 w-5\" />}\n          </button>\n\n          {mode === \"video\" && (\n            <button\n              className={cn(\n                \"flex h-12 w-12 items-center justify-center rounded-full transition-colors\",\n                isVideoOff\n                  ? \"bg-red-500/20 text-red-400\"\n                  : \"bg-white/10 text-white hover:bg-white/20\"\n              )}\n              onClick={() => setIsVideoOff((v) => !v)}\n              type=\"button\"\n            >\n              {isVideoOff ? <VideoOff className=\"h-5 w-5\" /> : <Video className=\"h-5 w-5\" />}\n            </button>\n          )}\n\n          <button\n            className=\"flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-white transition-colors hover:bg-red-600\"\n            onClick={onEnd}\n            type=\"button\"\n          >\n            {mode === \"call\" ? <PhoneOff className=\"h-5 w-5\" /> : <Phone className=\"h-5 w-5\" />}\n          </button>\n        </div>\n      </motion.div>\n    );\n  }\n);\n\nCallInterface.displayName = \"CallInterface\";\n\nexport { CallInterface };\nexport type { CallInterfaceProps, CallMode };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion", "lucide-react"],
+=======
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

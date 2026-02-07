@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-animated-background",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/AnimatedBackground.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-background.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-background.json\"\n */\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { useParallax } from \"../hooks/useAnimations\";\n\nexport interface AnimatedBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Enable parallax scrolling effect */\n  enableParallax?: boolean;\n  /** Parallax intensity (0-1) */\n  parallaxIntensity?: number;\n  /** Show noise texture overlay */\n  showNoise?: boolean;\n}\n\n/**\n * Animated gradient background with floating orbs.\n * Supports parallax scrolling and noise texture overlay.\n */\nconst AnimatedBackground = React.forwardRef<HTMLDivElement, AnimatedBackgroundProps>(\n  (\n    { className, enableParallax = false, parallaxIntensity = 0.3, showNoise = true, ...props },\n    ref\n  ) => {\n    const offset = useParallax(parallaxIntensity);\n    const transform = enableParallax ? `translateY(${offset}px)` : undefined;\n\n    return (\n      <div\n        className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}\n        ref={ref}\n        {...props}\n      >\n        {/* Animated gradient orbs */}\n        <div\n          className=\"absolute top-0 left-1/4 h-[800px] w-[800px] animate-pulse rounded-full bg-gradient-to-br from-[#667eea]/20 via-[#764ba2]/10 to-transparent blur-3xl\"\n          style={{ animationDuration: \"8s\", transform }}\n        />\n        <div\n          className=\"absolute top-1/3 right-0 h-[600px] w-[600px] animate-pulse rounded-full bg-gradient-to-bl from-[#4eaed0]/25 via-[#06b6d4]/15 to-transparent blur-3xl\"\n          style={{ animationDuration: \"6s\", animationDelay: \"2s\", transform }}\n        />\n        <div\n          className=\"absolute bottom-0 left-0 h-[700px] w-[700px] animate-pulse rounded-full bg-gradient-to-tr from-[#f472b6]/15 via-[#ec4899]/10 to-transparent blur-3xl\"\n          style={{ animationDuration: \"10s\", animationDelay: \"1s\", transform }}\n        />\n        <div\n          className=\"absolute right-1/4 bottom-1/4 h-[500px] w-[500px] animate-pulse rounded-full bg-gradient-to-tl from-[#a78bfa]/15 to-transparent blur-3xl\"\n          style={{ animationDuration: \"7s\", animationDelay: \"3s\", transform }}\n        />\n\n        {/* Noise texture overlay */}\n        {showNoise && (\n          <div\n            className=\"absolute inset-0 opacity-[0.03] mix-blend-overlay\"\n            style={{\n              backgroundImage:\n                \"url(\\\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\\\")\",\n            }}\n          />\n        )}\n\n        <style>{`\n          @keyframes shimmer {\n            0% { background-position: 200% 0; }\n            100% { background-position: -200% 0; }\n          }\n          .animate-shimmer {\n            background-size: 200% 100%;\n            animation: shimmer 8s linear infinite;\n          }\n        `}</style>\n      </div>\n    );\n  }\n);\n\nAnimatedBackground.displayName = \"AnimatedBackground\";\n\nexport { AnimatedBackground };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-animations.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

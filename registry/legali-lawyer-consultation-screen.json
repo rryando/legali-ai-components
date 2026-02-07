@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lawyer-consultation-screen",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/LawyerConsultationScreen.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json\"\n */\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { ChevronRight } from \"lucide-react\";\nimport { forwardRef, useCallback, useRef, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/legali/button\";\nimport { StepIndicator } from \"../atomic/StepIndicator\";\nimport { CallInterface } from \"../composite/CallInterface\";\nimport { ConsultationChat, type ConsultationMode } from \"../composite/ConsultationChat\";\nimport type { ChatMessage, Lawyer, LawyerConsultationScriptStep } from \"../data/marketplace-types\";\n\nexport type LawyerConsultationScreenProps = {\n  lawyer: Lawyer;\n  script: LawyerConsultationScriptStep[];\n  onConsultationComplete?: () => void;\n  className?: string;\n};\n\nconst STEPS = [\n  { label: \"Dashboard\" },\n  { label: \"Review\" },\n  { label: \"Consultation\" },\n  { label: \"Assessment\" },\n  { label: \"Payout\" },\n];\n\nfunction createMessage(sender: \"lawyer\" | \"user\", text: string): ChatMessage {\n  return {\n    id: `${sender}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,\n    sender: sender === \"user\" ? \"user\" : \"lawyer\",\n    text,\n    timestamp: new Date(),\n  };\n}\n\nconst LawyerConsultationScreen = forwardRef<HTMLDivElement, LawyerConsultationScreenProps>(\n  ({ className, lawyer, script, onConsultationComplete }, ref) => {\n    const [messages, setMessages] = useState<ChatMessage[]>([]);\n    const [mode, setMode] = useState<ConsultationMode>(\"text\");\n    const scriptIndexRef = useRef(0);\n    const scriptComplete = scriptIndexRef.current >= script.length;\n\n    const handleAdvance = useCallback(() => {\n      if (scriptIndexRef.current >= script.length) return;\n\n      const step = script[scriptIndexRef.current];\n      setMessages((prev) => [...prev, createMessage(step.sender, step.message)]);\n      scriptIndexRef.current += 1;\n    }, [script]);\n\n    const handleCallEnd = useCallback(() => {\n      setMode(\"text\");\n    }, []);\n\n    return (\n      <div\n        className={cn(\n          \"relative flex min-h-screen flex-col items-center bg-gradient-to-br from-indigo-50 via-purple-50/30 to-white px-4 py-8\",\n          className\n        )}\n        ref={ref}\n      >\n        <div className=\"relative z-10 w-full max-w-2xl\">\n          <div className=\"mb-6 flex justify-center\">\n            <StepIndicator currentStep={2} steps={STEPS} />\n          </div>\n\n          <AnimatePresence mode=\"wait\">\n            {mode === \"text\" ? (\n              <motion.div\n                animate={{ opacity: 1 }}\n                exit={{ opacity: 0 }}\n                initial={{ opacity: 0 }}\n                key=\"text\"\n              >\n                <ConsultationChat\n                  activeMode={mode}\n                  isLawyerTyping={false}\n                  lawyer={lawyer}\n                  messages={messages}\n                  onModeChange={setMode}\n                  onSendMessage={() => {}}\n                />\n              </motion.div>\n            ) : (\n              <motion.div\n                animate={{ opacity: 1 }}\n                exit={{ opacity: 0 }}\n                initial={{ opacity: 0 }}\n                key=\"call\"\n              >\n                <CallInterface\n                  lawyer={lawyer}\n                  mode={mode === \"video\" ? \"video\" : \"call\"}\n                  onEnd={handleCallEnd}\n                />\n              </motion.div>\n            )}\n          </AnimatePresence>\n\n          {/* Click-to-advance controls */}\n          {mode === \"text\" && (\n            <div className=\"mt-4 flex justify-center\">\n              {scriptComplete ? (\n                <Button className=\"rounded-xl\" onClick={onConsultationComplete} size=\"sm\">\n                  Proceed to Assessment\n                  <ChevronRight className=\"ml-1 h-4 w-4\" />\n                </Button>\n              ) : (\n                <Button className=\"rounded-xl\" onClick={handleAdvance} size=\"sm\" variant=\"outline\">\n                  Continue Conversation\n                  <ChevronRight className=\"ml-1 h-4 w-4\" />\n                </Button>\n              )}\n            </div>\n          )}\n        </div>\n      </div>\n    );\n  }\n);\n\nLawyerConsultationScreen.displayName = \"LawyerConsultationScreen\";\n\nexport { LawyerConsultationScreen };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion", "lucide-react"],
+=======
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

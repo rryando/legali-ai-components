@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-chat-bubble",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/ChatBubble.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json\"\n */\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { motion } from \"motion/react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport type { ChatAttachment } from \"../data/marketplace-types\";\n\nconst chatBubbleVariants = cva(\n  \"relative max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed\",\n  {\n    variants: {\n      sender: {\n        user: \"ml-auto rounded-br-sm bg-[#4eaed0] text-white\",\n        ai: \"mr-auto rounded-bl-sm border border-slate-200/50 bg-white/80 text-slate-800 backdrop-blur-sm\",\n        lawyer:\n          \"mr-auto rounded-bl-sm border border-amber-200/50 bg-gradient-to-br from-amber-50 to-orange-50 text-slate-800\",\n        system: \"mx-auto max-w-[90%] rounded-xl bg-slate-100/80 text-center text-slate-500 text-xs\",\n      },\n    },\n    defaultVariants: {\n      sender: \"user\",\n    },\n  }\n);\n\ntype ChatBubbleProps = {\n  text: string;\n  timestamp?: Date;\n  attachments?: ChatAttachment[];\n  showTimestamp?: boolean;\n  className?: string;\n} & VariantProps<typeof chatBubbleVariants>;\n\nconst ChatBubble = forwardRef<HTMLDivElement, ChatBubbleProps>(\n  ({ className, sender = \"user\", text, timestamp, attachments, showTimestamp = false }, ref) => {\n    return (\n      <motion.div\n        animate={{ opacity: 1, y: 0 }}\n        className={cn(chatBubbleVariants({ sender }), className)}\n        initial={{ opacity: 0, y: 8 }}\n        ref={ref}\n        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}\n      >\n        <p className=\"whitespace-pre-wrap\">{text}</p>\n\n        {attachments && attachments.length > 0 && (\n          <div className=\"mt-2 flex flex-wrap gap-1.5\">\n            {attachments.map((att) => (\n              <span\n                className=\"inline-flex items-center gap-1 rounded-lg bg-black/5 px-2 py-1 text-xs\"\n                key={att.id}\n              >\n                📎 {att.name}\n              </span>\n            ))}\n          </div>\n        )}\n\n        {showTimestamp && timestamp && (\n          <span\n            className={cn(\n              \"mt-1 block text-[10px] opacity-60\",\n              sender === \"user\" ? \"text-right\" : \"text-left\"\n            )}\n          >\n            {timestamp.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" })}\n          </span>\n        )}\n      </motion.div>\n    );\n  }\n);\n\nChatBubble.displayName = \"ChatBubble\";\n\nexport { ChatBubble, chatBubbleVariants };\nexport type { ChatBubbleProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["class-variance-authority", "motion"],
+=======
+  "dependencies": [
+    "class-variance-authority",
+    "motion"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

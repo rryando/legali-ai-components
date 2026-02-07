@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lawyer-avatar",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/LawyerAvatar.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json\"\n */\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { BadgeCheck } from \"lucide-react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst lawyerAvatarVariants = cva(\"relative inline-flex shrink-0 rounded-full\", {\n  variants: {\n    size: {\n      sm: \"h-8 w-8\",\n      md: \"h-10 w-10\",\n      lg: \"h-14 w-14\",\n      xl: \"h-20 w-20\",\n    },\n    status: {\n      online: \"\",\n      offline: \"\",\n      busy: \"\",\n    },\n  },\n  defaultVariants: {\n    size: \"md\",\n    status: \"offline\",\n  },\n});\n\nconst statusDotColors: Record<string, string> = {\n  online: \"bg-green-400 shadow-green-400/50\",\n  offline: \"bg-slate-300\",\n  busy: \"bg-amber-400 shadow-amber-400/50\",\n};\n\nconst statusDotSizes: Record<string, string> = {\n  sm: \"h-2 w-2 border\",\n  md: \"h-2.5 w-2.5 border-[1.5px]\",\n  lg: \"h-3 w-3 border-2\",\n  xl: \"h-3.5 w-3.5 border-2\",\n};\n\nconst badgeSizes: Record<string, string> = {\n  sm: \"h-3 w-3\",\n  md: \"h-3.5 w-3.5\",\n  lg: \"h-4 w-4\",\n  xl: \"h-5 w-5\",\n};\n\ntype LawyerAvatarProps = {\n  src: string;\n  alt: string;\n  isVerified?: boolean;\n  className?: string;\n} & VariantProps<typeof lawyerAvatarVariants>;\n\nconst LawyerAvatar = forwardRef<HTMLDivElement, LawyerAvatarProps>(\n  ({ className, src, alt, size = \"md\", status = \"offline\", isVerified = false }, ref) => {\n    const sizeKey = size ?? \"md\";\n    const statusKey = status ?? \"offline\";\n\n    return (\n      <div className={cn(lawyerAvatarVariants({ size, status }), className)} ref={ref}>\n        <img\n          alt={alt}\n          className=\"h-full w-full rounded-full border-2 border-white object-cover shadow-sm\"\n          src={src}\n        />\n\n        {/* Status dot */}\n        <span\n          className={cn(\n            \"absolute right-0 bottom-0 rounded-full border-white shadow-sm\",\n            statusDotColors[statusKey],\n            statusDotSizes[sizeKey],\n            statusKey === \"online\" && \"shadow-sm\"\n          )}\n        />\n\n        {/* Verified badge */}\n        {isVerified && (\n          <span className=\"absolute -top-0.5 -right-0.5\">\n            <BadgeCheck className={cn(\"fill-[#4eaed0] text-white\", badgeSizes[sizeKey])} />\n          </span>\n        )}\n      </div>\n    );\n  }\n);\n\nLawyerAvatar.displayName = \"LawyerAvatar\";\n\nexport { LawyerAvatar, lawyerAvatarVariants };\nexport type { LawyerAvatarProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["class-variance-authority", "lucide-react"],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+=======
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+>>>>>>> Stashed changes

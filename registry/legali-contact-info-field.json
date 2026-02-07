@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-contact-info-field",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/ContactInfoField.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json\"\n */\nimport { Check, AlertCircle } from \"lucide-react\";\nimport type { InputHTMLAttributes } from \"react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype ValidationState = \"idle\" | \"valid\" | \"invalid\";\n\ntype ContactInfoFieldProps = {\n  label: string;\n  validation?: ValidationState;\n  errorMessage?: string;\n} & Omit<InputHTMLAttributes<HTMLInputElement>, \"className\">;\n\nconst ContactInfoField = forwardRef<HTMLInputElement, ContactInfoFieldProps>(\n  ({ label, validation = \"idle\", errorMessage, ...props }, ref) => {\n    return (\n      <div className=\"space-y-1\">\n        <label className=\"block font-medium text-slate-600 text-xs\">{label}</label>\n        <div className=\"relative\">\n          <input\n            className={cn(\n              \"w-full rounded-xl border bg-white/60 px-3 py-2.5 text-slate-800 text-sm backdrop-blur-sm\",\n              \"transition-all duration-200 placeholder:text-slate-400\",\n              \"focus:outline-none focus:ring-2 focus:ring-offset-1\",\n              validation === \"idle\" &&\n                \"border-slate-200/60 focus:border-[#4eaed0]/40 focus:ring-[#4eaed0]/20\",\n              validation === \"valid\" && \"border-green-300 focus:ring-green-200\",\n              validation === \"invalid\" && \"border-red-300 focus:ring-red-200\"\n            )}\n            ref={ref}\n            {...props}\n          />\n\n          {validation === \"valid\" && (\n            <span className=\"absolute top-1/2 right-3 -translate-y-1/2 text-green-500\">\n              <Check className=\"h-4 w-4\" />\n            </span>\n          )}\n          {validation === \"invalid\" && (\n            <span className=\"absolute top-1/2 right-3 -translate-y-1/2 text-red-400\">\n              <AlertCircle className=\"h-4 w-4\" />\n            </span>\n          )}\n        </div>\n\n        {validation === \"invalid\" && errorMessage && (\n          <p className=\"text-red-500 text-xs\">{errorMessage}</p>\n        )}\n      </div>\n    );\n  }\n);\n\nContactInfoField.displayName = \"ContactInfoField\";\n\nexport { ContactInfoField };\nexport type { ContactInfoFieldProps, ValidationState };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+>>>>>>> Stashed changes

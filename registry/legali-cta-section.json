@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-cta-section",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/landing/CTASection.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json\"\n */\nimport { ArrowRight, Clock, Play, Shield, Star } from \"lucide-react\";\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/legali/button\";\nimport { cn } from \"@/lib/utils\";\nimport { LegaliMascot, MascotMotion } from \"../mascot/LegaliMascot\";\n\nexport interface CTASectionProps extends Omit<React.HTMLAttributes<HTMLElement>, \"title\"> {\n  /** Callback when Get Started is clicked */\n  onGetStarted?: () => void;\n  /** Callback when Watch Demo is clicked */\n  onWatchDemo?: () => void;\n  /** Section title */\n  title?: React.ReactNode;\n  /** Section subtitle */\n  subtitle?: string;\n  /** Trust badges to display */\n  badges?: { icon: React.ReactNode; label: string }[];\n}\n\nconst defaultBadges = [\n  { icon: <Shield className=\"h-5 w-5\" />, label: \"SOC 2 Compliant\" },\n  { icon: <Clock className=\"h-5 w-5\" />, label: \"24/7 Support\" },\n  { icon: <Star className=\"h-5 w-5\" />, label: \"4.9/5 Rating\" },\n];\n\n/**\n * Call-to-action section with dark theme and mascot.\n * Includes primary and secondary action buttons with trust badges.\n */\nconst CTASection = React.forwardRef<HTMLElement, CTASectionProps>(\n  (\n    {\n      className,\n      onGetStarted,\n      onWatchDemo,\n      title = (\n        <>\n          Ready to take control of your\n          <br />\n          <span className=\"bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] bg-clip-text text-transparent\">\n            legal journey?\n          </span>\n        </>\n      ),\n      subtitle = \"Join thousands of users who are navigating the legal system with confidence. Start free today—no credit card required.\",\n      badges = defaultBadges,\n      ...props\n    },\n    ref\n  ) => {\n    return (\n      <section\n        className={cn(\"relative overflow-hidden px-6 py-32\", className)}\n        id=\"cta\"\n        ref={ref}\n        {...props}\n      >\n        {/* Dark gradient background */}\n        <div className=\"absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]\" />\n\n        {/* Animated gradient orbs */}\n        <div className=\"absolute top-0 left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-[#4eaed0]/30 to-transparent blur-3xl\" />\n        <div className=\"absolute right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-[#764ba2]/30 to-transparent blur-3xl\" />\n\n        <div className=\"relative mx-auto max-w-4xl text-center\">\n          {/* Mascot */}\n          <div className=\"mb-12\">\n            <LegaliMascot\n              className=\"mx-auto max-w-[200px]\"\n              height=\"auto\"\n              motion={MascotMotion.CELEBRATE}\n              width=\"100%\"\n            />\n          </div>\n\n          <h2 className=\"mb-6 font-bold text-4xl text-white leading-tight tracking-tight md:text-5xl lg:text-6xl\">\n            {title}\n          </h2>\n\n          <p className=\"mx-auto mb-12 max-w-2xl text-slate-300 text-xl\">{subtitle}</p>\n\n          <div className=\"flex flex-col items-center justify-center gap-4 sm:flex-row\">\n            <Button\n              className=\"group h-14 rounded-2xl bg-[length:200%_100%] bg-gradient-to-r from-[#4eaed0] via-[#667eea] to-[#764ba2] px-10 font-semibold text-lg text-white shadow-2xl shadow-purple-500/30 transition-all duration-500 hover:bg-right\"\n              onClick={onGetStarted}\n            >\n              <span className=\"flex items-center gap-2\">\n                Get Started Free\n                <ArrowRight className=\"h-5 w-5 transition-transform group-hover:translate-x-1\" />\n              </span>\n            </Button>\n\n            <Button\n              className=\"group h-14 rounded-2xl px-8 font-medium text-lg text-white/80 transition-all hover:bg-white/10 hover:text-white\"\n              onClick={onWatchDemo}\n              variant=\"ghost\"\n            >\n              <span className=\"flex items-center gap-2\">\n                <Play className=\"h-5 w-5\" />\n                Watch Demo\n              </span>\n            </Button>\n          </div>\n\n          {/* Trust badges */}\n          <div className=\"mt-16 flex flex-wrap items-center justify-center gap-8 text-slate-400\">\n            {badges.map((badge) => (\n              <div className=\"flex items-center gap-2\" key={badge.label}>\n                {badge.icon}\n                <span className=\"text-sm\">{badge.label}</span>\n              </div>\n            ))}\n          </div>\n        </div>\n      </section>\n    );\n  }\n);\n\nCTASection.displayName = \"CTASection\";\n\nexport { CTASection };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

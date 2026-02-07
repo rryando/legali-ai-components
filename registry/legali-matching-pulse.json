@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-matching-pulse",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/MatchingPulse.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-pulse.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-pulse.json\"\n */\nimport { motion } from \"motion/react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype MatchingPulseProps = {\n  ringCount?: number;\n  color?: string;\n  size?: number;\n  className?: string;\n};\n\nconst MatchingPulse = forwardRef<HTMLDivElement, MatchingPulseProps>(\n  ({ className, ringCount = 4, color = \"rgba(78, 174, 208, 0.3)\", size = 280 }, ref) => {\n    return (\n      <div\n        className={cn(\"relative flex items-center justify-center\", className)}\n        ref={ref}\n        style={{ width: size, height: size }}\n      >\n        {Array.from({ length: ringCount }).map((_, i) => {\n          const key = `pulse-ring-${i}`;\n          const scale = 0.4 + (i + 1) * (0.6 / ringCount);\n          return (\n            <motion.div\n              animate={{\n                scale: [scale, scale + 0.15, scale],\n                opacity: [0.6 - i * 0.12, 0.3 - i * 0.06, 0.6 - i * 0.12],\n              }}\n              className=\"absolute inset-0 rounded-full\"\n              key={key}\n              style={{\n                border: `2px solid ${color}`,\n                boxShadow: `0 0 20px ${color}`,\n              }}\n              transition={{\n                duration: 2.5,\n                delay: i * 0.4,\n                repeat: Number.POSITIVE_INFINITY,\n                ease: \"easeInOut\",\n              }}\n            />\n          );\n        })}\n      </div>\n    );\n  }\n);\n\nMatchingPulse.displayName = \"MatchingPulse\";\n\nexport { MatchingPulse };\nexport type { MatchingPulseProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+=======
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+}
+>>>>>>> Stashed changes

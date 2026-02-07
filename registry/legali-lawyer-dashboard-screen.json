@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lawyer-dashboard-screen",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/LawyerDashboardScreen.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json\"\n */\nimport { motion } from \"motion/react\";\nimport { Briefcase } from \"lucide-react\";\nimport { forwardRef, useCallback, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { GradientText } from \"../atomic/GradientText\";\nimport { LawyerAvatar } from \"../atomic/LawyerAvatar\";\nimport { StepIndicator } from \"../atomic/StepIndicator\";\nimport { CaseRequestCard } from \"../composite/CaseRequestCard\";\nimport type { CaseRequest, Lawyer } from \"../data/marketplace-types\";\nimport { LegaliMascot, MascotMotion } from \"../mascot\";\n\nexport type LawyerDashboardScreenProps = {\n  lawyer: Lawyer;\n  caseRequests: CaseRequest[];\n  onSelectCase?: (caseRequest: CaseRequest) => void;\n  className?: string;\n};\n\nconst STEPS = [\n  { label: \"Dashboard\" },\n  { label: \"Review\" },\n  { label: \"Consultation\" },\n  { label: \"Assessment\" },\n  { label: \"Payout\" },\n];\n\nconst LawyerDashboardScreen = forwardRef<HTMLDivElement, LawyerDashboardScreenProps>(\n  ({ className, lawyer, caseRequests, onSelectCase }, ref) => {\n    const [selectedId, setSelectedId] = useState<string | null>(null);\n\n    const handleSelect = useCallback(\n      (caseRequest: CaseRequest) => {\n        setSelectedId(caseRequest.id);\n        onSelectCase?.(caseRequest);\n      },\n      [onSelectCase]\n    );\n\n    const newCount = caseRequests.filter((c) => c.status === \"new\").length;\n\n    return (\n      <div\n        className={cn(\n          \"relative flex min-h-screen flex-col items-center bg-gradient-to-br from-indigo-50 via-purple-50/30 to-white px-4 py-8\",\n          className\n        )}\n        ref={ref}\n      >\n        <div className=\"pointer-events-none absolute top-[-10%] right-[-10%] h-[500px] w-[500px] animate-pulse rounded-full bg-indigo-200/30 blur-3xl\" />\n        <div className=\"pointer-events-none absolute bottom-[-10%] left-[-10%] h-[400px] w-[400px] animate-pulse rounded-full bg-purple-200/20 blur-3xl\" />\n\n        <div className=\"relative z-10 w-full max-w-2xl\">\n          <div className=\"mb-6 flex justify-center\">\n            <StepIndicator currentStep={0} steps={STEPS} />\n          </div>\n\n          {/* Lawyer Header */}\n          <div className=\"mb-6 flex items-center gap-4 rounded-2xl bg-white/60 px-5 py-4 shadow-sm backdrop-blur-xl\">\n            <LawyerAvatar\n              alt={lawyer.name}\n              isVerified={lawyer.isVerified}\n              size=\"lg\"\n              src={lawyer.avatar}\n              status={lawyer.isOnline ? \"online\" : \"offline\"}\n            />\n            <div className=\"flex-1\">\n              <p className=\"font-bold text-lg text-slate-800\">{lawyer.name}</p>\n              <p className=\"text-slate-500 text-sm\">{lawyer.title}</p>\n            </div>\n            <div className=\"flex h-10 w-10 items-center justify-center\">\n              <LegaliMascot height={40} motion={MascotMotion.WAVING} width={40} />\n            </div>\n          </div>\n\n          {/* Dashboard Title */}\n          <div className=\"mb-4 flex items-center justify-between\">\n            <div className=\"flex items-center gap-2\">\n              <Briefcase className=\"h-5 w-5 text-[#667eea]\" />\n              <GradientText as=\"h2\" className=\"font-bold text-xl\">\n                Case Requests\n              </GradientText>\n            </div>\n            {newCount > 0 && (\n              <motion.span\n                animate={{ scale: 1 }}\n                className=\"flex items-center gap-1 rounded-full bg-cyan-100 px-2.5 py-1 font-semibold text-cyan-700 text-xs\"\n                initial={{ scale: 0.8 }}\n              >\n                <span className=\"h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500\" />\n                {newCount} new\n              </motion.span>\n            )}\n          </div>\n\n          {/* Case List */}\n          <div className=\"space-y-3\">\n            {caseRequests.map((caseRequest, index) => (\n              <motion.div\n                animate={{ opacity: 1, y: 0 }}\n                initial={{ opacity: 0, y: 16 }}\n                key={caseRequest.id}\n                transition={{ delay: index * 0.1 }}\n              >\n                <CaseRequestCard\n                  caseRequest={caseRequest}\n                  isSelected={selectedId === caseRequest.id}\n                  onSelect={handleSelect}\n                />\n              </motion.div>\n            ))}\n          </div>\n        </div>\n      </div>\n    );\n  }\n);\n\nLawyerDashboardScreen.displayName = \"LawyerDashboardScreen\";\n\nexport { LawyerDashboardScreen };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion", "lucide-react"],
+=======
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-text.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-request-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

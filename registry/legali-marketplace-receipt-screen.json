@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-marketplace-receipt-screen",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/MarketplaceReceiptScreen.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-receipt-screen.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-receipt-screen.json\"\n */\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { StepIndicator } from \"../atomic/StepIndicator\";\nimport { ConsultationReceipt } from \"../composite/ConsultationReceipt\";\nimport type { ReceiptData } from \"../data/marketplace-types\";\nimport { LegaliMascot, MascotMotion } from \"../mascot\";\n\nexport type MarketplaceReceiptScreenProps = {\n  receipt: ReceiptData;\n  onReturnHome?: () => void;\n  className?: string;\n};\n\nconst STEPS = [\n  { label: \"Intake\" },\n  { label: \"Matching\" },\n  { label: \"Consultation\" },\n  { label: \"Receipt\" },\n];\n\nconst MarketplaceReceiptScreen = forwardRef<HTMLDivElement, MarketplaceReceiptScreenProps>(\n  ({ className, receipt, onReturnHome }, ref) => {\n    return (\n      <div\n        className={cn(\n          \"relative flex min-h-screen flex-col items-center bg-gradient-to-br from-sky-50 via-blue-50 to-white px-4 py-8\",\n          className\n        )}\n        ref={ref}\n      >\n        <div className=\"pointer-events-none absolute top-[-10%] right-[-10%] h-[500px] w-[500px] animate-pulse rounded-full bg-sky-200/30 blur-3xl\" />\n        <div className=\"pointer-events-none absolute bottom-[-10%] left-[-10%] h-[400px] w-[400px] animate-pulse rounded-full bg-blue-200/30 blur-3xl\" />\n\n        <div className=\"relative z-10 w-full max-w-2xl\">\n          <div className=\"mb-6 flex justify-center\">\n            <StepIndicator currentStep={3} steps={STEPS} />\n          </div>\n\n          <div className=\"mb-6 flex justify-center\">\n            <LegaliMascot height={100} motion={MascotMotion.CELEBRATE} width={100} />\n          </div>\n\n          <ConsultationReceipt onReturnHome={onReturnHome} receipt={receipt} />\n        </div>\n      </div>\n    );\n  }\n);\n\nMarketplaceReceiptScreen.displayName = \"MarketplaceReceiptScreen\";\n\nexport { MarketplaceReceiptScreen };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-receipt.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

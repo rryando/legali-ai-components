@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-consultation-chat",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/ConsultationChat.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json\"\n */\nimport { MessageCircle, Phone, Video } from \"lucide-react\";\nimport { forwardRef, useCallback, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { ChatInput } from \"../atomic/ChatInput\";\nimport { ConsultationTimer } from \"../atomic/ConsultationTimer\";\nimport { LawyerAvatar } from \"../atomic/LawyerAvatar\";\nimport type { ChatMessage, Lawyer } from \"../data/marketplace-types\";\nimport { ChatWindow } from \"./ChatWindow\";\n\ntype ConsultationMode = \"text\" | \"call\" | \"video\";\n\ntype ConsultationChatProps = {\n  lawyer: Lawyer;\n  messages: ChatMessage[];\n  isLawyerTyping?: boolean;\n  onSendMessage?: (text: string) => void;\n  onModeChange?: (mode: ConsultationMode) => void;\n  activeMode?: ConsultationMode;\n  className?: string;\n};\n\nconst modeIcons: Record<ConsultationMode, typeof MessageCircle> = {\n  text: MessageCircle,\n  call: Phone,\n  video: Video,\n};\n\nconst ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(\n  (\n    {\n      className,\n      lawyer,\n      messages,\n      isLawyerTyping = false,\n      onSendMessage,\n      onModeChange,\n      activeMode = \"text\",\n    },\n    ref\n  ) => {\n    const [localMessages, setLocalMessages] = useState<ChatMessage[]>(messages);\n\n    const handleSend = useCallback(\n      (text: string) => {\n        const msg: ChatMessage = {\n          id: `user-${Date.now()}`,\n          sender: \"user\",\n          text,\n          timestamp: new Date(),\n        };\n        setLocalMessages((prev) => [...prev, msg]);\n        onSendMessage?.(text);\n      },\n      [onSendMessage]\n    );\n\n    // Sync external messages\n    const allMessages = [...localMessages.filter((m) => m.sender === \"user\"), ...messages].sort(\n      (a, b) => a.timestamp.getTime() - b.timestamp.getTime()\n    );\n\n    // Deduplicate by id\n    const seen = new Set<string>();\n    const uniqueMessages = allMessages.filter((m) => {\n      if (seen.has(m.id)) return false;\n      seen.add(m.id);\n      return true;\n    });\n\n    return (\n      <div\n        className={cn(\n          \"flex h-[600px] flex-col overflow-hidden rounded-2xl border border-slate-200/50 bg-gradient-to-b from-slate-50/80 to-white/60 backdrop-blur-xl\",\n          className\n        )}\n        ref={ref}\n      >\n        {/* Header */}\n        <div className=\"flex items-center justify-between border-slate-200/40 border-b px-4 py-3\">\n          <div className=\"flex items-center gap-3\">\n            <LawyerAvatar\n              alt={lawyer.name}\n              isVerified={lawyer.isVerified}\n              size=\"sm\"\n              src={lawyer.avatar}\n              status={lawyer.isOnline ? \"online\" : \"offline\"}\n            />\n            <div>\n              <p className=\"font-semibold text-slate-800 text-sm\">{lawyer.name}</p>\n              <ConsultationTimer className=\"text-xs\" />\n            </div>\n          </div>\n\n          {/* Mode switcher */}\n          <div className=\"flex gap-1\">\n            {([\"text\", \"call\", \"video\"] as ConsultationMode[]).map((mode) => {\n              const Icon = modeIcons[mode];\n              return (\n                <button\n                  className={cn(\n                    \"rounded-lg p-2 transition-colors\",\n                    activeMode === mode\n                      ? \"bg-[#4eaed0]/10 text-[#4eaed0]\"\n                      : \"text-slate-400 hover:bg-slate-100 hover:text-slate-600\"\n                  )}\n                  key={mode}\n                  onClick={() => onModeChange?.(mode)}\n                  type=\"button\"\n                >\n                  <Icon className=\"h-4 w-4\" />\n                </button>\n              );\n            })}\n          </div>\n        </div>\n\n        {/* Chat messages */}\n        <ChatWindow\n          isTyping={isLawyerTyping}\n          messages={uniqueMessages}\n          typingLabel={`${lawyer.name.split(\" \")[0]} is typing...`}\n        />\n\n        {/* Input */}\n        <div className=\"border-slate-200/40 border-t p-3\">\n          <ChatInput onSend={handleSend} placeholder={`Message ${lawyer.name.split(\" \")[0]}...`} />\n        </div>\n      </div>\n    );\n  }\n);\n\nConsultationChat.displayName = \"ConsultationChat\";\n\nexport { ConsultationChat };\nexport type { ConsultationChatProps, ConsultationMode };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

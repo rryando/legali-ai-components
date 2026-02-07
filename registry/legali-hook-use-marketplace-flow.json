@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-hook-use-marketplace-flow",
+  "type": "registry:hook",
+  "files": [
+    {
+      "path": "components/ui/legali/hooks/useMarketplaceFlow.ts",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json\"\n */\nimport { useCallback, useState } from \"react\";\nimport type {\n  CaseAssessment,\n  CaseDetails,\n  ChatMessage,\n  Lawyer,\n  MarketplaceFlowState,\n  MarketplaceStep,\n  ReceiptData,\n} from \"../data/marketplace-types\";\n\nconst STEP_ORDER: MarketplaceStep[] = [\"intake\", \"matching\", \"consultation\", \"receipt\"];\n\nconst initialState: MarketplaceFlowState = {\n  currentStep: \"intake\",\n  caseDetails: null,\n  selectedLawyer: null,\n  assessment: null,\n  receipt: null,\n  chatMessages: [],\n  consultationMessages: [],\n};\n\nexport function useMarketplaceFlow() {\n  const [state, setState] = useState<MarketplaceFlowState>(initialState);\n\n  const goToStep = useCallback((step: MarketplaceStep) => {\n    setState((prev) => ({ ...prev, currentStep: step }));\n  }, []);\n\n  const nextStep = useCallback(() => {\n    setState((prev) => {\n      const currentIndex = STEP_ORDER.indexOf(prev.currentStep);\n      if (currentIndex < STEP_ORDER.length - 1) {\n        return { ...prev, currentStep: STEP_ORDER[currentIndex + 1] };\n      }\n      return prev;\n    });\n  }, []);\n\n  const setCaseDetails = useCallback((caseDetails: CaseDetails) => {\n    setState((prev) => ({ ...prev, caseDetails }));\n  }, []);\n\n  const setSelectedLawyer = useCallback((lawyer: Lawyer) => {\n    setState((prev) => ({ ...prev, selectedLawyer: lawyer }));\n  }, []);\n\n  const setAssessment = useCallback((assessment: CaseAssessment) => {\n    setState((prev) => ({ ...prev, assessment }));\n  }, []);\n\n  const setReceipt = useCallback((receipt: ReceiptData) => {\n    setState((prev) => ({ ...prev, receipt }));\n  }, []);\n\n  const setChatMessages = useCallback((messages: ChatMessage[]) => {\n    setState((prev) => ({ ...prev, chatMessages: messages }));\n  }, []);\n\n  const setConsultationMessages = useCallback((messages: ChatMessage[]) => {\n    setState((prev) => ({ ...prev, consultationMessages: messages }));\n  }, []);\n\n  const reset = useCallback(() => {\n    setState(initialState);\n  }, []);\n\n  const stepIndex = STEP_ORDER.indexOf(state.currentStep);\n\n  return {\n    state,\n    stepIndex,\n    goToStep,\n    nextStep,\n    setCaseDetails,\n    setSelectedLawyer,\n    setAssessment,\n    setReceipt,\n    setChatMessages,\n    setConsultationMessages,\n    reset,\n  };\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

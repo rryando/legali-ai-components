@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-marketplace-consultation-screen",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/screens/MarketplaceConsultationScreen.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json\"\n */\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { forwardRef, useCallback, useEffect, useRef, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { StepIndicator } from \"../atomic/StepIndicator\";\nimport { CallInterface } from \"../composite/CallInterface\";\nimport { CaseAssessmentCard } from \"../composite/CaseAssessmentCard\";\nimport { ConsultationChat, type ConsultationMode } from \"../composite/ConsultationChat\";\nimport type {\n  CaseAssessment,\n  ChatMessage,\n  ConsultationScriptStep,\n  Lawyer,\n} from \"../data/marketplace-types\";\n\nexport type MarketplaceConsultationScreenProps = {\n  lawyer: Lawyer;\n  script: ConsultationScriptStep[];\n  assessment: CaseAssessment;\n  onViewReceipt?: () => void;\n  className?: string;\n};\n\nconst STEPS = [\n  { label: \"Intake\" },\n  { label: \"Matching\" },\n  { label: \"Consultation\" },\n  { label: \"Receipt\" },\n];\n\nfunction createLawyerMessage(text: string, id?: string): ChatMessage {\n  return {\n    id: id ?? `lawyer-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,\n    sender: \"lawyer\",\n    text,\n    timestamp: new Date(),\n  };\n}\n\nconst MarketplaceConsultationScreen = forwardRef<\n  HTMLDivElement,\n  MarketplaceConsultationScreenProps\n>(({ className, lawyer, script, assessment, onViewReceipt }, ref) => {\n  const [messages, setMessages] = useState<ChatMessage[]>([]);\n  const [isLawyerTyping, setIsLawyerTyping] = useState(false);\n  const [showAssessment, setShowAssessment] = useState(false);\n  const [mode, setMode] = useState<ConsultationMode>(\"text\");\n  const scriptIndexRef = useRef(0);\n\n  // Auto-play lawyer script\n  useEffect(() => {\n    if (scriptIndexRef.current >= script.length) return;\n\n    const step = script[scriptIndexRef.current];\n    setIsLawyerTyping(true);\n\n    const timer = setTimeout(() => {\n      setMessages((prev) => [...prev, createLawyerMessage(step.lawyerMessage)]);\n      setIsLawyerTyping(false);\n\n      if (step.showAssessment) {\n        setTimeout(() => setShowAssessment(true), 500);\n      }\n\n      scriptIndexRef.current += 1;\n    }, step.delayMs ?? 1500);\n\n    return () => clearTimeout(timer);\n  }, [script, messages.length]);\n\n  const handleSendMessage = useCallback(\n    (_text: string) => {\n      // Trigger next script step when user sends a message\n      if (scriptIndexRef.current < script.length) {\n        const step = script[scriptIndexRef.current];\n        setIsLawyerTyping(true);\n        setTimeout(() => {\n          setMessages((prev) => [...prev, createLawyerMessage(step.lawyerMessage)]);\n          setIsLawyerTyping(false);\n          if (step.showAssessment) {\n            setTimeout(() => setShowAssessment(true), 500);\n          }\n          scriptIndexRef.current += 1;\n        }, step.delayMs ?? 1500);\n      }\n    },\n    [script]\n  );\n\n  const handleCallEnd = useCallback(() => {\n    setMode(\"text\");\n  }, []);\n\n  return (\n    <div\n      className={cn(\n        \"relative flex min-h-screen flex-col items-center bg-gradient-to-br from-sky-50 via-blue-50 to-white px-4 py-8\",\n        className\n      )}\n      ref={ref}\n    >\n      <div className=\"relative z-10 w-full max-w-2xl\">\n        <div className=\"mb-6 flex justify-center\">\n          <StepIndicator currentStep={showAssessment ? 2 : 2} steps={STEPS} />\n        </div>\n\n        {mode === \"text\" ? (\n          <ConsultationChat\n            activeMode={mode}\n            isLawyerTyping={isLawyerTyping}\n            lawyer={lawyer}\n            messages={messages}\n            onModeChange={setMode}\n            onSendMessage={handleSendMessage}\n          />\n        ) : (\n          <CallInterface\n            lawyer={lawyer}\n            mode={mode === \"video\" ? \"video\" : \"call\"}\n            onEnd={handleCallEnd}\n          />\n        )}\n\n        <AnimatePresence>\n          {showAssessment && (\n            <motion.div\n              animate={{ opacity: 1, y: 0 }}\n              className=\"mt-6\"\n              exit={{ opacity: 0, y: 20 }}\n              initial={{ opacity: 0, y: 24 }}\n            >\n              <CaseAssessmentCard assessment={assessment} onViewReceipt={onViewReceipt} />\n            </motion.div>\n          )}\n        </AnimatePresence>\n      </div>\n    </div>\n  );\n});\n\nMarketplaceConsultationScreen.displayName = \"MarketplaceConsultationScreen\";\n\nexport { MarketplaceConsultationScreen };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+=======
+  "dependencies": [
+    "motion"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-assessment-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

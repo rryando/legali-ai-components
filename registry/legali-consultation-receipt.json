@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-consultation-receipt",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/ConsultationReceipt.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-receipt.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-receipt.json\"\n */\nimport { motion } from \"motion/react\";\nimport { Calendar, CheckCircle2, Download, ExternalLink, Receipt } from \"lucide-react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/legali/button\";\nimport { GradientText } from \"../atomic/GradientText\";\nimport { LawyerAvatar } from \"../atomic/LawyerAvatar\";\nimport { SpotlightCard } from \"../atomic/SpotlightCard\";\nimport type { ReceiptData } from \"../data/marketplace-types\";\n\ntype ConsultationReceiptProps = {\n  receipt: ReceiptData;\n  onDownload?: () => void;\n  onShare?: () => void;\n  onReturnHome?: () => void;\n  className?: string;\n};\n\nconst ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>(\n  ({ className, receipt, onDownload, onShare, onReturnHome }, ref) => {\n    return (\n      <motion.div\n        animate={{ opacity: 1, y: 0 }}\n        initial={{ opacity: 0, y: 20 }}\n        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}\n      >\n        <SpotlightCard className={cn(\"p-6\", className)} ref={ref}>\n          {/* Header */}\n          <div className=\"mb-5 flex items-center justify-between\">\n            <div className=\"flex items-center gap-2\">\n              <Receipt className=\"h-5 w-5 text-[#4eaed0]\" />\n              <GradientText as=\"h3\" className=\"font-bold text-lg\">\n                Consultation Receipt\n              </GradientText>\n            </div>\n            <span className=\"rounded-full bg-slate-100 px-2.5 py-1 font-mono text-slate-500 text-xs\">\n              {receipt.referenceNumber}\n            </span>\n          </div>\n\n          {/* Lawyer Info */}\n          <div className=\"mb-5 flex items-center gap-3 rounded-xl bg-slate-50/80 px-4 py-3\">\n            <LawyerAvatar\n              alt={receipt.lawyer.name}\n              isVerified={receipt.lawyer.isVerified}\n              size=\"md\"\n              src={receipt.lawyer.avatar}\n              status=\"offline\"\n            />\n            <div>\n              <p className=\"font-semibold text-slate-800 text-sm\">{receipt.lawyer.name}</p>\n              <p className=\"text-slate-400 text-xs\">{receipt.lawyer.title}</p>\n            </div>\n            <div className=\"ml-auto text-right\">\n              <p className=\"text-slate-400 text-xs\">Duration</p>\n              <p className=\"font-semibold text-sm\">{receipt.duration} min</p>\n            </div>\n          </div>\n\n          {/* Line Items */}\n          <div className=\"mb-4 space-y-2\">\n            {receipt.lineItems.map((item) => (\n              <div className=\"flex justify-between text-sm\" key={item.label}>\n                <span className=\"text-slate-600\">{item.label}</span>\n                <span className=\"font-medium text-slate-800\">\n                  {item.amount === 0 ? \"Free\" : `$${item.amount.toFixed(2)}`}\n                </span>\n              </div>\n            ))}\n            <div className=\"border-slate-200 border-t pt-2\">\n              <div className=\"flex justify-between\">\n                <span className=\"font-bold text-slate-800 text-sm\">Total</span>\n                <span className=\"font-bold text-[#4eaed0] text-lg\">\n                  ${receipt.total.toFixed(2)}\n                </span>\n              </div>\n            </div>\n          </div>\n\n          {/* Next Steps */}\n          <div className=\"mb-5\">\n            <p className=\"mb-2 flex items-center gap-1.5 font-semibold text-slate-500 text-xs uppercase tracking-wider\">\n              <Calendar className=\"h-3.5 w-3.5\" />\n              Next Steps\n            </p>\n            <ul className=\"space-y-2\">\n              {receipt.nextSteps.map((step) => (\n                <li className=\"flex items-start gap-2 text-slate-700 text-sm\" key={step}>\n                  <CheckCircle2 className=\"mt-0.5 h-4 w-4 shrink-0 text-green-400\" />\n                  {step}\n                </li>\n              ))}\n            </ul>\n          </div>\n\n          {/* Actions */}\n          <div className=\"flex gap-3\">\n            <Button className=\"flex-1 rounded-xl\" onClick={onDownload} size=\"sm\" variant=\"outline\">\n              <Download className=\"mr-1 h-4 w-4\" />\n              Download\n            </Button>\n            <Button className=\"flex-1 rounded-xl\" onClick={onShare} size=\"sm\" variant=\"outline\">\n              <ExternalLink className=\"mr-1 h-4 w-4\" />\n              Share\n            </Button>\n          </div>\n\n          {onReturnHome && (\n            <Button className=\"mt-3 w-full rounded-xl\" onClick={onReturnHome} size=\"sm\">\n              Return to Home\n            </Button>\n          )}\n        </SpotlightCard>\n      </motion.div>\n    );\n  }\n);\n\nConsultationReceipt.displayName = \"ConsultationReceipt\";\n\nexport { ConsultationReceipt };\nexport type { ConsultationReceiptProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion", "lucide-react"],
+=======
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-text.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

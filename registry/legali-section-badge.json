@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-section-badge",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/SectionBadge.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json\"\n */\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type SectionBadgeVariant = \"info\" | \"warning\" | \"success\" | \"danger\" | \"neutral\";\n\nexport interface SectionBadgeProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Icon to display before the label */\n  icon?: React.ReactNode;\n  /** Badge label text */\n  label: string;\n  /** Visual style variant */\n  variant?: SectionBadgeVariant;\n}\n\nconst variantStyles: Record<SectionBadgeVariant, string> = {\n  info: \"bg-gradient-to-r from-[#4eaed0]/10 to-[#667eea]/10 border-[#4eaed0]/20 text-[#4eaed0]\",\n  warning: \"bg-amber-50 border-amber-100 text-amber-600\",\n  success: \"bg-emerald-50 border-emerald-100 text-emerald-600\",\n  danger: \"bg-rose-50 border-rose-100 text-rose-600\",\n  neutral: \"bg-slate-50 border-slate-100 text-slate-600\",\n};\n\n/**\n * A badge component for section headers.\n * Displays an icon and label with configurable color variants.\n */\nconst SectionBadge = React.forwardRef<HTMLDivElement, SectionBadgeProps>(\n  ({ className, icon, label, variant = \"info\", ...props }, ref) => (\n    <div\n      className={cn(\n        \"inline-flex items-center gap-2 rounded-full border px-4 py-2 font-medium text-sm\",\n        variantStyles[variant],\n        className\n      )}\n      ref={ref}\n      {...props}\n    >\n      {icon && <span className=\"h-4 w-4 flex-shrink-0\">{icon}</span>}\n      <span>{label}</span>\n    </div>\n  )\n);\n\nSectionBadge.displayName = \"SectionBadge\";\n\nexport { SectionBadge };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-chat-input",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/ChatInput.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json\"\n */\nimport { Paperclip, Send } from \"lucide-react\";\nimport type { FormEvent, KeyboardEvent } from \"react\";\nimport { forwardRef, useCallback, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { VoiceInputButton } from \"./VoiceInputButton\";\n\ntype ChatInputProps = {\n  onSend?: (message: string) => void;\n  onAttach?: () => void;\n  placeholder?: string;\n  disabled?: boolean;\n  showVoice?: boolean;\n  showAttach?: boolean;\n  className?: string;\n};\n\nconst ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(\n  (\n    {\n      className,\n      onSend,\n      onAttach,\n      placeholder = \"Type a message...\",\n      disabled = false,\n      showVoice = true,\n      showAttach = true,\n    },\n    ref\n  ) => {\n    const [value, setValue] = useState(\"\");\n\n    const handleSend = useCallback(() => {\n      const trimmed = value.trim();\n      if (!trimmed || disabled) return;\n      onSend?.(trimmed);\n      setValue(\"\");\n    }, [value, disabled, onSend]);\n\n    const handleSubmit = useCallback(\n      (e: FormEvent) => {\n        e.preventDefault();\n        handleSend();\n      },\n      [handleSend]\n    );\n\n    const handleKeyDown = useCallback(\n      (e: KeyboardEvent<HTMLTextAreaElement>) => {\n        if (e.key === \"Enter\" && !e.shiftKey) {\n          e.preventDefault();\n          handleSend();\n        }\n      },\n      [handleSend]\n    );\n\n    return (\n      <form\n        className={cn(\n          \"flex items-end gap-2 rounded-2xl border border-slate-200/60 bg-white/80 px-3 py-2 backdrop-blur-sm\",\n          \"transition-all duration-200 focus-within:border-[#4eaed0]/40 focus-within:shadow-md\",\n          disabled && \"pointer-events-none opacity-50\",\n          className\n        )}\n        onSubmit={handleSubmit}\n        ref={ref}\n      >\n        {showAttach && (\n          <button\n            className=\"flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600\"\n            onClick={onAttach}\n            type=\"button\"\n          >\n            <Paperclip className=\"h-4 w-4\" />\n          </button>\n        )}\n\n        <textarea\n          className=\"max-h-24 min-h-[36px] flex-1 resize-none bg-transparent text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none\"\n          disabled={disabled}\n          onChange={(e) => setValue(e.target.value)}\n          onKeyDown={handleKeyDown}\n          placeholder={placeholder}\n          rows={1}\n          value={value}\n        />\n\n        {showVoice && <VoiceInputButton size=\"sm\" />}\n\n        <button\n          className={cn(\n            \"flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-200\",\n            value.trim() ? \"bg-[#4eaed0] text-white shadow-sm hover:bg-[#3d9abf]\" : \"text-slate-300\"\n          )}\n          disabled={!value.trim() || disabled}\n          type=\"submit\"\n        >\n          <Send className=\"h-4 w-4\" />\n        </button>\n      </form>\n    );\n  }\n);\n\nChatInput.displayName = \"ChatInput\";\n\nexport { ChatInput };\nexport type { ChatInputProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-voice-input-button.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

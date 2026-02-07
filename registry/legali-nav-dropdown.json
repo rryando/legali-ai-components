@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-nav-dropdown",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/NavDropdown.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-nav-dropdown.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-nav-dropdown.json\"\n */\nimport { ChevronDown } from \"lucide-react\";\nimport * as React from \"react\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/components/ui/legali/dropdown-menu\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface NavDropdownItem {\n  label: string;\n  href: string;\n  description?: string;\n  onClick?: () => void;\n}\n\nexport interface NavDropdownProps {\n  /** Trigger label text */\n  label: string;\n  /** Menu items to display */\n  items: NavDropdownItem[];\n  /** Additional class names for the trigger */\n  className?: string;\n}\n\n/**\n * A navigation dropdown menu with support for descriptions.\n * Designed for use in navigation headers.\n */\nconst NavDropdown = React.forwardRef<HTMLButtonElement, NavDropdownProps>(\n  ({ label, items, className }, ref) => (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        className={cn(\n          \"group flex items-center gap-1.5 font-medium text-slate-700 text-sm outline-none transition-colors hover:text-[#4eaed0]\",\n          className\n        )}\n        ref={ref}\n      >\n        {label}\n        <ChevronDown className=\"h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180\" />\n      </DropdownMenuTrigger>\n      <DropdownMenuContent className=\"min-w-[280px] rounded-2xl border border-slate-200/50 bg-white/95 p-3 shadow-2xl shadow-slate-200/50 backdrop-blur-xl\">\n        {items.map((item) => (\n          <DropdownMenuItem asChild key={item.label}>\n            <a\n              className=\"group flex flex-col gap-1 rounded-xl px-4 py-3 transition-all hover:bg-gradient-to-r hover:from-[#4eaed0]/5 hover:to-transparent\"\n              href={item.href}\n              onClick={(e) => {\n                if (item.onClick) {\n                  e.preventDefault();\n                  item.onClick();\n                }\n              }}\n            >\n              <span className=\"font-medium text-slate-800 transition-colors group-hover:text-[#4eaed0]\">\n                {item.label}\n              </span>\n              {item.description && (\n                <span className=\"text-slate-500 text-xs\">{item.description}</span>\n              )}\n            </a>\n          </DropdownMenuItem>\n        ))}\n      </DropdownMenuContent>\n    </DropdownMenu>\n  )\n);\n\nNavDropdown.displayName = \"NavDropdown\";\n\nexport { NavDropdown };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-dropdown-menu.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

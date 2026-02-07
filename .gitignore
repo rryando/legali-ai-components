@@ -5,8 +5,6 @@ node_modules
 dist
 storybook-static
 
-# Generated registry files
-registry
 
 # Lock files (bun.lock is committed for reproducible builds)
 pnpm-lock.yaml

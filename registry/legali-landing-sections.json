@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-landing-sections",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/landing/index.ts",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-sections.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-sections.json\"\n */\n// Landing page section components\n\nexport { CTASection, type CTASectionProps } from \"./CTASection\";\nexport { type FAQ, FAQSection, type FAQSectionProps } from \"./FAQSection\";\nexport {\n  type Feature,\n  FeaturesSection,\n  type FeaturesSectionProps,\n} from \"./FeaturesSection\";\nexport {\n  HowItWorksSection,\n  type HowItWorksSectionProps,\n  type Step,\n} from \"./HowItWorksSection\";\nexport {\n  type FooterLinkGroup,\n  LandingFooter,\n  type LandingFooterProps,\n} from \"./LandingFooter\";\nexport { LandingHeader, type LandingHeaderProps } from \"./LandingHeader\";\nexport {\n  type HeroStat,\n  LandingHero,\n  type LandingHeroProps,\n} from \"./LandingHero\";\nexport {\n  type ProblemItem,\n  ProblemSection,\n  type ProblemSectionProps,\n} from \"./ProblemSection\";\nexport {\n  type Testimonial,\n  TestimonialsSection,\n  type TestimonialsSectionProps,\n} from \"./TestimonialsSection\";\nexport { type TrustLogo, TrustLogos, type TrustLogosProps } from \"./TrustLogos\";\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-hero.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-header.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-footer.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-features-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-how-it-works-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-problem-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-testimonials-section.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-trust-logos.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

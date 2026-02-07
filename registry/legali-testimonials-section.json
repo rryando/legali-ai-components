@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-testimonials-section",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/landing/TestimonialsSection.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-testimonials-section.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-testimonials-section.json\"\n */\nimport { Star } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { SectionBadge } from \"../atomic/SectionBadge\";\nimport { SpotlightCard } from \"../atomic/SpotlightCard\";\n\nexport interface Testimonial {\n  quote: string;\n  author: string;\n  role: string;\n  avatar: string;\n  rating: number;\n}\n\nexport interface TestimonialsSectionProps extends React.HTMLAttributes<HTMLElement> {\n  /** Testimonials to display */\n  testimonials?: Testimonial[];\n  /** Section title */\n  title?: string;\n  /** Badge label text */\n  badgeLabel?: string;\n}\n\nconst defaultTestimonials: Testimonial[] = [\n  {\n    quote:\n      \"Legali helped me understand my contract dispute in minutes. I felt empowered to negotiate a fair settlement.\",\n    author: \"Sarah M.\",\n    role: \"Small Business Owner\",\n    avatar: \"SM\",\n    rating: 5,\n  },\n  {\n    quote:\n      \"As a solo practitioner, Legali has transformed how I handle initial case assessments. It's like having a research team.\",\n    author: \"David Chen, Esq.\",\n    role: \"Attorney\",\n    avatar: \"DC\",\n    rating: 5,\n  },\n  {\n    quote:\n      \"I couldn't afford a lawyer for my landlord dispute, but Legali walked me through every step. I won my case!\",\n    author: \"Marcus J.\",\n    role: \"Teacher\",\n    avatar: \"MJ\",\n    rating: 5,\n  },\n];\n\n/**\n * Testimonials section with customer quotes and ratings.\n * Displays testimonial cards with avatars and star ratings.\n */\nconst TestimonialsSection = React.forwardRef<HTMLElement, TestimonialsSectionProps>(\n  (\n    {\n      className,\n      testimonials = defaultTestimonials,\n      title = \"Loved by thousands\",\n      badgeLabel = \"Customer Stories\",\n      ...props\n    },\n    ref\n  ) => {\n    return (\n      <section\n        className={cn(\n          \"overflow-hidden bg-gradient-to-b from-slate-50/50 to-white px-6 py-24\",\n          className\n        )}\n        id=\"testimonials\"\n        ref={ref}\n        {...props}\n      >\n        <div className=\"mx-auto max-w-7xl\">\n          <div className=\"mb-16 text-center\">\n            <SectionBadge\n              className=\"mb-6\"\n              icon={<Star className=\"h-4 w-4 fill-current\" />}\n              label={badgeLabel}\n              variant=\"warning\"\n            />\n            <h2 className=\"font-bold text-3xl text-slate-900 tracking-tight md:text-4xl lg:text-5xl\">\n              {title}\n            </h2>\n          </div>\n\n          <div className=\"grid gap-8 md:grid-cols-3\">\n            {testimonials.map((testimonial) => (\n              <SpotlightCard\n                className=\"rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2\"\n                key={testimonial.author}\n              >\n                {/* Stars */}\n                <div className=\"mb-6 flex gap-1\">\n                  {[...Array(testimonial.rating)].map((_, i) => (\n                    <Star className=\"h-5 w-5 fill-current text-amber-400\" key={i} />\n                  ))}\n                </div>\n\n                <blockquote className=\"mb-6 text-lg text-slate-700 leading-relaxed\">\n                  \"{testimonial.quote}\"\n                </blockquote>\n\n                <div className=\"flex items-center gap-4\">\n                  <div className=\"flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#4eaed0] to-[#667eea] font-bold text-white\">\n                    {testimonial.avatar}\n                  </div>\n                  <div>\n                    <div className=\"font-bold text-slate-900\">{testimonial.author}</div>\n                    <div className=\"text-slate-500 text-sm\">{testimonial.role}</div>\n                  </div>\n                </div>\n              </SpotlightCard>\n            ))}\n          </div>\n        </div>\n      </section>\n    );\n  }\n);\n\nTestimonialsSection.displayName = \"TestimonialsSection\";\n\nexport { TestimonialsSection };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["lucide-react"],
+=======
+  "dependencies": [
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

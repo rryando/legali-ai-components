@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-lawyer-profile-card",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/LawyerProfileCard.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-profile-card.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-profile-card.json\"\n */\nimport { motion } from \"motion/react\";\nimport { MessageCircle, Star } from \"lucide-react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/legali/button\";\nimport { GradientText } from \"../atomic/GradientText\";\nimport { LawyerAvatar } from \"../atomic/LawyerAvatar\";\nimport { SpotlightCard } from \"../atomic/SpotlightCard\";\nimport type { Lawyer } from \"../data/marketplace-types\";\n\ntype LawyerProfileCardProps = {\n  lawyer: Lawyer;\n  onStartConsultation?: () => void;\n  className?: string;\n};\n\nconst LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(\n  ({ className, lawyer, onStartConsultation }, ref) => {\n    return (\n      <motion.div\n        animate={{ opacity: 1, y: 0, scale: 1 }}\n        initial={{ opacity: 0, y: 30, scale: 0.95 }}\n        transition={{ duration: 0.6, type: \"spring\", bounce: 0.3 }}\n      >\n        <SpotlightCard className={cn(\"p-6\", className)} ref={ref}>\n          <div className=\"flex items-start gap-4\">\n            <LawyerAvatar\n              alt={lawyer.name}\n              isVerified={lawyer.isVerified}\n              size=\"xl\"\n              src={lawyer.avatar}\n              status={lawyer.isOnline ? \"online\" : \"offline\"}\n            />\n            <div className=\"flex-1\">\n              <GradientText as=\"h3\" className=\"font-bold text-lg\">\n                {lawyer.name}\n              </GradientText>\n              <p className=\"text-slate-500 text-sm\">{lawyer.title}</p>\n              <p className=\"text-slate-400 text-xs\">{lawyer.firm}</p>\n\n              <div className=\"mt-2 flex items-center gap-3\">\n                <span className=\"flex items-center gap-1\">\n                  <Star className=\"h-4 w-4 fill-amber-400 text-amber-400\" />\n                  <span className=\"font-semibold text-sm\">{lawyer.rating}</span>\n                  <span className=\"text-slate-400 text-xs\">({lawyer.reviewCount})</span>\n                </span>\n                <span className=\"text-slate-400 text-xs\">•</span>\n                <span className=\"font-medium text-[#4eaed0] text-sm\">\n                  ${lawyer.consultationFee}\n                </span>\n              </div>\n            </div>\n          </div>\n\n          <div className=\"mt-4 flex flex-wrap gap-1.5\">\n            {lawyer.specializations.map((spec) => (\n              <span\n                className=\"rounded-full bg-[#4eaed0]/10 px-2.5 py-0.5 font-medium text-[#4eaed0] text-xs\"\n                key={spec}\n              >\n                {spec}\n              </span>\n            ))}\n          </div>\n\n          <p className=\"mt-3 text-slate-600 text-sm leading-relaxed\">{lawyer.bio}</p>\n\n          <Button className=\"mt-5 w-full rounded-xl\" onClick={onStartConsultation}>\n            <MessageCircle className=\"mr-2 h-4 w-4\" />\n            Start Consultation\n          </Button>\n        </SpotlightCard>\n      </motion.div>\n    );\n  }\n);\n\nLawyerProfileCard.displayName = \"LawyerProfileCard\";\n\nexport { LawyerProfileCard };\nexport type { LawyerProfileCardProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion", "lucide-react"],
+=======
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-text.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

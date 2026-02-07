@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-floating-particle",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/FloatingParticle.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json\"\n */\nimport type { HTMLAttributes, ReactNode } from \"react\";\nimport { forwardRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype FloatingParticleProps = {\n  /** Icon or element to display */\n  icon: ReactNode;\n  /** Size of the particle in pixels */\n  size?: number;\n  /** Animation duration in seconds */\n  duration?: number;\n  /** Delay before animation starts */\n  delay?: number;\n  /** Glow color */\n  glowColor?: string;\n  /** Enable glow effect */\n  enableGlow?: boolean;\n  /** Initial position offset (x, y as percentages) */\n  initialPosition?: { x: number; y: number };\n} & HTMLAttributes<HTMLDivElement>;\n\n/**\n * Single floating particle with organic motion path.\n * Used by FloatingParticlesSystem or standalone.\n *\n * @example\n * ```tsx\n * <FloatingParticle\n *   icon={<Scale className=\"h-6 w-6\" />}\n *   size={48}\n *   glowColor=\"rgba(78, 174, 208, 0.4)\"\n * />\n * ```\n */\nconst FloatingParticle = forwardRef<HTMLDivElement, FloatingParticleProps>(\n  (\n    {\n      className,\n      icon,\n      size = 40,\n      duration = 15,\n      delay = 0,\n      glowColor = \"rgba(78, 174, 208, 0.3)\",\n      enableGlow = true,\n      initialPosition = { x: 50, y: 50 },\n      ...props\n    },\n    ref\n  ) => {\n    // Generate unique animation name based on position\n    const animationName = `float-${Math.round(initialPosition.x)}-${Math.round(initialPosition.y)}`;\n\n    return (\n      <div\n        className={cn(\n          \"absolute flex items-center justify-center rounded-xl\",\n          \"bg-white/80 shadow-lg backdrop-blur-sm\",\n          \"transition-transform duration-300 hover:scale-110\",\n          className\n        )}\n        ref={ref}\n        style={{\n          width: size,\n          height: size,\n          left: `${initialPosition.x}%`,\n          top: `${initialPosition.y}%`,\n          animation: `${animationName} ${duration}s ease-in-out infinite`,\n          animationDelay: `${delay}s`,\n          boxShadow: enableGlow ? `0 0 20px ${glowColor}` : undefined,\n        }}\n        {...props}\n      >\n        {icon}\n\n        <style>{`\n          @keyframes ${animationName} {\n            0%, 100% {\n              transform: translate(-50%, -50%) translateY(0px) rotate(0deg);\n            }\n            25% {\n              transform: translate(-50%, -50%) translateY(-15px) translateX(10px) rotate(5deg);\n            }\n            50% {\n              transform: translate(-50%, -50%) translateY(-5px) translateX(-8px) rotate(-3deg);\n            }\n            75% {\n              transform: translate(-50%, -50%) translateY(-20px) translateX(5px) rotate(2deg);\n            }\n          }\n        `}</style>\n      </div>\n    );\n  }\n);\n\nFloatingParticle.displayName = \"FloatingParticle\";\n\nexport { FloatingParticle };\nexport type { FloatingParticleProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

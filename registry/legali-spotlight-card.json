@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-spotlight-card",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/SpotlightCard.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json\"\n */\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Color of the spotlight effect (CSS color value) */\n  spotlightColor?: string;\n  /** Size of the spotlight radius in pixels */\n  spotlightSize?: number;\n}\n\n/**\n * A card component with a mouse-follow spotlight effect.\n * Creates an interactive glow that follows the cursor.\n */\nconst SpotlightCard = React.forwardRef<HTMLDivElement, SpotlightCardProps>(\n  (\n    {\n      children,\n      className,\n      spotlightColor = \"rgba(78, 174, 208, 0.15)\",\n      spotlightSize = 600,\n      ...props\n    },\n    ref\n  ) => {\n    const divRef = React.useRef<HTMLDivElement>(null);\n    const [position, setPosition] = React.useState({ x: 0, y: 0 });\n    const [opacity, setOpacity] = React.useState(0);\n\n    // Merge refs\n    React.useImperativeHandle(ref, () => divRef.current as HTMLDivElement);\n\n    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n      if (!divRef.current) return;\n      const rect = divRef.current.getBoundingClientRect();\n      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n      setOpacity(1);\n    };\n\n    const handleMouseEnter = () => setOpacity(1);\n    const handleMouseLeave = () => setOpacity(0);\n\n    return (\n      <div\n        className={cn(\n          \"relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 backdrop-blur-xl transition-all duration-300\",\n          \"shadow-lg hover:border-slate-300/50 hover:shadow-xl\",\n          className\n        )}\n        onMouseEnter={handleMouseEnter}\n        onMouseLeave={handleMouseLeave}\n        onMouseMove={handleMouseMove}\n        ref={divRef}\n        {...props}\n      >\n        <div\n          className=\"pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300\"\n          style={{\n            opacity,\n            background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,\n          }}\n        />\n        <div className=\"relative\">{children}</div>\n      </div>\n    );\n  }\n);\n\nSpotlightCard.displayName = \"SpotlightCard\";\n\nexport { SpotlightCard };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

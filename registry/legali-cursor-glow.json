@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-cursor-glow",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/atomic/CursorGlow.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cursor-glow.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cursor-glow.json\"\n */\nimport type { HTMLAttributes, MouseEvent } from \"react\";\nimport { forwardRef, useCallback, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype CursorGlowProps = {\n  /** Size of the glow in pixels */\n  glowSize?: number;\n  /** Color of the glow (CSS color value) */\n  glowColor?: string;\n  /** Opacity of the glow (0-1) */\n  glowOpacity?: number;\n  /** Blur amount for the glow */\n  blurAmount?: number;\n} & HTMLAttributes<HTMLDivElement>;\n\n/**\n * Container with ambient glow that follows the cursor.\n * Creates a subtle, premium lighting effect.\n *\n * @example\n * ```tsx\n * <CursorGlow glowColor=\"rgba(78, 174, 208, 0.2)\">\n *   <div className=\"p-8\">Content with glow</div>\n * </CursorGlow>\n * ```\n */\nconst CursorGlow = forwardRef<HTMLDivElement, CursorGlowProps>(\n  (\n    {\n      className,\n      children,\n      glowSize = 500,\n      glowColor = \"rgba(78, 174, 208, 0.15)\",\n      glowOpacity = 1,\n      blurAmount = 80,\n      ...props\n    },\n    ref\n  ) => {\n    const [position, setPosition] = useState({ x: 0, y: 0 });\n    const [isActive, setIsActive] = useState(false);\n\n    const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {\n      const rect = e.currentTarget.getBoundingClientRect();\n      setPosition({\n        x: e.clientX - rect.left,\n        y: e.clientY - rect.top,\n      });\n    }, []);\n\n    const handleMouseEnter = useCallback(() => {\n      setIsActive(true);\n    }, []);\n\n    const handleMouseLeave = useCallback(() => {\n      setIsActive(false);\n    }, []);\n\n    return (\n      <div\n        className={cn(\"relative overflow-hidden\", className)}\n        onMouseEnter={handleMouseEnter}\n        onMouseLeave={handleMouseLeave}\n        onMouseMove={handleMouseMove}\n        ref={ref}\n        {...props}\n      >\n        {/* Glow element */}\n        <div\n          className=\"pointer-events-none absolute transition-opacity duration-500\"\n          style={{\n            left: position.x - glowSize / 2,\n            top: position.y - glowSize / 2,\n            width: glowSize,\n            height: glowSize,\n            borderRadius: \"50%\",\n            background: `radial-gradient(circle, ${glowColor}, transparent 70%)`,\n            opacity: isActive ? glowOpacity : 0,\n            filter: `blur(${blurAmount}px)`,\n            zIndex: 0,\n          }}\n        />\n        {/* Content */}\n        <div className=\"relative z-10\">{children}</div>\n      </div>\n    );\n  }\n);\n\nCursorGlow.displayName = \"CursorGlow\";\n\nexport { CursorGlow };\nexport type { CursorGlowProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

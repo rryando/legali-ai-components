@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-chat-window",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/ChatWindow.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json\"\n */\nimport { forwardRef, useEffect, useRef } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { AIThinkingIndicator } from \"../atomic/AIThinkingIndicator\";\nimport { ChatBubble } from \"../atomic/ChatBubble\";\nimport type { ChatMessage } from \"../data/marketplace-types\";\n\ntype ChatWindowProps = {\n  messages: ChatMessage[];\n  isTyping?: boolean;\n  typingLabel?: string;\n  className?: string;\n};\n\nconst ChatWindow = forwardRef<HTMLDivElement, ChatWindowProps>(\n  ({ className, messages, isTyping = false, typingLabel = \"AI is thinking\" }, ref) => {\n    const scrollRef = useRef<HTMLDivElement>(null);\n\n    useEffect(() => {\n      if (scrollRef.current) {\n        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;\n      }\n    }, [messages, isTyping]);\n\n    return (\n      <div className={cn(\"flex flex-1 flex-col overflow-hidden\", className)} ref={ref}>\n        <div\n          className=\"flex flex-1 flex-col gap-3 overflow-y-auto scroll-smooth px-4 py-4\"\n          ref={scrollRef}\n        >\n          {messages.map((msg) => (\n            <ChatBubble\n              attachments={msg.attachments}\n              key={msg.id}\n              sender={msg.sender}\n              showTimestamp\n              text={msg.text}\n              timestamp={msg.timestamp}\n            />\n          ))}\n\n          {isTyping && (\n            <div className=\"mr-auto flex items-center gap-2 rounded-2xl border border-slate-200/50 bg-white/80 px-4 py-3 backdrop-blur-sm\">\n              <AIThinkingIndicator size=\"sm\" state=\"thinking\" />\n              <span className=\"text-slate-400 text-xs\">{typingLabel}</span>\n            </div>\n          )}\n        </div>\n      </div>\n    );\n  }\n);\n\nChatWindow.displayName = \"ChatWindow\";\n\nexport { ChatWindow };\nexport type { ChatWindowProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-ai-thinking-indicator.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes

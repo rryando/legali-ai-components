@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "legali-matching-animation",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "components/ui/legali/composite/MatchingAnimation.tsx",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-animation.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-animation.json\"\n */\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { forwardRef, useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { MatchingPulse } from \"../atomic/MatchingPulse\";\nimport { LegaliMascot, MascotMotion, type MascotMotionType } from \"../mascot\";\n\ntype MatchingAnimationProps = {\n  searchMessages: string[];\n  matchDelayMs?: number;\n  onMatchComplete?: () => void;\n  className?: string;\n};\n\nconst MatchingAnimation = forwardRef<HTMLDivElement, MatchingAnimationProps>(\n  ({ className, searchMessages, matchDelayMs = 5000, onMatchComplete }, ref) => {\n    const [messageIndex, setMessageIndex] = useState(0);\n    const [isComplete, setIsComplete] = useState(false);\n    const [mascotMotion, setMascotMotion] = useState<MascotMotionType>(MascotMotion.THINKING);\n\n    // Cycle through search messages\n    useEffect(() => {\n      if (isComplete) return;\n\n      const messageInterval = matchDelayMs / searchMessages.length;\n      const timer = setInterval(() => {\n        setMessageIndex((prev) => {\n          const next = prev + 1;\n          if (next >= searchMessages.length) {\n            clearInterval(timer);\n            return prev;\n          }\n          return next;\n        });\n      }, messageInterval);\n\n      return () => clearInterval(timer);\n    }, [isComplete, matchDelayMs, searchMessages.length]);\n\n    // Completion timer\n    useEffect(() => {\n      const timer = setTimeout(() => {\n        setIsComplete(true);\n        setMascotMotion(MascotMotion.CELEBRATE);\n        onMatchComplete?.();\n      }, matchDelayMs);\n\n      return () => clearTimeout(timer);\n    }, [matchDelayMs, onMatchComplete]);\n\n    // Mascot transitions\n    useEffect(() => {\n      if (isComplete) return;\n      const halfway = matchDelayMs * 0.6;\n      const timer = setTimeout(() => {\n        setMascotMotion(MascotMotion.IDEA);\n      }, halfway);\n      return () => clearTimeout(timer);\n    }, [isComplete, matchDelayMs]);\n\n    return (\n      <div\n        className={cn(\"flex flex-col items-center justify-center gap-8 py-12\", className)}\n        ref={ref}\n      >\n        <div className=\"relative flex items-center justify-center\">\n          <MatchingPulse ringCount={isComplete ? 0 : 4} size={280} />\n          <div className=\"absolute\">\n            <LegaliMascot height={120} motion={mascotMotion} width={120} />\n          </div>\n        </div>\n\n        <AnimatePresence mode=\"wait\">\n          <motion.p\n            animate={{ opacity: 1, y: 0 }}\n            className={cn(\"text-center font-medium text-slate-600\", isComplete && \"text-[#4eaed0]\")}\n            exit={{ opacity: 0, y: -8 }}\n            initial={{ opacity: 0, y: 8 }}\n            key={messageIndex}\n            transition={{ duration: 0.3 }}\n          >\n            {searchMessages[messageIndex]}\n          </motion.p>\n        </AnimatePresence>\n\n        {!isComplete && (\n          <div className=\"flex gap-1.5\">\n            {searchMessages.map((_, i) => (\n              <div\n                className={cn(\n                  \"h-1.5 w-1.5 rounded-full transition-colors duration-300\",\n                  i <= messageIndex ? \"bg-[#4eaed0]\" : \"bg-slate-200\"\n                )}\n                key={`dot-${searchMessages[i]}`}\n              />\n            ))}\n          </div>\n        )}\n      </div>\n    );\n  }\n);\n\nMatchingAnimation.displayName = \"MatchingAnimation\";\n\nexport { MatchingAnimation };\nexport type { MatchingAnimationProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+<<<<<<< Updated upstream
+  "dependencies": ["motion"],
+=======
+  "dependencies": [
+    "motion"
+  ],
+>>>>>>> Stashed changes
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-pulse.json",
+    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json"
+  ]
+<<<<<<< Updated upstream
+}
+=======
+}
+>>>>>>> Stashed changes
