@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ChatBubble } from "@/components/ui/legali/atomic/ChatBubble"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ChatBubble\n  text="I need help with my divorce."\n  sender="user"\n  timestamp={new Date()}\n  showTimestamp\n/>\n\`\`\``,
       },
     },
     layout: "padded",

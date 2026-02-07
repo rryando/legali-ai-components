@@ -8,7 +8,7 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { AssessmentWritingForm } from "@/components/ui/legali/composite/AssessmentWritingForm"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<AssessmentWritingForm activeFieldKey="summary" />\n\`\`\``,
       },
     },
   },

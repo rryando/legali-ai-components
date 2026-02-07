@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { CallInterface } from "@/components/ui/legali/composite/CallInterface"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<CallInterface\n  lawyer={lawyer}\n  mode="call"\n  onEnd={() => {}}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

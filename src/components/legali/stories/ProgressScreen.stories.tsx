@@ -8,7 +8,7 @@ const meta = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ProgressScreen } from "@/components/ui/legali/screens/ProgressScreen"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ProgressScreen />\n\`\`\``,
       },
     },
   },

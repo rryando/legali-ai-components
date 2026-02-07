@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { UserStatsBar } from "@/components/ui/legali/composite/UserStatsBar"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<UserStatsBar\n  streak={5}\n  points={1250}\n  hearts={5}\n  maxHearts={5}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

@@ -9,7 +9,7 @@ const meta = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { LawyerConsultationScreen } from "@/components/ui/legali/screens/LawyerConsultationScreen"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<LawyerConsultationScreen\n  lawyer={lawyer}\n  script={script}\n  onConsultationComplete={() => {}}\n/>\n\`\`\``,
       },
     },
   },

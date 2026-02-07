@@ -8,7 +8,7 @@ const meta: Meta<typeof HomeScreen> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { HomeScreen } from "@/components/ui/legali/screens/HomeScreen"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<HomeScreen\n  streak={7}\n  points={340}\n  hearts={5}\n  modules={sampleModules}\n/>\n\`\`\``,
       },
     },
   },

@@ -11,9 +11,11 @@
  * @module LegaliMascot
  */
 
-import RiveCanvas from "@rive-app/react-canvas";
+import * as RiveModule from "@rive-app/react-canvas";
 
-const { Alignment, Fit, Layout, useRive } = RiveCanvas;
+// CJS interop: some bundlers expose named exports at top level, others nest under .default
+const _rive = RiveModule.Fit ? RiveModule : (RiveModule as Record<string, unknown>).default;
+const { Alignment, Fit, Layout, useRive } = _rive as typeof RiveModule;
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";

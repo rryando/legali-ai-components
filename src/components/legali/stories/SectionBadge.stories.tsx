@@ -9,7 +9,7 @@ const meta: Meta<typeof SectionBadge> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { SectionBadge } from "@/components/ui/legali/atomic/SectionBadge"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<SectionBadge\n  icon={<Sparkles className="h-4 w-4" />}\n  label="AI-Powered Intelligence"\n  variant="info"\n/>\n\`\`\``,
       },
     },
   },

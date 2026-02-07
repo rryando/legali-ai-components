@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { LawyerAvatar } from "@/components/ui/legali/atomic/LawyerAvatar"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<LawyerAvatar\n  src="https://api.dicebear.com/9.x/avataaars/svg?seed=Sarah&backgroundColor=b6e3f4"\n  alt="Dr. Sarah Fischer"\n  size="md"\n  status="online"\n  isVerified\n/>\n\`\`\``,
       },
     },
     layout: "padded",

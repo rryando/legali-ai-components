@@ -8,7 +8,7 @@ const meta: Meta<typeof ResultsScreen> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ResultsScreen } from "@/components/ui/legali/screens/ResultsScreen"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ResultsScreen\n  score={5}\n  totalQuestions={5}\n  badgeTitle="Discovery Master Badge Earned!"\n  onContinue={() => {}}\n  onReviewMistakes={() => {}}\n/>\n\`\`\``,
       },
     },
   },

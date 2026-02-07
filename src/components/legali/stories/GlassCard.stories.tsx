@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { GlassCard } from "@/components/ui/legali/atomic/GlassCard"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<GlassCard variant="default" intensity="medium" />\n\`\`\``,
       },
     },
     layout: "padded",

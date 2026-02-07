@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-setting-item.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-setting-item.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { SettingItem } from "@/components/ui/legali/atomic/SettingItem"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<SettingItem\n  icon={Bell}\n  label="Notifications"\n  type="switch"\n  value\n/>\n\`\`\``,
       },
     },
     layout: "padded",

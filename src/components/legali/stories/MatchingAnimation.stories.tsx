@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-animation.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-animation.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { MatchingAnimation } from "@/components/ui/legali/composite/MatchingAnimation"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<MatchingAnimation\n  searchMessages={messages}\n  matchDelayMs={5000}\n  onMatchComplete={() => {}}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

@@ -8,7 +8,7 @@ const meta: Meta<typeof QuizScreen> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-screen.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-screen.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { QuizScreen } from "@/components/ui/legali/screens/QuizScreen"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<QuizScreen\n  questions={sampleQuestions}\n  onClose={() => {}}\n  onQuizComplete={() => {}}\n/>\n\`\`\``,
       },
     },
   },

@@ -8,7 +8,7 @@ const meta: Meta<typeof CTASection> = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { CTASection } from "@/components/ui/legali/landing/CTASection"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<CTASection onGetStarted={() => {}} onWatchDemo={() => {}} />\n\`\`\``,
       },
     },
   },

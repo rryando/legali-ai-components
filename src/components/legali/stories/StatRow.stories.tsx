@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-row.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-row.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { StatRow } from "@/components/ui/legali/atomic/StatRow"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<StatRow label="Total Claims" value="1,234" />\n\`\`\``,
       },
     },
     layout: "padded",

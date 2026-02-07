@@ -8,7 +8,7 @@ const meta: Meta<typeof LandingFooter> = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-footer.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-footer.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { LandingFooter } from "@/components/ui/legali/landing/LandingFooter"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<LandingFooter\n  copyright="© 2024 MyCompany. All rights reserved."\n  disclaimer="This service is for informational purposes only."\n/>\n\`\`\``,
       },
     },
   },

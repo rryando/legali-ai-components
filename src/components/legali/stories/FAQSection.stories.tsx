@@ -8,7 +8,7 @@ const meta: Meta<typeof FAQSection> = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { FAQSection } from "@/components/ui/legali/landing/FAQSection"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<FAQSection\n  title="Common Questions"\n  subtitle="Answers to frequently asked questions"\n/>\n\`\`\``,
       },
     },
   },

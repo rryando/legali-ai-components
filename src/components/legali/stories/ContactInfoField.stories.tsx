@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ContactInfoField } from "@/components/ui/legali/atomic/ContactInfoField"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ContactInfoField\n  label="Email", placeholder: "john@example.com", validation: "idle"\n/>\n\`\`\``,
       },
     },
     layout: "padded",

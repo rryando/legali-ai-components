@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-typing-text.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-typing-text.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { TypingText } from "@/components/ui/legali/atomic/TypingText"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<TypingText\n  text="Hello — I’m Legali, your learning companion."\n  speed={40}\n  showCursor\n  cursor="▍"\n  loop={false}\n  startOnView={false}\n  once={false}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

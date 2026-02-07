@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { QuizQuestion } from "@/components/ui/legali/composite/QuizQuestion"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<QuizQuestion\n  question="What is the maximum amount you can sue for in small claims court in California?"\n  questionNumber={1}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

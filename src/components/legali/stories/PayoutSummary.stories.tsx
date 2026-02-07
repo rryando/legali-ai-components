@@ -9,7 +9,7 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { PayoutSummary } from "@/components/ui/legali/composite/PayoutSummary"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<PayoutSummary\n  payout={payoutData}\n  onDownload={() => {}}\n  onReturnHome={() => {}}\n/>\n\`\`\``,
       },
     },
   },

@@ -8,7 +8,7 @@ const meta: Meta<typeof TiltCard> = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-tilt-card.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-tilt-card.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { TiltCard } from "@/components/ui/legali/atomic/TiltCard"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<TiltCard\n  maxTilt={10}\n  perspective={1000}\n  enableGlare\n/>\n\`\`\``,
       },
     },
     layout: "centered",

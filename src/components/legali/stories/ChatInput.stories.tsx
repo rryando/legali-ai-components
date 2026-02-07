@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ChatInput } from "@/components/ui/legali/atomic/ChatInput"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ChatInput onSend={() => {}} />\n\`\`\``,
       },
     },
     layout: "padded",

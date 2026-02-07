@@ -8,7 +8,7 @@ const meta = {
     layout: "fullscreen",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { MarketplaceFlow } from "@/components/ui/legali/screens/MarketplaceFlow"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<MarketplaceFlow />\n\`\`\``,
       },
     },
   },

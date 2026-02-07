@@ -8,7 +8,7 @@ const meta: Meta<typeof AnimatedCounter> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { AnimatedCounter } from "@/components/ui/legali/atomic/AnimatedCounter"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<AnimatedCounter target={1500} label="Users" />\n\`\`\``,
       },
     },
   },

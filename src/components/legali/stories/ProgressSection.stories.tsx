@@ -7,7 +7,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-section.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-section.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ProgressSection } from "@/components/ui/legali/composite/ProgressSection"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ProgressSection\n  title="Module Progress"\n  progress={45}\n  variant="header"\n  showPercentage\n/>\n\`\`\``,
       },
     },
     layout: "padded",

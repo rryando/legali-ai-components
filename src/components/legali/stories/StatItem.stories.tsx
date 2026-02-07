@@ -8,7 +8,7 @@ const meta: Meta<typeof StatItem> = {
     layout: "centered",
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { StatItem } from "@/components/ui/legali/atomic/StatItem"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<StatItem\n  icon="🔥"\n  value={7}\n  label="day streak"\n  variant="streak"\n/>\n\`\`\``,
       },
     },
   },

@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-understanding-card.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-understanding-card.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { CaseUnderstandingCard } from "@/components/ui/legali/composite/CaseUnderstandingCard"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<CaseUnderstandingCard\n  caseDetails={caseDetails}\n  onConfirm={() => {}}\n  onEdit={() => {}}\n/>\n\`\`\``,
       },
     },
     layout: "padded",

@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-stat-card.json"\n\`\`\``,
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-stat-card.json"\n\`\`\`\n\n**Import:**\n\n\`\`\`tsx\nimport { ProfileStatCard } from "@/components/ui/legali/atomic/ProfileStatCard"\n\`\`\`\n\n**Usage:**\n\n\`\`\`tsx\n<ProfileStatCard\n  icon={Trophy}\n  label="Total XP"\n  value="12,450"\n  colorClass="text-yellow-600 bg-yellow-50"\n/>\n\`\`\``,
       },
     },
     layout: "padded",
