@@ -965,30 +965,30 @@ const files = [
   // Marketplace Data & Hooks
   {
     name: "legali-marketplace-types",
-    type: "registry:lib",
+    type: "registry:ui",
     files: ["components/ui/legali/data/marketplace-types.ts"],
     registryDependencies: ["legali-mascot"],
   },
   {
     name: "legali-marketplace-demo-content",
-    type: "registry:lib",
+    type: "registry:ui",
     files: ["components/ui/legali/data/marketplace-demo-content.ts"],
     registryDependencies: ["legali-mascot", "legali-marketplace-types"],
   },
   {
     name: "legali-hook-use-animations",
-    type: "registry:hook",
+    type: "registry:ui",
     files: ["components/ui/legali/hooks/useAnimations.ts"],
   },
   {
     name: "legali-hook-use-marketplace-flow",
-    type: "registry:hook",
+    type: "registry:ui",
     files: ["components/ui/legali/hooks/useMarketplaceFlow.ts"],
     registryDependencies: ["legali-marketplace-types"],
   },
   {
     name: "legali-hook-use-lawyer-marketplace-flow",
-    type: "registry:hook",
+    type: "registry:ui",
     files: ["components/ui/legali/hooks/useLawyerMarketplaceFlow.ts"],
     registryDependencies: ["legali-marketplace-types", "legali-marketplace-demo-content"],
   },
@@ -1017,13 +1017,13 @@ const files = [
   // Data and barrel
   {
     name: "legali-demo-content",
-    type: "registry:lib",
+    type: "registry:ui",
     files: ["components/ui/legali/data/legali-demo-content.ts"],
     registryDependencies: ["legali-quiz-screen"],
   },
   {
     name: "legali-kit",
-    type: "registry:lib",
+    type: "registry:ui",
     files: ["components/ui/legali/index.ts"],
     registryDependencies: [
       // Education atomic
