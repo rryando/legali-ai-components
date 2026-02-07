@@ -22,8 +22,6 @@ npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-compo
 bunx --bun shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json"
 ```
 
-> **Important:** Always include the `--yes` flag to skip interactive prompts and install directly from the URL.
-
 ### Option 2: Configure as Named Registry
 
 Add the Legali registry to your project's `components.json`:
@@ -61,53 +59,404 @@ npx shadcn@latest add @legali/legali-kit
 
 ---
 
-## Available Components
+## Available Bundles
 
-### Full Kit
+Install entire feature sets with a single command:
+
 ```bash
-# Everything: atomic + composite + screens + mascot + utilities
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json" --yes
+# Everything: education + marketplace + landing page + mascot
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-kit.json"
+
+# User marketplace flow (Intake → Matching → Consultation → Receipt)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json"
+
+# Lawyer marketplace flow (Dashboard → Case Review → Consultation → Assessment → Payout)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-marketplace-flow.json"
+
+# Full landing page (hero, features, FAQ, CTA, testimonials, etc.)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-page.json"
+
+# All landing page sections (without the orchestrator)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-sections.json"
 ```
 
-### Individual Components
+---
 
-#### Screens
+## Individual Components
+
+Install any single component — dependencies are resolved automatically.
+
+### Core Utilities
+
 ```bash
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-screen.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-review-screen.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-screen.json" --yes
+# cn() utility (clsx + tailwind-merge)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
+
+# Global CSS custom properties and fonts
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-style-globals.json"
+
+# Mobile viewport detection hook
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-mobile.json"
 ```
 
-#### Composite Components
+### Shared UI
+
 ```bash
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-module-card.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-navigation-bar.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-header.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json" --yes
+# Button with CVA variants
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-button.json"
+
+# Avatar component (Radix)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-avatar.json"
+
+# Badge with CVA variants
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-badge.json"
+
+# Toggle switch (Radix)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-switch.json"
+
+# Chart component (recharts)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chart.json"
+
+# Dropdown menu (Radix)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-dropdown-menu.json"
 ```
 
-#### Atomic Components
+### Atomic — Education
+
 ```bash
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-answer.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-bar.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json" --yes
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lesson-dot.json" --yes
+# Quiz answer option with correct/incorrect states
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-answer.json"
+
+# Glassmorphism card with blur backdrop
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"
+
+# Typewriter text animation
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-typing-text.json"
+
+# Lesson completion indicator dot
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lesson-dot.json"
+
+# Animated progress bar
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-bar.json"
+
+# Stat display with icon and label
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json"
+
+# Horizontal stat row
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-row.json"
+
+# Top status bar with level/XP
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-status-bar.json"
+
+# Quiz answer explanation card
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-explanation-card.json"
+
+# Question number indicator
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-question-number-badge.json"
+
+# Settings row with switch toggle
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-setting-item.json"
+
+# Profile statistics card
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-stat-card.json"
 ```
 
-#### Mascot (Rive Animation)
+### Atomic — Marketplace & Landing
+
 ```bash
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json" --yes
+# Card with mouse-follow glow effect
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json"
+
+# Branded gradient headings
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-text.json"
+
+# Lawyer avatar with size/status variants
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json"
+
+# Multi-step progress indicator
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json"
+
+# Chat message bubble (user/bot/lawyer)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json"
+
+# Text input with voice button
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json"
+
+# Live consultation timer
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json"
+
+# Animated matching indicator
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-pulse.json"
+
+# Counter with animation
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json"
+
+# Section label badge
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json"
+
+# Validated contact field
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json"
+
+# Case status badge (new/pending/in_progress)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-status-badge.json"
+
+# AI processing dots animation
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-ai-thinking-indicator.json"
+
+# Clickable suggestion pill
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json"
+
+# Decorative particle element
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json"
+
+# Mouse-follow glow effect
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cursor-glow.json"
+
+# Animated mesh gradient
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-mesh-background.json"
+
+# 3D tilt-on-hover card
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-tilt-card.json"
+
+# Microphone toggle button
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-voice-input-button.json"
 ```
 
-#### Demo Content
+### Composite — Education
+
 ```bash
-npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-demo-content.json" --yes
+# Learning module card with lesson dots
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-module-card.json"
+
+# Hero card with mascot and typing text
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot-hero-card.json"
+
+# Bottom navigation bar
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-navigation-bar.json"
+
+# Progress overview section
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-section.json"
+
+# Quiz correct/incorrect feedback
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json"
+
+# Quiz progress header bar
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-header.json"
+
+# Quiz question display
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json"
+
+# Quiz results summary card
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json"
+
+# User stats bar (streak, XP, gems)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-user-stats-bar.json"
+```
+
+### Composite — Marketplace & Landing
+
+```bash
+# Parallax animated background
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-background.json"
+
+# Video/audio call UI
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json"
+
+# AI-generated case assessment display
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-assessment-card.json"
+
+# Case summary with key facts
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-understanding-card.json"
+
+# Scrolling chat message list
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json"
+
+# Full chat interface with timer
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json"
+
+# Post-consultation receipt
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-receipt.json"
+
+# Contact information form
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-form.json"
+
+# Animated floating mascot
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-mascot.json"
+
+# AI intake chat with suggestions
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-intake-chat-panel.json"
+
+# Lawyer profile with rating/specialties
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-profile-card.json"
+
+# Notification ticker
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-live-ticker.json"
+
+# Lawyer matching animation
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-matching-animation.json"
+
+# Navigation dropdown menu
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-nav-dropdown.json"
+
+# Scroll progress bar
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-scroll-progress-indicator.json"
+
+# Decorative floating particles
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particles-system.json"
+
+# Animated stats display
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-interactive-stats-card.json"
+
+# AI suggestion dropdown
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-smart-suggestions-dropdown.json"
+
+# Case request card (lawyer-side)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-request-card.json"
+
+# Case review panel (lawyer-side)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-review-panel.json"
+
+# Assessment form (lawyer-side)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json"
+
+# Payout breakdown (lawyer-side)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json"
+```
+
+### Landing Page Sections
+
+```bash
+# Hero section with interactive demo
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-hero.json"
+
+# Navigation header with dropdowns
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-header.json"
+
+# Footer with links
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-footer.json"
+
+# Call-to-action section
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json"
+
+# Expandable FAQ section
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json"
+
+# Feature grid
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-features-section.json"
+
+# Step-by-step explainer
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-how-it-works-section.json"
+
+# Problem statement section
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-problem-section.json"
+
+# User testimonials
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-testimonials-section.json"
+
+# Trust/partner logos
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-trust-logos.json"
+
+# All landing sections barrel export
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-sections.json"
+```
+
+### Screens — Education
+
+```bash
+# Education home with modules and mascot
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json"
+
+# Interactive quiz with answer feedback
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-screen.json"
+
+# Quiz answer review with explanations
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-review-screen.json"
+
+# Quiz results summary
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json"
+
+# Learning progress with charts
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json"
+
+# User profile with stats and settings
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-screen.json"
+```
+
+### Screens — User Marketplace
+
+```bash
+# Client intake (step 1)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-intake-screen.json"
+
+# Lawyer matching (step 2)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-matching-screen.json"
+
+# Consultation (step 3)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json"
+
+# Receipt (step 4)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-receipt-screen.json"
+
+# Complete user-side flow orchestrator
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-flow.json"
+```
+
+### Screens — Lawyer Marketplace
+
+```bash
+# Case dashboard (step 1)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json"
+
+# Case review (step 2)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-case-review-screen.json"
+
+# Consultation (step 3)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json"
+
+# Assessment writing (step 4)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-assessment-screen.json"
+
+# Payout summary (step 5)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-payout-screen.json"
+
+# Complete lawyer-side flow orchestrator
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-marketplace-flow.json"
+```
+
+### Landing Screen
+
+```bash
+# Full landing page screen
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-page.json"
+```
+
+### Mascot (Rive Animation)
+
+```bash
+# Rive-based animated mascot with speech bubble
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json"
+```
+
+### Data & Hooks
+
+```bash
+# TypeScript types (Lawyer, CaseDetails, CaseRequest, etc.)
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-types.json"
+
+# Marketplace demo data for prototyping
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-demo-content.json"
+
+# Education module demo data
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-demo-content.json"
+
+# Scroll/intersection animation hook
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-animations.json"
+
+# User marketplace state machine hook
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json"
+
+# Lawyer marketplace state machine hook
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-lawyer-marketplace-flow.json"
 ```
 
 ---
@@ -117,9 +466,9 @@ npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-compo
 The registry:
 - Uses prefixed names (`legali-*`) to avoid collisions with shadcn core components
 - Rewrites imports to standard shadcn layout (`@/components/ui/...`, `@/lib/utils`)
-- Includes supporting base pieces (button, avatar, badge, switch, chart)
+- Includes supporting base pieces (button, avatar, badge, switch, chart, dropdown-menu)
 - Resolves all dependencies automatically via full URLs
-- Points assets to GitHub raw URLs for immediate use
+- Points assets (logo, Rive animation) to GitHub raw URLs for immediate use
 
 ---
 
@@ -145,10 +494,10 @@ Before installing, ensure your project has:
 ### Required Aliases
 
 The registry expects these standard shadcn aliases:
-- `@/components` → Components directory
-- `@/components/ui` → UI components
-- `@/lib` → Utilities (including `utils.ts`)
-- `@/hooks` → Custom hooks
+- `@/components` — Components directory
+- `@/components/ui` — UI components
+- `@/lib` — Utilities (including `utils.ts`)
+- `@/hooks` — Custom hooks
 
 ---
 
@@ -171,10 +520,10 @@ Components will automatically install their required dependencies:
 | Category | Packages |
 |----------|----------|
 | Styling | `clsx`, `tailwind-merge`, `class-variance-authority` |
+| Animation | `motion`, `@rive-app/react-canvas` |
 | Icons | `lucide-react` |
-| Primitives | `@radix-ui/react-avatar`, `@radix-ui/react-switch`, `@radix-ui/react-slot` |
+| Primitives | `@radix-ui/react-avatar`, `@radix-ui/react-switch`, `@radix-ui/react-dropdown-menu` |
 | Charts | `recharts` |
-| Animation | `@rive-app/react-canvas` |
 
 ---
 
@@ -183,10 +532,9 @@ Components will automatically install their required dependencies:
 ### "Which components would you like to add?" prompt appears
 
 This means the CLI couldn't fetch the URL. Solutions:
-1. Ensure the URL is quoted: `"https://..."` 
-2. Add `--yes` flag to skip interactive mode
-3. Check your internet connection
-4. Verify `tsconfig.json` and `components.json` exist in your project
+1. Ensure the URL is quoted: `"https://..."`
+2. Check your internet connection
+3. Verify `tsconfig.json` and `components.json` exist in your project
 
 ### Components not found after install
 
@@ -209,14 +557,12 @@ Ensure your `tsconfig.json` has the `@/*` path alias configured correctly.
 ```bash
 # From the legali-ai-components repo
 pnpm run build:registry
-# or
-npm run build:registry
 ```
 
 This regenerates:
-- `registry/index.json` - Full registry manifest
-- `registry/registry.json` - Alias for index
-- `registry/{name}.json` - Individual component files with embedded content and resolved dependency URLs
+- `registry/index.json` — Full registry manifest
+- `registry/registry.json` — Alias for index
+- `registry/{name}.json` — Individual component files with embedded content and resolved dependency URLs (108 items total)
 
 ### Commit and Push
 
