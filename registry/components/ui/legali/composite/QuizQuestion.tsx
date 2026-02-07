@@ -2,8 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { TypingText } from "../atomic/TypingText";
 
-export interface QuizQuestionProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface QuizQuestionProps extends React.HTMLAttributes<HTMLDivElement> {
   question: string;
   questionNumber?: number;
   typingKey?: string | number;

@@ -11,10 +11,7 @@ export interface QuizHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const QuizHeader = React.forwardRef<HTMLDivElement, QuizHeaderProps>(
-  (
-    { className, onClose, currentQuestion, totalQuestions, progress, ...props },
-    ref
-  ) => {
+  ({ className, onClose, currentQuestion, totalQuestions, progress, ...props }, ref) => {
     return (
       <div
         className={cn(
@@ -40,17 +37,11 @@ const QuizHeader = React.forwardRef<HTMLDivElement, QuizHeaderProps>(
         </div>
 
         <div className="flex-1">
-          <ProgressBar
-            className="bg-slate-100"
-            size="lg"
-            value={progress}
-            variant="quiz"
-          />
+          <ProgressBar className="bg-slate-100" size="lg" value={progress} variant="quiz" />
         </div>
 
         <span className="min-w-[3ch] whitespace-nowrap text-center font-bold font-serif text-slate-700">
-          {currentQuestion} <span className="font-sans text-slate-300">/</span>{" "}
-          {totalQuestions}
+          {currentQuestion} <span className="font-sans text-slate-300">/</span> {totalQuestions}
         </span>
       </div>
     );

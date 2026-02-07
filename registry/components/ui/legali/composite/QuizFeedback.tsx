@@ -3,8 +3,7 @@ import * as React from "react";
 import { Button } from "@/components/ui/legali/button";
 import { cn } from "@/lib/utils";
 
-export interface QuizFeedbackProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface QuizFeedbackProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
   correct: boolean;
   explanation: string;
@@ -30,15 +29,9 @@ const QuizFeedback = React.forwardRef<HTMLDivElement, QuizFeedbackProps>(
         <div className="mb-4 flex items-start gap-4">
           <div className="mt-1 shrink-0">
             {correct ? (
-              <CheckCircle2
-                className="h-8 w-8 animate-zoom-in text-emerald-600"
-                strokeWidth={3}
-              />
+              <CheckCircle2 className="h-8 w-8 animate-zoom-in text-emerald-600" strokeWidth={3} />
             ) : (
-              <XCircle
-                className="h-8 w-8 animate-zoom-in text-rose-600"
-                strokeWidth={3}
-              />
+              <XCircle className="h-8 w-8 animate-zoom-in text-rose-600" strokeWidth={3} />
             )}
           </div>
 

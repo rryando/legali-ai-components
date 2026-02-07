@@ -1,10 +1,4 @@
-import {
-  ArrowUpRight,
-  BookOpen,
-  CheckCircle2,
-  Clock,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowUpRight, BookOpen, CheckCircle2, Clock, TrendingUp } from "lucide-react";
 import type * as React from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
@@ -16,8 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { GlassCard } from "../atomic/GlassCard";
 
-export interface ProgressScreenProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProgressScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   weeklyActivity?: { day: string; xp: number }[];
   skills?: { name: string; progress: number; color: string }[];
   recentActivity?: { title: string; date: string; score: number }[];
@@ -56,13 +49,7 @@ export const ProgressScreen = ({
   ...props
 }: ProgressScreenProps) => {
   return (
-    <div
-      className={cn(
-        "flex-1 overflow-y-auto px-5 py-8 pb-24 md:pb-8",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("flex-1 overflow-y-auto px-5 py-8 pb-24 md:pb-8", className)} {...props}>
       <div className="mx-auto w-full max-w-4xl space-y-8">
         <div className="flex items-center justify-between">
           <h1 className="font-bold text-3xl text-slate-800">Your Progress</h1>
@@ -75,21 +62,13 @@ export const ProgressScreen = ({
         {/* Weekly Activity Chart */}
         <GlassCard className="rounded-2xl p-6">
           <div className="mb-6">
-            <h2 className="font-bold text-lg text-slate-800">
-              Weekly Activity
-            </h2>
-            <p className="text-slate-500 text-sm">
-              XP earned over the last 7 days
-            </p>
+            <h2 className="font-bold text-lg text-slate-800">Weekly Activity</h2>
+            <p className="text-slate-500 text-sm">XP earned over the last 7 days</p>
           </div>
           <div className="h-[300px] w-full">
             <ChartContainer className="h-full w-full" config={chartConfig}>
               <BarChart data={weeklyActivity}>
-                <CartesianGrid
-                  stroke="#e2e8f0"
-                  strokeDasharray="3 3"
-                  vertical={false}
-                />
+                <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
                 <XAxis
                   axisLine={false}
                   dataKey="day"
@@ -104,12 +83,7 @@ export const ProgressScreen = ({
                   tickLine={false}
                 />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar
-                  barSize={40}
-                  dataKey="xp"
-                  fill="var(--color-xp)"
-                  radius={[4, 4, 0, 0]}
-                />
+                <Bar barSize={40} dataKey="xp" fill="var(--color-xp)" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ChartContainer>
           </div>
@@ -120,9 +94,7 @@ export const ProgressScreen = ({
           <GlassCard className="rounded-2xl p-6">
             <div className="mb-6 flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-blue-600" />
-              <h2 className="font-bold text-lg text-slate-800">
-                Skill Breakdown
-              </h2>
+              <h2 className="font-bold text-lg text-slate-800">Skill Breakdown</h2>
             </div>
             <div className="space-y-5">
               {skills.map((skill) => (
@@ -149,9 +121,7 @@ export const ProgressScreen = ({
           <GlassCard className="rounded-2xl p-6">
             <div className="mb-6 flex items-center gap-2">
               <Clock className="h-5 w-5 text-blue-600" />
-              <h2 className="font-bold text-lg text-slate-800">
-                Recent Activity
-              </h2>
+              <h2 className="font-bold text-lg text-slate-800">Recent Activity</h2>
             </div>
             <div className="space-y-4">
               {recentActivity.map((activity, i) => (
@@ -163,18 +133,12 @@ export const ProgressScreen = ({
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="truncate font-bold text-slate-800">
-                      {activity.title}
-                    </h3>
+                    <h3 className="truncate font-bold text-slate-800">{activity.title}</h3>
                     <p className="text-slate-500 text-xs">{activity.date}</p>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-emerald-600">
-                      {activity.score}%
-                    </div>
-                    <div className="font-bold text-[10px] text-slate-400 uppercase">
-                      Score
-                    </div>
+                    <div className="font-bold text-emerald-600">{activity.score}%</div>
+                    <div className="font-bold text-[10px] text-slate-400 uppercase">Score</div>
                   </div>
                 </div>
               ))}

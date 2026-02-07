@@ -5,11 +5,14 @@
   "files": [
     {
       "path": "components/ui/legali/composite/UserStatsBar.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { StatItem } from \"../atomic/StatItem\"\n\nexport interface UserStatsBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  streak: number\n  points: number\n  hearts: number\n  maxHearts?: number\n}\n\nconst UserStatsBar = React.forwardRef<HTMLDivElement, UserStatsBarProps>(\n  ({ className, streak, points, hearts, maxHearts = 5, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={cn(\n          \"flex items-center justify-between gap-2 py-3 \",\n          className\n        )}\n        {...props}\n      >\n        <StatItem\n          value={streak}\n          variant=\"streak\"\n          className=\"shadow-sm\"\n        />\n        <StatItem\n          value={points}\n          variant=\"points\"\n          className=\"shadow-sm\"\n        />\n        <StatItem\n          value={`${hearts}`} // Simplified to just show current hearts like Duolingo\n          variant=\"hearts\"\n          className=\"shadow-sm\"\n        />\n      </div>\n    )\n  }\n)\nUserStatsBar.displayName = \"UserStatsBar\"\n\nexport { UserStatsBar }\n",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { StatItem } from \"../atomic/StatItem\";\n\nexport interface UserStatsBarProps extends React.HTMLAttributes<HTMLDivElement> {\n  streak: number;\n  points: number;\n  hearts: number;\n  maxHearts?: number;\n}\n\nconst UserStatsBar = React.forwardRef<HTMLDivElement, UserStatsBarProps>(\n  ({ className, streak, points, hearts, maxHearts = 5, ...props }, ref) => {\n    return (\n      <div\n        className={cn(\"flex items-center justify-between gap-2 py-3\", className)}\n        ref={ref}\n        {...props}\n      >\n        <StatItem className=\"shadow-sm\" value={streak} variant=\"streak\" />\n        <StatItem className=\"shadow-sm\" value={points} variant=\"points\" />\n        <StatItem\n          className=\"shadow-sm\" // Simplified to just show current hearts like Duolingo\n          value={`${hearts}`}\n          variant=\"hearts\"\n        />\n      </div>\n    );\n  }\n);\nUserStatsBar.displayName = \"UserStatsBar\";\n\nexport { UserStatsBar };\n",
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"

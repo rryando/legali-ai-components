@@ -33,24 +33,8 @@ export interface LessonDotProps
 }
 
 const LessonDot = React.forwardRef<HTMLDivElement, LessonDotProps>(
-  (
-    {
-      className,
-      size,
-      completed = false,
-      current = false,
-      locked = false,
-      ...props
-    },
-    ref
-  ) => {
-    const status = completed
-      ? "completed"
-      : current
-        ? "current"
-        : locked
-          ? "locked"
-          : "pending";
+  ({ className, size, completed = false, current = false, locked = false, ...props }, ref) => {
+    const status = completed ? "completed" : current ? "current" : locked ? "locked" : "pending";
 
     const ariaLabel = completed
       ? "Lesson completed"

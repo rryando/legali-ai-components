@@ -58,31 +58,23 @@ export interface QuizScreenProps extends React.HTMLAttributes<HTMLDivElement> {
 const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
   ({ className, questions, onClose, onQuizComplete, ...props }, ref) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
-    const [selectedAnswerId, setSelectedAnswerId] = React.useState<
-      string | number | null
-    >(null);
-    const [userAnswers, setUserAnswers] = React.useState<
-      Record<string | number, string | number>
-    >({});
+    const [selectedAnswerId, setSelectedAnswerId] = React.useState<string | number | null>(null);
+    const [userAnswers, setUserAnswers] = React.useState<Record<string | number, string | number>>(
+      {}
+    );
     const [isAnswerChecked, setIsAnswerChecked] = React.useState(false);
     const [score, setScore] = React.useState(0);
     const [showFeedback, setShowFeedback] = React.useState(false);
 
     const [questionTypedDone, setQuestionTypedDone] = React.useState(false);
     const [promptDelayDone, setPromptDelayDone] = React.useState(false);
-    const [pendingResult, setPendingResult] = React.useState<boolean | null>(
-      null
-    );
+    const [pendingResult, setPendingResult] = React.useState<boolean | null>(null);
     const [reactionPlayed, setReactionPlayed] = React.useState(false);
 
     const currentQuestion = questions?.[currentQuestionIndex];
 
     if (!currentQuestion) {
-      return (
-        <div className="p-8 text-center text-slate-500">
-          No questions available.
-        </div>
-      );
+      return <div className="p-8 text-center text-slate-500">No questions available.</div>;
     }
 
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
@@ -118,10 +110,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
         {
           motion: MascotMotion.SPEAKING,
           durationMs: 2800,
-          lines: [
-            "Quick tip:",
-            "Look for jurisdiction, money limits, and timing.",
-          ],
+          lines: ["Quick tip:", "Look for jurisdiction, money limits, and timing."],
         },
         {
           motion: MascotMotion.THINKING,
@@ -169,10 +158,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
         {
           motion: MascotMotion.CONFUSED,
           durationMs: 2400,
-          lines: [
-            "Close — but not quite.",
-            "Let’s use the explanation to lock it in.",
-          ],
+          lines: ["Close — but not quite.", "Let’s use the explanation to lock it in."],
         },
         {
           motion: MascotMotion.SPEAKING,
@@ -185,9 +171,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
     const hintScript = React.useMemo(
       () =>
-        currentQuestion.mascot?.script?.length
-          ? currentQuestion.mascot.script
-          : defaultHintScript,
+        currentQuestion.mascot?.script?.length ? currentQuestion.mascot.script : defaultHintScript,
       [currentQuestion.mascot?.script, defaultHintScript]
     );
 
@@ -216,10 +200,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     );
 
     const shouldPlayReaction =
-      showFeedback &&
-      pendingResult != null &&
-      questionTypedDone &&
-      !reactionPlayed;
+      showFeedback && pendingResult != null && questionTypedDone && !reactionPlayed;
 
     React.useEffect(() => {
       if (!shouldPlayReaction) return;
@@ -264,8 +245,8 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
       if (isLastQuestion) {
         onQuizComplete(
           score +
-            (currentQuestion.answers.find((a) => a.id === selectedAnswerId)
-              ?.correct && !isAnswerChecked
+            (currentQuestion.answers.find((a) => a.id === selectedAnswerId)?.correct &&
+            !isAnswerChecked
               ? 1
               : 0), // Handle case where check wasn't clicked if that's possible (though UI prevents it) - actually logic above sets score on check.
           questions.length,
@@ -290,23 +271,13 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
     }, [pendingResult, showFeedback]);
 
     const promptTriggerKey = React.useMemo(() => {
-      const resultKey =
-        pendingResult == null
-          ? "none"
-          : pendingResult
-            ? "correct"
-            : "incorrect";
-      const phaseKey = showFeedback
-        ? "feedback"
-        : promptDelayDone
-          ? "hint"
-          : "reading";
+      const resultKey = pendingResult == null ? "none" : pendingResult ? "correct" : "incorrect";
+      const phaseKey = showFeedback ? "feedback" : promptDelayDone ? "hint" : "reading";
       return `${String(currentQuestion.id)}:${phaseKey}:${resultKey}`;
     }, [currentQuestion.id, pendingResult, promptDelayDone, showFeedback]);
 
     const promptScript = React.useMemo<QuizMascotScriptStep[]>(() => {
-      if (shouldPlayReaction)
-        return pendingResult ? correctScript : incorrectScript;
+      if (shouldPlayReaction) return pendingResult ? correctScript : incorrectScript;
       if (showFeedback && pendingResult != null)
         return pendingResult ? correctScript : incorrectScript;
       if (!promptDelayDone) return readingScript;
@@ -389,11 +360,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
                   className="animate-fade-in border-white/40 bg-white/60 backdrop-blur-sm hover:bg-white/80"
                   correct={isAnswerChecked && answer.correct}
                   disabled={isAnswerChecked}
-                  incorrect={
-                    isAnswerChecked &&
-                    selectedAnswerId === answer.id &&
-                    !answer.correct
-                  }
+                  incorrect={isAnswerChecked && selectedAnswerId === answer.id && !answer.correct}
                   key={answer.id}
                   onClick={() => handleAnswerSelect(answer.id)}
                   selected={selectedAnswerId === answer.id} // A, B, C, D
@@ -428,10 +395,7 @@ const QuizScreen = React.forwardRef<HTMLDivElement, QuizScreenProps>(
 
         <QuizFeedback
           className="border-white/40 border-t bg-white/80 backdrop-blur-xl"
-          correct={
-            currentQuestion.answers.find((a) => a.id === selectedAnswerId)
-              ?.correct
-          }
+          correct={currentQuestion.answers.find((a) => a.id === selectedAnswerId)?.correct ?? false}
           explanation={currentQuestion.explanation}
           onContinue={handleContinue}
           show={showFeedback}

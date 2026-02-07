@@ -3,8 +3,7 @@ import { cn } from "@/lib/utils";
 import { GlassCard } from "../atomic/GlassCard";
 import { ResultsCard } from "../composite/ResultsCard";
 
-export interface ResultsScreenProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ResultsScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   score: number;
   totalQuestions: number;
   badgeTitle?: string;

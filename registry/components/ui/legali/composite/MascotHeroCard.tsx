@@ -17,8 +17,7 @@ export type MascotHeroScriptStep = {
   lines: string[];
 };
 
-export interface MascotHeroCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface MascotHeroCardProps extends React.HTMLAttributes<HTMLDivElement> {
   heroTitle?: React.ReactNode;
   active?: boolean;
 
@@ -63,11 +62,7 @@ const DEFAULT_SCRIPT: MascotHeroScriptStep[] = [
   {
     motion: MascotMotion.SPEAKING,
     durationMs: 5000,
-    lines: [
-      "Focus on the key terms",
-      "Try one lesson at a time",
-      "You’ve got this",
-    ],
+    lines: ["Focus on the key terms", "Try one lesson at a time", "You’ve got this"],
   },
   {
     motion: MascotMotion.IDLE,
@@ -104,8 +99,7 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
     }, []);
 
     const [stepIndex, setStepIndex] = React.useState(0);
-    const [motion, setMotion] =
-      React.useState<MascotMotionType>(inactiveMotion);
+    const [motion, setMotion] = React.useState<MascotMotionType>(inactiveMotion);
 
     const setStep = React.useCallback(
       (nextIndex: number, nextMotion: MascotMotionType) => {
@@ -145,19 +139,14 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
       [clearScriptTimers, inactiveMotion, setStep]
     );
 
-    const activeScript = React.useMemo(
-      () => (script?.length ? script : DEFAULT_SCRIPT),
-      [script]
-    );
+    const activeScript = React.useMemo(() => (script?.length ? script : DEFAULT_SCRIPT), [script]);
 
     const interruptScriptResolved = React.useMemo(
       () => (interruptScript?.length ? interruptScript : undefined),
       [interruptScript]
     );
 
-    const prevTriggerKeyRef = React.useRef<string | number | undefined>(
-      triggerKey
-    );
+    const prevTriggerKeyRef = React.useRef<string | number | undefined>(triggerKey);
 
     React.useEffect(() => {
       if (!active) {
@@ -169,11 +158,7 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
       const isInterrupt = prevTriggerKeyRef.current !== triggerKey;
       prevTriggerKeyRef.current = triggerKey;
 
-      startScript(
-        isInterrupt && interruptScriptResolved
-          ? interruptScriptResolved
-          : activeScript
-      );
+      startScript(isInterrupt && interruptScriptResolved ? interruptScriptResolved : activeScript);
 
       return () => {
         clearScriptTimers();
@@ -193,11 +178,7 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
       DEFAULT_SCRIPT[0]) as MascotHeroScriptStep;
 
     const prefersReducedMotion = React.useMemo(() => {
-      if (
-        typeof window === "undefined" ||
-        typeof window.matchMedia !== "function"
-      )
-        return false;
+      if (typeof window === "undefined" || typeof window.matchMedia !== "function") return false;
       return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     }, []);
 
@@ -213,8 +194,7 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
     );
 
     const stepLines = React.useMemo(
-      () =>
-        (step?.lines ?? []).map((l) => l?.trim()).filter(Boolean) as string[],
+      () => (step?.lines ?? []).map((l) => l?.trim()).filter(Boolean) as string[],
       [step?.lines]
     );
 
@@ -231,8 +211,7 @@ const MascotHeroCard = React.forwardRef<HTMLDivElement, MascotHeroCardProps>(
       const totalChars = stepLines.reduce((sum, l) => sum + l.length, 0);
       if (totalChars <= 0) return clamp(streamConfig.charIntervalMs);
 
-      const pauses =
-        Math.max(0, stepLines.length - 1) * streamConfig.linePauseMs;
+      const pauses = Math.max(0, stepLines.length - 1) * streamConfig.linePauseMs;
       const available = Math.max(0, step.durationMs - pauses);
       const computed = available / totalChars;
       return clamp(computed);

@@ -3,8 +3,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { GlassCard } from "./GlassCard";
 
-export interface ProfileStatCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProfileStatCardProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: LucideIcon;
   label: string;
   value: string | number;
@@ -31,9 +30,7 @@ const ProfileStatCard = React.forwardRef<HTMLDivElement, ProfileStatCardProps>(
       </div>
       <div>
         <div className="font-bold text-2xl text-slate-800">{value}</div>
-        <div className="font-medium text-slate-500 text-xs uppercase tracking-wider">
-          {label}
-        </div>
+        <div className="font-medium text-slate-500 text-xs uppercase tracking-wider">{label}</div>
       </div>
     </GlassCard>
   )

@@ -21,21 +21,18 @@ const progressBarVariants = cva("w-full overflow-hidden rounded-full", {
   },
 });
 
-const progressFillVariants = cva(
-  "h-full transition-all duration-300 ease-out",
-  {
-    variants: {
-      variant: {
-        default: "bg-green-500",
-        quiz: "bg-white",
-        module: "bg-green-500",
-      },
+const progressFillVariants = cva("h-full transition-all duration-300 ease-out", {
+  variants: {
+    variant: {
+      default: "bg-green-500",
+      quiz: "bg-white",
+      module: "bg-green-500",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface ProgressBarProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -48,16 +45,7 @@ export interface ProgressBarProps
 
 const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
   (
-    {
-      className,
-      variant,
-      size,
-      value,
-      showLabel = false,
-      label,
-      animated = true,
-      ...props
-    },
+    { className, variant, size, value, showLabel = false, label, animated = true, ...props },
     ref
   ) => {
     const clampedValue = Math.min(Math.max(value, 0), 100);
@@ -75,10 +63,7 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
             aria-valuemax={100}
             aria-valuemin={0}
             aria-valuenow={clampedValue}
-            className={cn(
-              progressFillVariants({ variant }),
-              !animated && "transition-none"
-            )}
+            className={cn(progressFillVariants({ variant }), !animated && "transition-none")}
             role="progressbar"
             style={{ width: `${clampedValue}%` }}
           />

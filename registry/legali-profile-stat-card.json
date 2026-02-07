@@ -5,11 +5,15 @@
   "files": [
     {
       "path": "components/ui/legali/atomic/ProfileStatCard.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { GlassCard } from \"./GlassCard\"\nimport { LucideIcon } from \"lucide-react\"\n\nexport interface ProfileStatCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  icon: LucideIcon\n  label: string\n  value: string | number\n  colorClass: string\n}\n\nconst ProfileStatCard = React.forwardRef<HTMLDivElement, ProfileStatCardProps>(\n  ({ className, icon: Icon, label, value, colorClass, ...props }, ref) => {\n    return (\n      <GlassCard \n        ref={ref}\n        className={cn(\n          \"p-4 flex flex-col items-center justify-center gap-2 text-center group hover:-translate-y-1 rounded-2xl\",\n          className\n        )}\n        {...props}\n      >\n        <div className={cn(\"p-3 rounded-xl bg-white/50 shadow-sm transition-transform group-hover:scale-110\", colorClass)}>\n          <Icon className=\"w-6 h-6\" />\n        </div>\n        <div>\n          <div className=\"text-2xl font-bold text-slate-800\">{value}</div>\n          <div className=\"text-xs font-medium text-slate-500 uppercase tracking-wider\">{label}</div>\n        </div>\n      </GlassCard>\n    )\n  }\n)\nProfileStatCard.displayName = \"ProfileStatCard\"\n\nexport { ProfileStatCard }\n",
+      "content": "import type { LucideIcon } from \"lucide-react\";\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { GlassCard } from \"./GlassCard\";\n\nexport interface ProfileStatCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  icon: LucideIcon;\n  label: string;\n  value: string | number;\n  colorClass: string;\n}\n\nconst ProfileStatCard = React.forwardRef<HTMLDivElement, ProfileStatCardProps>(\n  ({ className, icon: Icon, label, value, colorClass, ...props }, ref) => (\n    <GlassCard\n      className={cn(\n        \"group flex flex-col items-center justify-center gap-2 rounded-2xl p-4 text-center hover:-translate-y-1\",\n        className\n      )}\n      ref={ref}\n      {...props}\n    >\n      <div\n        className={cn(\n          \"rounded-xl bg-white/50 p-3 shadow-sm transition-transform group-hover:scale-110\",\n          colorClass\n        )}\n      >\n        <Icon className=\"h-6 w-6\" />\n      </div>\n      <div>\n        <div className=\"font-bold text-2xl text-slate-800\">{value}</div>\n        <div className=\"font-medium text-slate-500 text-xs uppercase tracking-wider\">{label}</div>\n      </div>\n    </GlassCard>\n  )\n);\nProfileStatCard.displayName = \"ProfileStatCard\";\n\nexport { ProfileStatCard };\n",
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"

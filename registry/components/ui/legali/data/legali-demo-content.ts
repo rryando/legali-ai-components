@@ -51,19 +51,12 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: [
-                "Start with the forum.",
-                "Small claims first — then the right court.",
-              ],
+              lines: ["Start with the forum.", "Small claims first — then the right court."],
             },
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: [
-                "Ask: do I qualify?",
-                "Ask: where do I file?",
-                "Then: build the case.",
-              ],
+              lines: ["Ask: do I qualify?", "Ask: where do I file?", "Then: build the case."],
             },
           ],
           onRevealCorrect: [
@@ -124,11 +117,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: [
-                "Add damages.",
-                "Add unpaid amounts.",
-                "Include allowed costs.",
-              ],
+              lines: ["Add damages.", "Add unpaid amounts.", "Include allowed costs."],
             },
           ],
           onRevealCorrect: [
@@ -179,8 +168,7 @@ const module1Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-1-lesson-1-q3",
-        question:
-          "What happens if Legali finds your claim is too large for small claims?",
+        question: "What happens if Legali finds your claim is too large for small claims?",
         typing: { speedMs: 18, showCursor: true },
         mascot: {
           onReading: DEMO_QUESTION_READING_SCRIPT,
@@ -193,10 +181,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: [
-                "Is speed worth waiving?",
-                "Or do you need full damages?",
-              ],
+              lines: ["Is speed worth waiving?", "Or do you need full damages?"],
             },
           ],
           onRevealCorrect: [
@@ -215,10 +200,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.SHRUG,
               durationMs: 2200,
-              lines: [
-                "Not exactly.",
-                "Legali suggests options — it doesn’t reject you.",
-              ],
+              lines: ["Not exactly.", "Legali suggests options — it doesn’t reject you."],
             },
             {
               motion: MascotMotion.SPEAKING,
@@ -255,11 +237,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.THINKING,
               durationMs: null,
-              lines: [
-                "Enter the incident date.",
-                "Legali checks the limit.",
-                "Then warns early.",
-              ],
+              lines: ["Enter the incident date.", "Legali checks the limit.", "Then warns early."],
             },
           ],
           onRevealCorrect: [
@@ -278,10 +256,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.CONFUSED,
               durationMs: 2400,
-              lines: [
-                "Not quite.",
-                "Legali can’t extend deadlines — it warns you.",
-              ],
+              lines: ["Not quite.", "Legali can’t extend deadlines — it warns you."],
             },
             {
               motion: MascotMotion.SPEAKING,
@@ -317,10 +292,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.SPEAKING,
               durationMs: 2600,
-              lines: [
-                "Classification helps.",
-                "The claim type drives the rules.",
-              ],
+              lines: ["Classification helps.", "The claim type drives the rules."],
             },
             {
               motion: MascotMotion.THINKING,
@@ -348,10 +320,7 @@ const module1Lessons: LegaliLessonContent[] = [
             {
               motion: MascotMotion.SHRUG,
               durationMs: 2400,
-              lines: [
-                "Nope.",
-                "Legali can still help by identifying the claim type.",
-              ],
+              lines: ["Nope.", "Legali can still help by identifying the claim type."],
             },
             {
               motion: MascotMotion.SPEAKING,
@@ -405,8 +374,7 @@ const module1Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-1-lesson-2-q2",
-        question:
-          "What if you don't have all the information during the interview?",
+        question: "What if you don't have all the information during the interview?",
         answers: [
           { id: "A", text: "You can't proceed", correct: false },
           {
@@ -516,8 +484,7 @@ const module1Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-1-lesson-3-q3",
-        question:
-          "What if the defendant wants to settle after seeing your demand letter?",
+        question: "What if the defendant wants to settle after seeing your demand letter?",
         answers: [
           { id: "A", text: "You're on your own", correct: false },
           {
@@ -595,8 +562,7 @@ const module1Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-1-lesson-4-q2",
-        question:
-          "What if your court uses different forms than another county?",
+        question: "What if your court uses different forms than another county?",
         answers: [
           { id: "A", text: "You have to find them", correct: false },
           {
@@ -760,8 +726,7 @@ const module2Lessons: LegaliLessonContent[] = [
           { id: "C", text: "Nothing until the court calls", correct: false },
           { id: "D", text: "You must check manually", correct: false },
         ],
-        explanation:
-          "Case tracking starts automatically with documents saved in your dashboard.",
+        explanation: "Case tracking starts automatically with documents saved in your dashboard.",
       },
     ],
   },
@@ -905,8 +870,7 @@ const module2Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-2-lesson-3-q3",
-        question:
-          "How does Legali help if you need to change your hearing date?",
+        question: "How does Legali help if you need to change your hearing date?",
         answers: [
           { id: "A", text: "You're stuck", correct: false },
           {
@@ -1039,8 +1003,7 @@ const module2Lessons: LegaliLessonContent[] = [
           { id: "C", text: "Weekly email only", correct: false },
           { id: "D", text: "No tracking system", correct: false },
         ],
-        explanation:
-          "Color-coded progress bars and to-dos show what's next and when it's due.",
+        explanation: "Color-coded progress bars and to-dos show what's next and when it's due.",
       },
     ],
   },
@@ -1337,8 +1300,7 @@ const module3Lessons: LegaliLessonContent[] = [
     id: "module-3-lesson-4",
     title: "Lesson 3.4: Anticipating Defenses with Legali",
     badge: "Defense Predictor 🔮",
-    summary:
-      "Forecast common defenses, prep counter-evidence, and rehearse courtroom responses.",
+    summary: "Forecast common defenses, prep counter-evidence, and rehearse courtroom responses.",
     keyPoints: [
       "Legali lists typical defenses per claim type with suggested counters.",
       "Damage breakdowns and evidence callouts help you rebut challenges instantly.",
@@ -1379,8 +1341,7 @@ const module3Lessons: LegaliLessonContent[] = [
       },
       {
         id: "module-3-lesson-4-q3",
-        question:
-          "How does Legali help if defendant claims you're wrong about damages?",
+        question: "How does Legali help if defendant claims you're wrong about damages?",
         answers: [
           { id: "A", text: "It doesn't help", correct: false },
           {
@@ -1407,8 +1368,7 @@ const module3Lessons: LegaliLessonContent[] = [
           { id: "C", text: "Accept defeat", correct: false },
           { id: "D", text: "Argue without seeing it", correct: false },
         ],
-        explanation:
-          "Use prompts like 'May I review this before responding?' to stay composed.",
+        explanation: "Use prompts like 'May I review this before responding?' to stay composed.",
       },
       {
         id: "module-3-lesson-4-q5",
@@ -1578,8 +1538,7 @@ const module4Lessons: LegaliLessonContent[] = [
           { id: "C", text: "Memory only", correct: false },
           { id: "D", text: "Judge tracks for you", correct: false },
         ],
-        explanation:
-          "Check off exhibits as you present them so nothing is forgotten.",
+        explanation: "Check off exhibits as you present them so nothing is forgotten.",
       },
       {
         id: "module-4-lesson-2-q4",

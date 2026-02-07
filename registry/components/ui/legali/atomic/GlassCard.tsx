@@ -15,12 +15,9 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
           "border backdrop-blur-xl transition-all duration-300",
 
           // Intensity variants (Background opacity)
-          intensity === "low" &&
-            "bg-gradient-to-br from-white/40 via-white/30 to-white/10",
-          intensity === "medium" &&
-            "bg-gradient-to-br from-white/60 via-white/40 to-white/20",
-          intensity === "high" &&
-            "bg-gradient-to-br from-white/80 via-white/60 to-white/40",
+          intensity === "low" && "bg-gradient-to-br from-white/40 via-white/30 to-white/10",
+          intensity === "medium" && "bg-gradient-to-br from-white/60 via-white/40 to-white/20",
+          intensity === "high" && "bg-gradient-to-br from-white/80 via-white/60 to-white/40",
 
           // Border styles
           "border-white/40 shadow-blue-900/5 shadow-lg",

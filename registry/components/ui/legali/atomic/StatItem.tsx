@@ -37,26 +37,17 @@ const StatItem = React.forwardRef<HTMLDivElement, StatItemProps>(
     // Default icons if none provided
     let displayIcon = icon;
     if (!icon) {
-      if (variant === "streak")
-        displayIcon = <Flame className="h-4 w-4 fill-orange-400/20" />;
-      if (variant === "points")
-        displayIcon = <Star className="h-4 w-4 fill-amber-400/20" />;
-      if (variant === "hearts")
-        displayIcon = <Heart className="h-4 w-4 fill-rose-400/20" />;
+      if (variant === "streak") displayIcon = <Flame className="h-4 w-4 fill-orange-400/20" />;
+      if (variant === "points") displayIcon = <Star className="h-4 w-4 fill-amber-400/20" />;
+      if (variant === "hearts") displayIcon = <Heart className="h-4 w-4 fill-rose-400/20" />;
     }
 
     return (
-      <div
-        className={cn(statItemVariants({ variant }), className)}
-        ref={ref}
-        {...props}
-      >
+      <div className={cn(statItemVariants({ variant }), className)} ref={ref} {...props}>
         <span aria-hidden="true" className="flex items-center justify-center">
           {displayIcon}
         </span>
-        <span className="font-bold font-mono text-sm tracking-tight">
-          {value}
-        </span>
+        <span className="font-bold font-mono text-sm tracking-tight">{value}</span>
         {label && (
           <span className="ml-1 font-bold text-xs uppercase tracking-wider opacity-80">
             {label}

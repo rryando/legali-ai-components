@@ -2,8 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { StatItem } from "../atomic/StatItem";
 
-export interface UserStatsBarProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface UserStatsBarProps extends React.HTMLAttributes<HTMLDivElement> {
   streak: number;
   points: number;
   hearts: number;
@@ -14,10 +13,7 @@ const UserStatsBar = React.forwardRef<HTMLDivElement, UserStatsBarProps>(
   ({ className, streak, points, hearts, maxHearts = 5, ...props }, ref) => {
     return (
       <div
-        className={cn(
-          "flex items-center justify-between gap-2 py-3",
-          className
-        )}
+        className={cn("flex items-center justify-between gap-2 py-3", className)}
         ref={ref}
         {...props}
       >

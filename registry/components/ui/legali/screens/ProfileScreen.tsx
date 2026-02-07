@@ -11,11 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import type * as React from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/legali/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/legali/avatar";
 import { Badge } from "@/components/ui/legali/badge";
 import { Button } from "@/components/ui/legali/button";
 import { cn } from "@/lib/utils";
@@ -23,8 +19,7 @@ import { GlassCard } from "../atomic/GlassCard";
 import { ProfileStatCard } from "../atomic/ProfileStatCard";
 import { SettingItem } from "../atomic/SettingItem";
 
-export interface ProfileScreenProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProfileScreenProps extends React.HTMLAttributes<HTMLDivElement> {
   user?: {
     name: string;
     handle: string;
@@ -59,13 +54,7 @@ export const ProfileScreen = ({
   ...props
 }: ProfileScreenProps) => {
   return (
-    <div
-      className={cn(
-        "flex-1 overflow-y-auto px-5 py-8 pb-24 md:pb-8",
-        className
-      )}
-      {...props}
-    >
+    <div className={cn("flex-1 overflow-y-auto px-5 py-8 pb-24 md:pb-8", className)} {...props}>
       <div className="mx-auto w-full max-w-4xl space-y-8">
         {/* Header Profile Card */}
         <GlassCard className="relative overflow-hidden rounded-2xl p-6 md:p-8">
@@ -85,13 +74,8 @@ export const ProfileScreen = ({
 
             <div className="flex-1 text-center md:text-left">
               <div className="mb-1 flex items-center justify-center gap-3 md:justify-start">
-                <h1 className="font-bold text-3xl text-slate-800">
-                  {user.name}
-                </h1>
-                <Badge
-                  className="bg-blue-100 text-blue-700 hover:bg-blue-200"
-                  variant="secondary"
-                >
+                <h1 className="font-bold text-3xl text-slate-800">{user.name}</h1>
+                <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200" variant="secondary">
                   Lvl {user.level}
                 </Badge>
               </div>
@@ -147,9 +131,7 @@ export const ProfileScreen = ({
 
         {/* Achievements Section */}
         <div className="space-y-4">
-          <h2 className="px-1 font-bold text-slate-800 text-xl">
-            Achievements
-          </h2>
+          <h2 className="px-1 font-bold text-slate-800 text-xl">Achievements</h2>
           <GlassCard className="rounded-2xl p-6">
             <div className="grid grid-cols-3 gap-6 md:grid-cols-5">
               {[
@@ -217,11 +199,7 @@ export const ProfileScreen = ({
             <SettingItem icon={Bell} label="Notifications" value={true} />
             <SettingItem icon={Volume2} label="Sound Effects" value={true} />
             <SettingItem icon={Moon} label="Dark Mode" value={false} />
-            <SettingItem
-              icon={Shield}
-              label="Privacy & Security"
-              type="arrow"
-            />
+            <SettingItem icon={Shield} label="Privacy & Security" type="arrow" />
             <div className="group cursor-pointer border-slate-100/50 border-t p-4 transition-colors hover:bg-rose-50/30">
               <div className="flex items-center gap-3 text-rose-600">
                 <div className="rounded-lg bg-rose-50 p-2 transition-colors group-hover:bg-rose-100">
