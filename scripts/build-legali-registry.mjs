@@ -52,7 +52,7 @@ const files = [
     name: "legali-button",
     type: "registry:ui",
     files: ["components/ui/legali/button.tsx"],
-    dependencies: ["class-variance-authority", "clsx", "tailwind-merge"],
+    dependencies: ["@radix-ui/react-slot", "class-variance-authority", "clsx", "tailwind-merge"],
     registryDependencies: ["legali-lib-utils"],
   },
   {
@@ -1011,7 +1011,8 @@ const files = [
       "components/ui/legali/mascot/index.ts",
       "components/ui/legali/mascot/RiveGuide.mdx",
     ],
-    dependencies: ["@rive-app/react-canvas"],
+    dependencies: ["@rive-app/react-canvas", "motion"],
+    registryDependencies: ["legali-lib-utils", "legali-typing-text"],
   },
 
   // Data and barrel

@@ -11,7 +11,9 @@
  * @module LegaliMascot
  */
 
-import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import RiveCanvas from "@rive-app/react-canvas";
+
+const { Alignment, Fit, Layout, useRive } = RiveCanvas;
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
