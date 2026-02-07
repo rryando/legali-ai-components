@@ -9,7 +9,9 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-switch.json"
   ]

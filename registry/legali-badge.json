@@ -9,7 +9,11 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
   ]

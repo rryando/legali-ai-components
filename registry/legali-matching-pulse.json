@@ -9,13 +9,6 @@
       "type": "registry:ui"
     }
   ],
-<<<<<<< Updated upstream
-  "dependencies": ["motion"],
-  "registryDependencies": [
-    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
-  ]
-}
-=======
   "dependencies": [
     "motion"
   ],
@@ -23,4 +16,3 @@
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
   ]
 }
->>>>>>> Stashed changes

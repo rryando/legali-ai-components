@@ -9,7 +9,10 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"

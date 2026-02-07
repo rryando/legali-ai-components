@@ -9,20 +9,12 @@
       "type": "registry:ui"
     }
   ],
-<<<<<<< Updated upstream
-  "dependencies": ["lucide-react", "motion"],
-=======
   "dependencies": [
     "lucide-react",
     "motion"
   ],
->>>>>>> Stashed changes
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json"
   ]
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

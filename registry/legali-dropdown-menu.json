@@ -9,13 +9,6 @@
       "type": "registry:ui"
     }
   ],
-<<<<<<< Updated upstream
-  "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
-  "registryDependencies": [
-    "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
-  ]
-}
-=======
   "dependencies": [
     "@radix-ui/react-dropdown-menu",
     "lucide-react"
@@ -24,4 +17,3 @@
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
   ]
 }
->>>>>>> Stashed changes

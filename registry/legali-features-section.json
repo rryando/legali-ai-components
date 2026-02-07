@@ -9,21 +9,13 @@
       "type": "registry:ui"
     }
   ],
-<<<<<<< Updated upstream
-  "dependencies": ["lucide-react"],
-=======
   "dependencies": [
     "lucide-react"
   ],
->>>>>>> Stashed changes
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-section-badge.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json"
   ]
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

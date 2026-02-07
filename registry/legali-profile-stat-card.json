@@ -9,7 +9,11 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["lucide-react", "clsx", "tailwind-merge"],
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json",
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-glass-card.json"

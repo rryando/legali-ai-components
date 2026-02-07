@@ -9,7 +9,9 @@
       "type": "registry:ui"
     }
   ],
-  "dependencies": ["@radix-ui/react-switch"],
+  "dependencies": [
+    "@radix-ui/react-switch"
+  ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json"
   ]
