@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-setting-item.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-setting-item.json"
+ */
 import { ChevronRight, type LucideIcon } from "lucide-react";
 import { Switch } from "@/components/switch";
 

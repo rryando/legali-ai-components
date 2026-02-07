@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cta-section.json"
+ */
 import { ArrowRight, Clock, Play, Shield, Star } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/button";

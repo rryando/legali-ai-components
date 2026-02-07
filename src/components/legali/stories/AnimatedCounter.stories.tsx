@@ -6,6 +6,11 @@ const meta: Meta<typeof AnimatedCounter> = {
   component: AnimatedCounter,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

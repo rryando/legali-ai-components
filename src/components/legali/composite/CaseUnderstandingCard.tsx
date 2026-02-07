@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-understanding-card.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-understanding-card.json"
+ */
 import { motion } from "motion/react";
 import { Check, Pencil } from "lucide-react";
 import { forwardRef } from "react";

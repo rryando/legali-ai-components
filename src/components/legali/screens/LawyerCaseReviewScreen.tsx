@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-case-review-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-case-review-screen.json"
+ */
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 import { StepIndicator } from "../atomic/StepIndicator";

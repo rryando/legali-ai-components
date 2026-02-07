@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particle.json"
+ */
 import type { HTMLAttributes, ReactNode } from "react";
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";

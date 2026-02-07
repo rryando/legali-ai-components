@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-feedback.json"
+ */
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/button";

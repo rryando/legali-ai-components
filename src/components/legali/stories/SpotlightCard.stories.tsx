@@ -6,6 +6,11 @@ const meta: Meta<typeof SpotlightCard> = {
   component: SpotlightCard,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-spotlight-card.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-page.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-page.json"
+ */
 import { type HTMLAttributes, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 import { type FloatingMascotProps, FloatingMascot } from "../composite/FloatingMascot";

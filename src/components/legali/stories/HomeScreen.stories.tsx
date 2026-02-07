@@ -6,6 +6,11 @@ const meta: Meta<typeof HomeScreen> = {
   component: HomeScreen,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

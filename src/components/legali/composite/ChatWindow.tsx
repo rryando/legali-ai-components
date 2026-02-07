@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json"
+ */
 import { forwardRef, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { AIThinkingIndicator } from "../atomic/AIThinkingIndicator";

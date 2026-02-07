@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json"
+ */
 import { Check, AlertCircle } from "lucide-react";
 import type { InputHTMLAttributes } from "react";
 import { forwardRef } from "react";

@@ -6,6 +6,11 @@ const meta: Meta<typeof ResultsScreen> = {
   component: ResultsScreen,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-screen.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

@@ -4,7 +4,14 @@ import { ConsultationTimer } from "../atomic/ConsultationTimer";
 const meta = {
   title: "Legali/Marketplace/Atomic/ConsultationTimer",
   component: ConsultationTimer,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-timer.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof ConsultationTimer>;
 

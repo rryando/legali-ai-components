@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json"
+ */
 import { motion } from "motion/react";
 import { Calendar, CheckCircle2, DollarSign, Download } from "lucide-react";
 import { forwardRef } from "react";

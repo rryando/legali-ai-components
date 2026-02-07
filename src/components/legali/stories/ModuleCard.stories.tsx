@@ -5,6 +5,11 @@ const meta: Meta<typeof ModuleCard> = {
   title: "Legali/Composite/ModuleCard",
   component: ModuleCard,
   parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-module-card.json"\n\`\`\``,
+      },
+    },
     layout: "padded",
   },
   tags: ["autodocs"],

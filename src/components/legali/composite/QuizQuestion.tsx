@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-quiz-question.json"
+ */
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { TypingText } from "../atomic/TypingText";

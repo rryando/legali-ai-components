@@ -4,7 +4,14 @@ import { ContactInfoField } from "../atomic/ContactInfoField";
 const meta = {
   title: "Legali/Marketplace/Atomic/ContactInfoField",
   component: ContactInfoField,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-contact-info-field.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
   argTypes: {
     validation: { control: "select", options: ["idle", "valid", "invalid"] },

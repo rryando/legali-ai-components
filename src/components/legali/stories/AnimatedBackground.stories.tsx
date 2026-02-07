@@ -6,6 +6,11 @@ const meta: Meta<typeof AnimatedBackground> = {
   component: AnimatedBackground,
   parameters: {
     layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-background.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

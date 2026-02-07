@@ -5,7 +5,14 @@ import { LawyerDashboardScreen } from "../screens/LawyerDashboardScreen";
 const meta = {
   title: "Legali/Marketplace/Screens/LawyerDashboardScreen",
   component: LawyerDashboardScreen,
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof LawyerDashboardScreen>;
 

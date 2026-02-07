@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json"
+ */
 import { CheckCircle2, Flame, Medal, Star, Target } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/ui/legali/button";

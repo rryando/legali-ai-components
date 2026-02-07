@@ -9,7 +9,14 @@ import { MarketplaceConsultationScreen } from "../screens/MarketplaceConsultatio
 const meta = {
   title: "Legali/Marketplace/Screens/MarketplaceConsultationScreen",
   component: MarketplaceConsultationScreen,
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof MarketplaceConsultationScreen>;
 

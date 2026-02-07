@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-mobile.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-mobile.json"
+ */
 import { useEffect, useState } from "react";
 
 const MOBILE_BREAKPOINT = 768;

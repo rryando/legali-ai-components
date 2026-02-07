@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-consultation-screen.json"
+ */
 import { AnimatePresence, motion } from "motion/react";
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";

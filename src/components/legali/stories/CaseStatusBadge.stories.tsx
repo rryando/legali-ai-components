@@ -4,6 +4,13 @@ import { CaseStatusBadge } from "../atomic/CaseStatusBadge";
 const meta = {
   title: "Legali/Marketplace/Atomic/CaseStatusBadge",
   component: CaseStatusBadge,
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-status-badge.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof CaseStatusBadge>;
 

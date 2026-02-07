@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json"
+ */
 import { cva, type VariantProps } from "class-variance-authority";
 import { BadgeCheck } from "lucide-react";
 import { forwardRef } from "react";

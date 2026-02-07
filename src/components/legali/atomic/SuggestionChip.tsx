@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-suggestion-chip.json"
+ */
 import { motion } from "motion/react";
 import type { HTMLAttributes, ReactNode } from "react";
 import { forwardRef } from "react";

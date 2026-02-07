@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-switch.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-switch.json"
+ */
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import * as React from "react";
 

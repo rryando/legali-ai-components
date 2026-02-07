@@ -4,7 +4,14 @@ import { ChatInput } from "../atomic/ChatInput";
 const meta = {
   title: "Legali/Marketplace/Atomic/ChatInput",
   component: ChatInput,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof ChatInput>;
 

@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-input.json"
+ */
 import { Paperclip, Send } from "lucide-react";
 import type { FormEvent, KeyboardEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";

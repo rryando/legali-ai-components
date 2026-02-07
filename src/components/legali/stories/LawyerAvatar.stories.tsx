@@ -4,7 +4,14 @@ import { LawyerAvatar } from "../atomic/LawyerAvatar";
 const meta = {
   title: "Legali/Marketplace/Atomic/LawyerAvatar",
   component: LawyerAvatar,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-avatar.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg", "xl"] },

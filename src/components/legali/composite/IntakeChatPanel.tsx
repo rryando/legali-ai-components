@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-intake-chat-panel.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-intake-chat-panel.json"
+ */
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChatInput } from "../atomic/ChatInput";

@@ -16,7 +16,14 @@ const sampleMessages: ChatMessage[] = [
 const meta = {
   title: "Legali/Marketplace/Composite/ChatWindow",
   component: ChatWindow,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-window.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof ChatWindow>;
 

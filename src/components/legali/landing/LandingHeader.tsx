@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-header.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-header.json"
+ */
 import { ArrowRight, Menu, X } from "lucide-react";
 import * as React from "react";
 import { Button } from "@/components/button";

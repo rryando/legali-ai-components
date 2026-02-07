@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-voice-input-button.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-voice-input-button.json"
+ */
 import { Mic } from "lucide-react";
 import type { MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";

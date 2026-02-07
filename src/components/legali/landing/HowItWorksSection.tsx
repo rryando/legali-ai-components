@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-how-it-works-section.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-how-it-works-section.json"
+ */
 import { ArrowRight, ArrowUpRight, Search, Zap } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";

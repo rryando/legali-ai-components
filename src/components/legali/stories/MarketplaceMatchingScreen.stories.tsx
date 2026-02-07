@@ -5,7 +5,14 @@ import { MarketplaceMatchingScreen } from "../screens/MarketplaceMatchingScreen"
 const meta = {
   title: "Legali/Marketplace/Screens/MarketplaceMatchingScreen",
   component: MarketplaceMatchingScreen,
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-marketplace-matching-screen.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof MarketplaceMatchingScreen>;
 

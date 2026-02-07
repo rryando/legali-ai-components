@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-stat-item.json"
+ */
 import { cva, type VariantProps } from "class-variance-authority";
 import { Flame, Heart, Star } from "lucide-react";
 import * as React from "react";

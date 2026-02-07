@@ -5,6 +5,11 @@ const meta = {
   title: "Legali/Composite/ResultsCard",
   component: ResultsCard,
   parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-results-card.json"\n\`\`\``,
+      },
+    },
     layout: "padded",
   },
   tags: ["autodocs"],

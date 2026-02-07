@@ -4,7 +4,14 @@ import { AssessmentWritingForm } from "../composite/AssessmentWritingForm";
 const meta = {
   title: "Legali/Marketplace/Composite/AssessmentWritingForm",
   component: AssessmentWritingForm,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
   decorators: [
     (Story) => (

@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-consultation-chat.json"
+ */
 import { MessageCircle, Phone, Video } from "lucide-react";
 import { forwardRef, useCallback, useState } from "react";
 import { cn } from "@/lib/utils";

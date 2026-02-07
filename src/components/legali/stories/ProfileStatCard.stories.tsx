@@ -6,6 +6,11 @@ const meta = {
   title: "Legali/Atomic/ProfileStatCard",
   component: ProfileStatCard,
   parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-stat-card.json"\n\`\`\``,
+      },
+    },
     layout: "padded",
   },
   tags: ["autodocs"],

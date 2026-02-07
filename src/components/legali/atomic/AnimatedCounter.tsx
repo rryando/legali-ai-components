@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-animated-counter.json"
+ */
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { useCountUp, useInView } from "../hooks/useAnimations";

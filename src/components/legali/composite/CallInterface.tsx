@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-call-interface.json"
+ */
 import { motion } from "motion/react";
 import { Mic, MicOff, Phone, PhoneOff, Video, VideoOff } from "lucide-react";
 import { forwardRef, useState } from "react";

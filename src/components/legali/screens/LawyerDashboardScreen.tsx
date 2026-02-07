@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-dashboard-screen.json"
+ */
 import { motion } from "motion/react";
 import { Briefcase } from "lucide-react";
 import { forwardRef, useCallback, useState } from "react";

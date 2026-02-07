@@ -6,6 +6,11 @@ const meta: Meta<typeof TrustLogos> = {
   component: TrustLogos,
   parameters: {
     layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-trust-logos.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

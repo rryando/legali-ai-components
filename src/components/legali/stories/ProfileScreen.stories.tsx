@@ -6,6 +6,11 @@ const meta = {
   component: ProfileScreen,
   parameters: {
     layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-profile-screen.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof ProfileScreen>;

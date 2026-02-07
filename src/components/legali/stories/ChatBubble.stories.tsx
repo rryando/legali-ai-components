@@ -4,7 +4,14 @@ import { ChatBubble } from "../atomic/ChatBubble";
 const meta = {
   title: "Legali/Marketplace/Atomic/ChatBubble",
   component: ChatBubble,
-  parameters: { layout: "padded" },
+  parameters: {
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json"\n\`\`\``,
+      },
+    },
+    layout: "padded",
+  },
   tags: ["autodocs"],
   argTypes: {
     sender: {

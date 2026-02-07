@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-nav-dropdown.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-nav-dropdown.json"
+ */
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 import {

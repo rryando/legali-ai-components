@@ -5,7 +5,14 @@ import { CaseReviewPanel } from "../composite/CaseReviewPanel";
 const meta = {
   title: "Legali/Marketplace/Composite/CaseReviewPanel",
   component: CaseReviewPanel,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-case-review-panel.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
   decorators: [
     (Story) => (

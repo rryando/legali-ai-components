@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-hook-use-marketplace-flow.json"
+ */
 import { useCallback, useState } from "react";
 import type {
   CaseAssessment,

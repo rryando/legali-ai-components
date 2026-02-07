@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-home-screen.json"
+ */
 import { BarChart2, BookOpen, User } from "lucide-react";
 import * as React from "react";
 import { cn } from "@/lib/utils";

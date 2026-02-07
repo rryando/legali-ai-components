@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cursor-glow.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-cursor-glow.json"
+ */
 import type { HTMLAttributes, MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";
 import { cn } from "@/lib/utils";

@@ -5,7 +5,14 @@ import { PayoutSummary } from "../composite/PayoutSummary";
 const meta = {
   title: "Legali/Marketplace/Composite/PayoutSummary",
   component: PayoutSummary,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-payout-summary.json"\n\`\`\``,
+      },
+    },
+  },
   tags: ["autodocs"],
   decorators: [
     (Story) => (

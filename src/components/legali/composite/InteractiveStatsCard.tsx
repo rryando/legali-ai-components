@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-interactive-stats-card.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-interactive-stats-card.json"
+ */
 import { motion } from "motion/react";
 import type { MouseEvent } from "react";
 import { forwardRef, useCallback, useState } from "react";

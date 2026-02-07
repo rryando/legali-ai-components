@@ -6,6 +6,11 @@ const meta: Meta<typeof GradientText> = {
   component: GradientText,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-gradient-text.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

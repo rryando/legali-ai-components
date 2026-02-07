@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-step-indicator.json"
+ */
 import { cva, type VariantProps } from "class-variance-authority";
 import { Check } from "lucide-react";
 import { forwardRef } from "react";

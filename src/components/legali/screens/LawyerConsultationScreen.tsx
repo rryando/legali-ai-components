@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-consultation-screen.json"
+ */
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import { forwardRef, useCallback, useRef, useState } from "react";

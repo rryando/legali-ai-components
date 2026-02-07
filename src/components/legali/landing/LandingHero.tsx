@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-hero.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-landing-hero.json"
+ */
 import { AnimatePresence, motion } from "motion/react";
 import { Search, Sparkles } from "lucide-react";
 import type { ChangeEvent, HTMLAttributes } from "react";

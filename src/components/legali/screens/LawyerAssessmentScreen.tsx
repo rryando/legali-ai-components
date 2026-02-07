@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-assessment-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lawyer-assessment-screen.json"
+ */
 import { ChevronRight, FileEdit } from "lucide-react";
 import { forwardRef, useCallback, useRef, useState } from "react";
 import { cn } from "@/lib/utils";

@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
+      "content": "/**\n * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json} — Install:\n * @example npx shadcn@latest add \"https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-lib-utils.json\"\n */\nimport { type ClassValue, clsx } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n",
       "type": "registry:lib"
     }
   ],

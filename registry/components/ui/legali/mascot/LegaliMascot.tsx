@@ -1,4 +1,8 @@
 /**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-mascot.json"
+ */
+/**
  * LegaliMascot Component
  *
  * A React wrapper for the Rive mascot animation with support for

@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-assessment-writing-form.json"
+ */
 import { AnimatePresence, motion } from "motion/react";
 import { CheckCircle2, FileEdit } from "lucide-react";
 import { forwardRef } from "react";

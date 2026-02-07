@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-progress-screen.json"
+ */
 import { ArrowUpRight, BookOpen, CheckCircle2, Clock, TrendingUp } from "lucide-react";
 import type * as React from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";

@@ -6,6 +6,11 @@ const meta: Meta<typeof FAQSection> = {
   component: FAQSection,
   parameters: {
     layout: "fullscreen",
+    docs: {
+      description: {
+        component: `Install via shadcn registry:\n\n\`\`\`bash\nnpx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-faq-section.json"\n\`\`\``,
+      },
+    },
   },
   tags: ["autodocs"],
 };

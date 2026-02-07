@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particles-system.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-floating-particles-system.json"
+ */
 import { BookOpen, FileText, Gavel, Scale, Sparkles } from "lucide-react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useMemo } from "react";

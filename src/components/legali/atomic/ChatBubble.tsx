@@ -1,3 +1,7 @@
+/**
+ * @see {@link https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json} — Install:
+ * @example npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/legali-chat-bubble.json"
+ */
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion } from "motion/react";
 import { forwardRef } from "react";
