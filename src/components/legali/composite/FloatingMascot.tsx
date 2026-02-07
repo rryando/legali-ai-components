@@ -14,6 +14,8 @@ export interface FloatingMascotProps extends React.HTMLAttributes<HTMLDivElement
   size?: number;
   /** Number of clicks to trigger easter egg */
   easterEggClicks?: number;
+  /** Easter egg message text */
+  easterEggMessage?: string;
 }
 
 const sectionMotionMap: Record<string, MascotMotionType> = {
@@ -39,6 +41,7 @@ const FloatingMascot = React.forwardRef<HTMLDivElement, FloatingMascotProps>(
       idleTimeout = 5000,
       size = 80,
       easterEggClicks = 5,
+      easterEggMessage = "🎉 Yay!",
       ...props
     },
     ref
@@ -92,7 +95,7 @@ const FloatingMascot = React.forwardRef<HTMLDivElement, FloatingMascotProps>(
           />
           {showEasterEgg && (
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 animate-bounce rounded-full bg-white px-3 py-1 font-bold text-[#4eaed0] text-xs shadow-lg">
-              🎉 Yay!
+              {easterEggMessage}
             </div>
           )}
         </div>

@@ -17,6 +17,8 @@ export interface TestimonialsSectionProps extends React.HTMLAttributes<HTMLEleme
   testimonials?: Testimonial[];
   /** Section title */
   title?: string;
+  /** Badge label text */
+  badgeLabel?: string;
 }
 
 const defaultTestimonials: Testimonial[] = [
@@ -52,7 +54,13 @@ const defaultTestimonials: Testimonial[] = [
  */
 const TestimonialsSection = React.forwardRef<HTMLElement, TestimonialsSectionProps>(
   (
-    { className, testimonials = defaultTestimonials, title = "Loved by thousands", ...props },
+    {
+      className,
+      testimonials = defaultTestimonials,
+      title = "Loved by thousands",
+      badgeLabel = "Customer Stories",
+      ...props
+    },
     ref
   ) => {
     return (
@@ -70,7 +78,7 @@ const TestimonialsSection = React.forwardRef<HTMLElement, TestimonialsSectionPro
             <SectionBadge
               className="mb-6"
               icon={<Star className="h-4 w-4 fill-current" />}
-              label="Customer Stories"
+              label={badgeLabel}
               variant="warning"
             />
             <h2 className="font-bold text-3xl text-slate-900 tracking-tight md:text-4xl lg:text-5xl">

@@ -16,6 +16,10 @@ export interface LandingHeaderProps extends React.HTMLAttributes<HTMLElement> {
   };
   /** Simple navigation links */
   navLinks?: { label: string; href: string }[];
+  /** Login button label */
+  loginLabel?: string;
+  /** CTA button label */
+  ctaLabel?: string;
 }
 
 const defaultNavItems = {
@@ -73,6 +77,8 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
       onGetStarted,
       navigationItems = defaultNavItems,
       navLinks = defaultNavLinks,
+      loginLabel = "Log In",
+      ctaLabel = "Try Free",
       ...props
     },
     ref
@@ -136,14 +142,14 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
               className="rounded-xl font-medium text-slate-700 hover:bg-[#4eaed0]/5 hover:text-[#4eaed0]"
               variant="ghost"
             >
-              Log In
+              {loginLabel}
             </Button>
             <Button
               className="group relative overflow-hidden rounded-xl bg-[length:200%_100%] bg-gradient-to-r from-[#14213d] via-[#1a2a4d] to-[#14213d] px-6 py-2.5 font-medium text-white shadow-lg shadow-slate-900/20 transition-all duration-500 hover:bg-right"
               onClick={onGetStarted}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Try Free
+                {ctaLabel}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </Button>
@@ -179,13 +185,13 @@ const LandingHeader = React.forwardRef<HTMLElement, LandingHeaderProps>(
               ))}
               <div className="mt-2 flex flex-col gap-3 border-slate-100 border-t pt-4">
                 <Button className="w-full rounded-xl border-slate-200" variant="outline">
-                  Log In
+                  {loginLabel}
                 </Button>
                 <Button
                   className="w-full rounded-xl bg-gradient-to-r from-[#14213d] to-[#1a2a4d] text-white"
                   onClick={onGetStarted}
                 >
-                  Try Free
+                  {ctaLabel}
                 </Button>
               </div>
             </nav>

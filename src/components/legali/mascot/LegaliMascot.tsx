@@ -8,7 +8,10 @@
  */
 
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import { TypingText } from "@/components/legali/atomic/TypingText";
 
 /**
  * Available motion states for the mascot animation.
@@ -59,9 +62,15 @@ export const MascotMotionLabels: Record<MascotMotionType, string> = {
   [MascotMotion.THUMBSUP]: "Thumbsup",
 };
 
-export interface LegaliMascotProps {
+/**
+ * Position of the speech bubble relative to the mascot.
+ */
+export type SpeechBubblePosition = "top" | "top-left" | "top-right" | "left" | "right";
+
+export type LegaliMascotProps = {
   /**
    * The current motion/animation state to display.
+   * When speechText is provided, this will be overridden to SPEAKING.
    * @default MascotMotion.IDLE
    */
   motion?: MascotMotionType;
@@ -110,17 +119,114 @@ export interface LegaliMascotProps {
    * Callback fired when the motion state changes.
    */
   onMotionChange?: (motion: MascotMotionType) => void;
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Speech Bubble Props
+  // ─────────────────────────────────────────────────────────────────────────
+
+  /**
+   * Text to display in the speech bubble. When provided, the mascot will
+   * automatically switch to SPEAKING motion and show the speech bubble.
+   */
+  speechText?: string;
+
+  /**
+   * Array of texts to cycle through in the speech bubble.
+   * Takes precedence over speechText if provided.
+   */
+  speechTexts?: string[];
+
+  /**
+   * Typing speed for the speech bubble text in milliseconds.
+   * @default 40
+   */
+  speechSpeed?: number;
+
+  /**
+   * Whether to loop through speechTexts.
+   * @default false
+   */
+  speechLoop?: boolean;
+
+  /**
+   * Pause duration between text cycles in milliseconds.
+   * @default 2000
+   */
+  speechPauseDuration?: number;
+
+  /**
+   * Position of the speech bubble relative to the mascot.
+   * @default "top-right"
+   */
+  speechBubblePosition?: SpeechBubblePosition;
+
+  /**
+   * Additional CSS class names for the speech bubble.
+   */
+  speechBubbleClassName?: string;
+
+  /**
+   * Whether to show the cursor in the typing animation.
+   * @default true
+   */
+  showCursor?: boolean;
+
+  /**
+   * Callback fired when the speech typing completes.
+   */
+  onSpeechComplete?: () => void;
+
+  /**
+   * Maximum width of the speech bubble.
+   * @default 200
+   */
+  speechBubbleMaxWidth?: number;
+};
+
+/**
+ * Get position classes for speech bubble placement.
+ */
+function getSpeechBubblePositionClasses(position: SpeechBubblePosition): string {
+  const positionClasses: Record<SpeechBubblePosition, string> = {
+    top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
+    "top-left": "bottom-full right-1/4 mb-2",
+    "top-right": "bottom-full left-1/4 mb-2",
+    left: "right-full top-1/2 -translate-y-1/2 mr-2",
+    right: "left-full top-1/2 -translate-y-1/2 ml-2",
+  };
+  return positionClasses[position];
 }
+
+/**
+ * Get tail position classes for speech bubble tail.
+ */
+function getSpeechBubbleTailClasses(position: SpeechBubblePosition): string {
+  const tailClasses: Record<SpeechBubblePosition, string> = {
+    top: "top-full left-1/2 -translate-x-1/2 border-l-transparent border-r-transparent border-b-transparent border-t-white",
+    "top-left":
+      "top-full right-6 border-l-transparent border-r-transparent border-b-transparent border-t-white",
+    "top-right":
+      "top-full left-6 border-l-transparent border-r-transparent border-b-transparent border-t-white",
+    left: "left-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-r-transparent border-l-white",
+    right:
+      "right-full top-1/2 -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-white",
+  };
+  return tailClasses[position];
+}
+
+// Rive view model property type
+type RiveViewModelProperty = { value: unknown };
 
 /**
  * LegaliMascot Component
  *
  * Displays an animated mascot character using Rive animations.
  * The mascot supports multiple motion states and blinking control
- * through View Model data binding.
+ * through View Model data binding. Optionally displays a speech bubble
+ * with animated typing text.
  */
 export function LegaliMascot({
-  motion = MascotMotion.IDLE,
+  motion: motionProp = MascotMotion.IDLE,
   isBlink = true,
   width = 300,
   height = 300,
@@ -129,16 +235,32 @@ export function LegaliMascot({
   className = "",
   onLoad,
   onMotionChange,
+  // Speech bubble props
+  speechText,
+  speechTexts,
+  speechSpeed = 40,
+  speechLoop = false,
+  speechPauseDuration = 2000,
+  speechBubblePosition = "top-right",
+  speechBubbleClassName,
+  showCursor = true,
+  onSpeechComplete,
+  speechBubbleMaxWidth = 200,
 }: LegaliMascotProps) {
+  // Determine if we should show the speech bubble
+  const hasSpeech = Boolean(speechText || (speechTexts && speechTexts.length > 0));
+
+  // When speaking, override the motion to SPEAKING
+  const effectiveMotion = hasSpeech ? MascotMotion.SPEAKING : motionProp;
+
   // Store references to view model properties
-  const blinkPropertyRef = useRef<any>(null);
-  const animatesPropertyRef = useRef<any>(null);
+  const blinkPropertyRef = useRef<RiveViewModelProperty | null>(null);
+  const animatesPropertyRef = useRef<RiveViewModelProperty | null>(null);
   const isInitializedRef = useRef(false);
 
   const handleRiveLoad = () => {
     // This function is called when the Rive animation is loaded.
     // The actual initialization logic is in the useEffect hook.
-    // We can use this for external callbacks if needed.
   };
 
   const { rive, RiveComponent } = useRive({
@@ -149,45 +271,38 @@ export function LegaliMascot({
       alignment: Alignment.Center,
     }),
     autoplay: true,
-    autoBind: true, // Enable auto-binding to the default view model instance
+    autoBind: true,
     onLoad: handleRiveLoad,
   });
 
   // Initialize view model properties when rive becomes available
   useEffect(() => {
-    if (rive && !isInitializedRef.current) {
-      try {
-        // Access the auto-bound view model instance
-        const vmi = rive.viewModelInstance;
-        console.log("Rive loaded, viewModelInstance:", vmi);
-
-        if (vmi) {
-          // Get boolean property for isBlink
-          blinkPropertyRef.current = vmi.boolean("isBlink");
-          // Get enum property for animates
-          animatesPropertyRef.current = vmi.enum("animates");
-
-          console.log("Properties initialized:", {
-            blink: blinkPropertyRef.current,
-            animates: animatesPropertyRef.current,
-          });
-
-          // Set initial values
-          if (blinkPropertyRef.current) {
-            blinkPropertyRef.current.value = isBlink;
-          }
-          if (animatesPropertyRef.current) {
-            animatesPropertyRef.current.value = motion;
-          }
-
-          isInitializedRef.current = true;
-          onLoad?.();
-        }
-      } catch (error) {
-        console.warn("Failed to initialize view model:", error);
-      }
+    if (!rive || isInitializedRef.current) {
+      return;
     }
-  }, [rive, isBlink, motion, onLoad]);
+
+    try {
+      const vmi = rive.viewModelInstance;
+      if (!vmi) {
+        return;
+      }
+
+      blinkPropertyRef.current = vmi.boolean("isBlink");
+      animatesPropertyRef.current = vmi.enum("animates");
+
+      if (blinkPropertyRef.current) {
+        blinkPropertyRef.current.value = isBlink;
+      }
+      if (animatesPropertyRef.current) {
+        animatesPropertyRef.current.value = effectiveMotion;
+      }
+
+      isInitializedRef.current = true;
+      onLoad?.();
+    } catch (error) {
+      console.warn("Failed to initialize view model:", error);
+    }
+  }, [rive, isBlink, effectiveMotion, onLoad]);
 
   // Update blink state when prop changes
   useEffect(() => {
@@ -197,40 +312,86 @@ export function LegaliMascot({
   }, [isBlink]);
 
   // Track previous motion to detect changes
-  const prevMotionRef = useRef<MascotMotionType>(motion);
+  const prevMotionRef = useRef<MascotMotionType>(effectiveMotion);
 
   // Update motion state when prop changes - reset to NORMAL first
   useEffect(() => {
-    if (animatesPropertyRef.current && isInitializedRef.current) {
-      // Only apply reset logic if motion actually changed
-      if (prevMotionRef.current !== motion) {
-        // First, set to NORMAL to reset all animation attributes
-        animatesPropertyRef.current.value = MascotMotion.NORMAL;
-
-        // After 300ms, apply the target motion
-        const timer = setTimeout(() => {
-          if (animatesPropertyRef.current) {
-            animatesPropertyRef.current.value = motion;
-            onMotionChange?.(motion);
-          }
-        }, 300);
-
-        prevMotionRef.current = motion;
-
-        return () => clearTimeout(timer);
-      }
+    if (!(animatesPropertyRef.current && isInitializedRef.current)) {
+      return;
     }
-  }, [motion, onMotionChange]);
+    if (prevMotionRef.current === effectiveMotion) {
+      return;
+    }
+
+    // First, set to NORMAL to reset all animation attributes
+    animatesPropertyRef.current.value = MascotMotion.NORMAL;
+
+    // After 300ms, apply the target motion
+    const timer = setTimeout(() => {
+      if (animatesPropertyRef.current) {
+        animatesPropertyRef.current.value = effectiveMotion;
+        onMotionChange?.(effectiveMotion);
+      }
+    }, 300);
+
+    prevMotionRef.current = effectiveMotion;
+
+    return () => clearTimeout(timer);
+  }, [effectiveMotion, onMotionChange]);
 
   return (
     <div
-      className={`rive-mascot-container ${className}`}
+      className={cn("rive-mascot-container relative", className)}
       style={{
         width: typeof width === "number" ? `${width}px` : width,
         height: typeof height === "number" ? `${height}px` : height,
       }}
     >
       <RiveComponent />
+
+      {/* Speech Bubble */}
+      <AnimatePresence>
+        {hasSpeech ? (
+          <motion.div
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className={cn("absolute z-10", getSpeechBubblePositionClasses(speechBubblePosition))}
+            exit={{ opacity: 0, scale: 0.9, y: 10 }}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <div
+              className={cn(
+                "relative rounded-2xl border border-slate-200/60 bg-white px-4 py-3 shadow-lg",
+                "text-slate-700 text-sm leading-relaxed",
+                speechBubbleClassName
+              )}
+              style={{ maxWidth: speechBubbleMaxWidth }}
+            >
+              <TypingText
+                cursor="▍"
+                cursorClassName="text-slate-400"
+                delay={100}
+                loop={speechLoop}
+                onComplete={onSpeechComplete}
+                pauseDuration={speechPauseDuration}
+                showCursor={showCursor}
+                speed={speechSpeed}
+                startOnView={false}
+                text={speechTexts && speechTexts.length > 0 ? undefined : speechText}
+                texts={speechTexts && speechTexts.length > 0 ? speechTexts : undefined}
+              />
+
+              {/* Speech Bubble Tail */}
+              <div
+                className={cn(
+                  "absolute h-0 w-0 border-8 border-solid",
+                  getSpeechBubbleTailClasses(speechBubblePosition)
+                )}
+              />
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

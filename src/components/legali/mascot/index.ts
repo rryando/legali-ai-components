@@ -10,4 +10,5 @@ export {
   MascotMotion,
   MascotMotionLabels,
   type MascotMotionType,
+  type SpeechBubblePosition,
 } from "./LegaliMascot";
