@@ -30,13 +30,10 @@ const MarketplaceIntakeScreen = forwardRef<HTMLDivElement, MarketplaceIntakeScre
     const [showUnderstanding, setShowUnderstanding] = useState(false);
     const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null);
 
-    const handleChatComplete = useCallback(
-      (_messages: ChatMessage[], info: ContactInfo | null) => {
-        if (info) setContactInfo(info);
-        setShowUnderstanding(true);
-      },
-      []
-    );
+    const handleChatComplete = useCallback((_messages: ChatMessage[], info: ContactInfo | null) => {
+      if (info) setContactInfo(info);
+      setShowUnderstanding(true);
+    }, []);
 
     const handleConfirm = useCallback(() => {
       const finalCase: CaseDetails = {

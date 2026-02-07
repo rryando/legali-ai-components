@@ -65,7 +65,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^3.4.18",
     "typescript": "^5.9.3",
-    "ultracite": "6.4.2",
+    "ultracite": "6.5.1",
     "vite": "^5.4.21"
   },
   "dependencies": {

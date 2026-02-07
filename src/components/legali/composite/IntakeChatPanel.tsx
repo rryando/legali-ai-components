@@ -13,11 +13,7 @@ type IntakeChatPanelProps = {
   className?: string;
 };
 
-function createMessage(
-  sender: ChatMessage["sender"],
-  text: string,
-  id?: string
-): ChatMessage {
+function createMessage(sender: ChatMessage["sender"], text: string, id?: string): ChatMessage {
   return {
     id: id ?? `msg-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
     sender,
@@ -111,10 +107,7 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
         setShowContactForm(false);
         setMessages((prev) => [
           ...prev,
-          createMessage(
-            "system",
-            `Contact details submitted: ${info.firstName} ${info.lastName}`
-          ),
+          createMessage("system", `Contact details submitted: ${info.firstName} ${info.lastName}`),
         ]);
         setTimeout(advanceScript, 300);
       },
@@ -130,13 +123,13 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
         ref={ref}
       >
         {/* Header */}
-        <div className="flex items-center gap-3 border-b border-slate-200/40 px-4 py-3">
+        <div className="flex items-center gap-3 border-slate-200/40 border-b px-4 py-3">
           <div className="h-10 w-10">
             <LegaliMascot height={40} motion={mascotMotion} width={40} />
           </div>
           <div>
-            <p className="font-semibold text-sm text-slate-800">Legali AI Assistant</p>
-            <p className="text-xs text-slate-400">Your legal advisor</p>
+            <p className="font-semibold text-slate-800 text-sm">Legali AI Assistant</p>
+            <p className="text-slate-400 text-xs">Your legal advisor</p>
           </div>
         </div>
 
@@ -148,7 +141,7 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
 
         {/* Suggestions */}
         {suggestions.length > 0 && (
-          <div className="flex flex-wrap gap-2 border-t border-slate-200/40 px-4 py-2">
+          <div className="flex flex-wrap gap-2 border-slate-200/40 border-t px-4 py-2">
             {suggestions.map((s, i) => (
               <SuggestionChip
                 animationDelay={i * 0.1}
@@ -161,7 +154,7 @@ const IntakeChatPanel = forwardRef<HTMLDivElement, IntakeChatPanelProps>(
         )}
 
         {/* Input */}
-        <div className="border-t border-slate-200/40 p-3">
+        <div className="border-slate-200/40 border-t p-3">
           <ChatInput disabled={inputDisabled || isAiTyping} onSend={handleUserMessage} />
         </div>
       </div>

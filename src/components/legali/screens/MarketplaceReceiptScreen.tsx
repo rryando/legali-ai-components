@@ -40,10 +40,7 @@ const MarketplaceReceiptScreen = forwardRef<HTMLDivElement, MarketplaceReceiptSc
             <LegaliMascot height={100} motion={MascotMotion.CELEBRATE} width={100} />
           </div>
 
-          <ConsultationReceipt
-            onReturnHome={onReturnHome}
-            receipt={receipt}
-          />
+          <ConsultationReceipt onReturnHome={onReturnHome} receipt={receipt} />
         </div>
       </div>
     );

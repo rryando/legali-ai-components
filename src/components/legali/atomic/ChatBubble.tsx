@@ -9,11 +9,11 @@ const chatBubbleVariants = cva(
   {
     variants: {
       sender: {
-        user: "ml-auto bg-[#4eaed0] text-white rounded-br-sm",
-        ai: "mr-auto bg-white/80 text-slate-800 border border-slate-200/50 backdrop-blur-sm rounded-bl-sm",
+        user: "ml-auto rounded-br-sm bg-[#4eaed0] text-white",
+        ai: "mr-auto rounded-bl-sm border border-slate-200/50 bg-white/80 text-slate-800 backdrop-blur-sm",
         lawyer:
-          "mr-auto bg-gradient-to-br from-amber-50 to-orange-50 text-slate-800 border border-amber-200/50 rounded-bl-sm",
-        system: "mx-auto bg-slate-100/80 text-slate-500 text-xs text-center rounded-xl max-w-[90%]",
+          "mr-auto rounded-bl-sm border border-amber-200/50 bg-gradient-to-br from-amber-50 to-orange-50 text-slate-800",
+        system: "mx-auto max-w-[90%] rounded-xl bg-slate-100/80 text-center text-slate-500 text-xs",
       },
     },
     defaultVariants: {

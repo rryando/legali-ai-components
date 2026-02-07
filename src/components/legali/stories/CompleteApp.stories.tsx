@@ -8,7 +8,7 @@ import { ResultsScreen } from "../screens/ResultsScreen";
 import { ReviewScreen } from "../screens/ReviewScreen";
 
 const meta: Meta = {
-  title: "Legali/Demo/Complete App",
+  title: "Legali/Demo/Education Quiz",
   parameters: {
     layout: "fullscreen",
   },

@@ -41,7 +41,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
             </GradientText>
             <span
               className={cn(
-                "rounded-full px-2.5 py-1 text-xs font-medium",
+                "rounded-full px-2.5 py-1 font-medium text-xs",
                 complexityColors[caseDetails.complexity]
               )}
             >
@@ -49,15 +49,15 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
             </span>
           </div>
 
-          <p className="mb-4 text-sm leading-relaxed text-slate-600">{caseDetails.summary}</p>
+          <p className="mb-4 text-slate-600 text-sm leading-relaxed">{caseDetails.summary}</p>
 
           <div className="mb-4">
-            <p className="mb-2 font-semibold text-xs text-slate-500 uppercase tracking-wider">
+            <p className="mb-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">
               Key Facts
             </p>
             <ul className="space-y-1.5">
               {caseDetails.keyFacts.map((fact) => (
-                <li className="flex items-start gap-2 text-sm text-slate-700" key={fact}>
+                <li className="flex items-start gap-2 text-slate-700 text-sm" key={fact}>
                   <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4eaed0]" />
                   {fact}
                 </li>
@@ -66,7 +66,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
           </div>
 
           <div className="mb-5 rounded-xl bg-slate-50/80 px-3 py-2">
-            <p className="text-xs text-slate-500">
+            <p className="text-slate-500 text-xs">
               <span className="font-medium">Recommended Specialization:</span>{" "}
               {caseDetails.recommendedSpecialization}
             </p>
@@ -77,12 +77,7 @@ const CaseUnderstandingCard = forwardRef<HTMLDivElement, CaseUnderstandingCardPr
               <Check className="mr-1 h-4 w-4" />
               Confirm
             </Button>
-            <Button
-              className="rounded-xl"
-              onClick={onEdit}
-              size="sm"
-              variant="outline"
-            >
+            <Button className="rounded-xl" onClick={onEdit} size="sm" variant="outline">
               <Pencil className="mr-1 h-4 w-4" />
               Edit
             </Button>

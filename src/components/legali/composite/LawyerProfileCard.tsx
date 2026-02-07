@@ -35,17 +35,17 @@ const LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(
               <GradientText as="h3" className="font-bold text-lg">
                 {lawyer.name}
               </GradientText>
-              <p className="text-sm text-slate-500">{lawyer.title}</p>
-              <p className="text-xs text-slate-400">{lawyer.firm}</p>
+              <p className="text-slate-500 text-sm">{lawyer.title}</p>
+              <p className="text-slate-400 text-xs">{lawyer.firm}</p>
 
               <div className="mt-2 flex items-center gap-3">
                 <span className="flex items-center gap-1">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   <span className="font-semibold text-sm">{lawyer.rating}</span>
-                  <span className="text-xs text-slate-400">({lawyer.reviewCount})</span>
+                  <span className="text-slate-400 text-xs">({lawyer.reviewCount})</span>
                 </span>
-                <span className="text-xs text-slate-400">•</span>
-                <span className="font-medium text-sm text-[#4eaed0]">
+                <span className="text-slate-400 text-xs">•</span>
+                <span className="font-medium text-[#4eaed0] text-sm">
                   ${lawyer.consultationFee}
                 </span>
               </div>
@@ -55,7 +55,7 @@ const LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(
           <div className="mt-4 flex flex-wrap gap-1.5">
             {lawyer.specializations.map((spec) => (
               <span
-                className="rounded-full bg-[#4eaed0]/10 px-2.5 py-0.5 text-xs font-medium text-[#4eaed0]"
+                className="rounded-full bg-[#4eaed0]/10 px-2.5 py-0.5 font-medium text-[#4eaed0] text-xs"
                 key={spec}
               >
                 {spec}
@@ -63,12 +63,9 @@ const LawyerProfileCard = forwardRef<HTMLDivElement, LawyerProfileCardProps>(
             ))}
           </div>
 
-          <p className="mt-3 text-sm leading-relaxed text-slate-600">{lawyer.bio}</p>
+          <p className="mt-3 text-slate-600 text-sm leading-relaxed">{lawyer.bio}</p>
 
-          <Button
-            className="mt-5 w-full rounded-xl"
-            onClick={onStartConsultation}
-          >
+          <Button className="mt-5 w-full rounded-xl" onClick={onStartConsultation}>
             <MessageCircle className="mr-2 h-4 w-4" />
             Start Consultation
           </Button>

@@ -12,6 +12,7 @@ export interface NavDropdownItem {
   label: string;
   href: string;
   description?: string;
+  onClick?: () => void;
 }
 
 export interface NavDropdownProps {
@@ -46,6 +47,12 @@ const NavDropdown = React.forwardRef<HTMLButtonElement, NavDropdownProps>(
             <a
               className="group flex flex-col gap-1 rounded-xl px-4 py-3 transition-all hover:bg-gradient-to-r hover:from-[#4eaed0]/5 hover:to-transparent"
               href={item.href}
+              onClick={(e) => {
+                if (item.onClick) {
+                  e.preventDefault();
+                  item.onClick();
+                }
+              }}
             >
               <span className="font-medium text-slate-800 transition-colors group-hover:text-[#4eaed0]">
                 {item.label}

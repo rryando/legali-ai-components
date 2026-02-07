@@ -26,14 +26,57 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "useButtonType": "warn",
+        "useSemanticElements": "warn",
+        "useValidAnchor": "warn",
+        "useFocusableInteractive": "warn",
+        "useKeyWithClickEvents": "warn",
+        "noNoninteractiveElementInteractions": "warn",
+        "noStaticElementInteractions": "warn",
+        "useAriaPropsForRole": "warn",
+        "useAriaPropsSupportedByRole": "warn",
+        "noSvgWithoutTitle": "warn",
+        "noRedundantRoles": "warn",
+        "noLabelWithoutControl": "warn"
+      },
       "suspicious": {
-        "noUnknownAtRules": "off"
+        "noUnknownAtRules": "off",
+        "noArrayIndexKey": "warn",
+        "useAwait": "warn",
+        "useIterableCallbackReturn": "warn",
+        "noAlert": "warn",
+        "noEmptyBlockStatements": "warn",
+        "noDocumentCookie": "warn"
       },
       "performance": {
-        "noNamespaceImport": "off"
+        "noNamespaceImport": "off",
+        "useTopLevelRegex": "warn"
       },
       "nursery": {
         "noReactForwardRef": "off"
+      },
+      "style": {
+        "useFilenamingConvention": "off",
+        "useBlockStatements": "warn",
+        "useConsistentTypeDefinitions": "warn",
+        "noNestedTernary": "warn",
+        "useNodejsImportProtocol": "warn",
+        "useConsistentBuiltinInstantiation": "warn"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "warn",
+        "useExhaustiveDependencies": "warn",
+        "noNestedComponentDefinitions": "warn",
+        "useImageSize": "warn"
+      },
+      "complexity": {
+        "noForEach": "warn",
+        "noExcessiveCognitiveComplexity": "warn",
+        "noUselessTernary": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "warn"
       }
     }
   },
@@ -53,7 +96,7 @@
       }
     },
     {
-      "includes": ["src/index.ts"],
+      "includes": ["**/index.ts"],
       "linter": {
         "rules": {
           "performance": {

@@ -1,10 +1,14 @@
 import { MascotMotion } from "../mascot";
 import type {
+  AssessmentWritingScriptStep,
   CaseAssessment,
   CaseDetails,
+  CaseRequest,
   ConsultationScriptStep,
   IntakeChatScriptStep,
   Lawyer,
+  LawyerConsultationScriptStep,
+  PayoutData,
   ReceiptData,
 } from "./marketplace-types";
 
@@ -69,11 +73,7 @@ export const intakeChatScript: IntakeChatScriptStep[] = [
   {
     aiMessage:
       "Thanks for the details. Do you have any documents or records that might be relevant to your case? This will help me better assess the complexity.",
-    suggestions: [
-      "Yes, I have relevant documents",
-      "No documents yet",
-      "I'm not sure",
-    ],
+    suggestions: ["Yes, I have relevant documents", "No documents yet", "I'm not sure"],
     mascotMotion: MascotMotion.READING,
     delayMs: 1500,
   },
@@ -197,3 +197,215 @@ export const matchingSearchMessages: string[] = [
   "Optimizing compatibility...",
   "Perfect match found!",
 ];
+
+// ─── Lawyer-Side Demo Content ───────────────────────────────────────────────
+
+export const demoCaseRequests: CaseRequest[] = [
+  {
+    id: "case-req-1",
+    clientName: "John Smith",
+    caseDetails: {
+      category: "Family Law",
+      summary:
+        "Amicable divorce after 8 years of marriage. Both parties seek a fair division of shared assets and a custody agreement for two minor children.",
+      keyFacts: [
+        "Marriage duration: 8 years",
+        "2 children together (ages 6 and 9)",
+        "Shared real estate property",
+        "Both parties employed",
+        "Amicable separation desired",
+      ],
+      complexity: "medium",
+      urgency: "normal",
+      recommendedSpecialization: "Family Law",
+      attachments: [],
+      contactInfo: {
+        firstName: "John",
+        lastName: "Smith",
+        email: "john.smith@example.com",
+        phone: "+1 555 123 4567",
+      },
+    },
+    status: "new",
+    submittedAt: new Date(Date.now() - 1000 * 60 * 15),
+    platformFee: 17,
+  },
+  {
+    id: "case-req-2",
+    clientName: "Emily Davis",
+    caseDetails: {
+      category: "Family Law",
+      summary:
+        "Child custody modification request. Primary custody parent relocating for work and needs to adjust the existing custody arrangement.",
+      keyFacts: [
+        "Existing custody agreement in place",
+        "1 child (age 11)",
+        "Relocation for employment",
+        "Both parents cooperative",
+      ],
+      complexity: "low",
+      urgency: "urgent",
+      recommendedSpecialization: "Family Law",
+      attachments: [],
+      contactInfo: {
+        firstName: "Emily",
+        lastName: "Davis",
+        email: "emily.davis@example.com",
+        phone: "+1 555 987 6543",
+      },
+    },
+    status: "pending",
+    submittedAt: new Date(Date.now() - 1000 * 60 * 60 * 2),
+    platformFee: 17,
+  },
+  {
+    id: "case-req-3",
+    clientName: "Michael Chen",
+    caseDetails: {
+      category: "Family Law",
+      summary:
+        "Prenuptial agreement drafting. Couple with significant assets seeking a comprehensive prenuptial agreement before marriage.",
+      keyFacts: [
+        "Both parties have pre-existing assets",
+        "Combined net worth over $500k",
+        "Wedding planned in 4 months",
+        "Both have prior marriages",
+      ],
+      complexity: "high",
+      urgency: "normal",
+      recommendedSpecialization: "Family Law",
+      attachments: [],
+      contactInfo: {
+        firstName: "Michael",
+        lastName: "Chen",
+        email: "michael.chen@example.com",
+        phone: "+1 555 456 7890",
+      },
+    },
+    status: "in_progress",
+    submittedAt: new Date(Date.now() - 1000 * 60 * 60 * 24),
+    platformFee: 17,
+  },
+];
+
+export const lawyerConsultationScript: LawyerConsultationScriptStep[] = [
+  {
+    sender: "lawyer",
+    message:
+      "Hello John, I'm Dr. Sarah Fischer. I've reviewed your case details submitted through Legali AI. Thank you for the thorough summary.",
+    delayMs: 1500,
+    mascotMotion: MascotMotion.SPEAKING,
+  },
+  {
+    sender: "user",
+    message:
+      "Thank you, Dr. Fischer. We're hoping to keep this as amicable as possible for the kids.",
+    delayMs: 2000,
+  },
+  {
+    sender: "lawyer",
+    message:
+      "That's great to hear. An amicable approach is always best, especially with children involved. I'd like to ask about the real estate — is the property jointly owned?",
+    delayMs: 2500,
+    mascotMotion: MascotMotion.THINKING,
+  },
+  {
+    sender: "user",
+    message: "Yes, we bought it together 6 years ago. We've been making equal mortgage payments.",
+    delayMs: 2000,
+  },
+  {
+    sender: "lawyer",
+    message:
+      "Good, that simplifies the asset division considerably. For the custody arrangement, are you both considering shared custody with equal time?",
+    delayMs: 2500,
+    mascotMotion: MascotMotion.READING,
+  },
+  {
+    sender: "user",
+    message:
+      "Yes, we'd like a 50/50 arrangement. We live close to each other and the kids' school.",
+    delayMs: 2000,
+  },
+  {
+    sender: "lawyer",
+    message:
+      "Excellent. Based on everything we've discussed, I have a very positive outlook on your case. Let me prepare my formal assessment now.",
+    delayMs: 2500,
+    mascotMotion: MascotMotion.IDEA,
+    showAssessmentForm: true,
+  },
+];
+
+export const assessmentWritingScript: AssessmentWritingScriptStep[] = [
+  {
+    fieldKey: "summary",
+    value:
+      "The case has good prospects for an amicable resolution. The willingness of both parties to cooperate is a decisive positive factor.",
+    delayMs: 1500,
+    mascotMotion: MascotMotion.SPEAKING,
+  },
+  {
+    fieldKey: "strengths",
+    value:
+      "Mutual agreement between both parties\nClear financial situation\nBoth parents cooperative regarding custody\nNo contentious alimony issues",
+    delayMs: 2000,
+    mascotMotion: MascotMotion.THINKING,
+  },
+  {
+    fieldKey: "concerns",
+    value:
+      "Property valuation may become complex\nTax implications of asset division need attention\nVisitation rights must be defined in detail",
+    delayMs: 1800,
+    mascotMotion: MascotMotion.READING,
+  },
+  {
+    fieldKey: "recommendedSteps",
+    value:
+      "Prepare asset inventory for both parties\nCommission property appraisal\nDraft divorce settlement agreement\nWork out custody and visitation arrangement\nPrepare notarization of agreements",
+    delayMs: 2000,
+    mascotMotion: MascotMotion.SPEAKING,
+  },
+  {
+    fieldKey: "timeline",
+    value: "3-6 months",
+    delayMs: 1000,
+  },
+  {
+    fieldKey: "costRange",
+    value: "$2,500 - $4,500",
+    delayMs: 1000,
+  },
+  {
+    fieldKey: "decision",
+    value: "accepted",
+    delayMs: 1500,
+    mascotMotion: MascotMotion.CELEBRATE,
+  },
+];
+
+export const demoPayout: PayoutData = {
+  lawyer: demoLawyers[0],
+  caseDetails: demoCaseDetails,
+  assessment: demoCaseAssessment,
+  duration: 32,
+  lineItems: [
+    { label: "Initial consultation (30 min)", amount: 190 },
+    { label: "Platform fee (10%)", amount: -19, isDeduction: true },
+    { label: "Payment processing (2%)", amount: -3.8, isDeduction: true },
+    { label: "Insurance contribution", amount: -9.5, isDeduction: true },
+  ],
+  grossAmount: 190,
+  deductions: 32.3,
+  netPayout: 157.7,
+  nextSteps: [
+    "Payout will be processed within 3 business days",
+    "Schedule follow-up appointment with client",
+    "Upload finalized assessment to case file",
+    "Review next pending case in your dashboard",
+  ],
+  referenceNumber: "LEG-PAY-2025-001847",
+  payoutDate: "2025-02-10",
+};
+
+export const dashboardAutoPlayDelayMs = 3000;

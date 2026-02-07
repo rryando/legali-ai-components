@@ -15,7 +15,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     script: intakeChatScript,
-    onComplete: (messages, contactInfo) =>
-      console.log("Complete:", { messages, contactInfo }),
+    onComplete: (messages, contactInfo) => console.log("Complete:", { messages, contactInfo }),
   },
 };

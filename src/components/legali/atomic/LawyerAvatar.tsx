@@ -75,10 +75,8 @@ const LawyerAvatar = forwardRef<HTMLDivElement, LawyerAvatarProps>(
 
         {/* Verified badge */}
         {isVerified && (
-          <span className="absolute -right-0.5 -top-0.5">
-            <BadgeCheck
-              className={cn("fill-[#4eaed0] text-white", badgeSizes[sizeKey])}
-            />
+          <span className="absolute -top-0.5 -right-0.5">
+            <BadgeCheck className={cn("fill-[#4eaed0] text-white", badgeSizes[sizeKey])} />
           </span>
         )}
       </div>

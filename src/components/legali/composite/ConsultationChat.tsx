@@ -55,10 +55,9 @@ const ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(
     );
 
     // Sync external messages
-    const allMessages = [
-      ...localMessages.filter((m) => m.sender === "user"),
-      ...messages,
-    ].sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
+    const allMessages = [...localMessages.filter((m) => m.sender === "user"), ...messages].sort(
+      (a, b) => a.timestamp.getTime() - b.timestamp.getTime()
+    );
 
     // Deduplicate by id
     const seen = new Set<string>();
@@ -77,7 +76,7 @@ const ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(
         ref={ref}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200/40 px-4 py-3">
+        <div className="flex items-center justify-between border-slate-200/40 border-b px-4 py-3">
           <div className="flex items-center gap-3">
             <LawyerAvatar
               alt={lawyer.name}
@@ -87,7 +86,7 @@ const ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(
               status={lawyer.isOnline ? "online" : "offline"}
             />
             <div>
-              <p className="font-semibold text-sm text-slate-800">{lawyer.name}</p>
+              <p className="font-semibold text-slate-800 text-sm">{lawyer.name}</p>
               <ConsultationTimer className="text-xs" />
             </div>
           </div>
@@ -123,11 +122,8 @@ const ConsultationChat = forwardRef<HTMLDivElement, ConsultationChatProps>(
         />
 
         {/* Input */}
-        <div className="border-t border-slate-200/40 p-3">
-          <ChatInput
-            onSend={handleSend}
-            placeholder={`Message ${lawyer.name.split(" ")[0]}...`}
-          />
+        <div className="border-slate-200/40 border-t p-3">
+          <ChatInput onSend={handleSend} placeholder={`Message ${lawyer.name.split(" ")[0]}...`} />
         </div>
       </div>
     );

@@ -22,10 +22,7 @@ const STEPS = [
 ];
 
 const MarketplaceMatchingScreen = forwardRef<HTMLDivElement, MarketplaceMatchingScreenProps>(
-  (
-    { className, searchMessages, matchedLawyer, matchDelayMs = 5000, onStartConsultation },
-    ref
-  ) => {
+  ({ className, searchMessages, matchedLawyer, matchDelayMs = 5000, onStartConsultation }, ref) => {
     const [showLawyer, setShowLawyer] = useState(false);
 
     const handleMatchComplete = useCallback(() => {

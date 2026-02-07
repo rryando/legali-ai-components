@@ -60,6 +60,11 @@ export {
   type StepIndicatorProps,
   type StepIndicatorStep,
 } from "./atomic/StepIndicator";
+export {
+  CaseStatusBadge,
+  caseStatusBadgeVariants,
+  type CaseStatusBadgeProps,
+} from "./atomic/CaseStatusBadge";
 
 // Composite Components
 
@@ -148,6 +153,23 @@ export {
   type ScrollProgressIndicatorProps,
 } from "./composite/ScrollProgressIndicator";
 export { UserStatsBar, type UserStatsBarProps } from "./composite/UserStatsBar";
+export {
+  CaseRequestCard,
+  type CaseRequestCardProps,
+} from "./composite/CaseRequestCard";
+export {
+  CaseReviewPanel,
+  type CaseReviewPanelProps,
+} from "./composite/CaseReviewPanel";
+export {
+  AssessmentWritingForm,
+  type AssessmentWritingFormProps,
+  type AssessmentField,
+} from "./composite/AssessmentWritingForm";
+export {
+  PayoutSummary,
+  type PayoutSummaryProps,
+} from "./composite/PayoutSummary";
 
 // Landing Section Components
 export {
@@ -198,10 +220,43 @@ export {
 export type { LandingPageProps, LandingPageTextConfig } from "./screens/LandingPage";
 export { LandingPage } from "./screens/LandingPage";
 export { MarketplaceFlow, type MarketplaceFlowProps } from "./screens/MarketplaceFlow";
-export { MarketplaceIntakeScreen, type MarketplaceIntakeScreenProps } from "./screens/MarketplaceIntakeScreen";
-export { MarketplaceMatchingScreen, type MarketplaceMatchingScreenProps } from "./screens/MarketplaceMatchingScreen";
-export { MarketplaceConsultationScreen, type MarketplaceConsultationScreenProps } from "./screens/MarketplaceConsultationScreen";
-export { MarketplaceReceiptScreen, type MarketplaceReceiptScreenProps } from "./screens/MarketplaceReceiptScreen";
+export {
+  MarketplaceIntakeScreen,
+  type MarketplaceIntakeScreenProps,
+} from "./screens/MarketplaceIntakeScreen";
+export {
+  MarketplaceMatchingScreen,
+  type MarketplaceMatchingScreenProps,
+} from "./screens/MarketplaceMatchingScreen";
+export {
+  MarketplaceConsultationScreen,
+  type MarketplaceConsultationScreenProps,
+} from "./screens/MarketplaceConsultationScreen";
+export {
+  MarketplaceReceiptScreen,
+  type MarketplaceReceiptScreenProps,
+} from "./screens/MarketplaceReceiptScreen";
+export {
+  LawyerMarketplaceFlow,
+  type LawyerMarketplaceFlowProps,
+} from "./screens/LawyerMarketplaceFlow";
+export {
+  LawyerDashboardScreen,
+  type LawyerDashboardScreenProps,
+} from "./screens/LawyerDashboardScreen";
+export {
+  LawyerCaseReviewScreen,
+  type LawyerCaseReviewScreenProps,
+} from "./screens/LawyerCaseReviewScreen";
+export {
+  LawyerConsultationScreen,
+  type LawyerConsultationScreenProps,
+} from "./screens/LawyerConsultationScreen";
+export {
+  LawyerAssessmentScreen,
+  type LawyerAssessmentScreenProps,
+} from "./screens/LawyerAssessmentScreen";
+export { LawyerPayoutScreen, type LawyerPayoutScreenProps } from "./screens/LawyerPayoutScreen";
 export {
   type Question,
   QuizScreen,
@@ -214,10 +269,13 @@ export {
 
 // Data Types
 export type {
+  AssessmentWritingScriptStep,
   CaseAssessment,
   CaseComplexity,
   CaseDecision,
   CaseDetails,
+  CaseRequest,
+  CaseRequestStatus,
   CaseUrgency,
   ChatAttachment,
   ChatMessage,
@@ -226,23 +284,33 @@ export type {
   ContactInfo,
   IntakeChatScriptStep,
   Lawyer,
+  LawyerConsultationScriptStep,
+  LawyerMarketplaceFlowState,
+  LawyerMarketplaceStep,
   MarketplaceFlowState,
   MarketplaceStep,
   MatchingCriteria,
+  PayoutData,
+  PayoutLineItem,
   ReceiptData,
   ReceiptLineItem,
 } from "./data/marketplace-types";
 
 // Demo Content
 export {
+  assessmentWritingScript,
   consultationScript,
   demoCaseAssessment,
   demoCaseDetails,
+  demoCaseRequests,
   demoLawyers,
+  demoPayout,
   demoReceipt,
   intakeChatScript,
+  lawyerConsultationScript,
   matchingSearchMessages,
 } from "./data/marketplace-demo-content";
 
 // Hooks
 export { useMarketplaceFlow } from "./hooks/useMarketplaceFlow";
+export { useLawyerMarketplaceFlow } from "./hooks/useLawyerMarketplaceFlow";

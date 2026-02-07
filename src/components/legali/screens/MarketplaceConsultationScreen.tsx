@@ -100,10 +100,7 @@ const MarketplaceConsultationScreen = forwardRef<
     >
       <div className="relative z-10 w-full max-w-2xl">
         <div className="mb-6 flex justify-center">
-          <StepIndicator
-            currentStep={showAssessment ? 2 : 2}
-            steps={STEPS}
-          />
+          <StepIndicator currentStep={showAssessment ? 2 : 2} steps={STEPS} />
         </div>
 
         {mode === "text" ? (
@@ -131,10 +128,7 @@ const MarketplaceConsultationScreen = forwardRef<
               exit={{ opacity: 0, y: 20 }}
               initial={{ opacity: 0, y: 24 }}
             >
-              <CaseAssessmentCard
-                assessment={assessment}
-                onViewReceipt={onViewReceipt}
-              />
+              <CaseAssessmentCard assessment={assessment} onViewReceipt={onViewReceipt} />
             </motion.div>
           )}
         </AnimatePresence>

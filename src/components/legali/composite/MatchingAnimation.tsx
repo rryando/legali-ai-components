@@ -63,10 +63,7 @@ const MatchingAnimation = forwardRef<HTMLDivElement, MatchingAnimationProps>(
         ref={ref}
       >
         <div className="relative flex items-center justify-center">
-          <MatchingPulse
-            ringCount={isComplete ? 0 : 4}
-            size={280}
-          />
+          <MatchingPulse ringCount={isComplete ? 0 : 4} size={280} />
           <div className="absolute">
             <LegaliMascot height={120} motion={mascotMotion} width={120} />
           </div>
@@ -75,10 +72,7 @@ const MatchingAnimation = forwardRef<HTMLDivElement, MatchingAnimationProps>(
         <AnimatePresence mode="wait">
           <motion.p
             animate={{ opacity: 1, y: 0 }}
-            className={cn(
-              "text-center font-medium text-slate-600",
-              isComplete && "text-[#4eaed0]"
-            )}
+            className={cn("text-center font-medium text-slate-600", isComplete && "text-[#4eaed0]")}
             exit={{ opacity: 0, y: -8 }}
             initial={{ opacity: 0, y: 8 }}
             key={messageIndex}

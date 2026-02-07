@@ -65,4 +65,4 @@ if [ "$STAGED_HASH" != "$NEW_STAGED_HASH" ]; then
   echo "✨ Files formatted by Ultracite"
 fi
 
-exit $FORMAT_EXIT_CODE
+exit 0

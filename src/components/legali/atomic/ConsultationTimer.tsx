@@ -27,13 +27,13 @@ const ConsultationTimer = forwardRef<HTMLDivElement, ConsultationTimerProps>(
 
     return (
       <div
-        className={cn("inline-flex items-center gap-2 font-mono text-sm text-slate-600", className)}
+        className={cn("inline-flex items-center gap-2 font-mono text-slate-600 text-sm", className)}
         ref={ref}
       >
         <span
           className={cn(
             "h-2 w-2 rounded-full",
-            isRunning ? "animate-pulse bg-red-400 shadow-sm shadow-red-400/50" : "bg-slate-300"
+            isRunning ? "animate-pulse bg-red-400 shadow-red-400/50 shadow-sm" : "bg-slate-300"
           )}
         />
         <span>{formatDuration(elapsed)}</span>

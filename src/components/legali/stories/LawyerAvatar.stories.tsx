@@ -45,10 +45,34 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="flex items-end gap-4">
-      <LawyerAvatar alt="SM" isVerified size="sm" src="https://api.dicebear.com/9.x/avataaars/svg?seed=A" status="online" />
-      <LawyerAvatar alt="MD" isVerified size="md" src="https://api.dicebear.com/9.x/avataaars/svg?seed=B" status="busy" />
-      <LawyerAvatar alt="LG" isVerified size="lg" src="https://api.dicebear.com/9.x/avataaars/svg?seed=C" status="offline" />
-      <LawyerAvatar alt="XL" isVerified size="xl" src="https://api.dicebear.com/9.x/avataaars/svg?seed=D" status="online" />
+      <LawyerAvatar
+        alt="SM"
+        isVerified
+        size="sm"
+        src="https://api.dicebear.com/9.x/avataaars/svg?seed=A"
+        status="online"
+      />
+      <LawyerAvatar
+        alt="MD"
+        isVerified
+        size="md"
+        src="https://api.dicebear.com/9.x/avataaars/svg?seed=B"
+        status="busy"
+      />
+      <LawyerAvatar
+        alt="LG"
+        isVerified
+        size="lg"
+        src="https://api.dicebear.com/9.x/avataaars/svg?seed=C"
+        status="offline"
+      />
+      <LawyerAvatar
+        alt="XL"
+        isVerified
+        size="xl"
+        src="https://api.dicebear.com/9.x/avataaars/svg?seed=D"
+        status="online"
+      />
     </div>
   ),
 };

@@ -50,7 +50,7 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
             </GradientText>
             <span
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
+                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-medium text-xs",
                 decision.color
               )}
             >
@@ -59,17 +59,17 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
             </span>
           </div>
 
-          <p className="mb-5 text-sm leading-relaxed text-slate-600">{assessment.summary}</p>
+          <p className="mb-5 text-slate-600 text-sm leading-relaxed">{assessment.summary}</p>
 
           {/* Strengths */}
           <div className="mb-4">
-            <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-green-600 uppercase tracking-wider">
+            <p className="mb-2 flex items-center gap-1.5 font-semibold text-green-600 text-xs uppercase tracking-wider">
               <CheckCircle2 className="h-3.5 w-3.5" />
               Strengths
             </p>
             <ul className="space-y-1.5">
               {assessment.strengths.map((s) => (
-                <li className="flex items-start gap-2 text-sm text-slate-700" key={s}>
+                <li className="flex items-start gap-2 text-slate-700 text-sm" key={s}>
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-green-400" />
                   {s}
                 </li>
@@ -79,13 +79,13 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
 
           {/* Concerns */}
           <div className="mb-4">
-            <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-amber-600 uppercase tracking-wider">
+            <p className="mb-2 flex items-center gap-1.5 font-semibold text-amber-600 text-xs uppercase tracking-wider">
               <AlertTriangle className="h-3.5 w-3.5" />
               Concerns
             </p>
             <ul className="space-y-1.5">
               {assessment.concerns.map((c) => (
-                <li className="flex items-start gap-2 text-sm text-slate-700" key={c}>
+                <li className="flex items-start gap-2 text-slate-700 text-sm" key={c}>
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
                   {c}
                 </li>
@@ -95,14 +95,14 @@ const CaseAssessmentCard = forwardRef<HTMLDivElement, CaseAssessmentCardProps>(
 
           {/* Recommended Steps */}
           <div className="mb-4">
-            <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-[#4eaed0] uppercase tracking-wider">
+            <p className="mb-2 flex items-center gap-1.5 font-semibold text-[#4eaed0] text-xs uppercase tracking-wider">
               <FileText className="h-3.5 w-3.5" />
               Recommended Steps
             </p>
             <ol className="space-y-1.5">
               {assessment.recommendedSteps.map((step, i) => (
-                <li className="flex items-start gap-2 text-sm text-slate-700" key={step}>
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4eaed0]/10 text-xs font-bold text-[#4eaed0]">
+                <li className="flex items-start gap-2 text-slate-700 text-sm" key={step}>
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4eaed0]/10 font-bold text-[#4eaed0] text-xs">
                     {i + 1}
                   </span>
                   {step}

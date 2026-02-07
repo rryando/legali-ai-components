@@ -34,12 +34,7 @@ const CallInterface = forwardRef<HTMLDivElement, CallInterfaceProps>(
         {/* Lawyer info */}
         <div className="flex flex-col items-center gap-3">
           <div className="relative">
-            <LawyerAvatar
-              alt={lawyer.name}
-              size="xl"
-              src={lawyer.avatar}
-              status="online"
-            />
+            <LawyerAvatar alt={lawyer.name} size="xl" src={lawyer.avatar} status="online" />
             {mode === "call" && (
               <motion.div
                 animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.2, 0.5] }}
@@ -54,9 +49,7 @@ const CallInterface = forwardRef<HTMLDivElement, CallInterfaceProps>(
 
         {mode === "video" && (
           <div className="flex h-48 w-full items-center justify-center rounded-xl bg-slate-700/50">
-            <p className="text-sm text-slate-400">
-              {isVideoOff ? "Camera off" : "Video preview"}
-            </p>
+            <p className="text-slate-400 text-sm">{isVideoOff ? "Camera off" : "Video preview"}</p>
           </div>
         )}
 
@@ -93,11 +86,7 @@ const CallInterface = forwardRef<HTMLDivElement, CallInterfaceProps>(
             onClick={onEnd}
             type="button"
           >
-            {mode === "call" ? (
-              <PhoneOff className="h-5 w-5" />
-            ) : (
-              <Phone className="h-5 w-5" />
-            )}
+            {mode === "call" ? <PhoneOff className="h-5 w-5" /> : <Phone className="h-5 w-5" />}
           </button>
         </div>
       </motion.div>

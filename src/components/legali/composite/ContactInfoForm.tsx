@@ -55,12 +55,8 @@ const ContactInfoForm = forwardRef<HTMLDivElement, ContactInfoFormProps>(
         initial={{ opacity: 0, y: 12 }}
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
       >
-        <GlassCard
-          className={cn("mx-4 rounded-2xl p-4", className)}
-          intensity="medium"
-          ref={ref}
-        >
-          <h3 className="mb-3 font-semibold text-sm text-slate-700">Contact Details</h3>
+        <GlassCard className={cn("mx-4 rounded-2xl p-4", className)} intensity="medium" ref={ref}>
+          <h3 className="mb-3 font-semibold text-slate-700 text-sm">Contact Details</h3>
           <div className="grid grid-cols-2 gap-3">
             <ContactInfoField
               label="First Name"

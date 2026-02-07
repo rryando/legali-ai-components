@@ -15,14 +15,15 @@ const ContactInfoField = forwardRef<HTMLInputElement, ContactInfoFieldProps>(
   ({ label, validation = "idle", errorMessage, ...props }, ref) => {
     return (
       <div className="space-y-1">
-        <label className="block text-xs font-medium text-slate-600">{label}</label>
+        <label className="block font-medium text-slate-600 text-xs">{label}</label>
         <div className="relative">
           <input
             className={cn(
-              "w-full rounded-xl border bg-white/60 px-3 py-2.5 text-sm text-slate-800 backdrop-blur-sm",
-              "placeholder:text-slate-400 transition-all duration-200",
+              "w-full rounded-xl border bg-white/60 px-3 py-2.5 text-slate-800 text-sm backdrop-blur-sm",
+              "transition-all duration-200 placeholder:text-slate-400",
               "focus:outline-none focus:ring-2 focus:ring-offset-1",
-              validation === "idle" && "border-slate-200/60 focus:border-[#4eaed0]/40 focus:ring-[#4eaed0]/20",
+              validation === "idle" &&
+                "border-slate-200/60 focus:border-[#4eaed0]/40 focus:ring-[#4eaed0]/20",
               validation === "valid" && "border-green-300 focus:ring-green-200",
               validation === "invalid" && "border-red-300 focus:ring-red-200"
             )}
@@ -31,19 +32,19 @@ const ContactInfoField = forwardRef<HTMLInputElement, ContactInfoFieldProps>(
           />
 
           {validation === "valid" && (
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500">
+            <span className="absolute top-1/2 right-3 -translate-y-1/2 text-green-500">
               <Check className="h-4 w-4" />
             </span>
           )}
           {validation === "invalid" && (
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-red-400">
+            <span className="absolute top-1/2 right-3 -translate-y-1/2 text-red-400">
               <AlertCircle className="h-4 w-4" />
             </span>
           )}
         </div>
 
         {validation === "invalid" && errorMessage && (
-          <p className="text-xs text-red-500">{errorMessage}</p>
+          <p className="text-red-500 text-xs">{errorMessage}</p>
         )}
       </div>
     );

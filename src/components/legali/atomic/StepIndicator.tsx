@@ -4,11 +4,11 @@ import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 const stepVariants = cva(
-  "flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all duration-300",
+  "flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-bold text-xs transition-all duration-300",
   {
     variants: {
       state: {
-        completed: "bg-[#4eaed0] text-white shadow-sm shadow-[#4eaed0]/30",
+        completed: "bg-[#4eaed0] text-white shadow-[#4eaed0]/30 shadow-sm",
         current: "bg-[#4eaed0]/10 text-[#4eaed0] ring-2 ring-[#4eaed0] ring-offset-2",
         upcoming: "bg-slate-100 text-slate-400",
       },

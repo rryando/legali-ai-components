@@ -76,7 +76,7 @@ const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
         )}
 
         <textarea
-          className="max-h-24 min-h-[36px] flex-1 resize-none bg-transparent text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+          className="max-h-24 min-h-[36px] flex-1 resize-none bg-transparent text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none"
           disabled={disabled}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -90,9 +90,7 @@ const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
         <button
           className={cn(
             "flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-200",
-            value.trim()
-              ? "bg-[#4eaed0] text-white shadow-sm hover:bg-[#3d9abf]"
-              : "text-slate-300"
+            value.trim() ? "bg-[#4eaed0] text-white shadow-sm hover:bg-[#3d9abf]" : "text-slate-300"
           )}
           disabled={!value.trim() || disabled}
           type="submit"

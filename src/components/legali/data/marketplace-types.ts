@@ -126,3 +126,68 @@ export interface MarketplaceFlowState {
   chatMessages: ChatMessage[];
   consultationMessages: ChatMessage[];
 }
+
+// ─── Lawyer-Side Marketplace Types ───────────────────────────────────────────
+
+export type CaseRequestStatus = "new" | "pending" | "in_progress";
+
+export interface CaseRequest {
+  id: string;
+  clientName: string;
+  caseDetails: CaseDetails;
+  status: CaseRequestStatus;
+  submittedAt: Date;
+  platformFee: number;
+}
+
+export interface LawyerConsultationScriptStep {
+  sender: "lawyer" | "user";
+  message: string;
+  delayMs?: number;
+  mascotMotion?: MascotMotionType;
+  showAssessmentForm?: boolean;
+}
+
+export interface AssessmentWritingScriptStep {
+  fieldKey: string;
+  value: string;
+  delayMs?: number;
+  mascotMotion?: MascotMotionType;
+}
+
+export interface PayoutLineItem {
+  label: string;
+  amount: number;
+  isDeduction?: boolean;
+}
+
+export interface PayoutData {
+  lawyer: Lawyer;
+  caseDetails: CaseDetails;
+  assessment: CaseAssessment;
+  duration: number;
+  lineItems: PayoutLineItem[];
+  grossAmount: number;
+  deductions: number;
+  netPayout: number;
+  nextSteps: string[];
+  referenceNumber: string;
+  payoutDate: string;
+}
+
+export type LawyerMarketplaceStep =
+  | "dashboard"
+  | "case-review"
+  | "consultation"
+  | "assessment"
+  | "payout";
+
+export interface LawyerMarketplaceFlowState {
+  currentStep: LawyerMarketplaceStep;
+  caseRequests: CaseRequest[];
+  selectedCase: CaseRequest | null;
+  assessment: CaseAssessment | null;
+  payout: PayoutData | null;
+  consultationMessages: ChatMessage[];
+  currentLawyer: Lawyer;
+}

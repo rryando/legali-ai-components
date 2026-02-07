@@ -33,7 +33,7 @@ const ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>
                 Consultation Receipt
               </GradientText>
             </div>
-            <span className="rounded-full bg-slate-100 px-2.5 py-1 font-mono text-xs text-slate-500">
+            <span className="rounded-full bg-slate-100 px-2.5 py-1 font-mono text-slate-500 text-xs">
               {receipt.referenceNumber}
             </span>
           </div>
@@ -48,11 +48,11 @@ const ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>
               status="offline"
             />
             <div>
-              <p className="font-semibold text-sm text-slate-800">{receipt.lawyer.name}</p>
-              <p className="text-xs text-slate-400">{receipt.lawyer.title}</p>
+              <p className="font-semibold text-slate-800 text-sm">{receipt.lawyer.name}</p>
+              <p className="text-slate-400 text-xs">{receipt.lawyer.title}</p>
             </div>
             <div className="ml-auto text-right">
-              <p className="text-xs text-slate-400">Duration</p>
+              <p className="text-slate-400 text-xs">Duration</p>
               <p className="font-semibold text-sm">{receipt.duration} min</p>
             </div>
           </div>
@@ -67,10 +67,10 @@ const ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>
                 </span>
               </div>
             ))}
-            <div className="border-t border-slate-200 pt-2">
+            <div className="border-slate-200 border-t pt-2">
               <div className="flex justify-between">
-                <span className="font-bold text-sm text-slate-800">Total</span>
-                <span className="font-bold text-lg text-[#4eaed0]">
+                <span className="font-bold text-slate-800 text-sm">Total</span>
+                <span className="font-bold text-[#4eaed0] text-lg">
                   ${receipt.total.toFixed(2)}
                 </span>
               </div>
@@ -79,13 +79,13 @@ const ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>
 
           {/* Next Steps */}
           <div className="mb-5">
-            <p className="mb-2 flex items-center gap-1.5 font-semibold text-xs text-slate-500 uppercase tracking-wider">
+            <p className="mb-2 flex items-center gap-1.5 font-semibold text-slate-500 text-xs uppercase tracking-wider">
               <Calendar className="h-3.5 w-3.5" />
               Next Steps
             </p>
             <ul className="space-y-2">
               {receipt.nextSteps.map((step) => (
-                <li className="flex items-start gap-2 text-sm text-slate-700" key={step}>
+                <li className="flex items-start gap-2 text-slate-700 text-sm" key={step}>
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-400" />
                   {step}
                 </li>
@@ -95,32 +95,18 @@ const ConsultationReceipt = forwardRef<HTMLDivElement, ConsultationReceiptProps>
 
           {/* Actions */}
           <div className="flex gap-3">
-            <Button
-              className="flex-1 rounded-xl"
-              onClick={onDownload}
-              size="sm"
-              variant="outline"
-            >
+            <Button className="flex-1 rounded-xl" onClick={onDownload} size="sm" variant="outline">
               <Download className="mr-1 h-4 w-4" />
               Download
             </Button>
-            <Button
-              className="flex-1 rounded-xl"
-              onClick={onShare}
-              size="sm"
-              variant="outline"
-            >
+            <Button className="flex-1 rounded-xl" onClick={onShare} size="sm" variant="outline">
               <ExternalLink className="mr-1 h-4 w-4" />
               Share
             </Button>
           </div>
 
           {onReturnHome && (
-            <Button
-              className="mt-3 w-full rounded-xl"
-              onClick={onReturnHome}
-              size="sm"
-            >
+            <Button className="mt-3 w-full rounded-xl" onClick={onReturnHome} size="sm">
               Return to Home
             </Button>
           )}
