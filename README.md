@@ -530,129 +530,206 @@ interface ContactInfo {
 
 ## Available Bundles
 
-| Bundle | Registry Name | Description |
-|--------|--------------|-------------|
-| **Full Kit** | `legali-kit` | Everything: education, marketplace, landing page, mascot |
-| **User Marketplace** | `legali-marketplace-flow` | 4-step client flow: Intake → Matching → Consultation → Receipt |
-| **Lawyer Marketplace** | `legali-lawyer-marketplace-flow` | 5-step lawyer flow: Dashboard → Case Review → Consultation → Assessment → Payout |
-| **Landing Page** | `legali-landing-page` | Full landing page with hero, features, FAQ, CTA, testimonials |
-| **Landing Sections** | `legali-landing-sections` | All 10 landing page section components |
+| Bundle | Install | Description |
+|--------|---------|-------------|
+| **Full Kit** | `npx shadcn@latest add "REGISTRY/legali-kit.json"` | Everything: education, marketplace, landing page, mascot |
+| **User Marketplace** | `npx shadcn@latest add "REGISTRY/legali-marketplace-flow.json"` | 4-step client flow: Intake → Matching → Consultation → Receipt |
+| **Lawyer Marketplace** | `npx shadcn@latest add "REGISTRY/legali-lawyer-marketplace-flow.json"` | 5-step lawyer flow: Dashboard → Case Review → Consultation → Assessment → Payout |
+| **Landing Page** | `npx shadcn@latest add "REGISTRY/legali-landing-page.json"` | Full landing page with hero, features, FAQ, CTA, testimonials |
+| **Landing Sections** | `npx shadcn@latest add "REGISTRY/legali-landing-sections.json"` | All 10 landing page section components |
+
+> `REGISTRY` = `https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry`
 
 ### Individual Components
 
-Install any single component by name:
+Install any single component — dependencies are resolved automatically:
 
 ```bash
-REGISTRY_BASE="https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry"
-
-# Atomic
-npx shadcn@latest add "$REGISTRY_BASE/legali-spotlight-card.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-gradient-text.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-case-status-badge.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-step-indicator.json"
-
-# Composite
-npx shadcn@latest add "$REGISTRY_BASE/legali-consultation-chat.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-payout-summary.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-case-review-panel.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-nav-dropdown.json"
-
-# Screens
-npx shadcn@latest add "$REGISTRY_BASE/legali-lawyer-dashboard-screen.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-marketplace-intake-screen.json"
-
-# Data & hooks
-npx shadcn@latest add "$REGISTRY_BASE/legali-marketplace-types.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-marketplace-demo-content.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-hook-use-marketplace-flow.json"
-npx shadcn@latest add "$REGISTRY_BASE/legali-hook-use-lawyer-marketplace-flow.json"
+npx shadcn@latest add "https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry/<name>.json"
 ```
 
 <details>
 <summary><strong>Full Component Catalog (108 items)</strong></summary>
 
-**Atomic (marketplace + landing)**
+#### Core Utilities
 
-| Name | Description |
-|------|-------------|
-| `legali-spotlight-card` | Card with mouse-follow glow effect |
-| `legali-gradient-text` | Branded gradient headings |
-| `legali-lawyer-avatar` | Lawyer avatar with size/status variants |
-| `legali-step-indicator` | Multi-step progress indicator |
-| `legali-chat-bubble` | Chat message bubble (user/bot/lawyer) |
-| `legali-chat-input` | Text input with voice button |
-| `legali-consultation-timer` | Live consultation timer |
-| `legali-matching-pulse` | Animated matching indicator |
-| `legali-animated-counter` | Counter with animation |
-| `legali-section-badge` | Section label badge |
-| `legali-contact-info-field` | Validated contact field |
-| `legali-case-status-badge` | Case status (new/pending/in_progress) |
-| `legali-ai-thinking-indicator` | AI processing dots |
-| `legali-suggestion-chip` | Clickable suggestion pill |
-| `legali-floating-particle` | Decorative particle element |
-| `legali-cursor-glow` | Mouse-follow glow effect |
-| `legali-gradient-mesh-background` | Animated mesh gradient |
-| `legali-tilt-card` | 3D tilt-on-hover card |
-| `legali-voice-input-button` | Microphone toggle button |
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-lib-utils` | `npx shadcn@latest add "REGISTRY/legali-lib-utils.json"` | Core `cn()` utility (clsx + tailwind-merge) |
+| `legali-style-globals` | `npx shadcn@latest add "REGISTRY/legali-style-globals.json"` | Global CSS custom properties and fonts |
+| `legali-hook-use-mobile` | `npx shadcn@latest add "REGISTRY/legali-hook-use-mobile.json"` | Mobile viewport detection hook |
 
-**Composite (marketplace + landing)**
+#### Shared UI
 
-| Name | Description |
-|------|-------------|
-| `legali-animated-background` | Parallax animated background |
-| `legali-call-interface` | Video/audio call UI |
-| `legali-case-assessment-card` | AI-generated case assessment display |
-| `legali-case-understanding-card` | Case summary with key facts |
-| `legali-chat-window` | Scrolling chat message list |
-| `legali-consultation-chat` | Full chat interface with timer |
-| `legali-consultation-receipt` | Post-consultation receipt |
-| `legali-contact-info-form` | Contact information form |
-| `legali-floating-mascot` | Animated floating mascot |
-| `legali-intake-chat-panel` | AI intake chat with suggestions |
-| `legali-lawyer-profile-card` | Lawyer profile with rating/specialties |
-| `legali-live-ticker` | Notification ticker |
-| `legali-matching-animation` | Lawyer matching animation |
-| `legali-nav-dropdown` | Navigation dropdown menu |
-| `legali-scroll-progress-indicator` | Scroll progress bar |
-| `legali-floating-particles-system` | Decorative floating particles |
-| `legali-interactive-stats-card` | Animated stats display |
-| `legali-smart-suggestions-dropdown` | AI suggestion dropdown |
-| `legali-case-request-card` | Case request card (lawyer-side) |
-| `legali-case-review-panel` | Case review panel (lawyer-side) |
-| `legali-assessment-writing-form` | Assessment form (lawyer-side) |
-| `legali-payout-summary` | Payout breakdown (lawyer-side) |
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-button` | `npx shadcn@latest add "REGISTRY/legali-button.json"` | Button with CVA variants |
+| `legali-avatar` | `npx shadcn@latest add "REGISTRY/legali-avatar.json"` | Avatar component (Radix) |
+| `legali-badge` | `npx shadcn@latest add "REGISTRY/legali-badge.json"` | Badge with CVA variants |
+| `legali-switch` | `npx shadcn@latest add "REGISTRY/legali-switch.json"` | Toggle switch (Radix) |
+| `legali-chart` | `npx shadcn@latest add "REGISTRY/legali-chart.json"` | Chart component (recharts) |
+| `legali-dropdown-menu` | `npx shadcn@latest add "REGISTRY/legali-dropdown-menu.json"` | Dropdown menu (Radix) |
 
-**Landing Page Sections**
+#### Atomic — Education
 
-| Name | Description |
-|------|-------------|
-| `legali-landing-hero` | Hero section with interactive demo |
-| `legali-landing-header` | Navigation header with dropdowns |
-| `legali-landing-footer` | Footer with links |
-| `legali-cta-section` | Call-to-action section |
-| `legali-faq-section` | Expandable FAQ section |
-| `legali-features-section` | Feature grid |
-| `legali-how-it-works-section` | Step-by-step explainer |
-| `legali-problem-section` | Problem statement section |
-| `legali-testimonials-section` | User testimonials |
-| `legali-trust-logos` | Trust/partner logos |
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-answer` | `npx shadcn@latest add "REGISTRY/legali-answer.json"` | Quiz answer option with correct/incorrect states |
+| `legali-glass-card` | `npx shadcn@latest add "REGISTRY/legali-glass-card.json"` | Glassmorphism card with blur backdrop |
+| `legali-typing-text` | `npx shadcn@latest add "REGISTRY/legali-typing-text.json"` | Typewriter text animation |
+| `legali-lesson-dot` | `npx shadcn@latest add "REGISTRY/legali-lesson-dot.json"` | Lesson completion indicator dot |
+| `legali-progress-bar` | `npx shadcn@latest add "REGISTRY/legali-progress-bar.json"` | Animated progress bar |
+| `legali-stat-item` | `npx shadcn@latest add "REGISTRY/legali-stat-item.json"` | Stat display with icon and label |
+| `legali-stat-row` | `npx shadcn@latest add "REGISTRY/legali-stat-row.json"` | Horizontal stat row |
+| `legali-status-bar` | `npx shadcn@latest add "REGISTRY/legali-status-bar.json"` | Top status bar with level/XP |
+| `legali-explanation-card` | `npx shadcn@latest add "REGISTRY/legali-explanation-card.json"` | Quiz answer explanation card |
+| `legali-question-number-badge` | `npx shadcn@latest add "REGISTRY/legali-question-number-badge.json"` | Question number indicator |
+| `legali-setting-item` | `npx shadcn@latest add "REGISTRY/legali-setting-item.json"` | Settings row with switch toggle |
+| `legali-profile-stat-card` | `npx shadcn@latest add "REGISTRY/legali-profile-stat-card.json"` | Profile statistics card |
 
-**Screens**
+#### Atomic — Marketplace & Landing
 
-| Name | Description |
-|------|-------------|
-| `legali-marketplace-intake-screen` | Client intake (user-side step 1) |
-| `legali-marketplace-matching-screen` | Lawyer matching (user-side step 2) |
-| `legali-marketplace-consultation-screen` | Consultation (user-side step 3) |
-| `legali-marketplace-receipt-screen` | Receipt (user-side step 4) |
-| `legali-marketplace-flow` | Complete user-side flow orchestrator |
-| `legali-lawyer-dashboard-screen` | Case dashboard (lawyer-side step 1) |
-| `legali-lawyer-case-review-screen` | Case review (lawyer-side step 2) |
-| `legali-lawyer-consultation-screen` | Consultation (lawyer-side step 3) |
-| `legali-lawyer-assessment-screen` | Assessment writing (lawyer-side step 4) |
-| `legali-lawyer-payout-screen` | Payout summary (lawyer-side step 5) |
-| `legali-lawyer-marketplace-flow` | Complete lawyer-side flow orchestrator |
-| `legali-landing-page` | Full landing page screen |
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-spotlight-card` | `npx shadcn@latest add "REGISTRY/legali-spotlight-card.json"` | Card with mouse-follow glow effect |
+| `legali-gradient-text` | `npx shadcn@latest add "REGISTRY/legali-gradient-text.json"` | Branded gradient headings |
+| `legali-lawyer-avatar` | `npx shadcn@latest add "REGISTRY/legali-lawyer-avatar.json"` | Lawyer avatar with size/status variants |
+| `legali-step-indicator` | `npx shadcn@latest add "REGISTRY/legali-step-indicator.json"` | Multi-step progress indicator |
+| `legali-chat-bubble` | `npx shadcn@latest add "REGISTRY/legali-chat-bubble.json"` | Chat message bubble (user/bot/lawyer) |
+| `legali-chat-input` | `npx shadcn@latest add "REGISTRY/legali-chat-input.json"` | Text input with voice button |
+| `legali-consultation-timer` | `npx shadcn@latest add "REGISTRY/legali-consultation-timer.json"` | Live consultation timer |
+| `legali-matching-pulse` | `npx shadcn@latest add "REGISTRY/legali-matching-pulse.json"` | Animated matching indicator |
+| `legali-animated-counter` | `npx shadcn@latest add "REGISTRY/legali-animated-counter.json"` | Counter with animation |
+| `legali-section-badge` | `npx shadcn@latest add "REGISTRY/legali-section-badge.json"` | Section label badge |
+| `legali-contact-info-field` | `npx shadcn@latest add "REGISTRY/legali-contact-info-field.json"` | Validated contact field |
+| `legali-case-status-badge` | `npx shadcn@latest add "REGISTRY/legali-case-status-badge.json"` | Case status badge (new/pending/in_progress) |
+| `legali-ai-thinking-indicator` | `npx shadcn@latest add "REGISTRY/legali-ai-thinking-indicator.json"` | AI processing dots animation |
+| `legali-suggestion-chip` | `npx shadcn@latest add "REGISTRY/legali-suggestion-chip.json"` | Clickable suggestion pill |
+| `legali-floating-particle` | `npx shadcn@latest add "REGISTRY/legali-floating-particle.json"` | Decorative particle element |
+| `legali-cursor-glow` | `npx shadcn@latest add "REGISTRY/legali-cursor-glow.json"` | Mouse-follow glow effect |
+| `legali-gradient-mesh-background` | `npx shadcn@latest add "REGISTRY/legali-gradient-mesh-background.json"` | Animated mesh gradient |
+| `legali-tilt-card` | `npx shadcn@latest add "REGISTRY/legali-tilt-card.json"` | 3D tilt-on-hover card |
+| `legali-voice-input-button` | `npx shadcn@latest add "REGISTRY/legali-voice-input-button.json"` | Microphone toggle button |
+
+#### Composite — Education
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-module-card` | `npx shadcn@latest add "REGISTRY/legali-module-card.json"` | Learning module card with lesson dots |
+| `legali-mascot-hero-card` | `npx shadcn@latest add "REGISTRY/legali-mascot-hero-card.json"` | Hero card with mascot and typing text |
+| `legali-navigation-bar` | `npx shadcn@latest add "REGISTRY/legali-navigation-bar.json"` | Bottom navigation bar |
+| `legali-progress-section` | `npx shadcn@latest add "REGISTRY/legali-progress-section.json"` | Progress overview section |
+| `legali-quiz-feedback` | `npx shadcn@latest add "REGISTRY/legali-quiz-feedback.json"` | Quiz correct/incorrect feedback |
+| `legali-quiz-header` | `npx shadcn@latest add "REGISTRY/legali-quiz-header.json"` | Quiz progress header bar |
+| `legali-quiz-question` | `npx shadcn@latest add "REGISTRY/legali-quiz-question.json"` | Quiz question display |
+| `legali-results-card` | `npx shadcn@latest add "REGISTRY/legali-results-card.json"` | Quiz results summary card |
+| `legali-user-stats-bar` | `npx shadcn@latest add "REGISTRY/legali-user-stats-bar.json"` | User stats bar (streak, XP, gems) |
+
+#### Composite — Marketplace & Landing
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-animated-background` | `npx shadcn@latest add "REGISTRY/legali-animated-background.json"` | Parallax animated background |
+| `legali-call-interface` | `npx shadcn@latest add "REGISTRY/legali-call-interface.json"` | Video/audio call UI |
+| `legali-case-assessment-card` | `npx shadcn@latest add "REGISTRY/legali-case-assessment-card.json"` | AI-generated case assessment display |
+| `legali-case-understanding-card` | `npx shadcn@latest add "REGISTRY/legali-case-understanding-card.json"` | Case summary with key facts |
+| `legali-chat-window` | `npx shadcn@latest add "REGISTRY/legali-chat-window.json"` | Scrolling chat message list |
+| `legali-consultation-chat` | `npx shadcn@latest add "REGISTRY/legali-consultation-chat.json"` | Full chat interface with timer |
+| `legali-consultation-receipt` | `npx shadcn@latest add "REGISTRY/legali-consultation-receipt.json"` | Post-consultation receipt |
+| `legali-contact-info-form` | `npx shadcn@latest add "REGISTRY/legali-contact-info-form.json"` | Contact information form |
+| `legali-floating-mascot` | `npx shadcn@latest add "REGISTRY/legali-floating-mascot.json"` | Animated floating mascot |
+| `legali-intake-chat-panel` | `npx shadcn@latest add "REGISTRY/legali-intake-chat-panel.json"` | AI intake chat with suggestions |
+| `legali-lawyer-profile-card` | `npx shadcn@latest add "REGISTRY/legali-lawyer-profile-card.json"` | Lawyer profile with rating/specialties |
+| `legali-live-ticker` | `npx shadcn@latest add "REGISTRY/legali-live-ticker.json"` | Notification ticker |
+| `legali-matching-animation` | `npx shadcn@latest add "REGISTRY/legali-matching-animation.json"` | Lawyer matching animation |
+| `legali-nav-dropdown` | `npx shadcn@latest add "REGISTRY/legali-nav-dropdown.json"` | Navigation dropdown menu |
+| `legali-scroll-progress-indicator` | `npx shadcn@latest add "REGISTRY/legali-scroll-progress-indicator.json"` | Scroll progress bar |
+| `legali-floating-particles-system` | `npx shadcn@latest add "REGISTRY/legali-floating-particles-system.json"` | Decorative floating particles |
+| `legali-interactive-stats-card` | `npx shadcn@latest add "REGISTRY/legali-interactive-stats-card.json"` | Animated stats display |
+| `legali-smart-suggestions-dropdown` | `npx shadcn@latest add "REGISTRY/legali-smart-suggestions-dropdown.json"` | AI suggestion dropdown |
+| `legali-case-request-card` | `npx shadcn@latest add "REGISTRY/legali-case-request-card.json"` | Case request card (lawyer-side) |
+| `legali-case-review-panel` | `npx shadcn@latest add "REGISTRY/legali-case-review-panel.json"` | Case review panel (lawyer-side) |
+| `legali-assessment-writing-form` | `npx shadcn@latest add "REGISTRY/legali-assessment-writing-form.json"` | Assessment form (lawyer-side) |
+| `legali-payout-summary` | `npx shadcn@latest add "REGISTRY/legali-payout-summary.json"` | Payout breakdown (lawyer-side) |
+
+#### Landing Page Sections
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-landing-hero` | `npx shadcn@latest add "REGISTRY/legali-landing-hero.json"` | Hero section with interactive demo |
+| `legali-landing-header` | `npx shadcn@latest add "REGISTRY/legali-landing-header.json"` | Navigation header with dropdowns |
+| `legali-landing-footer` | `npx shadcn@latest add "REGISTRY/legali-landing-footer.json"` | Footer with links |
+| `legali-cta-section` | `npx shadcn@latest add "REGISTRY/legali-cta-section.json"` | Call-to-action section |
+| `legali-faq-section` | `npx shadcn@latest add "REGISTRY/legali-faq-section.json"` | Expandable FAQ section |
+| `legali-features-section` | `npx shadcn@latest add "REGISTRY/legali-features-section.json"` | Feature grid |
+| `legali-how-it-works-section` | `npx shadcn@latest add "REGISTRY/legali-how-it-works-section.json"` | Step-by-step explainer |
+| `legali-problem-section` | `npx shadcn@latest add "REGISTRY/legali-problem-section.json"` | Problem statement section |
+| `legali-testimonials-section` | `npx shadcn@latest add "REGISTRY/legali-testimonials-section.json"` | User testimonials |
+| `legali-trust-logos` | `npx shadcn@latest add "REGISTRY/legali-trust-logos.json"` | Trust/partner logos |
+| `legali-landing-sections` | `npx shadcn@latest add "REGISTRY/legali-landing-sections.json"` | All landing sections barrel export |
+
+#### Screens — Education
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-home-screen` | `npx shadcn@latest add "REGISTRY/legali-home-screen.json"` | Education home with modules and mascot |
+| `legali-quiz-screen` | `npx shadcn@latest add "REGISTRY/legali-quiz-screen.json"` | Interactive quiz with answer feedback |
+| `legali-review-screen` | `npx shadcn@latest add "REGISTRY/legali-review-screen.json"` | Quiz answer review with explanations |
+| `legali-results-screen` | `npx shadcn@latest add "REGISTRY/legali-results-screen.json"` | Quiz results summary |
+| `legali-progress-screen` | `npx shadcn@latest add "REGISTRY/legali-progress-screen.json"` | Learning progress with charts |
+| `legali-profile-screen` | `npx shadcn@latest add "REGISTRY/legali-profile-screen.json"` | User profile with stats and settings |
+
+#### Screens — User Marketplace
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-marketplace-intake-screen` | `npx shadcn@latest add "REGISTRY/legali-marketplace-intake-screen.json"` | Client intake (step 1) |
+| `legali-marketplace-matching-screen` | `npx shadcn@latest add "REGISTRY/legali-marketplace-matching-screen.json"` | Lawyer matching (step 2) |
+| `legali-marketplace-consultation-screen` | `npx shadcn@latest add "REGISTRY/legali-marketplace-consultation-screen.json"` | Consultation (step 3) |
+| `legali-marketplace-receipt-screen` | `npx shadcn@latest add "REGISTRY/legali-marketplace-receipt-screen.json"` | Receipt (step 4) |
+| `legali-marketplace-flow` | `npx shadcn@latest add "REGISTRY/legali-marketplace-flow.json"` | Complete user-side flow orchestrator |
+
+#### Screens — Lawyer Marketplace
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-lawyer-dashboard-screen` | `npx shadcn@latest add "REGISTRY/legali-lawyer-dashboard-screen.json"` | Case dashboard (step 1) |
+| `legali-lawyer-case-review-screen` | `npx shadcn@latest add "REGISTRY/legali-lawyer-case-review-screen.json"` | Case review (step 2) |
+| `legali-lawyer-consultation-screen` | `npx shadcn@latest add "REGISTRY/legali-lawyer-consultation-screen.json"` | Consultation (step 3) |
+| `legali-lawyer-assessment-screen` | `npx shadcn@latest add "REGISTRY/legali-lawyer-assessment-screen.json"` | Assessment writing (step 4) |
+| `legali-lawyer-payout-screen` | `npx shadcn@latest add "REGISTRY/legali-lawyer-payout-screen.json"` | Payout summary (step 5) |
+| `legali-lawyer-marketplace-flow` | `npx shadcn@latest add "REGISTRY/legali-lawyer-marketplace-flow.json"` | Complete lawyer-side flow orchestrator |
+
+#### Landing Screen
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-landing-page` | `npx shadcn@latest add "REGISTRY/legali-landing-page.json"` | Full landing page screen |
+
+#### Mascot
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-mascot` | `npx shadcn@latest add "REGISTRY/legali-mascot.json"` | Rive-based animated mascot with speech bubble |
+
+#### Data & Hooks
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-marketplace-types` | `npx shadcn@latest add "REGISTRY/legali-marketplace-types.json"` | TypeScript types (Lawyer, CaseDetails, etc.) |
+| `legali-marketplace-demo-content` | `npx shadcn@latest add "REGISTRY/legali-marketplace-demo-content.json"` | Demo data for prototyping |
+| `legali-demo-content` | `npx shadcn@latest add "REGISTRY/legali-demo-content.json"` | Education module demo data |
+| `legali-hook-use-animations` | `npx shadcn@latest add "REGISTRY/legali-hook-use-animations.json"` | Scroll/intersection animation hook |
+| `legali-hook-use-marketplace-flow` | `npx shadcn@latest add "REGISTRY/legali-hook-use-marketplace-flow.json"` | User marketplace state machine |
+| `legali-hook-use-lawyer-marketplace-flow` | `npx shadcn@latest add "REGISTRY/legali-hook-use-lawyer-marketplace-flow.json"` | Lawyer marketplace state machine |
+
+#### Meta Bundle
+
+| Name | Install | Description |
+|------|---------|-------------|
+| `legali-kit` | `npx shadcn@latest add "REGISTRY/legali-kit.json"` | Full kit — installs all 108 components |
+
+> All `REGISTRY` URLs above expand to `https://raw.githubusercontent.com/rryando/legali-ai-components/main/registry`
 
 </details>
 
